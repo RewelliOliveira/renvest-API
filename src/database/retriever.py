@@ -19,9 +19,17 @@ def get_retriever(module: str = None, k: int = 3):
         search_kwargs["filter"] = {"module": module}
     return db.as_retriever(search_kwargs=search_kwargs)
 
-def query_relevant_documents(query: str, module: str = None, k: int = 3):
+def query_relevant_documents(query: str, module: str = None, k: int = 3, max_distance: float = 0.95):
     db = get_vector_db()
     search_kwargs = {}
     if module:
         search_kwargs["filter"] = {"module": module}
-    return db.similarity_search(query, k=k, **search_kwargs)
+        
+    try:
+        results_with_scores = db.similarity_search_with_score(query, k=k, **search_kwargs)
+        # Menor distancia = maior similaridade semantica.
+        # Perguntas de financas: ~0.50 a 0.70. Perguntas fora de nicho: > 1.40.
+        relevant_docs = [doc for doc, distance in results_with_scores if distance <= max_distance]
+        return relevant_docs
+    except Exception:
+        return db.similarity_search(query, k=k, **search_kwargs)

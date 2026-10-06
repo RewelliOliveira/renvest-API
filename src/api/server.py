@@ -20,9 +20,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+from typing import Optional, List, Dict
+
 class ChatRequest(BaseModel):
     message: str
     module: Optional[str] = "modulo_1"
+    history: Optional[List[Dict[str, str]]] = None
 
 class SourceResponse(BaseModel):
     document: str
@@ -32,7 +35,7 @@ class SourceResponse(BaseModel):
 
 class ChatResponse(BaseModel):
     reply: str
-    source: SourceResponse
+    source: Optional[SourceResponse] = None
 
 @app.get("/api/health")
 def health_check():
@@ -40,7 +43,11 @@ def health_check():
 
 @app.post("/api/chat", response_model=ChatResponse)
 def chat_endpoint(payload: ChatRequest):
-    result = chat_rag(message=payload.message, module=payload.module or "modulo_1")
+    result = chat_rag(
+        message=payload.message, 
+        module=payload.module or "modulo_1",
+        history=payload.history
+    )
     return result
 
 @app.post("/api/ingest")
