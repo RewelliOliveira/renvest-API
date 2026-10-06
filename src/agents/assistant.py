@@ -1,71 +1,72 @@
 from langchain_openai import ChatOpenAI
-from langchain_classic.agents import AgentExecutor, create_openai_tools_agent
-from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
-from langchain_core.tools import tool
-
+from langchain_core.prompts import ChatPromptTemplate
 from src import config
-from src.agents.prompts import SYSTEM_PROMPT
-from src.database.retriever import get_retriever
-from src.tools.yfinance_tools import get_stock_history
-from src.tools.bcb_tools import get_selic_rate
-from src.tools.pandas_analyst import list_processed_datasets, get_dataset_summary
+from src.agents.prompts import REV_SYSTEM_PROMPT
+from src.database.retriever import query_relevant_documents
 
-@tool
-def search_documents(query: str) -> str:
-    """Busca trechos relevantes e fatos de documentos e regulamentos locais em PDF relacionados à pergunta.
-    
-    Args:
-        query (str): Termos de busca ou pergunta para encontrar nos documentos.
-        
-    Returns:
-        str: Fragmentos de texto relevantes dos documentos.
+def chat_rag(message: str, module: str = "modulo_1") -> dict:
+    """Processa a mensagem do usuário via RAG e retorna a resposta formatada
+    com a fonte oficial correspondente para o frontend.
     """
-    try:
-        retriever = get_retriever()
-        docs = retriever.invoke(query)
-        
-        results = []
+    docs = query_relevant_documents(message, module=module, k=3)
+    
+    context_text = ""
+    primary_source = {
+        "document": "Bora Investir B3 / Banco Central do Brasil",
+        "section": "Diretrizes de Educação Financeira para Iniciantes",
+        "institution": "BCB / B3",
+        "url": "https://borainvestir.b3.com.br"
+    }
+
+    if docs:
+        context_parts = []
         for doc in docs:
-            source = doc.metadata.get("source", "desconhecido")
-            page = doc.metadata.get("page", "?")
-            results.append(f"[Documento: {source} | Página: {page}]\n{doc.page_content}\n---")
-            
-        return "\n\n".join(results) if results else "Nenhum trecho relevante encontrado nos PDFs."
-    except Exception as e:
-        return f"Erro ao realizar busca vetorial nos documentos: {str(e)}"
+            context_parts.append(doc.page_content)
+        context_text = "\n\n---\n\n".join(context_parts)
+        
+        top_meta = docs[0].metadata
+        
+        # Encontra URL valida entre os chunks recuperados
+        url_found = top_meta.get("url")
+        if not url_found:
+            for doc in docs:
+                candidate = doc.metadata.get("url")
+                if candidate:
+                    url_found = candidate
+                    break
+        if not url_found:
+            url_found = "https://www.bcb.gov.br"
 
-def get_agent_executor():
-    """Configura o LLM, as ferramentas e constrói o agente financeiro.
-    
-    Returns:
-        AgentExecutor: O executor do agente pronto para responder perguntas.
-    """
-    tools = [
-        search_documents,
-        get_stock_history,
-        get_selic_rate,
-        list_processed_datasets,
-        get_dataset_summary
-    ]
-    
+        primary_source = {
+            "document": top_meta.get("document", top_meta.get("source", "Oficial")),
+            "section": top_meta.get("section", "Conceitos Fundamentais"),
+            "institution": top_meta.get("institution", "Órgão Regulador"),
+            "url": url_found
+        }
+
     llm = ChatOpenAI(
-        model="gpt-4o-mini",  
-        temperature=0,        
+        model="gpt-4o-mini",
+        temperature=0.3,
         openai_api_key=config.OPENAI_API_KEY
     )
-    
+
     prompt = ChatPromptTemplate.from_messages([
-        ("system", SYSTEM_PROMPT),
-        MessagesPlaceholder(variable_name="chat_history", optional=True),
-        ("human", "{input}"),
-        MessagesPlaceholder(variable_name="agent_scratchpad"),
+        ("system", REV_SYSTEM_PROMPT + "\n\nContexto Oficial da Base:\n{context}"),
+        ("human", "{question}")
     ])
+
+    chain = prompt | llm
     
-    agent = create_openai_tools_agent(llm, tools, prompt)
-    
-    return AgentExecutor(
-        agent=agent,
-        tools=tools,
-        verbose=True,
-        handle_parsing_errors=True
-    )
+    try:
+        response = chain.invoke({
+            "context": context_text if context_text else "Utilize as diretrizes oficiais de finanças do SFN.",
+            "question": message
+        })
+        reply_content = response.content if hasattr(response, "content") else str(response)
+    except Exception as e:
+        reply_content = f"Desculpe, tive um probleminha para consultar a base oficial: {str(e)}"
+
+    return {
+        "reply": reply_content,
+        "source": primary_source
+    }
