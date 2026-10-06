@@ -1,95 +1,118 @@
 import os
+import re
 import glob
-import fitz
-import pandas as pd
 from langchain_core.documents import Document
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_chroma.vectorstores import Chroma
+from langchain_chroma import Chroma
 from langchain_openai import OpenAIEmbeddings
 
 from src import config
 
-def run_ingestion():
-    """Função principal para executar o processo de ingestão de dados."""
-    print("Iniciando processo de ingestão...")
-    documents = load_documents()
-    if not documents:
-        print("Nenhum documento encontrado para ingestão.")
-        return
-        
-    chunks = split_chunks(documents)
-    vectorize_chunks(chunks)
+def extract_metadata_from_markdown(content: str, file_path: str) -> dict:
+    folder_name = os.path.basename(os.path.dirname(file_path))
+    file_name = os.path.basename(file_path)
+    module_id = "modulo_1" if "modulo_1" in folder_name else folder_name
+
+    meta = {
+        "source": file_name,
+        "module": module_id,
+        "topic": file_name.replace(".md", ""),
+        "document": "Documento Oficial",
+        "section": "Conceitos Fundamentais",
+        "institution": "Órgão Regulador",
+        "url": "https://www.bcb.gov.br"
+    }
+
+    url_match = re.search(r"https?://[^\s\)\>]+", content)
+    if url_match:
+        meta["url"] = url_match.group(0).strip()
+
+    for line in content.splitlines():
+        line_strip = line.strip()
+        if line_strip.startswith("# "):
+            meta["topic"] = line_strip.replace("# ", "").strip()
+        elif "Documento Oficial:" in line_strip:
+            meta["document"] = line_strip.split("Documento Oficial:", 1)[1].replace("*", "").strip()
+        elif "Seção:" in line_strip or "Secao:" in line_strip:
+            meta["section"] = line_strip.split(":", 1)[1].replace("*", "").strip()
+        elif "Instituição:" in line_strip or "Instituições:" in line_strip or "Instituicao:" in line_strip:
+            meta["institution"] = line_strip.split(":", 1)[1].replace("*", "").strip()
+
+    return meta
 
 def load_documents():
-    """Lê PDFs brutas, extrai texto e tabelas (com Pandas) e retorna Documentos LangChain."""
     documents = []
-    pdf_paths = glob.glob(os.path.join(config.RAW_DATA_DIR, "*.pdf"))
+    md_paths = glob.glob(os.path.join(config.RAW_DATA_DIR, "**", "*.md"), recursive=True)
     
-    for pdf_path in pdf_paths:
-        file_name = os.path.basename(pdf_path)
-        print(f"Lendo PDF: {file_name}")
+    if not md_paths:
+        md_paths = glob.glob(os.path.join(config.RAW_DATA_DIR, "*.md"))
         
+    for md_path in md_paths:
+        file_name = os.path.basename(md_path)
         try:
-            doc = fitz.open(pdf_path)
+            with open(md_path, "r", encoding="utf-8") as f:
+                content = f.read().strip()
+                
+            if not content:
+                continue
+                
+            metadata = extract_metadata_from_markdown(content, md_path)
+            doc_obj = Document(
+                page_content=content,
+                metadata=metadata
+            )
+            documents.append(doc_obj)
+            print(f"[OK] Carregado: {file_name} -> [{metadata['document']}] (URL: {metadata['url']})")
         except Exception as e:
-            print(f"Erro ao abrir o PDF {file_name}: {e}")
-            continue
+            print(f"[ERRO] Falha ao carregar {file_name}: {e}")
             
-        for page_num in range(len(doc)):
-            page = doc[page_num]
-            text = page.get_text()
-            
-            try:
-                tables = page.find_tables()
-                if tables.tables:
-                    print(f"  -> Encontrada(s) {len(tables.tables)} tabela(s) na página {page_num + 1}")
-                    for i, table in enumerate(tables.tables):
-                        df = table.to_pandas()
-                        markdown_table = df.to_markdown(index=False)
-                        text += f"\n\n### Tabela {i + 1} extraída da página:\n{markdown_table}\n"
-            except Exception as e:
-                print(f"  -> Erro ao extrair tabela da página {page_num + 1}: {e}")
-                
-            if text.strip():
-                doc_obj = Document(
-                    page_content=text,
-                    metadata={
-                        "source": file_name,
-                        "page": page_num + 1
-                    }
-                )
-                documents.append(doc_obj)
-                
-        doc.close()
-        
     return documents
 
 def split_chunks(documents):
-    """Divide os documentos carregados em chunks menores."""
-    documents_splitter = RecursiveCharacterTextSplitter(
+    text_splitter = RecursiveCharacterTextSplitter(
         chunk_size=config.CHUNK_SIZE,
         chunk_overlap=config.CHUNK_OVERLAP,
         length_function=len,
-        add_start_index=True
+        separators=["\n## ", "\n### ", "\n\n", "\n", " "]
     )
 
-    chunks = documents_splitter.split_documents(documents)
-    print(f"Total de chunks gerados: {len(chunks)}")
+    chunks = text_splitter.split_documents(documents)
+    print(f"Total de chunks gerados para indexacao: {len(chunks)}")
     return chunks
 
 def vectorize_chunks(chunks):
-    """Gera as embeddings e salva no banco de dados vetorial Chroma."""
     embeddings = OpenAIEmbeddings(
         model=config.EMBEDDING_MODEL,
         openai_api_key=config.OPENAI_API_KEY
     )
     
+    # Limpa dados anteriores para garantir que chunks obsoletos nao persistam
+    try:
+        existing_db = Chroma(
+            persist_directory=str(config.VECTOR_DB_DIR),
+            embedding_function=embeddings
+        )
+        existing_db.delete_collection()
+    except Exception:
+        pass
+
     db = Chroma.from_documents(
-        chunks,
-        embeddings,
+        documents=chunks,
+        embedding=embeddings,
         persist_directory=str(config.VECTOR_DB_DIR)
     )
-    print("Banco de dados criado com sucesso e salvo em:", config.VECTOR_DB_DIR)
+    print(f"[OK] Banco vetorial ChromaDB indexado com sucesso em: {config.VECTOR_DB_DIR}")
+
+def run_ingestion():
+    print("Iniciando processo de ingestao RAG...")
+    documents = load_documents()
+    if not documents:
+        print("Nenhum documento .md encontrado em data/raw/ para ingestao.")
+        return
+        
+    chunks = split_chunks(documents)
+    vectorize_chunks(chunks)
+    print("Ingestao concluida com sucesso!")
 
 if __name__ == "__main__":
     run_ingestion()
