@@ -1,21 +1,13 @@
+from typing import List, Optional
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from src import config
 from src.agents.prompts import REV_SYSTEM_PROMPT
 from src.database.retriever import query_relevant_documents
 
-from typing import List, Optional
-
 def chat_rag(message: str, module: str = "modulo_1", history: Optional[List[dict]] = None) -> dict:
-    """Processa a mensagem do usuário via RAG e retorna a resposta formatada
-    com a fonte oficial correspondente para o frontend, mantendo histórico de conversa
-    e aplicando guardrails de nicho.
-    """
-    # 1. Recupera documentos relevantes para a mensagem atual
     docs = query_relevant_documents(message, module=module, k=3, max_distance=0.95)
     
-    # Se a mensagem atual for curta ou de acompanhamento ("e com quanto?", "você não respondeu"),
-    # tenta contextualizar a busca usando a última dúvida financeira do histórico
     if not docs and history:
         past_user_queries = [
             h.get("content", "") for h in history 
@@ -29,14 +21,10 @@ def chat_rag(message: str, module: str = "modulo_1", history: Optional[List[dict
     primary_source = None
 
     if docs:
-        context_parts = []
-        for doc in docs:
-            context_parts.append(doc.page_content)
+        context_parts = [doc.page_content for doc in docs]
         context_text = "\n\n---\n\n".join(context_parts)
         
         top_meta = docs[0].metadata
-        
-        # Encontra URL valida entre os chunks recuperados
         url_found = top_meta.get("url")
         if not url_found:
             for doc in docs:
@@ -71,7 +59,6 @@ def chat_rag(message: str, module: str = "modulo_1", history: Optional[List[dict
             "aplique o guardrail de recusa amigável sem citar fontes."
         )
 
-    # Monta a cadeia de mensagens incluindo o histórico recente
     prompt_messages = [("system", REV_SYSTEM_PROMPT + "\n\n" + context_instruction)]
     if history:
         for turn in history[-6:]:

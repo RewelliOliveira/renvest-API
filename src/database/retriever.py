@@ -27,9 +27,6 @@ def query_relevant_documents(query: str, module: str = None, k: int = 3, max_dis
         
     try:
         results_with_scores = db.similarity_search_with_score(query, k=k, **search_kwargs)
-        # Menor distancia = maior similaridade semantica.
-        # Perguntas de financas: ~0.50 a 0.70. Perguntas fora de nicho: > 1.40.
-        relevant_docs = [doc for doc, distance in results_with_scores if distance <= max_distance]
-        return relevant_docs
+        return [doc for doc, distance in results_with_scores if distance <= max_distance]
     except Exception:
         return db.similarity_search(query, k=k, **search_kwargs)

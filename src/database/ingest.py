@@ -86,7 +86,6 @@ def vectorize_chunks(chunks):
         openai_api_key=config.OPENAI_API_KEY
     )
     
-    # Limpa dados anteriores para garantir que chunks obsoletos nao persistam
     try:
         existing_db = Chroma(
             persist_directory=str(config.VECTOR_DB_DIR),
@@ -96,7 +95,7 @@ def vectorize_chunks(chunks):
     except Exception:
         pass
 
-    db = Chroma.from_documents(
+    Chroma.from_documents(
         documents=chunks,
         embedding=embeddings,
         persist_directory=str(config.VECTOR_DB_DIR)

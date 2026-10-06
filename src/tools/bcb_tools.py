@@ -3,12 +3,6 @@ from langchain_core.tools import tool
 
 @tool
 def get_selic_rate() -> str:
-    """Busca a taxa Selic acumulada recente diretamente do Sistema Gerenciador de Séries 
-    Temporais (SGS) do Banco Central do Brasil.
-    
-    Returns:
-        str: Dados recentes da taxa Selic formatados.
-    """
     try:
         url = "https://api.bcb.gov.br/dados/serie/bcdata.sgs.11/dados/ultimos/5?formato=json"
         response = requests.get(url, timeout=5)
