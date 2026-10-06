@@ -83,10 +83,8 @@ A aplicação possui um fluxo linear e fechado, onde todos os usuários iniciam 
   * *Cenário:* *"Uma empresa listada no 'Novo Mercado' da B3 decidiu que, para levantar mais capital, vai emitir novas ações preferenciais (sem direito a voto) e oferecer 80% de Tag Along aos acionistas minoritários. De acordo com as regras oficiais da B3, essa empresa violou quais exigências do Novo Mercado?"*
   * *Gabarito conceitual:* Violou duas regras fundamentais: no Novo Mercado o capital deve ser composto **exclusivamente por ações ordinárias (ON)** e o *Tag Along* obrigatório para todos é de **100%**.
 * **Documentos Oficiais da Base (`data/raw/`):**
-  * `b3_regulamento_novo_mercado.pdf` *(Regulamento de Listagem do Novo Mercado B3)*
-  * `cvm_caderno_02_acoes_e_mercado_capitais.pdf` *(Caderno Educacional CVM sobre Ações e Governança)*
-  * `b3_regulamento_balcao_2026.pdf` *(Regulamento do Balcão B3 - já integrado)*
-  * *Tool em tempo real:* `yfinance_tools.py` (Consulta cotações e histórico real de ativos da B3).
+  * `b3_regulamento_novo_mercado.md` *(Regulamento de Listagem do Novo Mercado B3)*
+  * `cvm_caderno_02_acoes_e_mercado_capitais.md` *(Caderno Educacional CVM sobre Ações e Governança)*
 
 ---
 
@@ -110,50 +108,44 @@ A aplicação possui um fluxo linear e fechado, onde todos os usuários iniciam 
 
 ---
 
-## 🗄️ Resumo da Base de Dados Oficial (`data/raw/`)
+## 🗄️ Base de Conhecimento Oficial (`data/raw/`)
 
-Para compor a base vetorial do sistema, os seguintes arquivos oficiais em PDF devem constar na pasta `data/raw/`:
+Para garantir máxima velocidade, ausência de ruídos de formatação e facilidade de deploy (sem dependências pesadas em C/C++), a base de conhecimento é mantida em documentos **Markdown estruturados com metadados auditáveis** em `data/raw/`:
 
 | Arquivo no Repositório | Órgão Oficial | Módulo Correspondente |
 | :--- | :--- | :--- |
-| `fgc_regulamento_garantia_oficial.pdf` | FGC | **Módulo 1** |
-| `tesouro_direto_guia_oficial.pdf` | Tesouro Nacional / B3 | **Módulo 1** |
-| `b3_regulamento_novo_mercado.pdf` | B3 | **Módulo 2** |
-| `cvm_caderno_02_acoes_e_mercado_capitais.pdf` | CVM Educacional | **Módulo 2** |
-| `b3_regulamento_balcao_2026.pdf` | B3 | **Módulo 2** *(Já presente)* |
-| `cvm_resolucao_44_2021_fatos_relevantes.pdf` | CVM Legislação | **Módulo 3** |
-| `cvm_resolucao_80_2022_companhias_abertas.pdf` | CVM Legislação | **Módulo 3** |
-| `cvm_caderno_01_mercado_capitais.pdf` | CVM Educacional | **Módulo 3** |
+| `01_controle_gastos_regra_50_30_20.md` | BCB / ENEF | **Módulo 1** |
+| `02_prioridade_zero_fim_das_dividas.md` | B3 / BCB | **Módulo 1** |
+| `03_reserva_emergencia_e_fgc.md` | FGC / CMN / STN | **Módulo 1** |
 
 > **Nota Metodológica sobre o RAG:**  
-> A ingestão (`src/database/ingest.py`) processa os PDFs utilizando o **PyMuPDF**, detecta tabelas com **Pandas** (convertendo-as em tabelas Markdown estruturadas), realiza o chunking com overlap de 500 caracteres e armazena os embeddings gerados pelo modelo `text-embedding-3-small` no banco vetorial **ChromaDB** local (`data/vector_db/`).
+> A ingestão (`src/database/ingest.py`) processa os arquivos Markdown oficiais, extrai metadados legais e regulatórios de cada fonte, realiza o chunking semântico via `RecursiveCharacterTextSplitter` e indexa os embeddings gerados pelo modelo `text-embedding-3-small` da OpenAI no **ChromaDB** local (`data/vector_db/`). **Dispensou-se o uso de PyMuPDF e Pandas**, tornando a aplicação leve, rápida e estável.
 
 ---
 
-## 🏗️ Arquitetura do Software e Dinâmica de Trabalho
+## 🏗️ Arquitetura do Software e Integração com Frontend
 
 ```
                   ARQUITETURA DE INTEGRAÇÃO DO SISTEMA
                   
  ┌────────────────────────────────────────────────────────┐
- │                   FRONTEND (Interface)                 │
- │  • Header com Barra de Progresso do Módulo e XP        │
- │  • Janela do Chat com Balões do Mascote (Tutor RAG)   │
- │  • Chips de Perguntas Rápidas (Scaffolding Cognitivo)  │
+ │               FRONTEND (React + Vite)                  │
+ │  • Janela do Chat com Balões do Mascote Rev            │
+ │  • Chips de Perguntas Rápidas de Fundamentos           │
  │  • Card Auditável de Fontes e Citações Oficiais        │
  └───────────────────────────▲────────────────────────────┘
-                             │ HTTP / JSON
+                             │ HTTP JSON (POST /api/chat)
  ┌───────────────────────────▼────────────────────────────┐
  │               BACKEND (FastAPI / Python)               │
- │  • POST /chat (Interação conversacional com RAG)       │
- │  • POST /challenge (Validação semântica do desafio)    │
- │  • GET /modules (Metadados dos 3 módulos e progresso)  │
- └──────┬────────────────────┬────────────────────┬───────┘
-        │                    │                    │
- ┌──────▼──────┐      ┌──────▼──────┐      ┌──────▼──────┐
- │  ChromaDB   │      │ Banco Central│     │Yahoo Finance│
- │ (Vetorial)  │      │  (API SGS)  │      │ (yfinance)  │
- └─────────────┘      └─────────────┘      └─────────────┘
+ │  • POST /api/chat (Interação conversacional com RAG)   │
+ │  • GET /api/health (Verificação de status do Rev)      │
+ │  • POST /api/ingest (Reindexação da base vetorial)     │
+ └──────┬─────────────────────────────────────────────────┘
+        │
+ ┌──────▼──────┐
+ │  ChromaDB   │
+ │ (Vetorial)  │
+ └─────────────┘
 ```
 
 ### Como a aplicação funciona na prática:
