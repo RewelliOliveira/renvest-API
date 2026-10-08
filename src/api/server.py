@@ -1,17 +1,20 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from src.config import CORS_ORIGINS
 from src.api.router import api_router
 
 def create_application() -> FastAPI:
     application = FastAPI(
         title="Renvest - RAG Finance Agent API",
-        description="API educacional financeira com RAG para o Renvest",
+        description="API educacional financeira com RAG e autenticação segura para o Renvest",
         version="1.0.0"
     )
 
+    origins = CORS_ORIGINS if CORS_ORIGINS else ["*"]
+
     application.add_middleware(
         CORSMiddleware,
-        allow_origins=["*"],
+        allow_origins=origins,
         allow_credentials=True,
         allow_methods=["*"],
         allow_headers=["*"],
