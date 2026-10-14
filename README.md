@@ -120,6 +120,8 @@ Para garantir máxima velocidade, ausência de ruídos de formatação e facilid
 
 > **Nota Metodológica sobre o RAG:**  
 > A ingestão (`src/database/ingest.py`) processa os arquivos Markdown oficiais, extrai metadados legais e regulatórios de cada fonte, realiza o chunking semântico via `RecursiveCharacterTextSplitter` e indexa os embeddings gerados pelo modelo `text-embedding-3-small` da OpenAI no **ChromaDB** local (`data/vector_db/`). **Dispensou-se o uso de PyMuPDF e Pandas**, tornando a aplicação leve, rápida e estável.
+>
+> Cada pasta no formato `modulo_N_descricao` é indexada com o módulo `modulo_N` (ex: `modulo_2_pilares/` → `modulo_2`), que filtra a busca do chat. Arquivos fora desse padrão recebem o módulo `geral`.
 
 ---
 
@@ -127,31 +129,48 @@ Para garantir máxima velocidade, ausência de ruídos de formatação e facilid
 
 ```
                   ARQUITETURA DE INTEGRAÇÃO DO SISTEMA
-                  
+
  ┌────────────────────────────────────────────────────────┐
  │               FRONTEND (React + Vite)                  │
  │  • Janela do Chat com Balões do Mascote Rev            │
  │  • Chips de Perguntas Rápidas de Fundamentos           │
  │  • Card Auditável de Fontes e Citações Oficiais        │
  └───────────────────────────▲────────────────────────────┘
-                             │ HTTP JSON (POST /api/chat)
+                             │ HTTP JSON + Bearer JWT
  ┌───────────────────────────▼────────────────────────────┐
  │               BACKEND (FastAPI / Python)               │
- │  • POST /api/chat (Interação conversacional com RAG)   │
- │  • GET /api/health (Verificação de status do Rev)      │
- │  • POST /api/ingest (Reindexação da base vetorial)     │
- └──────┬─────────────────────────────────────────────────┘
-        │
- ┌──────▼──────┐
- │  ChromaDB   │
- │ (Vetorial)  │
- └─────────────┘
+ │  • Autenticação (e-mail/senha e Google) com JWT        │
+ │  • Chat RAG com o Rev + Selic em tempo real (BCB)      │
+ │  • Conteúdo de onboarding e reindexação da base        │
+ └──────┬──────────────────────────────┬──────────────────┘
+        │                              │
+ ┌──────▼──────┐                ┌──────▼──────┐
+ │  ChromaDB   │                │  Supabase   │
+ │ (Vetorial)  │                │ (Usuários)  │
+ └─────────────┘                └─────────────┘
 ```
+
+### Endpoints da API (prefixo `/api`)
+
+| Método | Rota | Acesso | Descrição |
+| :--- | :--- | :--- | :--- |
+| `GET` | `/health` | Público | Status da API |
+| `POST` | `/auth/register` | Público (rate limit por IP) | Cadastro com e-mail e senha |
+| `POST` | `/auth/login` | Público (rate limit por IP) | Login com e-mail e senha |
+| `POST` | `/auth/google` | Público (rate limit por IP) | Login com token do Google (valida audiência e e-mail verificado) |
+| `GET` | `/auth/me` | JWT | Perfil do usuário logado |
+| `POST` | `/chat` | JWT (rate limit por usuário) | Pergunta ao Rev com histórico; retorna resposta, fonte oficial e sugestões |
+| `GET` | `/chat/suggestions` | Público | Sugestões iniciais de perguntas do módulo |
+| `GET` | `/steps` | Público | Passos do onboarding |
+| `GET` | `/modules/{id}` | Público | Detalhes de um módulo |
+| `POST` | `/ingest` | Header `X-Admin-Token` | Reindexa a base vetorial (desativado se `ADMIN_TOKEN` estiver vazio) |
+
+A documentação interativa fica disponível em `http://localhost:8000/docs` com o servidor rodando.
 
 ### Como a aplicação funciona na prática:
 1. **Início Direto no Chat:** O usuário entra no sistema e o mascote já abre o diálogo no Módulo 1, acolhendo o iniciante e contextualizando o primeiro tema.
 2. **Scaffolding Cognitivo:** Para evitar o bloqueio da tela em branco, o sistema sugere chips de perguntas rápidas, mas permite que o usuário digite dúvidas livremente.
-3. **Respostas Ancoradas com RAG:** Cada resposta do agente traz a explicação didática acompanhada do card com a **fonte oficial** (documento e artigo/página).
+3. **Respostas Ancoradas com RAG:** Cada resposta do agente traz a explicação didática acompanhada do card com a **fonte oficial** (documento e artigo/página). Perguntas sobre Selic/CDI recebem também a meta da Selic em tempo real da API do Banco Central.
 4. **Desafio Integrador e Ganho de XP:** Ao final de cada módulo, o tutor apresenta o caso prático. A resposta do usuário é avaliada semanticamente pelo modelo. Acertando o desafio, o usuário recebe +50 XP e destrava o próximo módulo na barra de progresso!
 
 ---
@@ -166,22 +185,42 @@ pip install -r requirements.txt
 ```
 
 ### 2. Configurar o `.env`:
-Crie um arquivo `.env` na raiz do projeto com sua chave de API da OpenAI:
-```env
-OPENAI_API_KEY=sua_chave_aqui
-```
+Copie o `.env.example` para `.env` e preencha os valores:
+
+| Variável | Obrigatória | Descrição |
+| :--- | :--- | :--- |
+| `OPENAI_API_KEY` | Sim | Chave da OpenAI (chat e embeddings) |
+| `SUPABASE_URL` / `SUPABASE_SERVICE_ROLE_KEY` | Sim | Banco de usuários (use a chave *service_role*, nunca exposta ao frontend) |
+| `JWT_SECRET` | Sim | Segredo dos tokens com **no mínimo 32 caracteres**; a API não inicia sem ele. Gere com `python -c "import secrets; print(secrets.token_urlsafe(48))"` |
+| `GOOGLE_CLIENT_ID` | Para login Google | Mesmo valor de `VITE_GOOGLE_CLIENT_ID` do frontend |
+| `ADMIN_TOKEN` | Não | Habilita o `POST /api/ingest`; vazio deixa a rota desativada |
+| `CORS_ORIGINS` | Não | Origens do frontend separadas por vírgula |
+| `LLM_MODEL` / `LLM_TEMPERATURE` | Não | Modelo de chat (padrão `gpt-4o-mini`) e temperatura (padrão `0.3`) |
+| `RATE_LIMIT_AUTH_PER_MINUTE` / `RATE_LIMIT_CHAT_PER_MINUTE` | Não | Limites por minuto (padrão 10 e 15) |
+
+Para criar a tabela de usuários, execute `scripts/supabase_schema.sql` no SQL Editor do Supabase.
 
 ### 3. Ingestão dos Documentos na Base Vetorial:
-Após posicionar os PDFs oficiais em `data/raw/`:
+Após posicionar os documentos Markdown oficiais em `data/raw/modulo_N_*/`:
 ```powershell
 python main.py --ingest
 ```
+A base em `data/vector_db/` é gerada localmente e pode ser apagada e recriada a qualquer momento com esse comando.
 
-### 4. Executar Consulta CLI (Testes Rápidos):
+### 4. Subir a API:
+```powershell
+python main.py --serve
+```
+
+### 5. Consultas pelo Terminal (Testes Rápidos):
 ```powershell
 python main.py --query "Se um banco falir, qual o limite máximo de proteção oferecido pelo FGC?"
-```
-```powershell
-python main.py --query "O que o regulamento do Balcão B3 diz sobre o papel da B3 como administradora?"
+python main.py --chat
 ```
 
+### 6. Testes Automatizados:
+```powershell
+pip install -r requirements-dev.txt
+python -m pytest
+```
+Os testes cobrem segurança (bcrypt, JWT, rate limit), rotas protegidas, validação do login com Google e o pipeline do assistente, com Supabase, Google e OpenAI simulados (sem chamadas externas).
