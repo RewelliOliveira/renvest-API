@@ -1,6 +1,8 @@
+import logging
 from typing import Optional, Dict, Any
 import httpx
 from fastapi import HTTPException, status
+from src.config import GOOGLE_CLIENT_ID
 from src.core.database import is_supabase_configured
 from src.core.security import hash_password, verify_password, dummy_verify_password, create_access_token
 from src.repositories.user_repository import UserRepository
@@ -12,7 +14,61 @@ from src.schemas.auth import (
     AuthResponse,
 )
 
+logger = logging.getLogger(__name__)
+
+GOOGLE_TOKENINFO_URL = "https://oauth2.googleapis.com/tokeninfo"
+GOOGLE_USERINFO_URL = "https://www.googleapis.com/oauth2/v3/userinfo"
+GOOGLE_TIMEOUT_SECONDS = 8.0
+
 class AuthService:
+
+    @staticmethod
+    def _is_verified(value: Any) -> bool:
+        return value is True or str(value).lower() == "true"
+
+    @classmethod
+    def _verify_google_token(cls, payload: GoogleAuthRequest) -> Optional[Dict[str, Any]]:
+        """Retorna as claims do Google apenas se o token for do nosso client e o e-mail estiver verificado."""
+        if payload.id_token:
+            resp = httpx.get(
+                GOOGLE_TOKENINFO_URL,
+                params={"id_token": payload.id_token},
+                timeout=GOOGLE_TIMEOUT_SECONDS,
+            )
+            if resp.status_code != 200:
+                return None
+            claims = resp.json()
+            audience = claims.get("aud")
+        else:
+            token_resp = httpx.get(
+                GOOGLE_TOKENINFO_URL,
+                params={"access_token": payload.access_token},
+                timeout=GOOGLE_TIMEOUT_SECONDS,
+            )
+            if token_resp.status_code != 200:
+                return None
+            token_info = token_resp.json()
+            audience = token_info.get("azp") or token_info.get("aud")
+
+            profile_resp = httpx.get(
+                GOOGLE_USERINFO_URL,
+                headers={"Authorization": f"Bearer {payload.access_token}"},
+                timeout=GOOGLE_TIMEOUT_SECONDS,
+            )
+            if profile_resp.status_code != 200:
+                return None
+            claims = profile_resp.json()
+            if claims.get("sub") != token_info.get("sub"):
+                return None
+
+        if audience != GOOGLE_CLIENT_ID:
+            logger.warning("Token Google rejeitado: audiência não corresponde ao GOOGLE_CLIENT_ID")
+            return None
+        if not claims.get("sub") or not claims.get("email"):
+            return None
+        if not cls._is_verified(claims.get("email_verified")):
+            return None
+        return claims
 
     @classmethod
     def _check_db_available(cls) -> None:
@@ -92,39 +148,28 @@ class AuthService:
     def authenticate_google(cls, payload: GoogleAuthRequest) -> AuthResponse:
         cls._check_db_available()
 
+        if not GOOGLE_CLIENT_ID:
+            raise HTTPException(
+                status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+                detail="Login com Google não está configurado no servidor.",
+            )
+
         if not payload.access_token and not payload.id_token:
             raise HTTPException(
                 status_code=status.HTTP_400_BAD_REQUEST,
                 detail="Informe um token do Google válido (access_token ou id_token).",
             )
 
-        google_user_info: Optional[Dict[str, Any]] = None
-
         try:
-            if payload.access_token:
-                # Valida access_token com a API do Google UserInfo
-                resp = httpx.get(
-                    "https://www.googleapis.com/oauth2/v3/userinfo",
-                    headers={"Authorization": f"Bearer {payload.access_token}"},
-                    timeout=8.0,
-                )
-                if resp.status_code == 200:
-                    google_user_info = resp.json()
-            elif payload.id_token:
-                # Valida id_token com tokeninfo do Google
-                resp = httpx.get(
-                    f"https://oauth2.googleapis.com/tokeninfo?id_token={payload.id_token}",
-                    timeout=8.0,
-                )
-                if resp.status_code == 200:
-                    google_user_info = resp.json()
-        except Exception as e:
+            google_user_info = cls._verify_google_token(payload)
+        except httpx.HTTPError:
+            logger.exception("Falha de comunicação com os servidores do Google")
             raise HTTPException(
                 status_code=status.HTTP_502_BAD_GATEWAY,
-                detail=f"Erro ao comunicar com os servidores do Google: {str(e)}",
+                detail="Não foi possível validar o login com o Google agora. Tente novamente.",
             )
 
-        if not google_user_info or "sub" not in google_user_info or "email" not in google_user_info:
+        if not google_user_info:
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
                 detail="Token de autenticação do Google inválido ou expirado.",
