@@ -27,7 +27,9 @@ def main():
     args = parser.parse_args()
 
     if args.ingest:
+        from src.core.logging_config import setup_logging
         from src.database.ingest import run_ingestion
+        setup_logging()
         run_ingestion()
     elif args.chat:
         from src.agents.assistant import chat_rag
