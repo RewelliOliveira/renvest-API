@@ -1,9 +1,8 @@
-from typing import Optional
 from fastapi import APIRouter, Depends, Query
 from src.schemas.chat import ChatRequest, ChatResponse, SuggestionsResponse
 from src.schemas.auth import UserResponse
 from src.services.chat_service import ChatService
-from src.api.dependencies import get_current_user_optional
+from src.api.dependencies import chat_rate_limit
 
 router = APIRouter(tags=["chat"])
 
@@ -20,13 +19,13 @@ def get_chat_suggestions(
 @router.post("/chat", response_model=ChatResponse)
 def handle_chat(
     payload: ChatRequest,
-    current_user: Optional[UserResponse] = Depends(get_current_user_optional)
+    current_user: UserResponse = Depends(chat_rate_limit)
 ):
     """
-    Processa a mensagem do usuário via pipeline RAG, retornando a resposta explicativa,
+    Processa a mensagem do usuário autenticado via pipeline RAG, retornando a resposta explicativa,
     fonte oficial consultada e sugestões contextuais de continuidade.
     """
-    user_name = current_user.name.split()[0] if (current_user and current_user.name) else None
+    user_name = current_user.name.split()[0] if current_user.name else None
     return ChatService.process_message(
         message=payload.message,
         module=payload.module,

@@ -1,12 +1,19 @@
+import secrets
 from typing import Optional
-from fastapi import Depends, HTTPException, status
+from fastapi import Depends, Header, HTTPException, status
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from src.config import ADMIN_TOKEN, RATE_LIMIT_AUTH_PER_MINUTE, RATE_LIMIT_CHAT_PER_MINUTE
+from src.core.rate_limit import SlidingWindowRateLimiter, enforce, ip_rate_limit
 from src.core.security import decode_access_token
 from src.repositories.user_repository import UserRepository
 from src.schemas.auth import UserResponse
 
 security = HTTPBearer(auto_error=True)
-security_optional = HTTPBearer(auto_error=False)
+
+auth_limiter = SlidingWindowRateLimiter(RATE_LIMIT_AUTH_PER_MINUTE)
+chat_limiter = SlidingWindowRateLimiter(RATE_LIMIT_CHAT_PER_MINUTE)
+
+auth_rate_limit = ip_rate_limit(auth_limiter, "auth")
 
 def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(security)) -> UserResponse:
     """
@@ -40,28 +47,20 @@ def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(securit
         created_at=str(user.get("created_at")) if user.get("created_at") else None,
     )
 
-def get_current_user_optional(credentials: Optional[HTTPAuthorizationCredentials] = Depends(security_optional)) -> Optional[UserResponse]:
-    """
-    Dependência opcional que extrai o usuário caso o token Bearer seja fornecido,
-    mas não bloqueia com 401 se não houver cabeçalho.
-    """
-    if not credentials or not credentials.credentials:
-        return None
+def chat_rate_limit(current_user: UserResponse = Depends(get_current_user)) -> UserResponse:
+    """Garante usuário autenticado e aplica o limite de mensagens por usuário no chat."""
+    enforce(chat_limiter, f"chat:{current_user.id}")
+    return current_user
 
-    try:
-        payload = decode_access_token(credentials.credentials)
-        if not payload or "sub" not in payload:
-            return None
-        user = UserRepository.get_by_id(payload["sub"])
-        if not user:
-            return None
-        return UserResponse(
-            id=str(user["id"]),
-            email=user["email"],
-            name=user["name"],
-            picture=user.get("picture"),
-            auth_provider=user.get("auth_provider", "local"),
-            created_at=str(user.get("created_at")) if user.get("created_at") else None,
+def require_admin(x_admin_token: Optional[str] = Header(default=None)) -> None:
+    """Protege rotas administrativas com o token estático ADMIN_TOKEN (comparação em tempo constante)."""
+    if not ADMIN_TOKEN:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Rotas administrativas desativadas: ADMIN_TOKEN não configurado.",
         )
-    except Exception:
-        return None
+    if not x_admin_token or not secrets.compare_digest(x_admin_token, ADMIN_TOKEN):
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Acesso administrativo negado.",
+        )
