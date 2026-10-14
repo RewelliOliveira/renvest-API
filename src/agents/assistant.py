@@ -1,10 +1,18 @@
-from typing import List, Optional, Any, Union
+import logging
+from typing import List, Optional, Any
 from pydantic import BaseModel, Field
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from src import config
 from src.agents.prompts import REV_SYSTEM_PROMPT
 from src.database.retriever import query_relevant_documents
+
+logger = logging.getLogger(__name__)
+
+FALLBACK_REPLY = (
+    "Opa! Tive uma instabilidade momentânea para responder. "
+    "Pode tentar enviar sua pergunta de novo em instantes?"
+)
 
 DEFAULT_SUGGESTIONS = [
     "Como o FGC protege meu dinheiro?",
@@ -130,15 +138,16 @@ def chat_rag(
         
         reply_content = output.reply
         generated_suggestions = sanitize_suggestions(output.suggestions)
-    except Exception as e:
-        # Fallback seguro caso o structured output falhe
+    except Exception:
+        logger.warning("Structured output falhou; usando resposta em texto livre", exc_info=True)
         try:
             standard_chain = prompt | llm
             raw_response = standard_chain.invoke({"question": message})
             reply_content = raw_response.content if hasattr(raw_response, "content") else str(raw_response)
             generated_suggestions = list(DEFAULT_SUGGESTIONS)
-        except Exception as inner_err:
-            reply_content = f"Olá! Tive uma pequena instabilidade para responder: {str(inner_err)}"
+        except Exception:
+            logger.exception("Falha ao gerar resposta do LLM")
+            reply_content = FALLBACK_REPLY
             generated_suggestions = list(DEFAULT_SUGGESTIONS)
 
     return {
