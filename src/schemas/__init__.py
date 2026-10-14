@@ -1,4 +1,4 @@
-from src.schemas.chat import ChatRequest, SourceResponse, ChatResponse
+from src.schemas.chat import ChatRequest, SourceResponse, ChatResponse, SuggestionsResponse
 from src.schemas.modules import StepItem, ModuleResponse
 from src.schemas.auth import (
     UserRegisterRequest,
@@ -12,6 +12,7 @@ __all__ = [
     "ChatRequest",
     "SourceResponse",
     "ChatResponse",
+    "SuggestionsResponse",
     "StepItem",
     "ModuleResponse",
     "UserRegisterRequest",

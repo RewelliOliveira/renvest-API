@@ -193,14 +193,3 @@ class AuthService:
             access_token=token,
             token_type="bearer",
         )
-
-    @classmethod
-    def get_me(cls, user_id: str) -> UserResponse:
-        cls._check_db_available()
-        user = UserRepository.get_by_id(user_id)
-        if not user:
-            raise HTTPException(
-                status_code=status.HTTP_404_NOT_FOUND,
-                detail="Usuário não encontrado.",
-            )
-        return cls._to_user_response(user)

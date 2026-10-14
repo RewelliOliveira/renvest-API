@@ -12,13 +12,6 @@ def get_vector_db():
         embedding_function=embeddings
     )
 
-def get_retriever(module: str = None, k: int = 3):
-    db = get_vector_db()
-    search_kwargs = {"k": k}
-    if module:
-        search_kwargs["filter"] = {"module": module}
-    return db.as_retriever(search_kwargs=search_kwargs)
-
 def query_relevant_documents(query: str, module: str = None, k: int = 3, max_distance: float = 0.95):
     db = get_vector_db()
     search_kwargs = {}
