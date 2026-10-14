@@ -78,15 +78,13 @@ class AuthService:
                 detail="Credenciais do supabase não configuradas",
             )
 
-    @classmethod
-    def _to_user_response(cls, user_data: Dict[str, Any]) -> UserResponse:
-        return UserResponse(
-            id=str(user_data["id"]),
-            email=user_data["email"],
-            name=user_data["name"],
-            picture=user_data.get("picture"),
-            auth_provider=user_data.get("auth_provider", "local"),
-            created_at=str(user_data.get("created_at")) if user_data.get("created_at") else None,
+    @staticmethod
+    def _build_auth_response(user: Dict[str, Any]) -> AuthResponse:
+        token = create_access_token({"sub": str(user["id"]), "email": user["email"]})
+        return AuthResponse(
+            user=UserResponse.from_record(user),
+            access_token=token,
+            token_type="bearer",
         )
 
     @classmethod
@@ -111,12 +109,7 @@ class AuthService:
             password_hash=pwd_hash,
         )
 
-        token = create_access_token({"sub": str(user["id"]), "email": user["email"]})
-        return AuthResponse(
-            user=cls._to_user_response(user),
-            access_token=token,
-            token_type="bearer",
-        )
+        return cls._build_auth_response(user)
 
     @classmethod
     def login(cls, payload: UserLoginRequest) -> AuthResponse:
@@ -137,12 +130,7 @@ class AuthService:
                 detail="E-mail ou senha incorretos.",
             )
 
-        token = create_access_token({"sub": str(user["id"]), "email": user["email"]})
-        return AuthResponse(
-            user=cls._to_user_response(user),
-            access_token=token,
-            token_type="bearer",
-        )
+        return cls._build_auth_response(user)
 
     @classmethod
     def authenticate_google(cls, payload: GoogleAuthRequest) -> AuthResponse:
@@ -187,9 +175,4 @@ class AuthService:
             picture=picture,
         )
 
-        token = create_access_token({"sub": str(user["id"]), "email": user["email"]})
-        return AuthResponse(
-            user=cls._to_user_response(user),
-            access_token=token,
-            token_type="bearer",
-        )
+        return cls._build_auth_response(user)

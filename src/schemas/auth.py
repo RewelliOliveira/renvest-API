@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Any, Dict, Optional
 from pydantic import BaseModel, EmailStr, Field
 
 class UserRegisterRequest(BaseModel):
@@ -21,6 +21,17 @@ class UserResponse(BaseModel):
     picture: Optional[str] = None
     auth_provider: str
     created_at: Optional[str] = None
+
+    @classmethod
+    def from_record(cls, user: Dict[str, Any]) -> "UserResponse":
+        return cls(
+            id=str(user["id"]),
+            email=user["email"],
+            name=user["name"],
+            picture=user.get("picture"),
+            auth_provider=user.get("auth_provider", "local"),
+            created_at=str(user["created_at"]) if user.get("created_at") else None,
+        )
 
 class AuthResponse(BaseModel):
     user: UserResponse

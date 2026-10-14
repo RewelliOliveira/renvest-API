@@ -38,14 +38,7 @@ def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(securit
             headers={"WWW-Authenticate": "Bearer"},
         )
 
-    return UserResponse(
-        id=str(user["id"]),
-        email=user["email"],
-        name=user["name"],
-        picture=user.get("picture"),
-        auth_provider=user.get("auth_provider", "local"),
-        created_at=str(user.get("created_at")) if user.get("created_at") else None,
-    )
+    return UserResponse.from_record(user)
 
 def chat_rate_limit(current_user: UserResponse = Depends(get_current_user)) -> UserResponse:
     """Garante usuário autenticado e aplica o limite de mensagens por usuário no chat."""
