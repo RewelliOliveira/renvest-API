@@ -1,0 +1,158 @@
+# Manifesto do corpus documental do Renvest
+# Cada entrada descreve um documento de data/raw/ e fornece os metadados de rastreabilidade
+# exibidos no card de fonte do chat (instituição, título, link oficial).
+#
+# doc_type: normativo (lei, resolução, regulamento) | educacional (caderno, livro, guia)
+# appendix_questions: perguntas do Apêndice A do TCC que o documento ajuda a responder
+#   C1.1 renda fixa | C1.2 Selic | C1.3 ETF | C1.4 Tesouro Direto | C1.5 FII | C1.6 FGC | C1.7 diversificação
+#   C2.1 CVM | C2.2 Formulário de Referência | C2.3 companhia aberta | C2.4 Fato Relevante | C2.5 Novo Mercado
+
+modules:
+  modulo_1:
+    folder: modulo_1_fundamentos
+    title: Fundamentos de Finanças e Investimentos
+  modulo_2:
+    folder: modulo_2_bolsa
+    title: A Bolsa de Valores (B3)
+  modulo_3:
+    folder: modulo_3_cvm
+    title: CVM, Regulação e Transparência
+
+documents:
+  # ---------------------------------------------------------------- Módulo 1
+  - id: bcb_caderno_gestao_financas_pessoais
+    file: modulo_1_fundamentos/bcb_caderno_gestao_financas_pessoais.pdf
+    title: Caderno de Educação Financeira – Gestão de Finanças Pessoais
+    institution: Banco Central do Brasil (BCB)
+    url: https://www.bcb.gov.br/content/cidadaniafinanceira/documentos_cidadania/Cuidando_do_seu_dinheiro_Gestao_de_Financas_Pessoais/caderno_cidadania_financeira.pdf
+    module: modulo_1
+    doc_type: educacional
+    pages: 98
+    appendix_questions: [C1.1, C1.7]
+
+  - id: cvm_livro_top_planejamento_financeiro_pessoal
+    file: modulo_1_fundamentos/cvm_livro_top_planejamento_financeiro_pessoal_2025.pdf
+    title: TOP Planejamento Financeiro Pessoal (2ª ed.)
+    institution: Comissão de Valores Mobiliários (CVM) / Planejar
+    url: https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/livro-top-planejamento-financeiro-pessoal
+    module: modulo_1
+    doc_type: educacional
+    published: 2025
+    pages: 314
+    appendix_questions: [C1.1, C1.2, C1.4, C1.6, C1.7]
+
+  - id: cmn_resolucao_4222_fgc
+    file: modulo_1_fundamentos/cmn_resolucao_4222_fgc_estatuto_regulamento.pdf
+    title: Resolução CMN nº 4.222/2013 – Estatuto e Regulamento do FGC (texto consolidado)
+    institution: Conselho Monetário Nacional (CMN) / Banco Central do Brasil
+    url: https://normativos.bcb.gov.br/Lists/Normativos/Attachments/48942/Res_4222_v18_L.pdf
+    module: modulo_1
+    doc_type: normativo
+    notes: Consolidado até a Resolução CMN nº 5.184/2024. Anexo I = Estatuto, Anexo II = Regulamento (limites de R$ 250 mil e R$ 1 milhão).
+    pages: 37
+    appendix_questions: [C1.6]
+
+  - id: tesouro_direto_regulamento
+    file: modulo_1_fundamentos/tesouro_direto_regulamento_2024.pdf
+    title: Regulamento do Tesouro Direto (versão de 11/10/2024)
+    institution: Secretaria do Tesouro Nacional (STN) / B3
+    url: https://www.tesourodireto.com.br/data/files/22/C0/3B/84/205439100153F339894D49A8/REGULAMENTO_DO_TESOURO_DIRETO___11.10.2024.pdf
+    module: modulo_1
+    doc_type: normativo
+    published: 2024
+    notes: Regulamento operacional (cadastro, custódia, taxas, direitos do investidor); o glossário lista os títulos (Tesouro Selic, Prefixado, IPCA+, RendA+, Educa+).
+    appendix_questions: [C1.4]
+
+  # ---------------------------------------------------------------- Módulo 2
+  - id: cvm_livro_top_mercado_valores_mobiliarios
+    file: modulo_2_bolsa/cvm_livro_top_mercado_valores_mobiliarios_5ed.pdf
+    title: TOP Mercado de Valores Mobiliários Brasileiro (5ª ed.)
+    institution: Comissão de Valores Mobiliários (CVM)
+    url: https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm
+    module: modulo_2
+    doc_type: educacional
+    published: 2024
+    pages: 412
+    appendix_questions: [C1.3, C1.5, C1.7, C2.1, C2.3, C2.5]
+
+  - id: b3_regulamento_novo_mercado
+    file: modulo_2_bolsa/b3_regulamento_novo_mercado_2023.pdf
+    title: Regulamento do Novo Mercado (versão 2023)
+    institution: B3 – Brasil, Bolsa, Balcão
+    url: https://www.b3.com.br/data/files/ED/C4/C1/2D/F99068101BBF1068AC094EA8/Regulamento%20do%20Novo%20Mercado%20_Versao%202023_.pdf
+    module: modulo_2
+    doc_type: normativo
+    published: 2023
+    pages: 46
+    appendix_questions: [C2.5]
+
+  - id: cvm_caderno_03_fundos_investimento
+    file: modulo_2_bolsa/cvm_caderno_03_fundos_investimento.pdf
+    title: Cadernos CVM nº 3 – Fundos de Investimento (3ª ed.)
+    institution: Comissão de Valores Mobiliários (CVM)
+    url: https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/cadernos/cvm-caderno-03-3ed.pdf
+    module: modulo_2
+    doc_type: educacional
+    published: 2016
+    pages: 57
+    notes: Anterior à Resolução CVM 175/2022 (novo marco dos fundos); conceitos gerais seguem válidos.
+    appendix_questions: [C1.3, C1.7]
+
+  - id: cvm_caderno_06_fundos_imobiliarios
+    file: modulo_2_bolsa/cvm_caderno_06_fundos_imobiliarios.pdf
+    title: Cadernos CVM nº 6 – Fundos de Investimento Imobiliário
+    institution: Comissão de Valores Mobiliários (CVM)
+    url: https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/cadernos/cvm-caderno-6.pdf
+    module: modulo_2
+    doc_type: educacional
+    published: 2010
+    pages: 28
+    notes: Atualizado até set/2010 segundo a própria CVM; usar para conceitos, não para regras vigentes.
+    appendix_questions: [C1.5]
+
+  # ---------------------------------------------------------------- Módulo 3
+  - id: cvm_caderno_01_o_que_e_a_cvm
+    file: modulo_3_cvm/cvm_caderno_01_cvm_e_mercado_capitais.pdf
+    title: Cadernos CVM nº 1 – O que é a CVM?
+    institution: Comissão de Valores Mobiliários (CVM)
+    url: https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/cadernos/cvm-caderno-1.pdf
+    module: modulo_3
+    doc_type: educacional
+    published: 2014
+    pages: 37
+    appendix_questions: [C2.1]
+
+  - id: cvm_resolucao_44_2021
+    file: modulo_3_cvm/cvm_resolucao_44_2021_fatos_relevantes.pdf
+    title: Resolução CVM nº 44/2021 – Divulgação de Fato Relevante e negociação de valores mobiliários
+    institution: Comissão de Valores Mobiliários (CVM)
+    url: https://conteudo.cvm.gov.br/export/sites/cvm/legislacao/resolucoes/anexos/001/resol044.pdf
+    module: modulo_3
+    doc_type: normativo
+    published: 2021
+    pages: 17
+    appendix_questions: [C2.4]
+
+  - id: cvm_resolucao_80_2022
+    file: modulo_3_cvm/cvm_resolucao_80_2022_companhias_abertas.pdf
+    title: Resolução CVM nº 80/2022 – Registro e prestação de informações de emissores (Formulário de Referência)
+    institution: Comissão de Valores Mobiliários (CVM)
+    url: https://conteudo.cvm.gov.br/export/sites/cvm/legislacao/resolucoes/anexos/001/resol080.pdf
+    module: modulo_3
+    doc_type: normativo
+    published: 2022
+    pages: 148
+    notes: Inclui os anexos (o Anexo C traz o conteúdo do Formulário de Referência).
+    appendix_questions: [C2.2, C2.3]
+
+  - id: cvm_livro_top_direito_mercado_valores_mobiliarios
+    file: modulo_3_cvm/cvm_livro_top_direito_mercado_valores_mobiliarios.pdf
+    title: TOP Direito do Mercado de Valores Mobiliários
+    institution: Comissão de Valores Mobiliários (CVM)
+    url: https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm
+    module: modulo_3
+    doc_type: educacional
+    published: 2022
+    pages: 1348
+    notes: Muito extenso e técnico (público jurídico); pode dominar a recuperação. Avaliar nos cenários de teste se mantém no índice.
+    appendix_questions: [C2.1, C2.2, C2.3, C2.4, C2.5]

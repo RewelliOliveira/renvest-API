@@ -1,36 +1,91 @@
-import sys
 import argparse
+import uvicorn
 
 def main():
-    parser = argparse.ArgumentParser(description="RAG Finance Agent CLI - Assistente Financeiro IA")
+    parser = argparse.ArgumentParser(description="Renvest - RAG Finance Agent Backend")
     parser.add_argument(
         "--ingest",
         action="store_true",
-        help="Executa a extração de PDFs (com PyMuPDF/Pandas) e indexa no banco vetorial Chroma."
+        help="Executa a indexação dos documentos do manifesto (data/sources_manifest.yaml) no banco vetorial Chroma."
+    )
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Com --ingest: apenas extrai e segmenta os documentos, gerando o relatório sem criar embeddings."
     )
     parser.add_argument(
         "--query",
         type=str,
-        help="Envia uma pergunta financeira ou dúvida sobre os documentos para o agente responder."
+        help="Envia uma pergunta financeira de teste via CLI."
     )
-    
+    parser.add_argument(
+        "--chat",
+        action="store_true",
+        help="Inicia uma sessão interativa de chat contínuo com histórico no terminal."
+    )
+    parser.add_argument(
+        "--serve",
+        action="store_true",
+        help="Inicia o servidor de API FastAPI (porta 8000)."
+    )
+
     args = parser.parse_args()
-    
+
     if args.ingest:
+        from src.core.logging_config import setup_logging
         from src.database.ingest import run_ingestion
-        run_ingestion()
+        setup_logging()
+        run_ingestion(dry_run=args.dry_run)
+    elif args.chat:
+        from src.agents.assistant import chat_rag
+        print("\n" + "=" * 60)
+        print("   💬 Chat Interativo com o mascote Rev (Renvest)")
+        print("   • Conversa contínua com histórico em memória.")
+        print("   • Digite 'sair', 'exit' ou 'q' para encerrar a sessão.")
+        print("=" * 60 + "\n")
+        history = []
+        while True:
+            try:
+                user_input = input("Você: ").strip()
+            except (KeyboardInterrupt, EOFError):
+                print("\n\nRev: Até logo! Bons estudos e cuide bem do seu bolso! 🚀💰\n")
+                break
+                
+            if not user_input:
+                continue
+            if user_input.lower() in ["sair", "exit", "q"]:
+                print("\nRev: Até mais! Bons estudos e cuide bem do seu bolso! 🚀💰\n")
+                break
+                
+            res = chat_rag(user_input, module="modulo_1", history=history)
+            reply = res.get("reply", "")
+            print(f"\nRev: {reply}\n")
+            
+            src = res.get("source")
+            if src:
+                print(f"   🏛️ [Fonte Oficial: {src.get('institution')} - {src.get('document')}]")
+                print(f"   🔗 [Link: {src.get('url')}]\n")
+            
+            history.append({"role": "user", "content": user_input})
+            history.append({"role": "assistant", "content": reply})
     elif args.query:
-        from src.agents.assistant import get_agent_executor
-        print(f"\n[Agente] Processando pergunta: '{args.query}'...\n")
-        executor = get_agent_executor()
-        try:
-            response = executor.invoke({"input": args.query})
-            print("\n--- RESPOSTA DO AGENTE FINANCEIRO ---")
-            print(response.get("output", "Não foi possível obter uma resposta estruturada."))
-        except Exception as e:
-            print(f"\nErro durante a execução do agente: {str(e)}")
+        from src.agents.assistant import chat_rag
+        print(f"\n[Rev] Processando dúvida: '{args.query}'...\n")
+        res = chat_rag(args.query, module="modulo_1")
+        print("\n--- RESPOSTA DO MASCOTE REV ---")
+        print(res.get("reply"))
+        src = res.get("source")
+        if src:
+            print("\n--- FONTE OFICIAL CITADA ---")
+            print(f"Documento: {src.get('document')}")
+            print(f"Seção: {src.get('section')}")
+            print(f"Instituição: {src.get('institution')}")
+            print(f"URL: {src.get('url')}\n")
+        else:
+            print("\n--- NENHUMA FONTE CITADA (Fora de escopo ou conversa geral) ---\n")
     else:
-        parser.print_help()
+        print("\n🚀 Iniciando servidor FastAPI do Renvest em http://localhost:8000...")
+        uvicorn.run("src.api.server:app", host="0.0.0.0", port=8000, reload=True)
 
 if __name__ == "__main__":
     main()

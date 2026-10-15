@@ -83,10 +83,8 @@ A aplicação possui um fluxo linear e fechado, onde todos os usuários iniciam 
   * *Cenário:* *"Uma empresa listada no 'Novo Mercado' da B3 decidiu que, para levantar mais capital, vai emitir novas ações preferenciais (sem direito a voto) e oferecer 80% de Tag Along aos acionistas minoritários. De acordo com as regras oficiais da B3, essa empresa violou quais exigências do Novo Mercado?"*
   * *Gabarito conceitual:* Violou duas regras fundamentais: no Novo Mercado o capital deve ser composto **exclusivamente por ações ordinárias (ON)** e o *Tag Along* obrigatório para todos é de **100%**.
 * **Documentos Oficiais da Base (`data/raw/`):**
-  * `b3_regulamento_novo_mercado.pdf` *(Regulamento de Listagem do Novo Mercado B3)*
-  * `cvm_caderno_02_acoes_e_mercado_capitais.pdf` *(Caderno Educacional CVM sobre Ações e Governança)*
-  * `b3_regulamento_balcao_2026.pdf` *(Regulamento do Balcão B3 - já integrado)*
-  * *Tool em tempo real:* `yfinance_tools.py` (Consulta cotações e histórico real de ativos da B3).
+  * `b3_regulamento_novo_mercado.md` *(Regulamento de Listagem do Novo Mercado B3)*
+  * `cvm_caderno_02_acoes_e_mercado_capitais.md` *(Caderno Educacional CVM sobre Ações e Governança)*
 
 ---
 
@@ -110,56 +108,67 @@ A aplicação possui um fluxo linear e fechado, onde todos os usuários iniciam 
 
 ---
 
-## 🗄️ Resumo da Base de Dados Oficial (`data/raw/`)
+## 🗄️ Base de Conhecimento Oficial (`data/raw/`)
 
-Para compor a base vetorial do sistema, os seguintes arquivos oficiais em PDF devem constar na pasta `data/raw/`:
+A base de conhecimento é formada por **PDFs oficiais** (BCB, CMN, STN/B3, CVM e B3), organizados por módulo em `data/raw/modulo_N_*/`. Cada documento é registrado em `data/sources_manifest.yaml` com título, instituição, link oficial, módulo e tipo (normativo ou educacional). Arquivos fora do manifesto não são indexados.
 
-| Arquivo no Repositório | Órgão Oficial | Módulo Correspondente |
+| Módulo | Pasta | Documentos |
 | :--- | :--- | :--- |
-| `fgc_regulamento_garantia_oficial.pdf` | FGC | **Módulo 1** |
-| `tesouro_direto_guia_oficial.pdf` | Tesouro Nacional / B3 | **Módulo 1** |
-| `b3_regulamento_novo_mercado.pdf` | B3 | **Módulo 2** |
-| `cvm_caderno_02_acoes_e_mercado_capitais.pdf` | CVM Educacional | **Módulo 2** |
-| `b3_regulamento_balcao_2026.pdf` | B3 | **Módulo 2** *(Já presente)* |
-| `cvm_resolucao_44_2021_fatos_relevantes.pdf` | CVM Legislação | **Módulo 3** |
-| `cvm_resolucao_80_2022_companhias_abertas.pdf` | CVM Legislação | **Módulo 3** |
-| `cvm_caderno_01_mercado_capitais.pdf` | CVM Educacional | **Módulo 3** |
+| **Módulo 1** – Fundamentos | `modulo_1_fundamentos/` | Caderno de Educação Financeira (BCB), TOP Planejamento Financeiro Pessoal (CVM), Resolução CMN 4.222 (FGC), Regulamento do Tesouro Direto |
+| **Módulo 2** – Bolsa (B3) | `modulo_2_bolsa/` | TOP Mercado de Valores Mobiliários (CVM), Regulamento do Novo Mercado (B3), Cadernos CVM 3 e 6 (fundos e FII) |
+| **Módulo 3** – CVM e Regulação | `modulo_3_cvm/` | Caderno CVM 1, Resoluções CVM 44 e 80, TOP Direito do Mercado de Valores Mobiliários (CVM) |
 
 > **Nota Metodológica sobre o RAG:**  
-> A ingestão (`src/database/ingest.py`) processa os PDFs utilizando o **PyMuPDF**, detecta tabelas com **Pandas** (convertendo-as em tabelas Markdown estruturadas), realiza o chunking com overlap de 500 caracteres e armazena os embeddings gerados pelo modelo `text-embedding-3-small` no banco vetorial **ChromaDB** local (`data/vector_db/`).
+> A ingestão (`src/database/ingest.py`) extrai o texto dos PDFs com **PyMuPDF** (`src/database/pdf_extractor.py`) bloco a bloco, remove cabeçalhos e rodapés repetidos e números de página, reconstrói parágrafos (hifenização e quebras de linha) e descarta páginas sem texto. As páginas são concatenadas antes do chunking via `RecursiveCharacterTextSplitter`, e cada chunk guarda a página de origem (`p. 12` ou `p. 12-13`) e um ID estável (`<doc_id>:<índice>`). Os embeddings (`text-embedding-3-small`) são indexados no **ChromaDB** local (`data/vector_db/`) com distância de cosseno. Cada execução gera `data/reports/ingest_report.json` com páginas extraídas, páginas vazias, chunks e linhas removidas por documento.
 
 ---
 
-## 🏗️ Arquitetura do Software e Dinâmica de Trabalho
+## 🏗️ Arquitetura do Software e Integração com Frontend
 
 ```
                   ARQUITETURA DE INTEGRAÇÃO DO SISTEMA
-                  
+
  ┌────────────────────────────────────────────────────────┐
- │                   FRONTEND (Interface)                 │
- │  • Header com Barra de Progresso do Módulo e XP        │
- │  • Janela do Chat com Balões do Mascote (Tutor RAG)   │
- │  • Chips de Perguntas Rápidas (Scaffolding Cognitivo)  │
+ │               FRONTEND (React + Vite)                  │
+ │  • Janela do Chat com Balões do Mascote Rev            │
+ │  • Chips de Perguntas Rápidas de Fundamentos           │
  │  • Card Auditável de Fontes e Citações Oficiais        │
  └───────────────────────────▲────────────────────────────┘
-                             │ HTTP / JSON
+                             │ HTTP JSON + Bearer JWT
  ┌───────────────────────────▼────────────────────────────┐
  │               BACKEND (FastAPI / Python)               │
- │  • POST /chat (Interação conversacional com RAG)       │
- │  • POST /challenge (Validação semântica do desafio)    │
- │  • GET /modules (Metadados dos 3 módulos e progresso)  │
- └──────┬────────────────────┬────────────────────┬───────┘
-        │                    │                    │
- ┌──────▼──────┐      ┌──────▼──────┐      ┌──────▼──────┐
- │  ChromaDB   │      │ Banco Central│     │Yahoo Finance│
- │ (Vetorial)  │      │  (API SGS)  │      │ (yfinance)  │
- └─────────────┘      └─────────────┘      └─────────────┘
+ │  • Autenticação (e-mail/senha e Google) com JWT        │
+ │  • Chat RAG com o Rev + Selic em tempo real (BCB)      │
+ │  • Conteúdo de onboarding e reindexação da base        │
+ └──────┬──────────────────────────────┬──────────────────┘
+        │                              │
+ ┌──────▼──────┐                ┌──────▼──────┐
+ │  ChromaDB   │                │  Supabase   │
+ │ (Vetorial)  │                │ (Usuários)  │
+ └─────────────┘                └─────────────┘
 ```
+
+### Endpoints da API (prefixo `/api`)
+
+| Método | Rota | Acesso | Descrição |
+| :--- | :--- | :--- | :--- |
+| `GET` | `/health` | Público | Status da API |
+| `POST` | `/auth/register` | Público (rate limit por IP) | Cadastro com e-mail e senha |
+| `POST` | `/auth/login` | Público (rate limit por IP) | Login com e-mail e senha |
+| `POST` | `/auth/google` | Público (rate limit por IP) | Login com token do Google (valida audiência e e-mail verificado) |
+| `GET` | `/auth/me` | JWT | Perfil do usuário logado |
+| `POST` | `/chat` | JWT (rate limit por usuário) | Pergunta ao Rev com histórico; retorna resposta, fonte oficial e sugestões |
+| `GET` | `/chat/suggestions` | Público | Sugestões iniciais de perguntas do módulo |
+| `GET` | `/steps` | Público | Passos do onboarding |
+| `GET` | `/modules/{id}` | Público | Detalhes de um módulo |
+| `POST` | `/ingest` | Header `X-Admin-Token` | Reindexa a base vetorial (desativado se `ADMIN_TOKEN` estiver vazio) |
+
+A documentação interativa fica disponível em `http://localhost:8000/docs` com o servidor rodando.
 
 ### Como a aplicação funciona na prática:
 1. **Início Direto no Chat:** O usuário entra no sistema e o mascote já abre o diálogo no Módulo 1, acolhendo o iniciante e contextualizando o primeiro tema.
 2. **Scaffolding Cognitivo:** Para evitar o bloqueio da tela em branco, o sistema sugere chips de perguntas rápidas, mas permite que o usuário digite dúvidas livremente.
-3. **Respostas Ancoradas com RAG:** Cada resposta do agente traz a explicação didática acompanhada do card com a **fonte oficial** (documento e artigo/página).
+3. **Respostas Ancoradas com RAG:** Cada resposta do agente traz a explicação didática acompanhada do card com a **fonte oficial** (documento e artigo/página). Perguntas sobre Selic/CDI recebem também a meta da Selic em tempo real da API do Banco Central.
 4. **Desafio Integrador e Ganho de XP:** Ao final de cada módulo, o tutor apresenta o caso prático. A resposta do usuário é avaliada semanticamente pelo modelo. Acertando o desafio, o usuário recebe +50 XP e destrava o próximo módulo na barra de progresso!
 
 ---
@@ -174,22 +183,45 @@ pip install -r requirements.txt
 ```
 
 ### 2. Configurar o `.env`:
-Crie um arquivo `.env` na raiz do projeto com sua chave de API da OpenAI:
-```env
-OPENAI_API_KEY=sua_chave_aqui
-```
+Copie o `.env.example` para `.env` e preencha os valores:
+
+| Variável | Obrigatória | Descrição |
+| :--- | :--- | :--- |
+| `OPENAI_API_KEY` | Sim | Chave da OpenAI (chat e embeddings) |
+| `SUPABASE_URL` / `SUPABASE_SERVICE_ROLE_KEY` | Sim | Banco de usuários (use a chave *service_role*, nunca exposta ao frontend) |
+| `JWT_SECRET` | Sim | Segredo dos tokens com **no mínimo 32 caracteres**; a API não inicia sem ele. Gere com `python -c "import secrets; print(secrets.token_urlsafe(48))"` |
+| `GOOGLE_CLIENT_ID` | Para login Google | Mesmo valor de `VITE_GOOGLE_CLIENT_ID` do frontend |
+| `ADMIN_TOKEN` | Não | Habilita o `POST /api/ingest`; vazio deixa a rota desativada |
+| `CORS_ORIGINS` | Não | Origens do frontend separadas por vírgula |
+| `LLM_MODEL` / `LLM_TEMPERATURE` | Não | Modelo de chat (padrão `gpt-4o-mini`) e temperatura (padrão `0.3`) |
+| `RATE_LIMIT_AUTH_PER_MINUTE` / `RATE_LIMIT_CHAT_PER_MINUTE` | Não | Limites por minuto (padrão 10 e 15) |
+| `CHUNK_SIZE` / `CHUNK_OVERLAP` | Não | Tamanho e sobreposição dos chunks em caracteres (padrão 800 e 150) |
+| `RETRIEVAL_K` / `RETRIEVAL_MAX_DISTANCE` | Não | Trechos recuperados por pergunta e distância de cosseno máxima aceita (padrão 3 e 0.5) |
+
+Para criar a tabela de usuários, execute `scripts/supabase_schema.sql` no SQL Editor do Supabase.
 
 ### 3. Ingestão dos Documentos na Base Vetorial:
-Após posicionar os PDFs oficiais em `data/raw/`:
+Após posicionar os PDFs em `data/raw/modulo_N_*/` e registrá-los em `data/sources_manifest.yaml`:
 ```powershell
-python main.py --ingest
+python main.py --ingest            # extrai, segmenta e indexa (gera embeddings)
+python main.py --ingest --dry-run  # apenas extrai e segmenta, gerando o relatório sem custo de API
+```
+A base em `data/vector_db/` é gerada localmente e pode ser apagada e recriada a qualquer momento com esse comando.
+
+### 4. Subir a API:
+```powershell
+python main.py --serve
 ```
 
-### 4. Executar Consulta CLI (Testes Rápidos):
+### 5. Consultas pelo Terminal (Testes Rápidos):
 ```powershell
 python main.py --query "Se um banco falir, qual o limite máximo de proteção oferecido pelo FGC?"
-```
-```powershell
-python main.py --query "O que o regulamento do Balcão B3 diz sobre o papel da B3 como administradora?"
+python main.py --chat
 ```
 
+### 6. Testes Automatizados:
+```powershell
+pip install -r requirements-dev.txt
+python -m pytest
+```
+Os testes cobrem segurança (bcrypt, JWT, rate limit), rotas protegidas, validação do login com Google e o pipeline do assistente, com Supabase, Google e OpenAI simulados (sem chamadas externas).
