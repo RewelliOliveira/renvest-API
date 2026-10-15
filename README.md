@@ -110,18 +110,16 @@ A aplicação possui um fluxo linear e fechado, onde todos os usuários iniciam 
 
 ## 🗄️ Base de Conhecimento Oficial (`data/raw/`)
 
-Para garantir máxima velocidade, ausência de ruídos de formatação e facilidade de deploy (sem dependências pesadas em C/C++), a base de conhecimento é mantida em documentos **Markdown estruturados com metadados auditáveis** em `data/raw/`:
+A base de conhecimento é formada por **PDFs oficiais** (BCB, CMN, STN/B3, CVM e B3), organizados por módulo em `data/raw/modulo_N_*/`. Cada documento é registrado em `data/sources_manifest.yaml` com título, instituição, link oficial, módulo e tipo (normativo ou educacional). Arquivos fora do manifesto não são indexados.
 
-| Arquivo no Repositório | Órgão Oficial | Módulo Correspondente |
+| Módulo | Pasta | Documentos |
 | :--- | :--- | :--- |
-| `01_controle_gastos_regra_50_30_20.md` | BCB / ENEF | **Módulo 1** |
-| `02_prioridade_zero_fim_das_dividas.md` | B3 / BCB | **Módulo 1** |
-| `03_reserva_emergencia_e_fgc.md` | FGC / CMN / STN | **Módulo 1** |
+| **Módulo 1** – Fundamentos | `modulo_1_fundamentos/` | Caderno de Educação Financeira (BCB), TOP Planejamento Financeiro Pessoal (CVM), Resolução CMN 4.222 (FGC), Regulamento do Tesouro Direto |
+| **Módulo 2** – Bolsa (B3) | `modulo_2_bolsa/` | TOP Mercado de Valores Mobiliários (CVM), Regulamento do Novo Mercado (B3), Cadernos CVM 3 e 6 (fundos e FII) |
+| **Módulo 3** – CVM e Regulação | `modulo_3_cvm/` | Caderno CVM 1, Resoluções CVM 44 e 80, TOP Direito do Mercado de Valores Mobiliários (CVM) |
 
 > **Nota Metodológica sobre o RAG:**  
-> A ingestão (`src/database/ingest.py`) processa os arquivos Markdown oficiais, extrai metadados legais e regulatórios de cada fonte, realiza o chunking semântico via `RecursiveCharacterTextSplitter` e indexa os embeddings gerados pelo modelo `text-embedding-3-small` da OpenAI no **ChromaDB** local (`data/vector_db/`). **Dispensou-se o uso de PyMuPDF e Pandas**, tornando a aplicação leve, rápida e estável.
->
-> Cada pasta no formato `modulo_N_descricao` é indexada com o módulo `modulo_N` (ex: `modulo_2_pilares/` → `modulo_2`), que filtra a busca do chat. Arquivos fora desse padrão recebem o módulo `geral`.
+> A ingestão (`src/database/ingest.py`) extrai o texto dos PDFs com **PyMuPDF** (`src/database/pdf_extractor.py`) bloco a bloco, remove cabeçalhos e rodapés repetidos e números de página, reconstrói parágrafos (hifenização e quebras de linha) e descarta páginas sem texto. As páginas são concatenadas antes do chunking via `RecursiveCharacterTextSplitter`, e cada chunk guarda a página de origem (`p. 12` ou `p. 12-13`) e um ID estável (`<doc_id>:<índice>`). Os embeddings (`text-embedding-3-small`) são indexados no **ChromaDB** local (`data/vector_db/`) com distância de cosseno. Cada execução gera `data/reports/ingest_report.json` com páginas extraídas, páginas vazias, chunks e linhas removidas por documento.
 
 ---
 
@@ -197,13 +195,16 @@ Copie o `.env.example` para `.env` e preencha os valores:
 | `CORS_ORIGINS` | Não | Origens do frontend separadas por vírgula |
 | `LLM_MODEL` / `LLM_TEMPERATURE` | Não | Modelo de chat (padrão `gpt-4o-mini`) e temperatura (padrão `0.3`) |
 | `RATE_LIMIT_AUTH_PER_MINUTE` / `RATE_LIMIT_CHAT_PER_MINUTE` | Não | Limites por minuto (padrão 10 e 15) |
+| `CHUNK_SIZE` / `CHUNK_OVERLAP` | Não | Tamanho e sobreposição dos chunks em caracteres (padrão 800 e 150) |
+| `RETRIEVAL_K` / `RETRIEVAL_MAX_DISTANCE` | Não | Trechos recuperados por pergunta e distância de cosseno máxima aceita (padrão 3 e 0.5) |
 
 Para criar a tabela de usuários, execute `scripts/supabase_schema.sql` no SQL Editor do Supabase.
 
 ### 3. Ingestão dos Documentos na Base Vetorial:
-Após posicionar os documentos Markdown oficiais em `data/raw/modulo_N_*/`:
+Após posicionar os PDFs em `data/raw/modulo_N_*/` e registrá-los em `data/sources_manifest.yaml`:
 ```powershell
-python main.py --ingest
+python main.py --ingest            # extrai, segmenta e indexa (gera embeddings)
+python main.py --ingest --dry-run  # apenas extrai e segmenta, gerando o relatório sem custo de API
 ```
 A base em `data/vector_db/` é gerada localmente e pode ser apagada e recriada a qualquer momento com esse comando.
 
