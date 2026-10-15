@@ -18,15 +18,17 @@ def get_embeddings() -> OpenAIEmbeddings:
 @lru_cache(maxsize=1)
 def get_vector_db() -> Chroma:
     return Chroma(
+        collection_name=config.VECTOR_COLLECTION_NAME,
         persist_directory=str(config.VECTOR_DB_DIR),
-        embedding_function=get_embeddings()
+        embedding_function=get_embeddings(),
+        collection_metadata={"hnsw:space": "cosine"},
     )
 
 def query_relevant_documents(
     query: str,
     module: Optional[str] = None,
-    k: int = 3,
-    max_distance: float = 0.95
+    k: int = config.RETRIEVAL_K,
+    max_distance: float = config.RETRIEVAL_MAX_DISTANCE
 ) -> List[Document]:
     search_filter = {"module": module} if module else None
     try:

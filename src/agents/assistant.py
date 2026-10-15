@@ -108,13 +108,13 @@ def chat_rag(
     user_name: Optional[str] = None
 ) -> dict:
     history = history or []
-    docs = query_relevant_documents(message, module=module, k=3, max_distance=0.95)
+    docs = query_relevant_documents(message, module=module)
 
     # Perguntas de continuação ("e o CDB?") costumam depender da pergunta anterior
     if not docs:
         previous_question = _last_user_message(history)
         if previous_question:
-            docs = query_relevant_documents(f"{previous_question} {message}", module=module, k=3, max_distance=0.95)
+            docs = query_relevant_documents(f"{previous_question} {message}", module=module)
 
     context_text = "\n\n---\n\n".join(doc.page_content for doc in docs)
     primary_source = _build_source(docs) if docs else None
