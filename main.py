@@ -6,7 +6,12 @@ def main():
     parser.add_argument(
         "--ingest",
         action="store_true",
-        help="Executa a indexação dos documentos Markdown no banco vetorial Chroma."
+        help="Executa a indexação dos documentos do manifesto (data/sources_manifest.yaml) no banco vetorial Chroma."
+    )
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Com --ingest: apenas extrai e segmenta os documentos, gerando o relatório sem criar embeddings."
     )
     parser.add_argument(
         "--query",
@@ -30,7 +35,7 @@ def main():
         from src.core.logging_config import setup_logging
         from src.database.ingest import run_ingestion
         setup_logging()
-        run_ingestion()
+        run_ingestion(dry_run=args.dry_run)
     elif args.chat:
         from src.agents.assistant import chat_rag
         print("\n" + "=" * 60)

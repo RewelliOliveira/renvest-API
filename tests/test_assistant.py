@@ -1,7 +1,6 @@
 from langchain_core.documents import Document
 
 from src.agents import assistant
-from src.database.ingest import extract_metadata_from_markdown
 from src.tools.bcb_tools import mentions_selic
 
 def test_sanitize_suggestions_cleans_and_limits():
@@ -55,7 +54,3 @@ def test_chat_rag_handles_braces_and_returns_source(monkeypatch):
 def test_mentions_selic():
     assert mentions_selic("Quanto está a SELIC?")
     assert not mentions_selic("O que é FGC?")
-
-def test_ingest_maps_module_folders():
-    assert extract_metadata_from_markdown("# T", "data/raw/modulo_2_pilares/a.md")["module"] == "modulo_2"
-    assert extract_metadata_from_markdown("# T", "data/raw/outros/a.md")["module"] == "geral"

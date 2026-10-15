@@ -1,104 +1,171 @@
+import bisect
+import json
 import logging
-import os
-import re
-import glob
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Any, Dict, List, Tuple
+
+import yaml
 from langchain_core.documents import Document
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 from src import config
+from src.database.pdf_extractor import ExtractedPage, extract_pdf
 from src.database.retriever import get_vector_db
 
 logger = logging.getLogger(__name__)
 
-MODULE_FOLDER_PATTERN = re.compile(r"(modulo_\d+)")
-DEFAULT_MODULE = "geral"
+SUPPORTED_EXTENSIONS = {".pdf"}
+METADATA_FIELDS = ("module", "institution", "url", "doc_type", "published")
+INSERT_BATCH_SIZE = 256
 
-def extract_metadata_from_markdown(content: str, file_path: str) -> dict:
-    folder_name = os.path.basename(os.path.dirname(file_path))
-    file_name = os.path.basename(file_path)
-    # Pastas no formato "modulo_N_descricao" são indexadas como "modulo_N"
-    module_match = MODULE_FOLDER_PATTERN.match(folder_name)
-    module_id = module_match.group(1) if module_match else DEFAULT_MODULE
 
-    meta = {
-        "source": file_name,
-        "module": module_id,
-        "topic": file_name.replace(".md", ""),
-        "document": "Documento Oficial",
-        "section": "Conceitos Fundamentais",
-        "institution": "Órgão Regulador",
-        "url": "https://www.bcb.gov.br"
-    }
+def load_manifest(path: Path = config.MANIFEST_PATH) -> List[Dict[str, Any]]:
+    """Lê o manifesto do corpus e valida que cada documento aponta para um módulo e um arquivo existentes."""
+    with open(path, "r", encoding="utf-8") as f:
+        manifest = yaml.safe_load(f) or {}
 
-    url_match = re.search(r"https?://[^\s\)\>]+", content)
-    if url_match:
-        meta["url"] = url_match.group(0).strip()
+    modules = set((manifest.get("modules") or {}).keys())
+    entries = []
+    for entry in manifest.get("documents") or []:
+        file_path = config.RAW_DATA_DIR / entry["file"]
+        if entry.get("module") not in modules:
+            raise ValueError(f"Documento '{entry['id']}' usa módulo inexistente no manifesto: {entry.get('module')}")
+        if not file_path.exists():
+            raise FileNotFoundError(f"Arquivo do documento '{entry['id']}' não encontrado: {file_path}")
+        if file_path.suffix.lower() not in SUPPORTED_EXTENSIONS:
+            raise ValueError(f"Formato não suportado para '{entry['id']}': {file_path.suffix}")
+        entries.append(entry)
+    return entries
 
-    for line in content.splitlines():
-        line_strip = line.strip()
-        if line_strip.startswith("# "):
-            meta["topic"] = line_strip.replace("# ", "").strip()
-        elif "Documento Oficial:" in line_strip:
-            meta["document"] = line_strip.split("Documento Oficial:", 1)[1].replace("*", "").strip()
-        elif "Seção:" in line_strip or "Secao:" in line_strip:
-            meta["section"] = line_strip.split(":", 1)[1].replace("*", "").strip()
-        elif "Instituição:" in line_strip or "Instituições:" in line_strip or "Instituicao:" in line_strip:
-            meta["institution"] = line_strip.split(":", 1)[1].replace("*", "").strip()
 
-    return meta
+def find_unregistered_files(entries: List[Dict[str, Any]]) -> List[str]:
+    """Arquivos de data/raw/ ausentes do manifesto, que por isso não serão indexados."""
+    registered = {(config.RAW_DATA_DIR / entry["file"]).resolve() for entry in entries}
+    return sorted(
+        str(path.relative_to(config.RAW_DATA_DIR))
+        for path in config.RAW_DATA_DIR.rglob("*")
+        if path.is_file() and path.resolve() not in registered
+    )
 
-def load_documents():
-    documents = []
-    md_paths = glob.glob(os.path.join(config.RAW_DATA_DIR, "**", "*.md"), recursive=True)
 
-    for md_path in md_paths:
-        file_name = os.path.basename(md_path)
-        try:
-            with open(md_path, "r", encoding="utf-8") as f:
-                content = f.read().strip()
+def join_pages(pages: List[ExtractedPage]) -> Tuple[str, List[int], List[int]]:
+    """Concatena as páginas para que parágrafos que continuam na página seguinte não sejam cortados,
+    guardando o offset de cada página para mapear cada chunk de volta à sua página."""
+    parts, offsets, numbers = [], [], []
+    position = 0
+    for page in pages:
+        offsets.append(position)
+        numbers.append(page.number)
+        parts.append(page.text)
+        position += len(page.text) + 2
+    return "\n\n".join(parts), offsets, numbers
 
-            if not content:
-                continue
 
-            metadata = extract_metadata_from_markdown(content, md_path)
-            documents.append(Document(page_content=content, metadata=metadata))
-            logger.info("Carregado: %s -> [%s] módulo=%s", file_name, metadata["document"], metadata["module"])
-        except Exception:
-            logger.exception("Falha ao carregar %s", file_name)
+def page_at(offset: int, page_offsets: List[int], page_numbers: List[int]) -> int:
+    return page_numbers[bisect.bisect_right(page_offsets, offset) - 1]
 
-    return documents
 
-def split_chunks(documents):
-    text_splitter = RecursiveCharacterTextSplitter(
+def get_splitter() -> RecursiveCharacterTextSplitter:
+    return RecursiveCharacterTextSplitter(
         chunk_size=config.CHUNK_SIZE,
         chunk_overlap=config.CHUNK_OVERLAP,
         length_function=len,
-        separators=["\n## ", "\n### ", "\n\n", "\n", " "]
+        separators=["\n\n", "\n", ". ", " ", ""],
+        add_start_index=True,
     )
 
-    chunks = text_splitter.split_documents(documents)
-    logger.info("Total de chunks gerados para indexação: %d", len(chunks))
+
+def build_chunks(entry: Dict[str, Any], pages: List[ExtractedPage]) -> List[Document]:
+    text, page_offsets, page_numbers = join_pages(pages)
+    if not text:
+        return []
+
+    base_metadata = {key: str(entry[key]) for key in METADATA_FIELDS if entry.get(key) is not None}
+    base_metadata.update(doc_id=entry["id"], document=entry["title"], source=entry["file"])
+
+    chunks = []
+    for index, piece in enumerate(get_splitter().create_documents([text])):
+        start = piece.metadata["start_index"]
+        page_start = page_at(start, page_offsets, page_numbers)
+        page_end = page_at(start + len(piece.page_content) - 1, page_offsets, page_numbers)
+        section = f"p. {page_start}" if page_start == page_end else f"p. {page_start}-{page_end}"
+        chunks.append(Document(
+            id=f"{entry['id']}:{index:05d}",
+            page_content=piece.page_content,
+            metadata={**base_metadata, "page_start": page_start, "page_end": page_end, "section": section},
+        ))
     return chunks
 
-def vectorize_chunks(chunks):
+
+def load_chunks(entries: List[Dict[str, Any]]) -> Tuple[List[Document], List[Dict[str, Any]]]:
+    all_chunks: List[Document] = []
+    report: List[Dict[str, Any]] = []
+    for entry in entries:
+        result = extract_pdf(config.RAW_DATA_DIR / entry["file"])
+        chunks = build_chunks(entry, result.pages)
+        all_chunks.extend(chunks)
+        report.append({
+            "id": entry["id"],
+            "module": entry["module"],
+            "total_pages": result.total_pages,
+            "extracted_pages": len(result.pages),
+            "empty_pages": result.empty_pages,
+            "characters": sum(len(page.text) for page in result.pages),
+            "chunks": len(chunks),
+            "removed_margin_lines": result.removed_margin_lines,
+        })
+        logger.info(
+            "%s: %d/%d páginas com texto, %d chunks (módulo=%s)",
+            entry["id"], len(result.pages), result.total_pages, len(chunks), entry["module"],
+        )
+    return all_chunks, report
+
+
+def vectorize_chunks(chunks: List[Document]) -> None:
     db = get_vector_db()
     # Limpa os documentos da coleção existente em vez de recriá-la, evitando segmentos órfãos no disco
     existing_ids = db.get(include=[])["ids"]
     if existing_ids:
         db.delete(ids=existing_ids)
-    db.add_documents(chunks)
+    for start in range(0, len(chunks), INSERT_BATCH_SIZE):
+        batch = chunks[start:start + INSERT_BATCH_SIZE]
+        db.add_documents(batch, ids=[chunk.id for chunk in batch])
     logger.info("Banco vetorial ChromaDB indexado com sucesso em: %s", config.VECTOR_DB_DIR)
 
-def run_ingestion():
-    logger.info("Iniciando processo de ingestão RAG...")
-    documents = load_documents()
-    if not documents:
-        logger.warning("Nenhum documento .md encontrado em data/raw/ para ingestão.")
-        return
 
-    chunks = split_chunks(documents)
-    vectorize_chunks(chunks)
-    logger.info("Ingestão concluída com sucesso!")
+def write_report(report: List[Dict[str, Any]], unregistered: List[str], dry_run: bool) -> Path:
+    config.REPORTS_DIR.mkdir(parents=True, exist_ok=True)
+    path = config.REPORTS_DIR / "ingest_report.json"
+    payload = {
+        "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "dry_run": dry_run,
+        "chunk_size": config.CHUNK_SIZE,
+        "chunk_overlap": config.CHUNK_OVERLAP,
+        "embedding_model": config.EMBEDDING_MODEL,
+        "total_chunks": sum(item["chunks"] for item in report),
+        "unregistered_files": unregistered,
+        "documents": report,
+    }
+    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    return path
+
+
+def run_ingestion(dry_run: bool = False) -> None:
+    """Extrai, segmenta e indexa o corpus do manifesto. Com dry_run, gera apenas o relatório (sem embeddings)."""
+    logger.info("Iniciando processo de ingestão RAG...")
+    entries = load_manifest()
+    unregistered = find_unregistered_files(entries)
+    for file_name in unregistered:
+        logger.warning("Arquivo fora do manifesto (não será indexado): %s", file_name)
+
+    chunks, report = load_chunks(entries)
+    if not dry_run:
+        vectorize_chunks(chunks)
+
+    report_path = write_report(report, unregistered, dry_run)
+    logger.info("Ingestão concluída: %d chunks. Relatório em %s", len(chunks), report_path)
+
 
 if __name__ == "__main__":
     from src.core.logging_config import setup_logging
