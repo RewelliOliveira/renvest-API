@@ -8,3 +8,5 @@ __pycache__/
 .gitignore
 .env
 .pytest_cache/
+data/reports/
+TCC_AJUSTES.md
