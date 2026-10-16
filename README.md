@@ -119,7 +119,7 @@ A base de conhecimento é formada por **PDFs oficiais** (BCB, CMN, STN/B3, CVM e
 | **Módulo 3** – CVM e Regulação | `modulo_3_cvm/` | Caderno CVM 1, Resoluções CVM 44 e 80, TOP Direito do Mercado de Valores Mobiliários (CVM) |
 
 > **Nota Metodológica sobre o RAG:**  
-> A ingestão (`src/database/ingest.py`) extrai o texto dos PDFs com **PyMuPDF** (`src/database/pdf_extractor.py`) bloco a bloco, remove cabeçalhos e rodapés repetidos e números de página, reconstrói parágrafos (hifenização e quebras de linha) e descarta páginas sem texto. As páginas são concatenadas antes do chunking via `RecursiveCharacterTextSplitter`, e cada chunk guarda a página de origem (`p. 12` ou `p. 12-13`) e um ID estável (`<doc_id>:<índice>`). Os embeddings (`text-embedding-3-small`) são indexados no **ChromaDB** local (`data/vector_db/`) com distância de cosseno. Cada execução gera `data/reports/ingest_report.json` com páginas extraídas, páginas vazias, chunks e linhas removidas por documento.
+> A ingestão (`src/database/ingest.py`) extrai o texto dos PDFs com **PyMuPDF** (`src/database/pdf_extractor.py`) bloco a bloco, remove cabeçalhos e rodapés repetidos e números de página, reconstrói parágrafos (hifenização e quebras de linha) e descarta páginas sem texto. As páginas são concatenadas antes do chunking via `RecursiveCharacterTextSplitter`, e cada chunk guarda a página de origem (`p. 12` ou `p. 12-13`) e um ID estável (`<doc_id>:<índice>`). Os embeddings (`text-embedding-3-small`) são gravados no **Supabase com pgvector** (tabela `document_chunks`), e a busca usa distância de cosseno com filtro por módulo (função `match_document_chunks`). A gravação é por *upsert* do ID estável, e chunks que deixaram de existir no corpus são removidos. Cada execução gera `data/reports/ingest_report.json` com páginas extraídas, páginas vazias, chunks e linhas removidas por documento.
 
 ---
 
@@ -140,12 +140,13 @@ A base de conhecimento é formada por **PDFs oficiais** (BCB, CMN, STN/B3, CVM e
  │  • Autenticação (e-mail/senha e Google) com JWT        │
  │  • Chat RAG com o Rev + Selic em tempo real (BCB)      │
  │  • Conteúdo de onboarding e reindexação da base        │
- └──────┬──────────────────────────────┬──────────────────┘
-        │                              │
- ┌──────▼──────┐                ┌──────▼──────┐
- │  ChromaDB   │                │  Supabase   │
- │ (Vetorial)  │                │ (Usuários)  │
- └─────────────┘                └─────────────┘
+ └───────────────────────────┬────────────────────────────┘
+                             │
+ ┌───────────────────────────▼────────────────────────────┐
+ │                  Supabase (PostgreSQL)                 │
+ │  • users: contas e login                               │
+ │  • document_chunks: corpus vetorial (pgvector)         │
+ └────────────────────────────────────────────────────────┘
 ```
 
 ### Endpoints da API (prefixo `/api`)
@@ -198,7 +199,7 @@ Copie o `.env.example` para `.env` e preencha os valores:
 | `CHUNK_SIZE` / `CHUNK_OVERLAP` | Não | Tamanho e sobreposição dos chunks em caracteres (padrão 800 e 150) |
 | `RETRIEVAL_K` / `RETRIEVAL_MAX_DISTANCE` | Não | Trechos recuperados por pergunta e distância de cosseno máxima aceita (padrão 3 e 0.5) |
 
-Para criar a tabela de usuários, execute `scripts/supabase_schema.sql` no SQL Editor do Supabase.
+No SQL Editor do Supabase, execute `scripts/supabase_schema.sql` (tabela de usuários) e `scripts/supabase_vector_schema.sql` (extensão pgvector, tabela `document_chunks` e função de busca).
 
 ### 3. Ingestão dos Documentos na Base Vetorial:
 Após posicionar os PDFs em `data/raw/modulo_N_*/` e registrá-los em `data/sources_manifest.yaml`:
@@ -206,7 +207,7 @@ Após posicionar os PDFs em `data/raw/modulo_N_*/` e registrá-los em `data/sour
 python main.py --ingest            # extrai, segmenta e indexa (gera embeddings)
 python main.py --ingest --dry-run  # apenas extrai e segmenta, gerando o relatório sem custo de API
 ```
-A base em `data/vector_db/` é gerada localmente e pode ser apagada e recriada a qualquer momento com esse comando.
+A ingestão roda localmente e grava os vetores no Supabase; pode ser repetida a qualquer momento (atualiza os chunks existentes e remove os que saíram do corpus).
 
 ### 4. Subir a API:
 ```powershell
