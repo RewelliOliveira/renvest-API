@@ -45,8 +45,13 @@ RATE_LIMIT_AUTH_PER_MINUTE = int(os.getenv("RATE_LIMIT_AUTH_PER_MINUTE", "10"))
 RATE_LIMIT_CHAT_PER_MINUTE = int(os.getenv("RATE_LIMIT_CHAT_PER_MINUTE", "15"))
 
 # CORS
-cors_raw = os.getenv("CORS_ORIGINS", "http://localhost:5173,http://localhost:3000,http://127.0.0.1:5173")
-CORS_ORIGINS = [origin.strip() for origin in cors_raw.split(",") if origin.strip()]
+def parse_cors_origins(raw: str) -> list[str]:
+    # O navegador envia a origem sem barra final; "https://app.vercel.app/" nunca casaria com ela
+    return [origin.strip().rstrip("/") for origin in raw.split(",") if origin.strip().rstrip("/")]
+
+CORS_ORIGINS = parse_cors_origins(
+    os.getenv("CORS_ORIGINS", "http://localhost:5173,http://localhost:3000,http://127.0.0.1:5173")
+)
 
 
 def validate_settings() -> None:

@@ -46,3 +46,7 @@ def test_rate_limiter_releases_after_window():
     limiter = SlidingWindowRateLimiter(max_requests=1, window_seconds=0)
     assert limiter.hit("ip")
     assert limiter.hit("ip")
+
+def test_parse_cors_origins_ignores_trailing_slashes_and_blanks():
+    raw = " https://renvest-eight.vercel.app/ ,http://localhost:5173,, / "
+    assert config.parse_cors_origins(raw) == ["https://renvest-eight.vercel.app", "http://localhost:5173"]
