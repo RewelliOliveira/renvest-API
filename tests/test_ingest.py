@@ -23,6 +23,7 @@ def make_pdf(path, bodies):
 
 def test_clean_block_joins_hyphenation_and_line_breaks():
     assert clean_block("ao re-\ngulamento ou aos\natos normativos") == "ao regulamento ou aos atos normativos"
+    assert clean_block("de in- \nvestimento") == "de investimento"
     assert clean_block("Banco Central-\nBCB") == "Banco Central-BCB"
 
 
