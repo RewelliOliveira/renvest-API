@@ -9,12 +9,8 @@ PROJECT_ROOT = SRC_DIR.parent
 
 DATA_DIR = PROJECT_ROOT / "data"
 RAW_DATA_DIR = DATA_DIR / "raw"
-VECTOR_DB_DIR = DATA_DIR / "vector_db"
 MANIFEST_PATH = DATA_DIR / "sources_manifest.yaml"
 REPORTS_DIR = DATA_DIR / "reports"
-
-RAW_DATA_DIR.mkdir(parents=True, exist_ok=True)
-VECTOR_DB_DIR.mkdir(parents=True, exist_ok=True)
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
@@ -26,7 +22,6 @@ CHUNK_SIZE = int(os.getenv("CHUNK_SIZE", "800"))
 CHUNK_OVERLAP = int(os.getenv("CHUNK_OVERLAP", "150"))
 
 # Recuperação (distância de cosseno: 0 = idêntico, 1 = sem relação)
-VECTOR_COLLECTION_NAME = "renvest_corpus"
 RETRIEVAL_K = int(os.getenv("RETRIEVAL_K", "3"))
 RETRIEVAL_MAX_DISTANCE = float(os.getenv("RETRIEVAL_MAX_DISTANCE", "0.5"))
 

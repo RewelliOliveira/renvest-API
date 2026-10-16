@@ -6,7 +6,7 @@ def main():
     parser.add_argument(
         "--ingest",
         action="store_true",
-        help="Executa a indexação dos documentos do manifesto (data/sources_manifest.yaml) no banco vetorial Chroma."
+        help="Executa a indexação dos documentos do manifesto (data/sources_manifest.yaml) no banco vetorial (Supabase pgvector)."
     )
     parser.add_argument(
         "--dry-run",

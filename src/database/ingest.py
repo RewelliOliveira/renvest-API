@@ -11,13 +11,14 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 from src import config
 from src.database.pdf_extractor import ExtractedPage, extract_pdf
-from src.database.retriever import get_vector_db
+from src.database.retriever import get_embeddings
+from src.repositories.chunk_repository import ChunkRepository
 
 logger = logging.getLogger(__name__)
 
 SUPPORTED_EXTENSIONS = {".pdf"}
 METADATA_FIELDS = ("module", "institution", "url", "doc_type", "published")
-INSERT_BATCH_SIZE = 256
+INSERT_BATCH_SIZE = 100
 
 
 def load_manifest(path: Path = config.MANIFEST_PATH) -> List[Dict[str, Any]]:
@@ -123,15 +124,28 @@ def load_chunks(entries: List[Dict[str, Any]]) -> Tuple[List[Document], List[Dic
 
 
 def vectorize_chunks(chunks: List[Document]) -> None:
-    db = get_vector_db()
-    # Limpa os documentos da coleção existente em vez de recriá-la, evitando segmentos órfãos no disco
-    existing_ids = db.get(include=[])["ids"]
-    if existing_ids:
-        db.delete(ids=existing_ids)
+    """Grava os chunks no Supabase (upsert pelo ID estável) e remove os que deixaram de existir no corpus."""
+    embeddings = get_embeddings()
     for start in range(0, len(chunks), INSERT_BATCH_SIZE):
         batch = chunks[start:start + INSERT_BATCH_SIZE]
-        db.add_documents(batch, ids=[chunk.id for chunk in batch])
-    logger.info("Banco vetorial ChromaDB indexado com sucesso em: %s", config.VECTOR_DB_DIR)
+        vectors = embeddings.embed_documents([chunk.page_content for chunk in batch])
+        ChunkRepository.upsert([
+            {
+                "id": chunk.id,
+                "doc_id": chunk.metadata["doc_id"],
+                "module": chunk.metadata["module"],
+                "content": chunk.page_content,
+                "metadata": chunk.metadata,
+                "embedding": vector,
+            }
+            for chunk, vector in zip(batch, vectors)
+        ])
+        logger.info("Enviados %d/%d chunks ao Supabase", start + len(batch), len(chunks))
+
+    stale_ids = ChunkRepository.list_ids() - {chunk.id for chunk in chunks}
+    if stale_ids:
+        ChunkRepository.delete_ids(stale_ids)
+    logger.info("Banco vetorial atualizado: %d chunks gravados, %d removidos", len(chunks), len(stale_ids))
 
 
 def write_report(report: List[Dict[str, Any]], unregistered: List[str], dry_run: bool) -> Path:
