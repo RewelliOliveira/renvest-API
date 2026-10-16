@@ -162,7 +162,7 @@ A base de conhecimento é formada por **PDFs oficiais** (BCB, CMN, STN/B3, CVM e
 | `GET` | `/chat/suggestions` | Público | Sugestões iniciais de perguntas do módulo |
 | `GET` | `/steps` | Público | Passos do onboarding |
 | `GET` | `/modules/{id}` | Público | Detalhes de um módulo |
-| `POST` | `/ingest` | Header `X-Admin-Token` | Reindexa a base vetorial (desativado se `ADMIN_TOKEN` estiver vazio) |
+| `POST` | `/ingest` | Header `X-Admin-Token` | Reindexa a base vetorial (desativado se `ADMIN_TOKEN` estiver vazio; responde 503 onde as dependências de ingestão não estão instaladas, como na Vercel) |
 
 A documentação interativa fica disponível em `http://localhost:8000/docs` com o servidor rodando.
 
@@ -180,8 +180,9 @@ A documentação interativa fica disponível em `http://localhost:8000/docs` com
 ```powershell
 python -m venv venv
 .\venv\Scripts\Activate.ps1
-pip install -r requirements.txt
+pip install -r requirements-ingest.txt
 ```
+As dependências estão divididas em três arquivos: `requirements.txt` (somente o necessário para a API, usado no deploy), `requirements-ingest.txt` (API + extração de PDFs e chunking) e `requirements-dev.txt` (tudo + pytest).
 
 ### 2. Configurar o `.env`:
 Copie o `.env.example` para `.env` e preencha os valores:
@@ -189,7 +190,7 @@ Copie o `.env.example` para `.env` e preencha os valores:
 | Variável | Obrigatória | Descrição |
 | :--- | :--- | :--- |
 | `OPENAI_API_KEY` | Sim | Chave da OpenAI (chat e embeddings) |
-| `SUPABASE_URL` / `SUPABASE_SERVICE_ROLE_KEY` | Sim | Banco de usuários (use a chave *service_role*, nunca exposta ao frontend) |
+| `SUPABASE_URL` / `SUPABASE_SERVICE_ROLE_KEY` | Sim | Banco de usuários e vetorial (use a chave *service_role*, nunca exposta ao frontend) |
 | `JWT_SECRET` | Sim | Segredo dos tokens com **no mínimo 32 caracteres**; a API não inicia sem ele. Gere com `python -c "import secrets; print(secrets.token_urlsafe(48))"` |
 | `GOOGLE_CLIENT_ID` | Para login Google | Mesmo valor de `VITE_GOOGLE_CLIENT_ID` do frontend |
 | `ADMIN_TOKEN` | Não | Habilita o `POST /api/ingest`; vazio deixa a rota desativada |
@@ -226,3 +227,12 @@ pip install -r requirements-dev.txt
 python -m pytest
 ```
 Os testes cobrem segurança (bcrypt, JWT, rate limit), rotas protegidas, validação do login com Google e o pipeline do assistente, com Supabase, Google e OpenAI simulados (sem chamadas externas).
+
+### 7. Deploy na Vercel:
+O `app.py` da raiz expõe o `app` do FastAPI, que a Vercel detecta automaticamente; o `.python-version` fixa o Python 3.14 e o `vercel.json` limita a função a 60 s e exclui PDFs, testes e scripts do pacote. Em produção a API apenas consulta o Supabase: a ingestão continua sendo feita localmente.
+
+1. Importe o repositório na Vercel (framework detectado: FastAPI).
+2. Em **Project Settings → Environment Variables**, cadastre `OPENAI_API_KEY`, `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `JWT_SECRET` (o mesmo do `.env`, para manter as sessões válidas), `GOOGLE_CLIENT_ID` e `CORS_ORIGINS` com a URL do frontend (ex: `https://seu-front.vercel.app`). Deixe `ADMIN_TOKEN` vazio.
+3. Após o deploy, teste `https://<seu-backend>.vercel.app/api/health` e use `https://<seu-backend>.vercel.app/api` como `VITE_API_URL` no frontend.
+
+> O rate limit é mantido em memória e, em serverless, vale por instância da função; serve como proteção básica, não como limite global.
