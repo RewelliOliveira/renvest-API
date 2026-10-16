@@ -1,4 +1,4 @@
-from typing import Any, Dict, Iterable, List, Optional, Set
+from typing import Any, Dict, Iterable, List, Optional
 from src.core.database import get_supabase_client
 
 PAGE_SIZE = 1000
@@ -14,21 +14,22 @@ class ChunkRepository:
         get_supabase_client().table(cls.TABLE_NAME).upsert(rows).execute()
 
     @classmethod
-    def list_ids(cls) -> Set[str]:
+    def list_hashes(cls) -> Dict[str, Optional[str]]:
+        """Mapa id -> hash do chunk gravado (None para chunks gravados antes do controle por hash)."""
         client = get_supabase_client()
-        ids: Set[str] = set()
+        hashes: Dict[str, Optional[str]] = {}
         start = 0
         while True:
             response = (
                 client.table(cls.TABLE_NAME)
-                .select("id")
+                .select("id, chunk_hash:metadata->>chunk_hash")
                 .order("id")
                 .range(start, start + PAGE_SIZE - 1)
                 .execute()
             )
-            ids.update(row["id"] for row in response.data)
+            hashes.update((row["id"], row["chunk_hash"]) for row in response.data)
             if len(response.data) < PAGE_SIZE:
-                return ids
+                return hashes
             start += PAGE_SIZE
 
     @classmethod

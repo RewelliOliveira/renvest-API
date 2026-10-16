@@ -1,9 +1,11 @@
 import bisect
+import hashlib
 import json
 import logging
+import time
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Dict, List, Tuple
+from typing import Any, Callable, Dict, List, Tuple, TypeVar
 
 import yaml
 from langchain_core.documents import Document
@@ -19,6 +21,9 @@ logger = logging.getLogger(__name__)
 SUPPORTED_EXTENSIONS = {".pdf"}
 METADATA_FIELDS = ("module", "institution", "url", "doc_type", "published")
 INSERT_BATCH_SIZE = 100
+RETRY_ATTEMPTS = 4
+
+T = TypeVar("T")
 
 
 def load_manifest(path: Path = config.MANIFEST_PATH) -> List[Dict[str, Any]]:
@@ -123,29 +128,56 @@ def load_chunks(entries: List[Dict[str, Any]]) -> Tuple[List[Document], List[Dic
     return all_chunks, report
 
 
+def chunk_hash(chunk: Document) -> str:
+    payload = json.dumps({"content": chunk.page_content, "metadata": chunk.metadata}, sort_keys=True, ensure_ascii=False)
+    return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+
+
+def with_retries(action: Callable[[], T], description: str) -> T:
+    """Repete chamadas de rede (OpenAI e Supabase) que falham por instabilidade, com espera crescente."""
+    for attempt in range(1, RETRY_ATTEMPTS):
+        try:
+            return action()
+        except Exception as exc:
+            wait = 2 ** attempt
+            logger.warning("%s falhou (%s); tentativa %d/%d em %ds", description, exc, attempt + 1, RETRY_ATTEMPTS, wait)
+            time.sleep(wait)
+    return action()
+
+
 def vectorize_chunks(chunks: List[Document]) -> None:
-    """Grava os chunks no Supabase (upsert pelo ID estável) e remove os que deixaram de existir no corpus."""
+    """Grava no Supabase apenas os chunks novos ou alterados (pelo hash) e remove os que saíram do corpus.
+    Uma ingestão interrompida pode ser repetida sem gerar de novo os embeddings já enviados."""
+    existing = with_retries(ChunkRepository.list_hashes, "Leitura dos chunks existentes")
+    hashes = {chunk.id: chunk_hash(chunk) for chunk in chunks}
+    pending = [chunk for chunk in chunks if existing.get(chunk.id) != hashes[chunk.id]]
+    logger.info("%d chunks já atualizados no banco; %d a enviar", len(chunks) - len(pending), len(pending))
+
     embeddings = get_embeddings()
-    for start in range(0, len(chunks), INSERT_BATCH_SIZE):
-        batch = chunks[start:start + INSERT_BATCH_SIZE]
-        vectors = embeddings.embed_documents([chunk.page_content for chunk in batch])
-        ChunkRepository.upsert([
+    for start in range(0, len(pending), INSERT_BATCH_SIZE):
+        batch = pending[start:start + INSERT_BATCH_SIZE]
+        vectors = with_retries(
+            lambda: embeddings.embed_documents([chunk.page_content for chunk in batch]), "Geração de embeddings"
+        )
+        rows = [
             {
                 "id": chunk.id,
                 "doc_id": chunk.metadata["doc_id"],
                 "module": chunk.metadata["module"],
                 "content": chunk.page_content,
-                "metadata": chunk.metadata,
+                "metadata": {**chunk.metadata, "chunk_hash": hashes[chunk.id]},
                 "embedding": vector,
             }
             for chunk, vector in zip(batch, vectors)
-        ])
-        logger.info("Enviados %d/%d chunks ao Supabase", start + len(batch), len(chunks))
+        ]
+        with_retries(lambda: ChunkRepository.upsert(rows), "Gravação no Supabase")
+        sent = start + len(batch)
+        logger.info("Enviados %d/%d chunks ao Supabase (%.0f%%)", sent, len(pending), sent * 100 / len(pending))
 
-    stale_ids = ChunkRepository.list_ids() - {chunk.id for chunk in chunks}
+    stale_ids = set(existing) - set(hashes)
     if stale_ids:
-        ChunkRepository.delete_ids(stale_ids)
-    logger.info("Banco vetorial atualizado: %d chunks gravados, %d removidos", len(chunks), len(stale_ids))
+        with_retries(lambda: ChunkRepository.delete_ids(stale_ids), "Remoção de chunks antigos")
+    logger.info("Banco vetorial atualizado: %d chunks enviados, %d removidos", len(pending), len(stale_ids))
 
 
 def write_report(report: List[Dict[str, Any]], unregistered: List[str], dry_run: bool) -> Path:
