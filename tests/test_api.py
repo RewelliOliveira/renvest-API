@@ -8,7 +8,7 @@ def test_health(client):
 
 def test_ingest_requires_admin_token(client, monkeypatch):
     calls = []
-    monkeypatch.setattr(admin, "run_ingestion", lambda: calls.append(True))
+    monkeypatch.setattr(admin, "load_ingestion", lambda: lambda: calls.append(True))
 
     assert client.post("/api/ingest").status_code == 403
     assert client.post("/api/ingest", headers={"X-Admin-Token": "errado"}).status_code == 403
@@ -17,6 +17,11 @@ def test_ingest_requires_admin_token(client, monkeypatch):
     response = client.post("/api/ingest", headers={"X-Admin-Token": "test-admin-token"})
     assert response.status_code == 200
     assert calls == [True]
+
+def test_ingest_unavailable_without_ingestion_dependencies(client, monkeypatch):
+    monkeypatch.setattr(admin, "load_ingestion", lambda: None)
+    response = client.post("/api/ingest", headers={"X-Admin-Token": "test-admin-token"})
+    assert response.status_code == 503
 
 def test_chat_requires_authentication(client):
     assert client.post("/api/chat", json={"message": "Oi"}).status_code == 401
