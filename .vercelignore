@@ -1,0 +1,11 @@
+# PDFs, testes e scripts não são usados pela API em produção (a ingestão roda localmente)
+data/raw/
+data/reports/
+data/vector_db/
+tests/
+scripts/
+venv/
+.pytest_cache/
+Dockerfile
+docker-compose.yml
+.dockerignore
