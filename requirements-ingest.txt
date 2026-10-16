@@ -1,0 +1,5 @@
+# Dependências da ingestão do corpus (roda localmente, fora do deploy da API)
+-r requirements.txt
+langchain-text-splitters==1.1.2
+pymupdf==1.28.0
+PyYAML==6.0.3

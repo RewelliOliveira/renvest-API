@@ -119,7 +119,7 @@ A base de conhecimento é formada por **PDFs oficiais** (BCB, CMN, STN/B3, CVM e
 | **Módulo 3** – CVM e Regulação | `modulo_3_cvm/` | Caderno CVM 1, Resoluções CVM 44 e 80, TOP Direito do Mercado de Valores Mobiliários (CVM) |
 
 > **Nota Metodológica sobre o RAG:**  
-> A ingestão (`src/database/ingest.py`) extrai o texto dos PDFs com **PyMuPDF** (`src/database/pdf_extractor.py`) bloco a bloco, remove cabeçalhos e rodapés repetidos e números de página, reconstrói parágrafos (hifenização e quebras de linha) e descarta páginas sem texto. As páginas são concatenadas antes do chunking via `RecursiveCharacterTextSplitter`, e cada chunk guarda a página de origem (`p. 12` ou `p. 12-13`) e um ID estável (`<doc_id>:<índice>`). Os embeddings (`text-embedding-3-small`) são indexados no **ChromaDB** local (`data/vector_db/`) com distância de cosseno. Cada execução gera `data/reports/ingest_report.json` com páginas extraídas, páginas vazias, chunks e linhas removidas por documento.
+> A ingestão (`src/database/ingest.py`) extrai o texto dos PDFs com **PyMuPDF** (`src/database/pdf_extractor.py`) bloco a bloco, remove cabeçalhos e rodapés repetidos e números de página, reconstrói parágrafos (hifenização e quebras de linha) e descarta páginas sem texto. As páginas são concatenadas antes do chunking via `RecursiveCharacterTextSplitter`, e cada chunk guarda a página de origem (`p. 12` ou `p. 12-13`) e um ID estável (`<doc_id>:<índice>`). Os embeddings (`text-embedding-3-small`) são gravados no **Supabase com pgvector** (tabela `document_chunks`), e a busca usa distância de cosseno com filtro por módulo (função `match_document_chunks`). A gravação é por *upsert* do ID estável, e chunks que deixaram de existir no corpus são removidos. Cada execução gera `data/reports/ingest_report.json` com páginas extraídas, páginas vazias, chunks e linhas removidas por documento.
 
 ---
 
@@ -140,12 +140,13 @@ A base de conhecimento é formada por **PDFs oficiais** (BCB, CMN, STN/B3, CVM e
  │  • Autenticação (e-mail/senha e Google) com JWT        │
  │  • Chat RAG com o Rev + Selic em tempo real (BCB)      │
  │  • Conteúdo de onboarding e reindexação da base        │
- └──────┬──────────────────────────────┬──────────────────┘
-        │                              │
- ┌──────▼──────┐                ┌──────▼──────┐
- │  ChromaDB   │                │  Supabase   │
- │ (Vetorial)  │                │ (Usuários)  │
- └─────────────┘                └─────────────┘
+ └───────────────────────────┬────────────────────────────┘
+                             │
+ ┌───────────────────────────▼────────────────────────────┐
+ │                  Supabase (PostgreSQL)                 │
+ │  • users: contas e login                               │
+ │  • document_chunks: corpus vetorial (pgvector)         │
+ └────────────────────────────────────────────────────────┘
 ```
 
 ### Endpoints da API (prefixo `/api`)
@@ -161,7 +162,7 @@ A base de conhecimento é formada por **PDFs oficiais** (BCB, CMN, STN/B3, CVM e
 | `GET` | `/chat/suggestions` | Público | Sugestões iniciais de perguntas do módulo |
 | `GET` | `/steps` | Público | Passos do onboarding |
 | `GET` | `/modules/{id}` | Público | Detalhes de um módulo |
-| `POST` | `/ingest` | Header `X-Admin-Token` | Reindexa a base vetorial (desativado se `ADMIN_TOKEN` estiver vazio) |
+| `POST` | `/ingest` | Header `X-Admin-Token` | Reindexa a base vetorial (desativado se `ADMIN_TOKEN` estiver vazio; responde 503 onde as dependências de ingestão não estão instaladas, como na Vercel) |
 
 A documentação interativa fica disponível em `http://localhost:8000/docs` com o servidor rodando.
 
@@ -179,8 +180,9 @@ A documentação interativa fica disponível em `http://localhost:8000/docs` com
 ```powershell
 python -m venv venv
 .\venv\Scripts\Activate.ps1
-pip install -r requirements.txt
+pip install -r requirements-ingest.txt
 ```
+As dependências estão divididas em três arquivos: `requirements.txt` (somente o necessário para a API, usado no deploy), `requirements-ingest.txt` (API + extração de PDFs e chunking) e `requirements-dev.txt` (tudo + pytest).
 
 ### 2. Configurar o `.env`:
 Copie o `.env.example` para `.env` e preencha os valores:
@@ -188,7 +190,7 @@ Copie o `.env.example` para `.env` e preencha os valores:
 | Variável | Obrigatória | Descrição |
 | :--- | :--- | :--- |
 | `OPENAI_API_KEY` | Sim | Chave da OpenAI (chat e embeddings) |
-| `SUPABASE_URL` / `SUPABASE_SERVICE_ROLE_KEY` | Sim | Banco de usuários (use a chave *service_role*, nunca exposta ao frontend) |
+| `SUPABASE_URL` / `SUPABASE_SERVICE_ROLE_KEY` | Sim | Banco de usuários e vetorial (use a chave *service_role*, nunca exposta ao frontend) |
 | `JWT_SECRET` | Sim | Segredo dos tokens com **no mínimo 32 caracteres**; a API não inicia sem ele. Gere com `python -c "import secrets; print(secrets.token_urlsafe(48))"` |
 | `GOOGLE_CLIENT_ID` | Para login Google | Mesmo valor de `VITE_GOOGLE_CLIENT_ID` do frontend |
 | `ADMIN_TOKEN` | Não | Habilita o `POST /api/ingest`; vazio deixa a rota desativada |
@@ -198,7 +200,7 @@ Copie o `.env.example` para `.env` e preencha os valores:
 | `CHUNK_SIZE` / `CHUNK_OVERLAP` | Não | Tamanho e sobreposição dos chunks em caracteres (padrão 800 e 150) |
 | `RETRIEVAL_K` / `RETRIEVAL_MAX_DISTANCE` | Não | Trechos recuperados por pergunta e distância de cosseno máxima aceita (padrão 3 e 0.5) |
 
-Para criar a tabela de usuários, execute `scripts/supabase_schema.sql` no SQL Editor do Supabase.
+No SQL Editor do Supabase, execute `scripts/supabase_schema.sql` (tabela de usuários) e `scripts/supabase_vector_schema.sql` (extensão pgvector, tabela `document_chunks` e função de busca).
 
 ### 3. Ingestão dos Documentos na Base Vetorial:
 Após posicionar os PDFs em `data/raw/modulo_N_*/` e registrá-los em `data/sources_manifest.yaml`:
@@ -206,7 +208,7 @@ Após posicionar os PDFs em `data/raw/modulo_N_*/` e registrá-los em `data/sour
 python main.py --ingest            # extrai, segmenta e indexa (gera embeddings)
 python main.py --ingest --dry-run  # apenas extrai e segmenta, gerando o relatório sem custo de API
 ```
-A base em `data/vector_db/` é gerada localmente e pode ser apagada e recriada a qualquer momento com esse comando.
+A ingestão roda localmente e grava os vetores no Supabase; pode ser repetida a qualquer momento (atualiza os chunks existentes e remove os que saíram do corpus).
 
 ### 4. Subir a API:
 ```powershell
@@ -225,3 +227,12 @@ pip install -r requirements-dev.txt
 python -m pytest
 ```
 Os testes cobrem segurança (bcrypt, JWT, rate limit), rotas protegidas, validação do login com Google e o pipeline do assistente, com Supabase, Google e OpenAI simulados (sem chamadas externas).
+
+### 7. Deploy na Vercel:
+O `app.py` da raiz expõe o `app` do FastAPI, que a Vercel detecta automaticamente; o `.python-version` fixa o Python 3.14 e o `vercel.json` limita a função a 60 s e exclui PDFs, testes e scripts do pacote. Em produção a API apenas consulta o Supabase: a ingestão continua sendo feita localmente.
+
+1. Importe o repositório na Vercel (framework detectado: FastAPI).
+2. Em **Project Settings → Environment Variables**, cadastre `OPENAI_API_KEY`, `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `JWT_SECRET` (o mesmo do `.env`, para manter as sessões válidas), `GOOGLE_CLIENT_ID` e `CORS_ORIGINS` com a URL do frontend (ex: `https://seu-front.vercel.app`). Deixe `ADMIN_TOKEN` vazio.
+3. Após o deploy, teste `https://<seu-backend>.vercel.app/api/health` e use `https://<seu-backend>.vercel.app/api` como `VITE_API_URL` no frontend.
+
+> O rate limit é mantido em memória e, em serverless, vale por instância da função; serve como proteção básica, não como limite global.

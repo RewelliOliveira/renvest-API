@@ -16,7 +16,7 @@ MIN_REPEAT_PAGES = 3
 # Abaixo disso a página é tratada como sem texto (capas, imagens)
 MIN_PAGE_CHARS = 30
 
-HYPHEN_BREAK = re.compile(r"(\w)-\n(?=[a-zà-ÿ])")
+HYPHEN_BREAK = re.compile(r"(\w)-[ \t]*\n(?=[a-zà-ÿ])")
 WORD_HYPHEN_END = re.compile(r"\w-$")
 SPACES = re.compile(r"[ \t\u00a0]+")
 DIGITS = re.compile(r"\d+")
