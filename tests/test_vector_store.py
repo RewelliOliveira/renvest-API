@@ -12,19 +12,18 @@ class FakeEmbeddings:
 
 
 class FakeChunkRepository:
-    def __init__(self, existing_ids=(), matches=()):
+    def __init__(self, existing=None, matches=()):
         self.upserts = []
         self.deleted = set()
-        self.existing_ids = set(existing_ids)
+        self.existing = dict(existing or {})
         self.matches = list(matches)
         self.match_args = None
 
     def upsert(self, rows):
         self.upserts.append(rows)
-        self.existing_ids.update(row["id"] for row in rows)
 
-    def list_ids(self):
-        return set(self.existing_ids)
+    def list_hashes(self):
+        return dict(self.existing)
 
     def delete_ids(self, ids):
         self.deleted.update(ids)
@@ -71,7 +70,7 @@ def test_query_relevant_documents_returns_empty_on_failure(monkeypatch):
 
 
 def test_vectorize_chunks_upserts_in_batches_and_removes_stale_chunks(monkeypatch):
-    repo = FakeChunkRepository(existing_ids={"velho:00000", "a:00000"})
+    repo = FakeChunkRepository(existing={"velho:00000": "x", "a:00000": None})
     monkeypatch.setattr(ingest, "ChunkRepository", repo)
     monkeypatch.setattr(ingest, "get_embeddings", lambda: FakeEmbeddings())
     monkeypatch.setattr(ingest, "INSERT_BATCH_SIZE", 2)
@@ -82,4 +81,31 @@ def test_vectorize_chunks_upserts_in_batches_and_removes_stale_chunks(monkeypatc
     row = repo.upserts[1][0]
     assert row["id"] == "b:00000" and row["doc_id"] == "b" and row["module"] == "modulo_2"
     assert row["embedding"] == [0.0]
+    assert row["metadata"]["chunk_hash"] == ingest.chunk_hash(make_chunk("b:00000", "modulo_2"))
     assert repo.deleted == {"velho:00000"}
+
+
+def test_vectorize_chunks_skips_unchanged_chunks(monkeypatch):
+    unchanged = make_chunk("a:00000")
+    repo = FakeChunkRepository(existing={"a:00000": ingest.chunk_hash(unchanged), "a:00001": "hash-antigo"})
+    monkeypatch.setattr(ingest, "ChunkRepository", repo)
+    monkeypatch.setattr(ingest, "get_embeddings", lambda: FakeEmbeddings())
+
+    ingest.vectorize_chunks([unchanged, make_chunk("a:00001")])
+
+    assert [row["id"] for batch in repo.upserts for row in batch] == ["a:00001"]
+    assert repo.deleted == set()
+
+
+def test_with_retries_recovers_from_transient_failures(monkeypatch):
+    monkeypatch.setattr(ingest.time, "sleep", lambda seconds: None)
+    calls = []
+
+    def flaky():
+        calls.append(1)
+        if len(calls) < 3:
+            raise ConnectionError("conexão encerrada pelo host remoto")
+        return "ok"
+
+    assert ingest.with_retries(flaky, "teste") == "ok"
+    assert len(calls) == 3
