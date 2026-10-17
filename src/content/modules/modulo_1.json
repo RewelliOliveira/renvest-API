@@ -1,0 +1,804 @@
+{
+  "id": "modulo_1",
+  "order": 1,
+  "title": "Fundamentos",
+  "subtitle": "Orçamento, renda fixa e proteção do seu dinheiro",
+  "description": "Organize suas finanças, entenda a renda fixa e saiba como seu dinheiro é protegido.",
+  "color": "#f05656",
+  "lessons": [
+    {
+      "id": "modulo_1_licao_1",
+      "order": 1,
+      "title": "Orçamento e controle de gastos",
+      "subtitle": "Organize as finanças antes de investir",
+      "description": "Como mapear receitas e despesas, sair das dívidas e separar uma parte da renda para o futuro.",
+      "slides": [
+        {
+          "title": "O que é orçamento?",
+          "text": "O orçamento é uma ferramenta que ajuda a planejar suas finanças, permitindo que você saiba onde quer chegar e como realizar seus sonhos. É importante anotar todas as receitas e despesas para ter um controle efetivo do seu dinheiro.",
+          "source": {
+            "document": "Caderno de Educação Financeira – Gestão de Finanças Pessoais",
+            "section": "p. 22-23",
+            "institution": "Banco Central do Brasil (BCB)",
+            "url": "https://www.bcb.gov.br/content/cidadaniafinanceira/documentos_cidadania/Cuidando_do_seu_dinheiro_Gestao_de_Financas_Pessoais/caderno_cidadania_financeira.pdf"
+          }
+        },
+        {
+          "title": "Como elaborar um orçamento?",
+          "text": "Para fazer um orçamento, siga quatro etapas: planejamento, registro, agrupamento e avaliação. Isso ajuda a organizar suas finanças e a garantir que suas despesas não superem suas receitas.",
+          "source": {
+            "document": "Caderno de Educação Financeira – Gestão de Finanças Pessoais",
+            "section": "p. 24-25",
+            "institution": "Banco Central do Brasil (BCB)",
+            "url": "https://www.bcb.gov.br/content/cidadaniafinanceira/documentos_cidadania/Cuidando_do_seu_dinheiro_Gestao_de_Financas_Pessoais/caderno_cidadania_financeira.pdf"
+          }
+        },
+        {
+          "title": "Saindo das dívidas",
+          "text": "Para sair das dívidas, é essencial renegociar com os credores e evitar novas dívidas. Reduzir gastos e entender seus hábitos de consumo também são passos importantes para reorganizar suas finanças.",
+          "source": {
+            "document": "Caderno de Educação Financeira – Gestão de Finanças Pessoais",
+            "section": "p. 44",
+            "institution": "Banco Central do Brasil (BCB)",
+            "url": "https://www.bcb.gov.br/content/cidadaniafinanceira/documentos_cidadania/Cuidando_do_seu_dinheiro_Gestao_de_Financas_Pessoais/caderno_cidadania_financeira.pdf"
+          }
+        }
+      ],
+      "chat_suggestions": [
+        "Como faço meu orçamento mensal?",
+        "O que são despesas necessárias?",
+        "Como sair das dívidas rapidamente?",
+        "Qual a importância da poupança?"
+      ],
+      "quiz": [
+        {
+          "id": "modulo_1_licao_1_q1",
+          "question": "Qual é o primeiro passo para elaborar um orçamento?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Planejar metas financeiras"
+            },
+            {
+              "id": "b",
+              "text": "Registrar todas as receitas"
+            },
+            {
+              "id": "c",
+              "text": "Avaliar gastos mensais"
+            },
+            {
+              "id": "d",
+              "text": "Agrupar despesas por tipo"
+            }
+          ],
+          "correct_option": "b",
+          "explanation": "O primeiro passo para elaborar um orçamento é registrar tudo que você ganha e gasta, para ter uma visão clara das suas finanças.",
+          "source": {
+            "document": "Caderno de Educação Financeira – Gestão de Finanças Pessoais",
+            "section": "p. 24-25",
+            "institution": "Banco Central do Brasil (BCB)",
+            "url": "https://www.bcb.gov.br/content/cidadaniafinanceira/documentos_cidadania/Cuidando_do_seu_dinheiro_Gestao_de_Financas_Pessoais/caderno_cidadania_financeira.pdf"
+          }
+        },
+        {
+          "id": "modulo_1_licao_1_q2",
+          "question": "O que deve ser evitado para sair das dívidas?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Reduzir gastos"
+            },
+            {
+              "id": "b",
+              "text": "Negociar com credores"
+            },
+            {
+              "id": "c",
+              "text": "Fazer novas dívidas"
+            },
+            {
+              "id": "d",
+              "text": "Aumentar a renda"
+            }
+          ],
+          "correct_option": "c",
+          "explanation": "Fazer novas dívidas durante o processo de reorganização financeira pode dificultar a saída do endividamento.",
+          "source": {
+            "document": "Caderno de Educação Financeira – Gestão de Finanças Pessoais",
+            "section": "p. 44",
+            "institution": "Banco Central do Brasil (BCB)",
+            "url": "https://www.bcb.gov.br/content/cidadaniafinanceira/documentos_cidadania/Cuidando_do_seu_dinheiro_Gestao_de_Financas_Pessoais/caderno_cidadania_financeira.pdf"
+          }
+        },
+        {
+          "id": "modulo_1_licao_1_q3",
+          "question": "Qual é uma das etapas do método de elaboração do orçamento?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Corte de gastos"
+            },
+            {
+              "id": "b",
+              "text": "Venda de ativos"
+            },
+            {
+              "id": "c",
+              "text": "Aumento de renda"
+            },
+            {
+              "id": "d",
+              "text": "Registro das receitas"
+            }
+          ],
+          "correct_option": "d",
+          "explanation": "Uma das etapas do método de elaboração do orçamento é o registro, onde você anota todas as receitas e despesas.",
+          "source": {
+            "document": "Caderno de Educação Financeira – Gestão de Finanças Pessoais",
+            "section": "p. 82",
+            "institution": "Banco Central do Brasil (BCB)",
+            "url": "https://www.bcb.gov.br/content/cidadaniafinanceira/documentos_cidadania/Cuidando_do_seu_dinheiro_Gestao_de_Financas_Pessoais/caderno_cidadania_financeira.pdf"
+          }
+        }
+      ]
+    },
+    {
+      "id": "modulo_1_licao_2",
+      "order": 2,
+      "title": "Renda fixa e reserva de emergência",
+      "subtitle": "Selic, CDI, poupança e CDB",
+      "description": "O que é renda fixa, como a Selic influencia os rendimentos e onde guardar a reserva de emergência.",
+      "slides": [
+        {
+          "title": "O que é Renda Fixa?",
+          "text": "Renda fixa é um tipo de investimento onde você empresta seu dinheiro e recebe de volta com juros. Existem títulos públicos e privados, como CDBs e debêntures, que garantem um retorno ao investidor. É uma forma segura de investir.",
+          "source": {
+            "document": "TOP Planejamento Financeiro Pessoal (2ª ed.)",
+            "section": "p. 215-216",
+            "institution": "Comissão de Valores Mobiliários (CVM) / Planejar",
+            "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/livro-top-planejamento-financeiro-pessoal"
+          }
+        },
+        {
+          "title": "Como a Selic Influencia os Rendimentos?",
+          "text": "A taxa Selic é a taxa básica de juros da economia e influencia os rendimentos de investimentos pós-fixados. Quando a Selic sobe, os rendimentos desses investimentos tendem a aumentar, e vice-versa.",
+          "source": {
+            "document": "TOP Planejamento Financeiro Pessoal (2ª ed.)",
+            "section": "p. 85-86",
+            "institution": "Comissão de Valores Mobiliários (CVM) / Planejar",
+            "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/livro-top-planejamento-financeiro-pessoal"
+          }
+        },
+        {
+          "title": "Onde Guardar a Reserva de Emergência?",
+          "text": "Para a reserva de emergência, escolha investimentos com alta liquidez e baixo risco, como a poupança ou CDBs. Isso garante que você tenha acesso rápido ao seu dinheiro em caso de imprevistos.",
+          "source": {
+            "document": "TOP Planejamento Financeiro Pessoal (2ª ed.)",
+            "section": "p. 49",
+            "institution": "Comissão de Valores Mobiliários (CVM) / Planejar",
+            "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/livro-top-planejamento-financeiro-pessoal"
+          }
+        }
+      ],
+      "chat_suggestions": [
+        "O que é renda fixa?",
+        "Como funciona a Selic?",
+        "Qual a melhor reserva de emergência?",
+        "Quais são os riscos de investir?"
+      ],
+      "quiz": [
+        {
+          "id": "modulo_1_licao_2_q1",
+          "question": "Qual é uma característica dos títulos de renda fixa?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Sem risco de perda"
+            },
+            {
+              "id": "b",
+              "text": "Fluxos de pagamento variados"
+            },
+            {
+              "id": "c",
+              "text": "Rendimentos sempre altos"
+            },
+            {
+              "id": "d",
+              "text": "Liquidez garantida sempre"
+            }
+          ],
+          "correct_option": "b",
+          "explanation": "Os títulos de renda fixa podem ter diferentes fluxos de pagamento, dependendo do tipo de título e da forma como são estruturados.",
+          "source": {
+            "document": "TOP Planejamento Financeiro Pessoal (2ª ed.)",
+            "section": "p. 86",
+            "institution": "Comissão de Valores Mobiliários (CVM) / Planejar",
+            "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/livro-top-planejamento-financeiro-pessoal"
+          }
+        },
+        {
+          "id": "modulo_1_licao_2_q2",
+          "question": "Qual é um atributo importante para a reserva de emergência?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Investimento em ações"
+            },
+            {
+              "id": "b",
+              "text": "Alta rentabilidade"
+            },
+            {
+              "id": "c",
+              "text": "Baixo risco"
+            },
+            {
+              "id": "d",
+              "text": "Longo prazo"
+            }
+          ],
+          "correct_option": "c",
+          "explanation": "Para a reserva de emergência, é essencial escolher investimentos de baixo risco, garantindo segurança e acesso rápido ao capital.",
+          "source": {
+            "document": "TOP Planejamento Financeiro Pessoal (2ª ed.)",
+            "section": "p. 49",
+            "institution": "Comissão de Valores Mobiliários (CVM) / Planejar",
+            "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/livro-top-planejamento-financeiro-pessoal"
+          }
+        },
+        {
+          "id": "modulo_1_licao_2_q3",
+          "question": "O que a taxa Selic influencia?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Os rendimentos de investimentos"
+            },
+            {
+              "id": "b",
+              "text": "Os preços dos imóveis"
+            },
+            {
+              "id": "c",
+              "text": "O valor do dólar"
+            },
+            {
+              "id": "d",
+              "text": "Apenas a inflação"
+            }
+          ],
+          "correct_option": "a",
+          "explanation": "A taxa Selic influencia os rendimentos de investimentos pós-fixados, como CDBs e títulos atrelados a ela.",
+          "source": {
+            "document": "TOP Planejamento Financeiro Pessoal (2ª ed.)",
+            "section": "p. 85-86",
+            "institution": "Comissão de Valores Mobiliários (CVM) / Planejar",
+            "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/livro-top-planejamento-financeiro-pessoal"
+          }
+        }
+      ]
+    },
+    {
+      "id": "modulo_1_licao_3",
+      "order": 3,
+      "title": "Tesouro Direto",
+      "subtitle": "Emprestando dinheiro para o governo",
+      "description": "Como funciona a compra de títulos públicos por pessoas físicas e os tipos de título disponíveis.",
+      "slides": [
+        {
+          "title": "O que é o Tesouro Direto?",
+          "text": "O Tesouro Direto é um sistema online que permite a compra e venda de títulos públicos. Esses títulos são emitidos pelo governo e ajudam a financiar suas atividades. Você pode acessar o Tesouro Direto pela internet, facilitando o investimento.",
+          "source": {
+            "document": "Regulamento do Tesouro Direto (versão de 11/10/2024)",
+            "section": "p. 7",
+            "institution": "Secretaria do Tesouro Nacional (STN) / B3",
+            "url": "https://www.tesourodireto.com.br/data/files/22/C0/3B/84/205439100153F339894D49A8/REGULAMENTO_DO_TESOURO_DIRETO___11.10.2024.pdf"
+          }
+        },
+        {
+          "title": "Como comprar títulos?",
+          "text": "Para comprar títulos, você pode fazer isso diretamente no site do Tesouro Direto ou através de um Agente de Custódia. É importante escolher a forma que melhor se adapta a você e seguir as instruções para realizar a compra.",
+          "source": {
+            "document": "Regulamento do Tesouro Direto (versão de 11/10/2024)",
+            "section": "p. 13-14",
+            "institution": "Secretaria do Tesouro Nacional (STN) / B3",
+            "url": "https://www.tesourodireto.com.br/data/files/22/C0/3B/84/205439100153F339894D49A8/REGULAMENTO_DO_TESOURO_DIRETO___11.10.2024.pdf"
+          }
+        },
+        {
+          "title": "Tipos de títulos disponíveis",
+          "text": "Existem diferentes tipos de títulos no Tesouro Direto, como o Tesouro Selic, que é pós-fixado e acompanha a taxa Selic, e os títulos atrelados à inflação, que garantem proteção contra a perda do poder de compra.",
+          "source": {
+            "document": "TOP Planejamento Financeiro Pessoal (2ª ed.)",
+            "section": "p. 89",
+            "institution": "Comissão de Valores Mobiliários (CVM) / Planejar",
+            "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/livro-top-planejamento-financeiro-pessoal"
+          }
+        }
+      ],
+      "chat_suggestions": [
+        "Como funcionam os títulos públicos?",
+        "Qual a diferença entre os títulos?",
+        "Posso vender meus títulos antes do vencimento?",
+        "Como escolher um Agente de Custódia?"
+      ],
+      "quiz": [
+        {
+          "id": "modulo_1_licao_3_q1",
+          "question": "O que é o Tesouro Direto?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Um sistema de compra de ações"
+            },
+            {
+              "id": "b",
+              "text": "Um banco digital"
+            },
+            {
+              "id": "c",
+              "text": "Um sistema de compra de títulos públicos"
+            },
+            {
+              "id": "d",
+              "text": "Um site de investimentos em criptomoedas"
+            }
+          ],
+          "correct_option": "c",
+          "explanation": "O Tesouro Direto é um sistema que permite a compra de títulos públicos emitidos pelo governo, acessível pela internet.",
+          "source": {
+            "document": "Regulamento do Tesouro Direto (versão de 11/10/2024)",
+            "section": "p. 7",
+            "institution": "Secretaria do Tesouro Nacional (STN) / B3",
+            "url": "https://www.tesourodireto.com.br/data/files/22/C0/3B/84/205439100153F339894D49A8/REGULAMENTO_DO_TESOURO_DIRETO___11.10.2024.pdf"
+          }
+        },
+        {
+          "id": "modulo_1_licao_3_q2",
+          "question": "Como posso comprar títulos no Tesouro Direto?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Diretamente no site ou por Agente de Custódia"
+            },
+            {
+              "id": "b",
+              "text": "Somente pessoalmente"
+            },
+            {
+              "id": "c",
+              "text": "Apenas por meio de bancos"
+            },
+            {
+              "id": "d",
+              "text": "Apenas por telefone"
+            }
+          ],
+          "correct_option": "a",
+          "explanation": "Você pode comprar títulos diretamente no site do Tesouro Direto ou através de um Agente de Custódia, conforme as regras estabelecidas.",
+          "source": {
+            "document": "Regulamento do Tesouro Direto (versão de 11/10/2024)",
+            "section": "p. 13-14",
+            "institution": "Secretaria do Tesouro Nacional (STN) / B3",
+            "url": "https://www.tesourodireto.com.br/data/files/22/C0/3B/84/205439100153F339894D49A8/REGULAMENTO_DO_TESOURO_DIRETO___11.10.2024.pdf"
+          }
+        },
+        {
+          "id": "modulo_1_licao_3_q3",
+          "question": "Qual título é atrelado à inflação?",
+          "options": [
+            {
+              "id": "a",
+              "text": "CDB"
+            },
+            {
+              "id": "b",
+              "text": "Tesouro Selic"
+            },
+            {
+              "id": "c",
+              "text": "Debênture"
+            },
+            {
+              "id": "d",
+              "text": "Nota do Tesouro Nacional série F"
+            }
+          ],
+          "correct_option": "d",
+          "explanation": "A Nota do Tesouro Nacional série F é um título que garante rentabilidade atrelada à inflação, protegendo o investidor contra a perda do poder de compra.",
+          "source": {
+            "document": "TOP Planejamento Financeiro Pessoal (2ª ed.)",
+            "section": "p. 89",
+            "institution": "Comissão de Valores Mobiliários (CVM) / Planejar",
+            "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/livro-top-planejamento-financeiro-pessoal"
+          }
+        }
+      ]
+    },
+    {
+      "id": "modulo_1_licao_4",
+      "order": 4,
+      "title": "FGC: a proteção do seu dinheiro",
+      "subtitle": "Limites e produtos cobertos",
+      "description": "O que é o Fundo Garantidor de Créditos, quanto ele garante e quais investimentos ficam de fora.",
+      "slides": [
+        {
+          "title": "O que é o FGC?",
+          "text": "O Fundo Garantidor de Créditos (FGC) é uma entidade que protege os depósitos e investimentos feitos em instituições financeiras associadas. Se uma dessas instituições falir, o FGC garante que você não perca seu dinheiro até um certo limite.",
+          "source": {
+            "document": "TOP Planejamento Financeiro Pessoal (2ª ed.)",
+            "section": "p. 103-104",
+            "institution": "Comissão de Valores Mobiliários (CVM) / Planejar",
+            "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/livro-top-planejamento-financeiro-pessoal"
+          }
+        },
+        {
+          "title": "Limites de Garantia do FGC",
+          "text": "O FGC garante até R$ 250 mil por CPF ou CNPJ em depósitos comuns. Para depósitos especiais, como o DPGE, a garantia pode chegar até R$ 40 milhões, mas com regras específicas.",
+          "source": {
+            "document": "TOP Planejamento Financeiro Pessoal (2ª ed.)",
+            "section": "p. 106",
+            "institution": "Comissão de Valores Mobiliários (CVM) / Planejar",
+            "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/livro-top-planejamento-financeiro-pessoal"
+          }
+        },
+        {
+          "title": "O que não é coberto pelo FGC?",
+          "text": "Nem todos os investimentos estão protegidos pelo FGC. Por exemplo, ações e títulos de renda variável não têm essa garantia, apenas depósitos e alguns produtos financeiros específicos.",
+          "source": {
+            "document": "Resolução CMN nº 4.222/2013 – Estatuto e Regulamento do FGC (texto consolidado)",
+            "section": "p. 31",
+            "institution": "Conselho Monetário Nacional (CMN) / Banco Central do Brasil",
+            "url": "https://normativos.bcb.gov.br/Lists/Normativos/Attachments/48942/Res_4222_v18_L.pdf"
+          }
+        }
+      ],
+      "chat_suggestions": [
+        "Como funciona a garantia do FGC?",
+        "Quais investimentos não têm proteção?",
+        "Qual o limite de cobertura do FGC?",
+        "O que fazer se meu banco falir?"
+      ],
+      "quiz": [
+        {
+          "id": "modulo_1_licao_4_q1",
+          "question": "Qual é o limite de garantia do FGC para depósitos comuns?",
+          "options": [
+            {
+              "id": "a",
+              "text": "R$ 1 milhão"
+            },
+            {
+              "id": "b",
+              "text": "R$ 40 milhões"
+            },
+            {
+              "id": "c",
+              "text": "R$ 500 mil"
+            },
+            {
+              "id": "d",
+              "text": "R$ 250 mil"
+            }
+          ],
+          "correct_option": "d",
+          "explanation": "O limite de garantia do FGC para depósitos comuns é de R$ 250 mil por CPF ou CNPJ.",
+          "source": {
+            "document": "TOP Planejamento Financeiro Pessoal (2ª ed.)",
+            "section": "p. 106",
+            "institution": "Comissão de Valores Mobiliários (CVM) / Planejar",
+            "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/livro-top-planejamento-financeiro-pessoal"
+          }
+        },
+        {
+          "id": "modulo_1_licao_4_q2",
+          "question": "Qual é a garantia especial do FGC para o DPGE?",
+          "options": [
+            {
+              "id": "a",
+              "text": "R$ 250 mil"
+            },
+            {
+              "id": "b",
+              "text": "R$ 20 milhões"
+            },
+            {
+              "id": "c",
+              "text": "R$ 1 milhão"
+            },
+            {
+              "id": "d",
+              "text": "R$ 40 milhões"
+            }
+          ],
+          "correct_option": "d",
+          "explanation": "O FGC garante até R$ 40 milhões para o Depósito a Prazo com Garantia Especial (DPGE).",
+          "source": {
+            "document": "TOP Planejamento Financeiro Pessoal (2ª ed.)",
+            "section": "p. 106",
+            "institution": "Comissão de Valores Mobiliários (CVM) / Planejar",
+            "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/livro-top-planejamento-financeiro-pessoal"
+          }
+        },
+        {
+          "id": "modulo_1_licao_4_q3",
+          "question": "Quais investimentos não são cobertos pelo FGC?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Ações de empresas"
+            },
+            {
+              "id": "b",
+              "text": "CDBs"
+            },
+            {
+              "id": "c",
+              "text": "Depósitos de poupança"
+            },
+            {
+              "id": "d",
+              "text": "Títulos públicos"
+            }
+          ],
+          "correct_option": "a",
+          "explanation": "Ações de empresas não têm a proteção do FGC, que cobre apenas depósitos e alguns produtos financeiros específicos.",
+          "source": {
+            "document": "Resolução CMN nº 4.222/2013 – Estatuto e Regulamento do FGC (texto consolidado)",
+            "section": "p. 31",
+            "institution": "Conselho Monetário Nacional (CMN) / Banco Central do Brasil",
+            "url": "https://normativos.bcb.gov.br/Lists/Normativos/Attachments/48942/Res_4222_v18_L.pdf"
+          }
+        }
+      ]
+    }
+  ],
+  "exam": {
+    "question_count": 5,
+    "pass_score": 0.7,
+    "questions": [
+      {
+        "id": "modulo_1_teste_q1",
+        "question": "Qual é o primeiro passo para elaborar um orçamento pessoal?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Registrar tudo que você ganha e gasta"
+          },
+          {
+            "id": "b",
+            "text": "Investir em renda fixa"
+          },
+          {
+            "id": "c",
+            "text": "Definir metas de longo prazo"
+          },
+          {
+            "id": "d",
+            "text": "Criar uma conta bancária separada"
+          }
+        ],
+        "correct_option": "a",
+        "explanation": "O primeiro passo para elaborar um orçamento é registrar tudo que você ganha e gasta, o que ajuda a entender suas finanças.",
+        "source": {
+          "document": "Caderno de Educação Financeira – Gestão de Finanças Pessoais",
+          "section": "p. 24-25",
+          "institution": "Banco Central do Brasil (BCB)",
+          "url": "https://www.bcb.gov.br/content/cidadaniafinanceira/documentos_cidadania/Cuidando_do_seu_dinheiro_Gestao_de_Financas_Pessoais/caderno_cidadania_financeira.pdf"
+        }
+      },
+      {
+        "id": "modulo_1_teste_q2",
+        "question": "Se você está endividado, qual é uma boa estratégia para melhorar sua situação financeira?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Parar de pagar as dívidas"
+          },
+          {
+            "id": "b",
+            "text": "Aumentar seus gastos mensais"
+          },
+          {
+            "id": "c",
+            "text": "Negociar dívidas para melhores condições"
+          },
+          {
+            "id": "d",
+            "text": "Investir em ações imediatamente"
+          }
+        ],
+        "correct_option": "c",
+        "explanation": "Negociar dívidas para obter condições mais vantajosas é uma estratégia importante para sair do endividamento.",
+        "source": {
+          "document": "Caderno de Educação Financeira – Gestão de Finanças Pessoais",
+          "section": "p. 44",
+          "institution": "Banco Central do Brasil (BCB)",
+          "url": "https://www.bcb.gov.br/content/cidadaniafinanceira/documentos_cidadania/Cuidando_do_seu_dinheiro_Gestao_de_Financas_Pessoais/caderno_cidadania_financeira.pdf"
+        }
+      },
+      {
+        "id": "modulo_1_teste_q3",
+        "question": "Qual é uma característica dos títulos de renda fixa?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Podem ser comprados apenas em bancos"
+          },
+          {
+            "id": "b",
+            "text": "Oferecem retorno fixo no momento da compra"
+          },
+          {
+            "id": "c",
+            "text": "São sempre isentos de impostos"
+          },
+          {
+            "id": "d",
+            "text": "Não têm risco de perda de capital"
+          }
+        ],
+        "correct_option": "b",
+        "explanation": "Os títulos de renda fixa oferecem um retorno fixo que é conhecido no momento da compra, o que é uma de suas principais características.",
+        "source": {
+          "document": "TOP Planejamento Financeiro Pessoal (2ª ed.)",
+          "section": "p. 85-86",
+          "institution": "Comissão de Valores Mobiliários (CVM) / Planejar",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/livro-top-planejamento-financeiro-pessoal"
+        }
+      },
+      {
+        "id": "modulo_1_teste_q4",
+        "question": "O que é o Tesouro Direto?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Um tipo de conta bancária"
+          },
+          {
+            "id": "b",
+            "text": "Um programa de financiamento estudantil"
+          },
+          {
+            "id": "c",
+            "text": "Um aplicativo de controle financeiro"
+          },
+          {
+            "id": "d",
+            "text": "Um ambiente para compra e venda de títulos públicos"
+          }
+        ],
+        "correct_option": "d",
+        "explanation": "O Tesouro Direto é um ambiente integrado para a compra e venda de títulos públicos, acessível pela internet.",
+        "source": {
+          "document": "Regulamento do Tesouro Direto (versão de 11/10/2024)",
+          "section": "p. 7",
+          "institution": "Secretaria do Tesouro Nacional (STN) / B3",
+          "url": "https://www.tesourodireto.com.br/data/files/22/C0/3B/84/205439100153F339894D49A8/REGULAMENTO_DO_TESOURO_DIRETO___11.10.2024.pdf"
+        }
+      },
+      {
+        "id": "modulo_1_teste_q5",
+        "question": "Qual é o limite de garantia do Fundo Garantidor de Créditos (FGC) para cada CPF a cada quatro anos?",
+        "options": [
+          {
+            "id": "a",
+            "text": "R$ 500 mil"
+          },
+          {
+            "id": "b",
+            "text": "R$ 1 milhão"
+          },
+          {
+            "id": "c",
+            "text": "R$ 250 mil"
+          },
+          {
+            "id": "d",
+            "text": "R$ 20 milhões"
+          }
+        ],
+        "correct_option": "b",
+        "explanation": "O limite de garantia do FGC para cada CPF é de R$ 1 milhão a cada quatro anos.",
+        "source": {
+          "document": "TOP Planejamento Financeiro Pessoal (2ª ed.)",
+          "section": "p. 106",
+          "institution": "Comissão de Valores Mobiliários (CVM) / Planejar",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/livro-top-planejamento-financeiro-pessoal"
+        }
+      },
+      {
+        "id": "modulo_1_teste_q6",
+        "question": "Qual é a principal função do Fundo Garantidor de Créditos (FGC)?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Garantir depósitos contra falências de instituições financeiras"
+          },
+          {
+            "id": "b",
+            "text": "Oferecer empréstimos a juros baixos"
+          },
+          {
+            "id": "c",
+            "text": "Controlar a inflação no país"
+          },
+          {
+            "id": "d",
+            "text": "Investir em ações de empresas"
+          }
+        ],
+        "correct_option": "a",
+        "explanation": "A principal função do FGC é garantir depósitos contra falências de instituições financeiras associadas.",
+        "source": {
+          "document": "TOP Planejamento Financeiro Pessoal (2ª ed.)",
+          "section": "p. 103-104",
+          "institution": "Comissão de Valores Mobiliários (CVM) / Planejar",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/livro-top-planejamento-financeiro-pessoal"
+        }
+      },
+      {
+        "id": "modulo_1_teste_q7",
+        "question": "O que deve ser feito para aumentar a capacidade de poupança?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Pagar apenas o mínimo do cartão de crédito"
+          },
+          {
+            "id": "b",
+            "text": "Investir em imóveis"
+          },
+          {
+            "id": "c",
+            "text": "Reduzir despesas"
+          },
+          {
+            "id": "d",
+            "text": "Aumentar os gastos mensais"
+          }
+        ],
+        "correct_option": "c",
+        "explanation": "Reduzir despesas é uma das chaves para aumentar a capacidade de poupança e construir um bom patrimônio.",
+        "source": {
+          "document": "TOP Planejamento Financeiro Pessoal (2ª ed.)",
+          "section": "p. 24",
+          "institution": "Comissão de Valores Mobiliários (CVM) / Planejar",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/livro-top-planejamento-financeiro-pessoal"
+        }
+      },
+      {
+        "id": "modulo_1_teste_q8",
+        "question": "Qual é uma das características dos Certificados de Depósito Bancário (CDB)?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Podem ser comprados apenas em agências físicas"
+          },
+          {
+            "id": "b",
+            "text": "Não têm prazo de vencimento"
+          },
+          {
+            "id": "c",
+            "text": "São isentos de imposto de renda"
+          },
+          {
+            "id": "d",
+            "text": "Representam um empréstimo ao banco"
+          }
+        ],
+        "correct_option": "d",
+        "explanation": "Os CDBs são títulos que representam um empréstimo que o investidor faz para uma instituição bancária, com prazo determinado.",
+        "source": {
+          "document": "TOP Planejamento Financeiro Pessoal (2ª ed.)",
+          "section": "p. 94",
+          "institution": "Comissão de Valores Mobiliários (CVM) / Planejar",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/livro-top-planejamento-financeiro-pessoal"
+        }
+      }
+    ]
+  }
+}

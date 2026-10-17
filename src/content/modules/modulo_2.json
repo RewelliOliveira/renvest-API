@@ -1,0 +1,804 @@
+{
+  "id": "modulo_2",
+  "order": 2,
+  "title": "A Bolsa de Valores",
+  "subtitle": "Ações, fundos, ETFs e governança na B3",
+  "description": "Entenda como funciona a bolsa, os principais produtos e como escolher empresas com boa governança.",
+  "color": "#0052d7",
+  "lessons": [
+    {
+      "id": "modulo_2_licao_1",
+      "order": 1,
+      "title": "Bolsa de valores e ações",
+      "subtitle": "Tornando-se sócio de uma empresa",
+      "description": "O que é a B3, o que representa uma ação e quais direitos ela dá ao acionista.",
+      "slides": [
+        {
+          "title": "O que é a B3?",
+          "text": "A B3 é a principal bolsa de valores do Brasil, onde ocorrem negociações de ações e outros ativos financeiros. Ela oferece um ambiente seguro e transparente para que investidores possam comprar e vender esses ativos.",
+          "source": {
+            "document": "TOP Mercado de Valores Mobiliários Brasileiro (5ª ed.)",
+            "section": "p. 262-263",
+            "institution": "Comissão de Valores Mobiliários (CVM)",
+            "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm"
+          }
+        },
+        {
+          "title": "O que são ações?",
+          "text": "Ações são partes de uma empresa que você pode comprar. Ao adquirir ações, você se torna acionista e pode participar dos lucros da empresa, além de ter certos direitos, dependendo do tipo de ação.",
+          "source": {
+            "document": "TOP Mercado de Valores Mobiliários Brasileiro (5ª ed.)",
+            "section": "p. 72",
+            "institution": "Comissão de Valores Mobiliários (CVM)",
+            "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm"
+          }
+        },
+        {
+          "title": "Direitos do acionista",
+          "text": "Os acionistas têm direitos como participar dos lucros da empresa, que são distribuídos na forma de dividendos. Dependendo do tipo de ação, eles podem ter direito a voto nas assembleias da empresa.",
+          "source": {
+            "document": "TOP Mercado de Valores Mobiliários Brasileiro (5ª ed.)",
+            "section": "p. 137-138",
+            "institution": "Comissão de Valores Mobiliários (CVM)",
+            "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm"
+          }
+        }
+      ],
+      "chat_suggestions": [
+        "Como funciona a B3?",
+        "Quais tipos de ações existem?",
+        "O que são dividendos?",
+        "Como comprar ações na B3?"
+      ],
+      "quiz": [
+        {
+          "id": "modulo_2_licao_1_q1",
+          "question": "Qual é a função principal da B3?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Emitir ações para empresas"
+            },
+            {
+              "id": "b",
+              "text": "Oferecer empréstimos a investidores"
+            },
+            {
+              "id": "c",
+              "text": "Registrar contratos de financiamento"
+            },
+            {
+              "id": "d",
+              "text": "Realizar transações de compra e venda"
+            }
+          ],
+          "correct_option": "d",
+          "explanation": "A B3 proporciona um ambiente para a realização de negócios com títulos e valores mobiliários, permitindo a compra e venda de ações e outros ativos.",
+          "source": {
+            "document": "TOP Mercado de Valores Mobiliários Brasileiro (5ª ed.)",
+            "section": "p. 262-263",
+            "institution": "Comissão de Valores Mobiliários (CVM)",
+            "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm"
+          }
+        },
+        {
+          "id": "modulo_2_licao_1_q2",
+          "question": "O que caracteriza uma ação ordinária?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Direito a voto nas assembleias"
+            },
+            {
+              "id": "b",
+              "text": "Não permite participação nos lucros"
+            },
+            {
+              "id": "c",
+              "text": "Dividendos fixos garantidos"
+            },
+            {
+              "id": "d",
+              "text": "Não pode ser negociada na B3"
+            }
+          ],
+          "correct_option": "a",
+          "explanation": "A principal característica da ação ordinária é que ela confere ao acionista o direito de voto nas assembleias da empresa.",
+          "source": {
+            "document": "TOP Mercado de Valores Mobiliários Brasileiro (5ª ed.)",
+            "section": "p. 72",
+            "institution": "Comissão de Valores Mobiliários (CVM)",
+            "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm"
+          }
+        },
+        {
+          "id": "modulo_2_licao_1_q3",
+          "question": "O que são dividendos?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Despesas operacionais da empresa"
+            },
+            {
+              "id": "b",
+              "text": "Lucros distribuídos aos acionistas"
+            },
+            {
+              "id": "c",
+              "text": "Aumentos no valor das ações"
+            },
+            {
+              "id": "d",
+              "text": "Taxas pagas ao governo"
+            }
+          ],
+          "correct_option": "b",
+          "explanation": "Dividendos são a parte dos lucros da empresa que é distribuída aos acionistas, como recompensa por seu investimento.",
+          "source": {
+            "document": "TOP Mercado de Valores Mobiliários Brasileiro (5ª ed.)",
+            "section": "p. 137-138",
+            "institution": "Comissão de Valores Mobiliários (CVM)",
+            "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm"
+          }
+        }
+      ]
+    },
+    {
+      "id": "modulo_2_licao_2",
+      "order": 2,
+      "title": "Fundos de investimento e ETFs",
+      "subtitle": "Investindo em conjunto",
+      "description": "Como funcionam os fundos de investimento e os fundos de índice (ETFs) negociados em bolsa.",
+      "slides": [
+        {
+          "title": "O que são Fundos de Investimento?",
+          "text": "Os fundos de investimento são uma forma de juntar recursos de várias pessoas para investir em diferentes ativos. Eles são geridos por profissionais que tomam decisões sobre onde investir, buscando sempre o melhor retorno para os cotistas.",
+          "source": {
+            "document": "Cadernos CVM nº 3 – Fundos de Investimento (3ª ed.)",
+            "section": "p. 10-11",
+            "institution": "Comissão de Valores Mobiliários (CVM)",
+            "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/cadernos/cvm-caderno-03-3ed.pdf"
+          }
+        },
+        {
+          "title": "Como funcionam os ETFs?",
+          "text": "Os ETFs, ou Fundos de Índice, são negociados na bolsa como ações. Eles buscam refletir a performance de um índice, permitindo que o investidor tenha acesso a uma carteira diversificada de ativos sem precisar comprar cada um individualmente.",
+          "source": {
+            "document": "TOP Mercado de Valores Mobiliários Brasileiro (5ª ed.)",
+            "section": "p. 112-113",
+            "institution": "Comissão de Valores Mobiliários (CVM)",
+            "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm"
+          }
+        },
+        {
+          "title": "Vantagens dos Fundos e ETFs",
+          "text": "Investir em fundos e ETFs oferece vantagens como gestão profissional, diversificação e custos mais baixos. Isso facilita o acesso a diferentes investimentos e pode aumentar as chances de bons retornos.",
+          "source": {
+            "document": "TOP Mercado de Valores Mobiliários Brasileiro (5ª ed.)",
+            "section": "p. 113",
+            "institution": "Comissão de Valores Mobiliários (CVM)",
+            "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm"
+          }
+        }
+      ],
+      "chat_suggestions": [
+        "Qual a diferença entre fundos e ETFs?",
+        "Como escolher um fundo de investimento?",
+        "Os ETFs têm taxas altas?",
+        "Como funciona a gestão de um fundo?"
+      ],
+      "quiz": [
+        {
+          "id": "modulo_2_licao_2_q1",
+          "question": "Quem é responsável pela gestão de um fundo?",
+          "options": [
+            {
+              "id": "a",
+              "text": "O administrador do fundo"
+            },
+            {
+              "id": "b",
+              "text": "Os investidores individuais"
+            },
+            {
+              "id": "c",
+              "text": "Os cotistas do fundo"
+            },
+            {
+              "id": "d",
+              "text": "A bolsa de valores"
+            }
+          ],
+          "correct_option": "a",
+          "explanation": "O administrador do fundo é quem define as regras e a política de investimento, além de ser responsável pela gestão do fundo.",
+          "source": {
+            "document": "Cadernos CVM nº 3 – Fundos de Investimento (3ª ed.)",
+            "section": "p. 9",
+            "institution": "Comissão de Valores Mobiliários (CVM)",
+            "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/cadernos/cvm-caderno-03-3ed.pdf"
+          }
+        },
+        {
+          "id": "modulo_2_licao_2_q2",
+          "question": "Qual é uma vantagem dos ETFs?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Gestão amadora"
+            },
+            {
+              "id": "b",
+              "text": "Diversificação de investimentos"
+            },
+            {
+              "id": "c",
+              "text": "Necessidade de comprar cada ativo"
+            },
+            {
+              "id": "d",
+              "text": "Taxas de administração altas"
+            }
+          ],
+          "correct_option": "b",
+          "explanation": "Os ETFs proporcionam diversificação, permitindo que o investidor tenha acesso a uma cesta de ativos sem precisar comprá-los individualmente.",
+          "source": {
+            "document": "TOP Mercado de Valores Mobiliários Brasileiro (5ª ed.)",
+            "section": "p. 113",
+            "institution": "Comissão de Valores Mobiliários (CVM)",
+            "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm"
+          }
+        },
+        {
+          "id": "modulo_2_licao_2_q3",
+          "question": "O que é a Assembleia Geral dos Cotistas?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Um tipo de fundo"
+            },
+            {
+              "id": "b",
+              "text": "Uma reunião de investidores"
+            },
+            {
+              "id": "c",
+              "text": "Um índice de referência"
+            },
+            {
+              "id": "d",
+              "text": "Um documento regulatório"
+            }
+          ],
+          "correct_option": "b",
+          "explanation": "A Assembleia Geral dos Cotistas é a reunião onde os investidores do fundo tomam decisões importantes sobre a administração e gestão do fundo.",
+          "source": {
+            "document": "TOP Mercado de Valores Mobiliários Brasileiro (5ª ed.)",
+            "section": "p. 119",
+            "institution": "Comissão de Valores Mobiliários (CVM)",
+            "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm"
+          }
+        }
+      ]
+    },
+    {
+      "id": "modulo_2_licao_3",
+      "order": 3,
+      "title": "Fundos imobiliários (FII)",
+      "subtitle": "Imóveis na bolsa",
+      "description": "O que são os fundos imobiliários, como geram rendimentos e quais são seus riscos.",
+      "slides": [
+        {
+          "title": "O que são Fundos Imobiliários?",
+          "text": "Os Fundos de Investimento Imobiliário (FII) são uma forma de juntar recursos de várias pessoas para investir em imóveis. Eles funcionam como um condomínio, onde o resgate das cotas não é permitido, e o foco é a aplicação em empreendimentos imobiliários.",
+          "source": {
+            "document": "Cadernos CVM nº 6 – Fundos de Investimento Imobiliário",
+            "section": "p. 6",
+            "institution": "Comissão de Valores Mobiliários (CVM)",
+            "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/cadernos/cvm-caderno-6.pdf"
+          }
+        },
+        {
+          "title": "Como os FII geram rendimentos?",
+          "text": "Os rendimentos dos FII vêm principalmente de aluguéis, juros de títulos imobiliários e ganhos com a venda de imóveis. A maioria dos fundos distribui esses rendimentos mensalmente, mas é importante lembrar que não são garantidos.",
+          "source": {
+            "document": "TOP Mercado de Valores Mobiliários Brasileiro (5ª ed.)",
+            "section": "p. 111-112",
+            "institution": "Comissão de Valores Mobiliários (CVM)",
+            "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm"
+          }
+        },
+        {
+          "title": "Quais são os riscos dos FII?",
+          "text": "Investir em FII envolve riscos, como a possibilidade de inadimplência de inquilinos e a vacância de imóveis. Além disso, o valor das cotas pode oscilar, o que significa que o investimento não é tão seguro quanto a renda fixa.",
+          "source": {
+            "document": "TOP Mercado de Valores Mobiliários Brasileiro (5ª ed.)",
+            "section": "p. 111-112",
+            "institution": "Comissão de Valores Mobiliários (CVM)",
+            "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm"
+          }
+        }
+      ],
+      "chat_suggestions": [
+        "Como funcionam os FII?",
+        "Quais os riscos de investir em FII?",
+        "Os rendimentos são garantidos?",
+        "Qual o valor mínimo para investir?"
+      ],
+      "quiz": [
+        {
+          "id": "modulo_2_licao_3_q1",
+          "question": "O que caracteriza um Fundo Imobiliário?",
+          "options": [
+            {
+              "id": "a",
+              "text": "É um investimento em ações"
+            },
+            {
+              "id": "b",
+              "text": "É uma comunhão de recursos para imóveis"
+            },
+            {
+              "id": "c",
+              "text": "É um empréstimo para empresas"
+            },
+            {
+              "id": "d",
+              "text": "É um tipo de renda fixa"
+            }
+          ],
+          "correct_option": "b",
+          "explanation": "Um Fundo Imobiliário é uma comunhão de recursos destinados à aplicação em empreendimentos imobiliários, conforme definido na legislação.",
+          "source": {
+            "document": "Cadernos CVM nº 6 – Fundos de Investimento Imobiliário",
+            "section": "p. 6",
+            "institution": "Comissão de Valores Mobiliários (CVM)",
+            "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/cadernos/cvm-caderno-6.pdf"
+          }
+        },
+        {
+          "id": "modulo_2_licao_3_q2",
+          "question": "Como os FII geram rendimentos?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Apenas com a venda de imóveis"
+            },
+            {
+              "id": "b",
+              "text": "Somente com juros de títulos"
+            },
+            {
+              "id": "c",
+              "text": "Através de aluguéis e vendas de imóveis"
+            },
+            {
+              "id": "d",
+              "text": "Exclusivamente com doações"
+            }
+          ],
+          "correct_option": "c",
+          "explanation": "Os FII geram rendimentos principalmente através de aluguéis, juros de títulos imobiliários e ganhos com a venda de imóveis.",
+          "source": {
+            "document": "TOP Mercado de Valores Mobiliários Brasileiro (5ª ed.)",
+            "section": "p. 111-112",
+            "institution": "Comissão de Valores Mobiliários (CVM)",
+            "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm"
+          }
+        },
+        {
+          "id": "modulo_2_licao_3_q3",
+          "question": "Qual é um dos riscos de investir em FII?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Risco de inadimplência de inquilinos"
+            },
+            {
+              "id": "b",
+              "text": "Risco de não poder vender as cotas"
+            },
+            {
+              "id": "c",
+              "text": "Risco de não receber rendimentos"
+            },
+            {
+              "id": "d",
+              "text": "Risco de perder todo o capital"
+            }
+          ],
+          "correct_option": "a",
+          "explanation": "Um dos riscos de investir em FII é a inadimplência de inquilinos, que pode afetar os rendimentos do fundo.",
+          "source": {
+            "document": "TOP Mercado de Valores Mobiliários Brasileiro (5ª ed.)",
+            "section": "p. 111-112",
+            "institution": "Comissão de Valores Mobiliários (CVM)",
+            "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm"
+          }
+        }
+      ]
+    },
+    {
+      "id": "modulo_2_licao_4",
+      "order": 4,
+      "title": "Novo Mercado e diversificação",
+      "subtitle": "Governança e redução de risco",
+      "description": "O que diferencia o Novo Mercado da B3 e por que diversificar reduz o risco da carteira.",
+      "slides": [
+        {
+          "title": "O que é o Novo Mercado?",
+          "text": "O Novo Mercado é um segmento da B3 que exige que as empresas listadas tenham uma governança corporativa mais rigorosa. Isso significa que todos os acionistas têm direitos iguais, especialmente em caso de venda do controle da empresa.",
+          "source": {
+            "document": "TOP Mercado de Valores Mobiliários Brasileiro (5ª ed.)",
+            "section": "p. 275-276",
+            "institution": "Comissão de Valores Mobiliários (CVM)",
+            "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm"
+          }
+        },
+        {
+          "title": "Direitos dos Acionistas",
+          "text": "No Novo Mercado, todos os acionistas têm o direito de vender suas ações pelo mesmo preço que o controlador, conhecido como tag along de 100%. Isso garante mais segurança para quem investe.",
+          "source": {
+            "document": "TOP Mercado de Valores Mobiliários Brasileiro (5ª ed.)",
+            "section": "p. 251-254",
+            "institution": "Comissão de Valores Mobiliários (CVM)",
+            "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm"
+          }
+        },
+        {
+          "title": "Importância da Diversificação",
+          "text": "Diversificar significa não colocar todos os seus investimentos em um único lugar. Isso ajuda a reduzir o risco, pois se um investimento não for bem, outros podem compensar essa perda.",
+          "source": {
+            "document": "TOP Mercado de Valores Mobiliários Brasileiro (5ª ed.)",
+            "section": "p. 99",
+            "institution": "Comissão de Valores Mobiliários (CVM)",
+            "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm"
+          }
+        }
+      ],
+      "chat_suggestions": [
+        "O que é tag along?",
+        "Como diversificar meus investimentos?",
+        "Quais são os riscos de não diversificar?",
+        "O que é governança corporativa?"
+      ],
+      "quiz": [
+        {
+          "id": "modulo_2_licao_4_q1",
+          "question": "Qual é a principal característica do Novo Mercado?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Não permite venda de ações"
+            },
+            {
+              "id": "b",
+              "text": "Não tem regras de governança"
+            },
+            {
+              "id": "c",
+              "text": "Permite ações preferenciais"
+            },
+            {
+              "id": "d",
+              "text": "Exige ações ordinárias"
+            }
+          ],
+          "correct_option": "d",
+          "explanation": "O Novo Mercado exige que o capital seja composto exclusivamente por ações ordinárias, garantindo direitos iguais aos acionistas.",
+          "source": {
+            "document": "TOP Mercado de Valores Mobiliários Brasileiro (5ª ed.)",
+            "section": "p. 275-276",
+            "institution": "Comissão de Valores Mobiliários (CVM)",
+            "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm"
+          }
+        },
+        {
+          "id": "modulo_2_licao_4_q2",
+          "question": "Por que diversificar é importante?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Garante lucros altos"
+            },
+            {
+              "id": "b",
+              "text": "Reduz o risco da carteira"
+            },
+            {
+              "id": "c",
+              "text": "Aumenta o custo de investimento"
+            },
+            {
+              "id": "d",
+              "text": "Facilita a venda de ações"
+            }
+          ],
+          "correct_option": "b",
+          "explanation": "Diversificar ajuda a minimizar perdas, pois se um investimento não for bem, outros podem compensar essa perda.",
+          "source": {
+            "document": "TOP Mercado de Valores Mobiliários Brasileiro (5ª ed.)",
+            "section": "p. 99",
+            "institution": "Comissão de Valores Mobiliários (CVM)",
+            "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm"
+          }
+        },
+        {
+          "id": "modulo_2_licao_4_q3",
+          "question": "O que é tag along?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Direito de participar de assembleias"
+            },
+            {
+              "id": "b",
+              "text": "Direito de voto dos acionistas"
+            },
+            {
+              "id": "c",
+              "text": "Direito de vender ações pelo mesmo preço"
+            },
+            {
+              "id": "d",
+              "text": "Direito de receber dividendos"
+            }
+          ],
+          "correct_option": "c",
+          "explanation": "Tag along garante que todos os acionistas possam vender suas ações pelo mesmo preço que o controlador em caso de venda do controle da empresa.",
+          "source": {
+            "document": "TOP Mercado de Valores Mobiliários Brasileiro (5ª ed.)",
+            "section": "p. 251-254",
+            "institution": "Comissão de Valores Mobiliários (CVM)",
+            "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm"
+          }
+        }
+      ]
+    }
+  ],
+  "exam": {
+    "question_count": 5,
+    "pass_score": 0.7,
+    "questions": [
+      {
+        "id": "modulo_2_teste_q1",
+        "question": "Qual é a principal função da B3, a bolsa de valores brasileira?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Emitir ações preferenciais para investidores"
+          },
+          {
+            "id": "b",
+            "text": "Proporcionar um ambiente transparente e líquido para negócios"
+          },
+          {
+            "id": "c",
+            "text": "Vender imóveis diretamente aos investidores"
+          },
+          {
+            "id": "d",
+            "text": "Realizar empréstimos pessoais"
+          }
+        ],
+        "correct_option": "b",
+        "explanation": "A B3 tem como principal função proporcionar um ambiente transparente e líquido para a realização de negócios com títulos e valores mobiliários.",
+        "source": {
+          "document": "TOP Mercado de Valores Mobiliários Brasileiro (5ª ed.)",
+          "section": "p. 262-263",
+          "institution": "Comissão de Valores Mobiliários (CVM)",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm"
+        }
+      },
+      {
+        "id": "modulo_2_teste_q2",
+        "question": "O que caracteriza um Fundo de Investimento Imobiliário (FII)?",
+        "options": [
+          {
+            "id": "a",
+            "text": "É um tipo de ação preferencial"
+          },
+          {
+            "id": "b",
+            "text": "É um fundo que permite resgates a qualquer momento"
+          },
+          {
+            "id": "c",
+            "text": "É um fundo que investe apenas em ações de empresas"
+          },
+          {
+            "id": "d",
+            "text": "É uma comunhão de recursos para empreendimentos imobiliários"
+          }
+        ],
+        "correct_option": "d",
+        "explanation": "Um Fundo de Investimento Imobiliário é uma comunhão de recursos destinados à aplicação em empreendimentos imobiliários, constituído sob a forma de condomínio fechado.",
+        "source": {
+          "document": "Cadernos CVM nº 6 – Fundos de Investimento Imobiliário",
+          "section": "p. 6",
+          "institution": "Comissão de Valores Mobiliários (CVM)",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/cadernos/cvm-caderno-6.pdf"
+        }
+      },
+      {
+        "id": "modulo_2_teste_q3",
+        "question": "Qual é uma das vantagens de investir em fundos de investimento?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Necessidade de acompanhar o mercado diariamente"
+          },
+          {
+            "id": "b",
+            "text": "Acesso a investimentos apenas em ações"
+          },
+          {
+            "id": "c",
+            "text": "Gestão profissional e diversificação da carteira"
+          },
+          {
+            "id": "d",
+            "text": "Taxas de administração muito altas"
+          }
+        ],
+        "correct_option": "c",
+        "explanation": "Os fundos de investimento oferecem gestão profissional e facilitam a diversificação da carteira, o que é uma grande vantagem para os investidores.",
+        "source": {
+          "document": "Cadernos CVM nº 3 – Fundos de Investimento (3ª ed.)",
+          "section": "p. 10-11",
+          "institution": "Comissão de Valores Mobiliários (CVM)",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/cadernos/cvm-caderno-03-3ed.pdf"
+        }
+      },
+      {
+        "id": "modulo_2_teste_q4",
+        "question": "O que é o Novo Mercado na B3?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Um segmento que proíbe ações preferenciais"
+          },
+          {
+            "id": "b",
+            "text": "Uma plataforma de negociação de imóveis"
+          },
+          {
+            "id": "c",
+            "text": "Um programa de empréstimos para investidores"
+          },
+          {
+            "id": "d",
+            "text": "Um tipo de fundo de investimento"
+          }
+        ],
+        "correct_option": "a",
+        "explanation": "O Novo Mercado é um segmento da B3 que proíbe a emissão de ações preferenciais e estabelece regras de governança corporativa.",
+        "source": {
+          "document": "TOP Mercado de Valores Mobiliários Brasileiro (5ª ed.)",
+          "section": "p. 275-276",
+          "institution": "Comissão de Valores Mobiliários (CVM)",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm"
+        }
+      },
+      {
+        "id": "modulo_2_teste_q5",
+        "question": "Qual é a principal responsabilidade do administrador de um fundo de investimento?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Vender imóveis diretamente aos investidores"
+          },
+          {
+            "id": "b",
+            "text": "Realizar transações de compra e venda de ações"
+          },
+          {
+            "id": "c",
+            "text": "Definir o objetivo e a política de investimento do fundo"
+          },
+          {
+            "id": "d",
+            "text": "Gerenciar a contabilidade pessoal dos cotistas"
+          }
+        ],
+        "correct_option": "c",
+        "explanation": "O administrador do fundo é responsável por definir o objetivo e a política de investimento, além de elaborar e aprovar o regulamento do fundo.",
+        "source": {
+          "document": "Cadernos CVM nº 3 – Fundos de Investimento (3ª ed.)",
+          "section": "p. 9",
+          "institution": "Comissão de Valores Mobiliários (CVM)",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/cadernos/cvm-caderno-03-3ed.pdf"
+        }
+      },
+      {
+        "id": "modulo_2_teste_q6",
+        "question": "O que significa 'tag along' no contexto do Novo Mercado?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Direito de receber dividendos fixos"
+          },
+          {
+            "id": "b",
+            "text": "Direito de resgatar cotas a qualquer momento"
+          },
+          {
+            "id": "c",
+            "text": "Direito de participar de assembleias de cotistas"
+          },
+          {
+            "id": "d",
+            "text": "Direito de todos os acionistas de vender suas ações pelo mesmo preço do controlador"
+          }
+        ],
+        "correct_option": "d",
+        "explanation": "O 'tag along' garante que todos os acionistas tenham o direito de vender suas ações pelo mesmo preço que o controlador em caso de alienação do controle.",
+        "source": {
+          "document": "TOP Mercado de Valores Mobiliários Brasileiro (5ª ed.)",
+          "section": "p. 251-254",
+          "institution": "Comissão de Valores Mobiliários (CVM)",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm"
+        }
+      },
+      {
+        "id": "modulo_2_teste_q7",
+        "question": "Qual é uma das características dos fundos de investimento imobiliário?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Permitem resgates a qualquer momento"
+          },
+          {
+            "id": "b",
+            "text": "Não oferecem rendimentos aos cotistas"
+          },
+          {
+            "id": "c",
+            "text": "Investem apenas em ações de empresas"
+          },
+          {
+            "id": "d",
+            "text": "Diluição dos custos de administração entre os cotistas"
+          }
+        ],
+        "correct_option": "d",
+        "explanation": "Os fundos de investimento imobiliário diluem os custos de administração entre todos os cotistas, o que é uma vantagem para os investidores.",
+        "source": {
+          "document": "Cadernos CVM nº 6 – Fundos de Investimento Imobiliário",
+          "section": "p. 7-8",
+          "institution": "Comissão de Valores Mobiliários (CVM)",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/cadernos/cvm-caderno-6.pdf"
+        }
+      },
+      {
+        "id": "modulo_2_teste_q8",
+        "question": "Qual é a primeira fase do processo de negociação na bolsa de valores?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Pós-negociação"
+          },
+          {
+            "id": "b",
+            "text": "Pré-negociação"
+          },
+          {
+            "id": "c",
+            "text": "Negociação"
+          },
+          {
+            "id": "d",
+            "text": "Análise de mercado"
+          }
+        ],
+        "correct_option": "b",
+        "explanation": "A primeira fase do processo de negociação na bolsa de valores é a pré-negociação, que envolve a análise de risco e a parametrização dos contratos.",
+        "source": {
+          "document": "TOP Mercado de Valores Mobiliários Brasileiro (5ª ed.)",
+          "section": "p. 269-270",
+          "institution": "Comissão de Valores Mobiliários (CVM)",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm"
+        }
+      }
+    ]
+  }
+}

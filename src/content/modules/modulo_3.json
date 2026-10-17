@@ -1,0 +1,804 @@
+{
+  "id": "modulo_3",
+  "order": 3,
+  "title": "CVM e Regulação",
+  "subtitle": "Quem fiscaliza o mercado e como ler as empresas",
+  "description": "Conheça a CVM e aprenda a usar os documentos oficiais das empresas para investir com autonomia.",
+  "color": "#8b5cf6",
+  "lessons": [
+    {
+      "id": "modulo_3_licao_1",
+      "order": 1,
+      "title": "O que é a CVM",
+      "subtitle": "O xerife do mercado de capitais",
+      "description": "O papel da Comissão de Valores Mobiliários na regulação e na proteção do investidor.",
+      "slides": [
+        {
+          "title": "O que é a CVM?",
+          "text": "A Comissão de Valores Mobiliários (CVM) é a entidade do governo que regula e fiscaliza o mercado de capitais no Brasil. Criada em 1976, sua missão é garantir um mercado transparente e íntegro, protegendo os investidores.",
+          "source": {
+            "document": "Cadernos CVM nº 1 – O que é a CVM?",
+            "section": "p. 7",
+            "institution": "Comissão de Valores Mobiliários (CVM)",
+            "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/cadernos/cvm-caderno-1.pdf"
+          }
+        },
+        {
+          "title": "Funções da CVM",
+          "text": "A CVM tem várias funções, incluindo estabelecer normas e fiscalizar seu cumprimento. Ela também protege os investidores contra fraudes e práticas irregulares, promovendo um ambiente seguro para todos.",
+          "source": {
+            "document": "Cadernos CVM nº 1 – O que é a CVM?",
+            "section": "p. 7-8",
+            "institution": "Comissão de Valores Mobiliários (CVM)",
+            "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/cadernos/cvm-caderno-1.pdf"
+          }
+        },
+        {
+          "title": "Proteção ao Investidor",
+          "text": "A CVM se preocupa especialmente com o investidor individual, que pode ter menos poder econômico. Ela garante que os investidores tenham acesso a informações e possam tomar decisões conscientes sobre seus investimentos.",
+          "source": {
+            "document": "Cadernos CVM nº 1 – O que é a CVM?",
+            "section": "p. 15",
+            "institution": "Comissão de Valores Mobiliários (CVM)",
+            "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/cadernos/cvm-caderno-1.pdf"
+          }
+        }
+      ],
+      "chat_suggestions": [
+        "Como a CVM protege os investidores?",
+        "Quais são as funções da CVM?",
+        "Quando a CVM foi criada?",
+        "O que é o mercado de capitais?"
+      ],
+      "quiz": [
+        {
+          "id": "modulo_3_licao_1_q1",
+          "question": "Qual é a principal função da CVM?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Regulamentar o mercado de capitais"
+            },
+            {
+              "id": "b",
+              "text": "Investir em ações diretamente"
+            },
+            {
+              "id": "c",
+              "text": "Oferecer empréstimos a investidores"
+            },
+            {
+              "id": "d",
+              "text": "Criar empresas de capital"
+            }
+          ],
+          "correct_option": "a",
+          "explanation": "A principal função da CVM é regulamentar e fiscalizar o mercado de capitais, garantindo sua integridade e transparência.",
+          "source": {
+            "document": "Cadernos CVM nº 1 – O que é a CVM?",
+            "section": "p. 7",
+            "institution": "Comissão de Valores Mobiliários (CVM)",
+            "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/cadernos/cvm-caderno-1.pdf"
+          }
+        },
+        {
+          "id": "modulo_3_licao_1_q2",
+          "question": "Quando a CVM foi criada?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Em 1980"
+            },
+            {
+              "id": "b",
+              "text": "Em 1990"
+            },
+            {
+              "id": "c",
+              "text": "Em 1976"
+            },
+            {
+              "id": "d",
+              "text": "Em 1978"
+            }
+          ],
+          "correct_option": "c",
+          "explanation": "A CVM foi criada em 1976, com o objetivo de regular o mercado de capitais no Brasil.",
+          "source": {
+            "document": "TOP Direito do Mercado de Valores Mobiliários",
+            "section": "p. 22-23",
+            "institution": "Comissão de Valores Mobiliários (CVM)",
+            "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm"
+          }
+        },
+        {
+          "id": "modulo_3_licao_1_q3",
+          "question": "Qual é um dos mandatos da CVM?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Promover fraudes no mercado"
+            },
+            {
+              "id": "b",
+              "text": "Desregular o mercado financeiro"
+            },
+            {
+              "id": "c",
+              "text": "Aumentar os impostos sobre investimentos"
+            },
+            {
+              "id": "d",
+              "text": "Proteger os investidores"
+            }
+          ],
+          "correct_option": "d",
+          "explanation": "Um dos principais mandatos da CVM é proteger os investidores, garantindo que tenham acesso a informações e possam investir de forma segura.",
+          "source": {
+            "document": "TOP Direito do Mercado de Valores Mobiliários",
+            "section": "p. 277",
+            "institution": "Comissão de Valores Mobiliários (CVM)",
+            "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm"
+          }
+        }
+      ]
+    },
+    {
+      "id": "modulo_3_licao_2",
+      "order": 2,
+      "title": "Companhia aberta",
+      "subtitle": "Registro de emissores na CVM",
+      "description": "O que significa uma empresa ser companhia aberta e quais obrigações ela assume.",
+      "slides": [
+        {
+          "title": "O que é uma Companhia Aberta?",
+          "text": "Uma companhia aberta é uma empresa que pode ter suas ações negociadas publicamente. Para isso, ela precisa se registrar na Comissão de Valores Mobiliários (CVM). Esse registro permite que suas ações sejam compradas e vendidas em bolsas de valores.",
+          "source": {
+            "document": "TOP Direito do Mercado de Valores Mobiliários",
+            "section": "p. 275",
+            "institution": "Comissão de Valores Mobiliários (CVM)",
+            "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm"
+          }
+        },
+        {
+          "title": "Registro na CVM",
+          "text": "O registro na CVM é essencial para que uma companhia seja considerada aberta. Existem duas categorias de registro: A e B. A categoria A permite a negociação de qualquer tipo de valor mobiliário em mercados regulamentados.",
+          "source": {
+            "document": "TOP Direito do Mercado de Valores Mobiliários",
+            "section": "p. 374",
+            "institution": "Comissão de Valores Mobiliários (CVM)",
+            "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm"
+          }
+        },
+        {
+          "title": "Obrigações das Companhias Abertas",
+          "text": "As companhias abertas têm obrigações de transparência, como a divulgação de informações financeiras e atualizações sobre mudanças importantes. Isso garante que os investidores tenham acesso a dados relevantes para suas decisões.",
+          "source": {
+            "document": "Resolução CVM nº 80/2022 – Registro e prestação de informações de emissores (Formulário de Referência)",
+            "section": "p. 10-11",
+            "institution": "Comissão de Valores Mobiliários (CVM)",
+            "url": "https://conteudo.cvm.gov.br/export/sites/cvm/legislacao/resolucoes/anexos/001/resol080.pdf"
+          }
+        }
+      ],
+      "chat_suggestions": [
+        "Como funciona o registro na CVM?",
+        "Quais são as obrigações de uma companhia aberta?",
+        "O que são valores mobiliários?",
+        "Qual a diferença entre categoria A e B?"
+      ],
+      "quiz": [
+        {
+          "id": "modulo_3_licao_2_q1",
+          "question": "O que caracteriza uma companhia aberta?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Registro na CVM"
+            },
+            {
+              "id": "b",
+              "text": "Ser uma empresa familiar"
+            },
+            {
+              "id": "c",
+              "text": "Vender produtos online"
+            },
+            {
+              "id": "d",
+              "text": "Ter sede em São Paulo"
+            }
+          ],
+          "correct_option": "a",
+          "explanation": "Uma companhia aberta é caracterizada pelo registro na CVM, que permite a negociação de suas ações publicamente.",
+          "source": {
+            "document": "TOP Direito do Mercado de Valores Mobiliários",
+            "section": "p. 275",
+            "institution": "Comissão de Valores Mobiliários (CVM)",
+            "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm"
+          }
+        },
+        {
+          "id": "modulo_3_licao_2_q2",
+          "question": "Qual é a principal obrigação de uma companhia aberta?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Realizar auditorias anuais"
+            },
+            {
+              "id": "b",
+              "text": "Vender ações a qualquer preço"
+            },
+            {
+              "id": "c",
+              "text": "Ter um conselho de administração"
+            },
+            {
+              "id": "d",
+              "text": "Divulgar informações financeiras"
+            }
+          ],
+          "correct_option": "d",
+          "explanation": "Uma das principais obrigações de uma companhia aberta é divulgar informações financeiras para garantir a transparência com os investidores.",
+          "source": {
+            "document": "Resolução CVM nº 80/2022 – Registro e prestação de informações de emissores (Formulário de Referência)",
+            "section": "p. 10-11",
+            "institution": "Comissão de Valores Mobiliários (CVM)",
+            "url": "https://conteudo.cvm.gov.br/export/sites/cvm/legislacao/resolucoes/anexos/001/resol080.pdf"
+          }
+        },
+        {
+          "id": "modulo_3_licao_2_q3",
+          "question": "O que permite o registro na categoria A?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Ter um site institucional"
+            },
+            {
+              "id": "b",
+              "text": "Vender produtos em lojas físicas"
+            },
+            {
+              "id": "c",
+              "text": "Realizar eventos sociais"
+            },
+            {
+              "id": "d",
+              "text": "Negociação de ações em qualquer mercado"
+            }
+          ],
+          "correct_option": "d",
+          "explanation": "O registro na categoria A permite que a companhia negocie quaisquer valores mobiliários em mercados regulamentados.",
+          "source": {
+            "document": "TOP Direito do Mercado de Valores Mobiliários",
+            "section": "p. 747",
+            "institution": "Comissão de Valores Mobiliários (CVM)",
+            "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm"
+          }
+        }
+      ]
+    },
+    {
+      "id": "modulo_3_licao_3",
+      "order": 3,
+      "title": "Formulário de Referência",
+      "subtitle": "O raio-x oficial da empresa",
+      "description": "O que é o Formulário de Referência, quem deve apresentá-lo e que informações ele traz.",
+      "slides": [
+        {
+          "title": "O que é o Formulário de Referência?",
+          "text": "O Formulário de Referência é um documento eletrônico que apresenta informações detalhadas sobre a situação econômico-financeira de uma empresa. Ele é importante para que investidores conheçam melhor a companhia antes de investir.",
+          "source": {
+            "document": "Resolução CVM nº 80/2022 – Registro e prestação de informações de emissores (Formulário de Referência)",
+            "section": "p. 9",
+            "institution": "Comissão de Valores Mobiliários (CVM)",
+            "url": "https://conteudo.cvm.gov.br/export/sites/cvm/legislacao/resolucoes/anexos/001/resol080.pdf"
+          }
+        },
+        {
+          "title": "Quem deve apresentar o Formulário?",
+          "text": "O Formulário de Referência deve ser apresentado anualmente pelas empresas que emitem valores mobiliários. Os diretores responsáveis atestam a veracidade das informações contidas nele.",
+          "source": {
+            "document": "TOP Direito do Mercado de Valores Mobiliários",
+            "section": "p. 503",
+            "institution": "Comissão de Valores Mobiliários (CVM)",
+            "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm"
+          }
+        },
+        {
+          "title": "Informações contidas no Formulário",
+          "text": "O Formulário traz dados sobre a situação financeira da empresa, riscos associados e informações sobre os valores mobiliários emitidos. É essencial para a transparência no mercado.",
+          "source": {
+            "document": "Resolução CVM nº 80/2022 – Registro e prestação de informações de emissores (Formulário de Referência)",
+            "section": "p. 46-47",
+            "institution": "Comissão de Valores Mobiliários (CVM)",
+            "url": "https://conteudo.cvm.gov.br/export/sites/cvm/legislacao/resolucoes/anexos/001/resol080.pdf"
+          }
+        }
+      ],
+      "chat_suggestions": [
+        "O que é um emissor?",
+        "Como atualizar o formulário?",
+        "Quais são os riscos mencionados?",
+        "Quem assina o formulário?"
+      ],
+      "quiz": [
+        {
+          "id": "modulo_3_licao_3_q1",
+          "question": "Qual é a principal função do Formulário de Referência?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Registrar a história da empresa"
+            },
+            {
+              "id": "b",
+              "text": "Apresentar informações financeiras"
+            },
+            {
+              "id": "c",
+              "text": "Emitir ações no mercado"
+            },
+            {
+              "id": "d",
+              "text": "Definir o valor das ações"
+            }
+          ],
+          "correct_option": "b",
+          "explanation": "O Formulário de Referência apresenta informações financeiras e de riscos da empresa, ajudando investidores a tomar decisões.",
+          "source": {
+            "document": "TOP Direito do Mercado de Valores Mobiliários",
+            "section": "p. 503",
+            "institution": "Comissão de Valores Mobiliários (CVM)",
+            "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm"
+          }
+        },
+        {
+          "id": "modulo_3_licao_3_q2",
+          "question": "Quem é responsável por atestar as informações do Formulário?",
+          "options": [
+            {
+              "id": "a",
+              "text": "O contador da empresa"
+            },
+            {
+              "id": "b",
+              "text": "O auditor independente"
+            },
+            {
+              "id": "c",
+              "text": "Os acionistas da empresa"
+            },
+            {
+              "id": "d",
+              "text": "O diretor-presidente e o diretor de RI"
+            }
+          ],
+          "correct_option": "d",
+          "explanation": "As informações do Formulário devem ser atestadas pelo diretor-presidente e pelo diretor de Relações com Investidores da companhia.",
+          "source": {
+            "document": "TOP Direito do Mercado de Valores Mobiliários",
+            "section": "p. 503",
+            "institution": "Comissão de Valores Mobiliários (CVM)",
+            "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm"
+          }
+        },
+        {
+          "id": "modulo_3_licao_3_q3",
+          "question": "Com que frequência o Formulário de Referência deve ser atualizado?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Trimestralmente"
+            },
+            {
+              "id": "b",
+              "text": "Mensalmente"
+            },
+            {
+              "id": "c",
+              "text": "Semestralmente"
+            },
+            {
+              "id": "d",
+              "text": "Anualmente"
+            }
+          ],
+          "correct_option": "d",
+          "explanation": "O Formulário de Referência deve ser atualizado anualmente, em até cinco meses após o encerramento do exercício social.",
+          "source": {
+            "document": "Resolução CVM nº 80/2022 – Registro e prestação de informações de emissores (Formulário de Referência)",
+            "section": "p. 9",
+            "institution": "Comissão de Valores Mobiliários (CVM)",
+            "url": "https://conteudo.cvm.gov.br/export/sites/cvm/legislacao/resolucoes/anexos/001/resol080.pdf"
+          }
+        }
+      ]
+    },
+    {
+      "id": "modulo_3_licao_4",
+      "order": 4,
+      "title": "Fato Relevante",
+      "subtitle": "Transparência imediata",
+      "description": "O que é um Fato Relevante e em quais situações a empresa é obrigada a divulgá-lo.",
+      "slides": [
+        {
+          "title": "O que é um Fato Relevante?",
+          "text": "Um fato relevante é qualquer informação que possa impactar a decisão de investimento dos acionistas. Isso inclui decisões importantes da empresa, como fusões ou mudanças na diretoria.",
+          "source": {
+            "document": "Resolução CVM nº 44/2021 – Divulgação de Fato Relevante e negociação de valores mobiliários",
+            "section": "p. 1",
+            "institution": "Comissão de Valores Mobiliários (CVM)",
+            "url": "https://conteudo.cvm.gov.br/export/sites/cvm/legislacao/resolucoes/anexos/001/resol044.pdf"
+          }
+        },
+        {
+          "title": "Quando divulgar um Fato Relevante?",
+          "text": "As empresas devem divulgar fatos relevantes sempre que houver uma decisão que possa afetar o valor de suas ações. A divulgação deve ser feita de forma clara e acessível ao público.",
+          "source": {
+            "document": "Resolução CVM nº 44/2021 – Divulgação de Fato Relevante e negociação de valores mobiliários",
+            "section": "p. 4",
+            "institution": "Comissão de Valores Mobiliários (CVM)",
+            "url": "https://conteudo.cvm.gov.br/export/sites/cvm/legislacao/resolucoes/anexos/001/resol044.pdf"
+          }
+        },
+        {
+          "title": "Como é feita a divulgação?",
+          "text": "A divulgação deve ocorrer por meio de jornais de grande circulação ou portais de notícias, garantindo que a informação chegue a todos os investidores de forma gratuita.",
+          "source": {
+            "document": "Resolução CVM nº 44/2021 – Divulgação de Fato Relevante e negociação de valores mobiliários",
+            "section": "p. 3-4",
+            "institution": "Comissão de Valores Mobiliários (CVM)",
+            "url": "https://conteudo.cvm.gov.br/export/sites/cvm/legislacao/resolucoes/anexos/001/resol044.pdf"
+          }
+        }
+      ],
+      "chat_suggestions": [
+        "O que é um fato relevante?",
+        "Como saber se um fato é relevante?",
+        "Quais são os canais de divulgação?",
+        "Quando a empresa deve divulgar?"
+      ],
+      "quiz": [
+        {
+          "id": "modulo_3_licao_4_q1",
+          "question": "O que é considerado um fato relevante?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Mudanças na equipe de vendas"
+            },
+            {
+              "id": "b",
+              "text": "Resultados de pesquisas de mercado"
+            },
+            {
+              "id": "c",
+              "text": "Informações financeiras trimestrais"
+            },
+            {
+              "id": "d",
+              "text": "Qualquer decisão de acionista"
+            }
+          ],
+          "correct_option": "d",
+          "explanation": "Um fato relevante é qualquer decisão de acionista que possa impactar a empresa e seus investidores.",
+          "source": {
+            "document": "Resolução CVM nº 44/2021 – Divulgação de Fato Relevante e negociação de valores mobiliários",
+            "section": "p. 1",
+            "institution": "Comissão de Valores Mobiliários (CVM)",
+            "url": "https://conteudo.cvm.gov.br/export/sites/cvm/legislacao/resolucoes/anexos/001/resol044.pdf"
+          }
+        },
+        {
+          "id": "modulo_3_licao_4_q2",
+          "question": "Quando a empresa deve divulgar um fato relevante?",
+          "options": [
+            {
+              "id": "a",
+              "text": "A qualquer momento"
+            },
+            {
+              "id": "b",
+              "text": "Após a negociação das ações"
+            },
+            {
+              "id": "c",
+              "text": "Antes ou após o fechamento do mercado"
+            },
+            {
+              "id": "d",
+              "text": "Somente em reuniões anuais"
+            }
+          ],
+          "correct_option": "c",
+          "explanation": "A divulgação deve ocorrer sempre que possível antes do início ou após o encerramento dos negócios nas bolsas de valores.",
+          "source": {
+            "document": "Resolução CVM nº 44/2021 – Divulgação de Fato Relevante e negociação de valores mobiliários",
+            "section": "p. 6",
+            "institution": "Comissão de Valores Mobiliários (CVM)",
+            "url": "https://conteudo.cvm.gov.br/export/sites/cvm/legislacao/resolucoes/anexos/001/resol044.pdf"
+          }
+        },
+        {
+          "id": "modulo_3_licao_4_q3",
+          "question": "Quais canais podem ser usados para divulgar fatos relevantes?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Jornais de grande circulação"
+            },
+            {
+              "id": "b",
+              "text": "Redes sociais"
+            },
+            {
+              "id": "c",
+              "text": "E-mails para acionistas"
+            },
+            {
+              "id": "d",
+              "text": "Cartas enviadas pelo correio"
+            }
+          ],
+          "correct_option": "a",
+          "explanation": "A divulgação deve ser feita por jornais de grande circulação ou portais de notícias que disponibilizem a informação gratuitamente.",
+          "source": {
+            "document": "Resolução CVM nº 44/2021 – Divulgação de Fato Relevante e negociação de valores mobiliários",
+            "section": "p. 3-4",
+            "institution": "Comissão de Valores Mobiliários (CVM)",
+            "url": "https://conteudo.cvm.gov.br/export/sites/cvm/legislacao/resolucoes/anexos/001/resol044.pdf"
+          }
+        }
+      ]
+    }
+  ],
+  "exam": {
+    "question_count": 5,
+    "pass_score": 0.7,
+    "questions": [
+      {
+        "id": "modulo_3_teste_q1",
+        "question": "Qual é a principal função da Comissão de Valores Mobiliários (CVM)?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Emitir ações para empresas"
+          },
+          {
+            "id": "b",
+            "text": "Proteger os investidores contra fraudes"
+          },
+          {
+            "id": "c",
+            "text": "Administrar fundos de investimento"
+          },
+          {
+            "id": "d",
+            "text": "Criar empresas de capital aberto"
+          }
+        ],
+        "correct_option": "b",
+        "explanation": "A CVM tem como função principal proteger os investidores contra fraudes e práticas irregulares no mercado de capitais.",
+        "source": {
+          "document": "Cadernos CVM nº 1 – O que é a CVM?",
+          "section": "p. 7-8",
+          "institution": "Comissão de Valores Mobiliários (CVM)",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/cadernos/cvm-caderno-1.pdf"
+        }
+      },
+      {
+        "id": "modulo_3_teste_q2",
+        "question": "O que caracteriza uma companhia aberta?",
+        "options": [
+          {
+            "id": "a",
+            "text": "É uma empresa que tem ações negociadas publicamente"
+          },
+          {
+            "id": "b",
+            "text": "É uma empresa que não precisa de registro"
+          },
+          {
+            "id": "c",
+            "text": "É uma empresa que não pode emitir ações"
+          },
+          {
+            "id": "d",
+            "text": "É uma empresa que só pode operar no mercado internacional"
+          }
+        ],
+        "correct_option": "a",
+        "explanation": "Uma companhia aberta é caracterizada por ter seus valores mobiliários negociados publicamente, após obter registro na CVM.",
+        "source": {
+          "document": "TOP Direito do Mercado de Valores Mobiliários",
+          "section": "p. 275",
+          "institution": "Comissão de Valores Mobiliários (CVM)",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm"
+        }
+      },
+      {
+        "id": "modulo_3_teste_q3",
+        "question": "Qual é a periodicidade de atualização do Formulário de Referência para uma companhia aberta?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Semestral"
+          },
+          {
+            "id": "b",
+            "text": "Trimestral"
+          },
+          {
+            "id": "c",
+            "text": "Anual"
+          },
+          {
+            "id": "d",
+            "text": "Mensal"
+          }
+        ],
+        "correct_option": "c",
+        "explanation": "O Formulário de Referência deve ser atualizado anualmente, em até cinco meses após o encerramento do exercício social.",
+        "source": {
+          "document": "Resolução CVM nº 80/2022 – Registro e prestação de informações de emissores (Formulário de Referência)",
+          "section": "p. 9",
+          "institution": "Comissão de Valores Mobiliários (CVM)",
+          "url": "https://conteudo.cvm.gov.br/export/sites/cvm/legislacao/resolucoes/anexos/001/resol080.pdf"
+        }
+      },
+      {
+        "id": "modulo_3_teste_q4",
+        "question": "Quando uma companhia deve divulgar um fato relevante?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Nunca é necessário divulgar"
+          },
+          {
+            "id": "b",
+            "text": "Antes do início ou após o encerramento dos negócios"
+          },
+          {
+            "id": "c",
+            "text": "A qualquer momento"
+          },
+          {
+            "id": "d",
+            "text": "Somente após a negociação das ações"
+          }
+        ],
+        "correct_option": "b",
+        "explanation": "A divulgação de um fato relevante deve ocorrer, sempre que possível, antes do início ou após o encerramento dos negócios nas bolsas de valores.",
+        "source": {
+          "document": "Resolução CVM nº 44/2021 – Divulgação de Fato Relevante e negociação de valores mobiliários",
+          "section": "p. 4",
+          "institution": "Comissão de Valores Mobiliários (CVM)",
+          "url": "https://conteudo.cvm.gov.br/export/sites/cvm/legislacao/resolucoes/anexos/001/resol044.pdf"
+        }
+      },
+      {
+        "id": "modulo_3_teste_q5",
+        "question": "Qual é a função do Diretor de Relações com Investidores em uma companhia aberta?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Gerenciar a contabilidade"
+          },
+          {
+            "id": "b",
+            "text": "Emitir ações"
+          },
+          {
+            "id": "c",
+            "text": "Divulgar informações ao mercado"
+          },
+          {
+            "id": "d",
+            "text": "Realizar auditorias internas"
+          }
+        ],
+        "correct_option": "c",
+        "explanation": "O Diretor de Relações com Investidores é responsável por prestar informações exigidas pela legislação e pela divulgação de atos ou fatos relevantes.",
+        "source": {
+          "document": "TOP Direito do Mercado de Valores Mobiliários",
+          "section": "p. 1252",
+          "institution": "Comissão de Valores Mobiliários (CVM)",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm"
+        }
+      },
+      {
+        "id": "modulo_3_teste_q6",
+        "question": "O que deve conter o Formulário de Referência?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Apenas dados financeiros do último ano"
+          },
+          {
+            "id": "b",
+            "text": "Informações sobre o mercado internacional"
+          },
+          {
+            "id": "c",
+            "text": "Dados pessoais dos acionistas"
+          },
+          {
+            "id": "d",
+            "text": "Informações verídicas sobre a situação econômico-financeira da companhia"
+          }
+        ],
+        "correct_option": "d",
+        "explanation": "O Formulário de Referência deve conter informações verídicas e completas sobre a situação econômico-financeira do emissor e os riscos de suas atividades.",
+        "source": {
+          "document": "TOP Direito do Mercado de Valores Mobiliários",
+          "section": "p. 503",
+          "institution": "Comissão de Valores Mobiliários (CVM)",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm"
+        }
+      },
+      {
+        "id": "modulo_3_teste_q7",
+        "question": "Qual é a principal responsabilidade da CVM em relação ao mercado de capitais?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Fiscalizar e regular o mercado"
+          },
+          {
+            "id": "b",
+            "text": "Emitir ações para empresas"
+          },
+          {
+            "id": "c",
+            "text": "Criar novas empresas"
+          },
+          {
+            "id": "d",
+            "text": "Investir em ações de empresas"
+          }
+        ],
+        "correct_option": "a",
+        "explanation": "A CVM é responsável pela regulação e fiscalização do mercado de capitais, garantindo seu funcionamento adequado e transparente.",
+        "source": {
+          "document": "Cadernos CVM nº 1 – O que é a CVM?",
+          "section": "p. 7",
+          "institution": "Comissão de Valores Mobiliários (CVM)",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/cadernos/cvm-caderno-1.pdf"
+        }
+      },
+      {
+        "id": "modulo_3_teste_q8",
+        "question": "O que acontece se uma companhia não cumprir as normas da CVM?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Ela pode ser punida"
+          },
+          {
+            "id": "b",
+            "text": "Ela pode ser fechada imediatamente"
+          },
+          {
+            "id": "c",
+            "text": "Ela deve pagar uma multa"
+          },
+          {
+            "id": "d",
+            "text": "Nada, pois não há penalidades"
+          }
+        ],
+        "correct_option": "a",
+        "explanation": "A CVM tem a função de punir aqueles que descumprem as normas estabelecidas para o mercado de capitais.",
+        "source": {
+          "document": "Cadernos CVM nº 1 – O que é a CVM?",
+          "section": "p. 7",
+          "institution": "Comissão de Valores Mobiliários (CVM)",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/cadernos/cvm-caderno-1.pdf"
+        }
+      }
+    ]
+  }
+}
