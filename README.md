@@ -162,6 +162,11 @@ A base de conhecimento é formada por **PDFs oficiais** (BCB, CMN, STN/B3, CVM e
 | `GET` | `/chat/suggestions` | Público | Sugestões iniciais de perguntas do módulo |
 | `GET` | `/steps` | Público | Passos do onboarding |
 | `GET` | `/modules/{id}` | Público | Detalhes de um módulo |
+| `GET` | `/trail` | JWT | Módulos, lições e testes com o status do usuário, ofensiva e progresso geral |
+| `GET` | `/lessons/{id}` | JWT | Slides, sugestões de pergunta e quiz da lição (403 se ainda bloqueada) |
+| `POST` | `/lessons/{id}/complete` | JWT | Registra a conclusão da lição e o dia de estudo na ofensiva |
+| `POST` | `/modules/{id}/exam` | JWT | Sorteia as questões do teste final e registra a tentativa (sem gabarito) |
+| `POST` | `/exam-attempts/{id}/submit` | JWT | Corrige o teste no servidor, registra a nota e libera o próximo módulo se aprovado |
 | `POST` | `/ingest` | Header `X-Admin-Token` | Reindexa a base vetorial (desativado se `ADMIN_TOKEN` estiver vazio; responde 503 onde as dependências de ingestão não estão instaladas, como na Vercel) |
 
 A documentação interativa fica disponível em `http://localhost:8000/docs` com o servidor rodando.
@@ -200,7 +205,9 @@ Copie o `.env.example` para `.env` e preencha os valores:
 | `CHUNK_SIZE` / `CHUNK_OVERLAP` | Não | Tamanho e sobreposição dos chunks em caracteres (padrão 800 e 150) |
 | `RETRIEVAL_K` / `RETRIEVAL_MAX_DISTANCE` | Não | Trechos recuperados por pergunta e distância de cosseno máxima aceita (padrão 3 e 0.5) |
 
-No SQL Editor do Supabase, execute `scripts/supabase_schema.sql` (tabela de usuários) e `scripts/supabase_vector_schema.sql` (extensão pgvector, tabela `document_chunks` e função de busca).
+No SQL Editor do Supabase, execute `scripts/supabase_schema.sql` (tabela de usuários), `scripts/supabase_vector_schema.sql` (extensão pgvector, tabela `document_chunks` e função de busca) e `scripts/supabase_progress_schema.sql` (lições concluídas, tentativas dos testes e dias de estudo da ofensiva).
+
+O conteúdo da trilha (3 módulos com 4 lições e um teste final cada) fica em `src/content/modules/*.json`. Os rascunhos são gerados a partir do corpus com `python scripts/generate_lessons.py` (cada slide e questão cita o documento e a página de origem) e devem ser revisados antes de publicar; o script não sobrescreve arquivos existentes sem `--force`.
 
 ### 3. Ingestão dos Documentos na Base Vetorial:
 Após posicionar os PDFs em `data/raw/modulo_N_*/` e registrá-los em `data/sources_manifest.yaml`:
