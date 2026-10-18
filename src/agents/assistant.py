@@ -103,7 +103,7 @@ def _build_context_instruction(context_text: str, user_name: Optional[str], live
 
 def chat_rag(
     message: str,
-    module: str = "modulo_1",
+    module: Optional[str] = None,
     history: Optional[List[Any]] = None,
     user_name: Optional[str] = None
 ) -> dict:
