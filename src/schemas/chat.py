@@ -19,6 +19,7 @@ class SourceResponse(BaseModel):
 class ChatResponse(BaseModel):
     reply: str
     source: Optional[SourceResponse] = None
+    sources: List[SourceResponse] = Field(default_factory=list, description="Fontes de todos os trechos recuperados, sem repetição")
     suggestions: List[str] = Field(default_factory=list, description="Sugestões contextuais de perguntas para continuidade")
 
 class SuggestionsResponse(BaseModel):
