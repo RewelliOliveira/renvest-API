@@ -30,9 +30,12 @@ def test_chat_rag_handles_braces_and_returns_source(monkeypatch):
         reply = "Resposta"
         suggestions = ["Pergunta?"]
 
+    class FakeRaw:
+        usage_metadata = {"input_tokens": 120, "output_tokens": 30}
+
     class FakeLLM:
-        def with_structured_output(self, _schema):
-            return lambda prompt_value: FakeOutput()
+        def with_structured_output(self, _schema, include_raw=False):
+            return lambda prompt_value: {"raw": FakeRaw(), "parsed": FakeOutput(), "parsing_error": None}
 
     captured = {}
     original = assistant.ChatPromptTemplate.from_messages
@@ -49,7 +52,38 @@ def test_chat_rag_handles_braces_and_returns_source(monkeypatch):
 
     assert result["reply"] == "Resposta"
     assert result["source"]["document"] == "Regulamento FGC"
+    assert result["sources"] == [result["source"]]
     assert any("{chaves}" in m.content for m in captured["messages"])
+
+def _doc(document, section, url=None, content="trecho"):
+    metadata = {"document": document, "section": section, "institution": "CVM"}
+    if url:
+        metadata["url"] = url
+    return Document(page_content=content, metadata=metadata)
+
+def test_build_sources_dedupes_and_keeps_each_url():
+    docs = [
+        _doc("Caderno CVM 6", "p. 12"),
+        _doc("Resolução CVM 44", "p. 3", url="https://cvm.gov.br/res44.pdf"),
+        _doc("Caderno CVM 6", "p. 12"),
+    ]
+    sources = assistant.build_sources(docs)
+    assert [s["document"] for s in sources] == ["Caderno CVM 6", "Resolução CVM 44"]
+    assert sources[0]["url"] == assistant.DEFAULT_SOURCE_URL
+    assert sources[1]["url"] == "https://cvm.gov.br/res44.pdf"
+
+def test_format_context_labels_each_excerpt():
+    context = assistant.format_context([_doc("Caderno CVM 6", "p. 12", content="FII é um condomínio.")])
+    assert context == "[Fonte: Caderno CVM 6 – CVM, p. 12]\nFII é um condomínio."
+
+def test_chat_rag_without_docs_returns_no_sources(monkeypatch):
+    monkeypatch.setattr(assistant, "query_relevant_documents", lambda *a, **k: [])
+    monkeypatch.setattr(assistant, "generate", lambda *a, **k: {
+        "reply": "Geral", "suggestions": [], "tokens_in": None, "tokens_out": None
+    })
+    result = assistant.chat_rag("Oi")
+    assert result["source"] is None
+    assert result["sources"] == []
 
 def test_mentions_selic():
     assert mentions_selic("Quanto está a SELIC?")
