@@ -49,6 +49,20 @@ def test_chat_authenticated_passes_first_name_and_history(client, auth_headers, 
     assert received["user_name"] == "Antonio"
     assert received["history"][0].content == "Oi"
 
+def test_chat_without_module_searches_whole_corpus(client, auth_headers, monkeypatch):
+    received = {}
+
+    def fake_process_message(message, module, history, user_name):
+        received["module"] = module
+        return ChatResponse(reply="ok", suggestions=[])
+
+    monkeypatch.setattr(ChatService, "process_message", staticmethod(fake_process_message))
+    client.post("/api/chat", json={"message": "O que é o Novo Mercado?"}, headers=auth_headers)
+    assert received["module"] is None
+
+    client.post("/api/chat", json={"message": "O que é CDB?", "module": "modulo_1"}, headers=auth_headers)
+    assert received["module"] == "modulo_1"
+
 def test_chat_rate_limit_per_user(client, auth_headers, monkeypatch):
     monkeypatch.setattr(
         ChatService,

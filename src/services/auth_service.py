@@ -4,6 +4,7 @@ import httpx
 from fastapi import HTTPException, status
 from src.config import GOOGLE_CLIENT_ID
 from src.core.database import is_supabase_configured
+from src.core.name_validation import normalize_name, validate_name
 from src.core.security import hash_password, verify_password, dummy_verify_password, create_access_token
 from src.repositories.user_repository import UserRepository
 from src.schemas.auth import (
@@ -91,6 +92,10 @@ class AuthService:
     def register(cls, payload: UserRegisterRequest) -> AuthResponse:
         cls._check_db_available()
 
+        name_error = validate_name(payload.name)
+        if name_error:
+            raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=name_error)
+
         existing = UserRepository.get_by_email(payload.email)
         if existing:
             raise HTTPException(
@@ -104,7 +109,7 @@ class AuthService:
             raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))
 
         user = UserRepository.create_local_user(
-            name=payload.name,
+            name=normalize_name(payload.name),
             email=payload.email,
             password_hash=pwd_hash,
         )
