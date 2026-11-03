@@ -7,7 +7,7 @@ class ChatMessagePayload(BaseModel):
 
 class ChatRequest(BaseModel):
     message: str = Field(..., min_length=1, max_length=1000, description="Mensagem do usuário para o Rev")
-    module: Optional[str] = Field("modulo_1", description="Identificador do módulo atual de aprendizado")
+    module: Optional[str] = Field(None, description="Módulo que restringe a busca (chat das lições); vazio busca no corpus inteiro")
     history: Optional[List[ChatMessagePayload]] = Field(None, description="Histórico prévio de mensagens da conversa")
 
 class SourceResponse(BaseModel):
