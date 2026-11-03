@@ -1,0 +1,304 @@
+# Conjunto de perguntas v2 com respostas de referência (PLANO_AVALIACAO.md, Seções 3.3 e 4).
+# 03/11/2026: referências escritas só com os trechos do corpus e conferidas pelo autor nos PDFs.
+# Antes de congelar: (1) o autor confere cada referência no PDF; (2) o especialista valida (validado: true).
+# Ajustes feitos após a validação vão em "ajustes".
+
+- id: N1.1
+  nivel: N1
+  modulo: null
+  pergunta: "O que é renda fixa e quais são os principais produtos dessa categoria no Brasil?"
+  comportamento_esperado: responder
+  referencia: >-
+    Renda fixa são investimentos que pagam, em períodos definidos, uma remuneração correspondente a uma taxa
+    de juros, que pode ser fixada no momento da aplicação (prefixada) ou calculada no resgate com base em um
+    indexador, como Selic, DI ou IPCA (pós-fixada). Costumam ter menor risco e menor rentabilidade esperada
+    que aplicações mais arriscadas, mas o risco existe. Os principais produtos são os títulos públicos (Letra
+    Financeira do Tesouro, Letra do Tesouro Nacional e Nota do Tesouro Nacional) e os títulos privados, como
+    CDB, RDB, Letras de Câmbio, LCI, LCA e debêntures.
+  fontes_referencia:
+    - {documento: bcb_caderno_gestao_financas_pessoais, pagina: "p. 65"}
+    - {documento: cvm_livro_top_planejamento_financeiro_pessoal, pagina: "p. 85-86"}
+    - {documento: cvm_livro_top_planejamento_financeiro_pessoal, pagina: "p. 215-216"}
+  conferido_autor: true
+  validado: false
+
+- id: N1.2
+  nivel: N1
+  modulo: null
+  pergunta: "O que é a CVM e qual é o seu papel no mercado de capitais brasileiro?"
+  comportamento_esperado: responder
+  referencia: >-
+    A Comissão de Valores Mobiliários (CVM) é uma autarquia federal criada em 1976 pela Lei nº 6.385/76,
+    responsável pela regulação e fiscalização do mercado de capitais no Brasil. Entre suas funções estão
+    estabelecer normas, fiscalizar seu cumprimento e punir quem as descumpre, promover o desenvolvimento e a
+    eficiência do mercado e proteger os investidores contra fraudes e práticas irregulares.
+  fontes_referencia:
+    - {documento: cvm_caderno_01_o_que_e_a_cvm, pagina: "p. 7-8"}
+    - {documento: cvm_livro_top_direito_mercado_valores_mobiliarios, pagina: "p. 22-23"}
+  conferido_autor: true
+  validado: false
+
+- id: N1.3
+  nivel: N1
+  modulo: null
+  pergunta: "O que é o FGC e quais produtos ele cobre?"
+  comportamento_esperado: responder
+  referencia: >-
+    O Fundo Garantidor de Créditos (FGC) é uma associação civil sem fins lucrativos, de direito privado, que
+    protege depositantes e investidores quando uma instituição associada sofre intervenção, liquidação
+    extrajudicial, falência ou tem a insolvência reconhecida pelo Banco Central. A garantia ordinária cobre,
+    entre outros, depósitos à vista, poupança, depósitos a prazo (CDB e RDB), Letras de Câmbio, Letras
+    Hipotecárias, LCI e LCA, até R$ 250 mil por CPF ou CNPJ por instituição.
+  fontes_referencia:
+    - {documento: cmn_resolucao_4222_fgc, pagina: "p. 9"}
+    - {documento: cmn_resolucao_4222_fgc, pagina: "p. 31-32"}
+    - {documento: cvm_livro_top_planejamento_financeiro_pessoal, pagina: "p. 103-104"}
+  conferido_autor: true
+  validado: false
+
+- id: N2.1
+  nivel: N2
+  modulo: null
+  pergunta: "Qual é o limite de garantia do FGC por pessoa e por instituição, e existe um teto total para quem tem aplicações em vários bancos?"
+  comportamento_esperado: responder
+  referencia: >-
+    O total de créditos de cada pessoa contra a mesma instituição associada, ou contra todas as instituições
+    do mesmo conglomerado financeiro, é garantido até R$ 250 mil. Existe também um teto global: o total
+    garantido para cada credor contra o conjunto de todas as instituições associadas é de até R$ 1 milhão a
+    cada período de quatro anos consecutivos.
+  fontes_referencia:
+    - {documento: cmn_resolucao_4222_fgc, pagina: "p. 32"}
+    - {documento: cvm_livro_top_planejamento_financeiro_pessoal, pagina: "p. 104"}
+    - {documento: cvm_livro_top_planejamento_financeiro_pessoal, pagina: "p. 106"}
+  conferido_autor: true
+  validado: false
+  nota_cobertura: >-
+    O trecho principal (Res. 4.222, p. 32) não aparece no top-5. O top-3 do chat traz um quadro com
+    "R$ 20 milhões" (p. 96) e o limite de R$ 40 milhões do DPGE, o que pode confundir o modelo. Bom
+    candidato a caso de falha de recuperação.
+
+- id: N2.2
+  nivel: N2
+  modulo: null
+  pergunta: "Em quanto tempo o dinheiro de uma venda antecipada no Tesouro Direto cai na conta, e o horário da venda muda isso?"
+  comportamento_esperado: responder
+  referencia: >-
+    Sim, o horário muda o prazo. Vendas feitas entre 9h30 e 13h têm o dinheiro repassado no mesmo dia útil,
+    desde que os preços e taxas tenham sido divulgados antes das 13h; vendas entre 13h e 18h, em até um dia
+    útil. Vendas agendadas entre 18h01 e 23h59 são pagas no dia útil seguinte (ou no segundo, se os preços
+    saírem depois das 13h), e as agendadas entre 0h e 5h, no mesmo dia útil (ou no seguinte, nas mesmas
+    condições).
+  fontes_referencia:
+    - {documento: tesouro_direto_regulamento, pagina: "p. 37-38"}
+  conferido_autor: true
+  validado: false
+
+- id: N2.3
+  nivel: N2
+  modulo: null
+  pergunta: "Por quanto tempo antes da divulgação das demonstrações financeiras os administradores de uma companhia aberta ficam proibidos de negociar ações da empresa?"
+  comportamento_esperado: responder
+  referencia: >-
+    Por 15 dias. Nos 15 dias que antecedem a divulgação das informações contábeis trimestrais e das
+    demonstrações financeiras anuais, a companhia, os acionistas controladores, os diretores e os membros
+    dos conselhos de administração e fiscal ficam impedidos de negociar valores mobiliários da companhia,
+    mesmo que não conheçam o conteúdo dessas informações. O dia da divulgação não entra na contagem, e a
+    negociação só pode ocorrer nesse dia depois da divulgação.
+  fontes_referencia:
+    - {documento: cvm_resolucao_44_2021, pagina: "p. 12-13"}
+  conferido_autor: true
+  validado: false
+
+- id: N2.4
+  nivel: N2
+  modulo: null
+  pergunta: "Se uma informação relevante vazar antes de a empresa divulgar, o que a companhia é obrigada a fazer e em quanto tempo?"
+  comportamento_esperado: responder
+  referencia: >-
+    A companhia pode, excepcionalmente, adiar a divulgação de um fato relevante quando isso proteger um
+    interesse legítimo dela. Mas, se a informação escapar ao controle ou houver oscilação atípica na
+    cotação, no preço ou na quantidade negociada das ações, os controladores ou administradores, diretamente
+    ou por meio do Diretor de Relações com Investidores, são obrigados a divulgar o fato relevante
+    imediatamente.
+  fontes_referencia:
+    - {documento: cvm_resolucao_44_2021, pagina: "p. 5"}
+  conferido_autor: true
+  validado: false
+  nota_cobertura: >-
+    O top-3 do chat traz o TOP Direito citando a Instrução CVM 358 (revogada pela Res. CVM 44). A regra é a
+    mesma, mas a resposta pode citar norma desatualizada: conferir na análise.
+
+- id: N2.5
+  nivel: N2
+  modulo: null
+  pergunta: "Qual percentual mínimo de ações em circulação (free float) uma empresa do Novo Mercado precisa manter?"
+  comportamento_esperado: responder
+  referencia: >-
+    A regra geral é manter pelo menos 20% do capital social em ações em circulação. O mínimo cai para 15% se
+    o volume financeiro médio diário de negociação das ações for igual ou superior a R$ 20 milhões nos
+    últimos 12 meses. Empresas que entram no Novo Mercado junto com uma oferta pública podem manter 15% nos
+    primeiros 18 meses, se cumprirem as condições do regulamento.
+  fontes_referencia:
+    - {documento: b3_regulamento_novo_mercado, pagina: "p. 7"}
+    - {documento: cvm_livro_top_mercado_valores_mobiliarios, pagina: "p. 279"}
+  conferido_autor: true
+  validado: false
+
+- id: N3.1
+  nivel: N3
+  modulo: null
+  pergunta: "Tenho R$ 400 mil para aplicar e quero ficar protegido pelo FGC. Como posso distribuir entre CDB, LCI e Tesouro Direto e o que fica fora da garantia?"
+  comportamento_esperado: responder
+  referencia: >-
+    CDB e LCI são cobertos pelo FGC até R$ 250 mil por CPF por instituição (ou conglomerado), com teto de
+    R$ 1 milhão a cada quatro anos somando todas as instituições. Para ficar protegido, o investidor não
+    deve ultrapassar R$ 250 mil por instituição: por exemplo, dividir CDB e LCI entre bancos de
+    conglomerados diferentes. O que passar de R$ 250 mil numa mesma instituição fica sem garantia. O Tesouro
+    Direto não está entre os produtos cobertos pelo FGC, mas os títulos públicos federais são emitidos pelo
+    Tesouro Nacional e considerados de risco de crédito muito baixo; por isso, a parte aplicada nele não
+    depende do FGC.
+  fontes_referencia:
+    - {documento: cmn_resolucao_4222_fgc, pagina: "p. 31-32"}
+    - {documento: bcb_caderno_gestao_financas_pessoais, pagina: "p. 64-65"}
+    - {documento: cvm_livro_top_planejamento_financeiro_pessoal, pagina: "p. 68"}
+    - {documento: cvm_livro_top_planejamento_financeiro_pessoal, pagina: "p. 104"}
+  conferido_autor: true
+  validado: false
+  nota_cobertura: >-
+    Nenhum trecho diz explicitamente "o FGC não cobre o Tesouro Direto". A referência deduz isso da lista de
+    produtos cobertos. Peça ao especialista para confirmar a redação. É a mesma pergunta da tarefa T2.
+
+- id: N3.2
+  nivel: N3
+  modulo: null
+  pergunta: "Trabalho numa companhia aberta e soube de uma aquisição antes do anúncio oficial. Posso comprar ações dela? O que a regra diz e o que pode acontecer?"
+  comportamento_esperado: responder
+  referencia: >-
+    Não. A Resolução CVM 44 proíbe qualquer pessoa que tenha acesso a informação relevante ainda não
+    divulgada de usá-la para obter vantagem negociando valores mobiliários, e a Lei das S.A. obriga o
+    administrador a guardar sigilo sobre essas informações. Uma aquisição ainda não anunciada é uma
+    informação capaz de influenciar a cotação. Além das sanções administrativas da CVM, usar a informação
+    é crime (uso indevido de informação privilegiada, art. 27-D da Lei 6.385/76), com pena de reclusão de
+    1 a 5 anos e multa de até três vezes a vantagem obtida.
+  fontes_referencia:
+    - {documento: cvm_resolucao_44_2021, pagina: "p. 11"}
+    - {documento: cvm_livro_top_direito_mercado_valores_mobiliarios, pagina: "p. 241"}
+    - {documento: cvm_livro_top_direito_mercado_valores_mobiliarios, pagina: "p. 253"}
+  conferido_autor: true
+  validado: false
+  nota_cobertura: >-
+    O top-3 do chat traz um trecho sobre OPA/aquisição hostil (pouco útil), o art. 155 da Lei das S.A. e um
+    trecho sobre OPA parcial. O art. 13 da Res. 44 e o art. 27-D não aparecem no top-5.
+
+- id: N3.3
+  nivel: N3
+  modulo: null
+  pergunta: "Quero começar com pouco dinheiro na bolsa. Que diferença faz, em proteção ao acionista minoritário, comprar ações de uma empresa do Novo Mercado em vez de uma empresa de outro segmento?"
+  comportamento_esperado: responder
+  referencia: >-
+    O Novo Mercado é o segmento com mais exigências de governança. Nele, o capital só pode ter ações
+    ordinárias, com direito a voto; na venda do controle, todos os acionistas podem vender pelo mesmo preço
+    pago ao controlador (tag along de 100%); a empresa mantém ao menos 20% das ações em circulação (ou 15%,
+    com alto volume de negociação); o conselho tem pelo menos 2 ou 20% de conselheiros independentes; e, se
+    a empresa sair do segmento, precisa fazer oferta pública de aquisição por valor justo. Em outros
+    segmentos as exigências são menores: o Nível 2, por exemplo, permite ações preferenciais.
+  fontes_referencia:
+    - {documento: cvm_livro_top_mercado_valores_mobiliarios, pagina: "p. 275-276"}
+    - {documento: cvm_livro_top_mercado_valores_mobiliarios, pagina: "p. 277-278"}
+  conferido_autor: true
+  validado: false
+
+- id: N3.4
+  nivel: N3
+  modulo: null
+  pergunta: "Estou em dúvida entre um fundo imobiliário e comprar um imóvel para alugar. O que muda em liquidez, diversificação e custos, segundo o material da CVM?"
+  comportamento_esperado: responder
+  referencia: >-
+    O fundo imobiliário permite investir em imóveis com pequenas quantias, diversificar entre vários
+    empreendimentos e diluir os custos de administração entre todos os cotistas. Na liquidez, é possível
+    vender só parte das cotas no mercado secundário, enquanto no imóvel direto seria preciso vender o bem
+    inteiro; em compensação, a venda das cotas depende de haver compradores nesse mercado. Os rendimentos
+    distribuídos podem ser isentos de imposto de renda, se o fundo cumprir as condições legais.
+  fontes_referencia:
+    - {documento: cvm_caderno_06_fundos_imobiliarios, pagina: "p. 7-9"}
+    - {documento: cvm_livro_top_planejamento_financeiro_pessoal, pagina: "p. 149"}
+    - {documento: cvm_livro_top_planejamento_financeiro_pessoal, pagina: "p. 151-152"}
+  conferido_autor: true
+  validado: false
+
+- id: N3.5
+  nivel: N3
+  modulo: null
+  pergunta: "Quero investir numa empresa e ver se ela é confiável. Que documento obrigatório devo consultar, onde encontro e que informações ele traz?"
+  comportamento_esperado: responder
+  referencia: >-
+    O principal documento é o Formulário de Referência, obrigatório para as companhias abertas desde 2009.
+    Ele traz as atividades da empresa, fatores de risco, estrutura de capital, dados financeiros, comentários
+    da administração, principais acionistas, composição dos conselhos e remuneração dos administradores. Ele
+    pode ser consultado no site da CVM, junto com demonstrações financeiras e fatos relevantes, e no site de
+    Relações com Investidores da empresa.
+  fontes_referencia:
+    - {documento: cvm_caderno_01_o_que_e_a_cvm, pagina: "p. 22-23"}
+  conferido_autor: true
+  validado: false
+
+- id: N4.1
+  nivel: N4
+  modulo: null
+  pergunta: "Como o FGC garante meus títulos do Tesouro Direto se a corretora quebrar?"
+  comportamento_esperado: corrigir_premissa
+  referencia: >-
+    Corrige a premissa: o FGC não garante títulos do Tesouro Direto, porque eles não estão entre os produtos
+    cobertos, que são depósitos e títulos emitidos por instituições financeiras. Os títulos públicos são
+    emitidos pelo Tesouro Nacional e considerados de risco de crédito muito baixo. Além disso, eles ficam
+    registrados em uma conta de custódia individualizada em nome do investidor, na B3, e depositados no
+    Selic (Banco Central); a corretora é só o agente de custódia, e os títulos podem ser transferidos para
+    outra conta de mesma titularidade.
+  fontes_referencia:
+    - {documento: cmn_resolucao_4222_fgc, pagina: "p. 31-32"}
+    - {documento: cvm_livro_top_planejamento_financeiro_pessoal, pagina: "p. 68"}
+    - {documento: tesouro_direto_regulamento, pagina: "p. 5"}
+    - {documento: tesouro_direto_regulamento, pagina: "p. 7-8"}
+  conferido_autor: true
+  validado: false
+  nota_cobertura: >-
+    A consequência "se a corretora quebrar, os títulos continuam seus" é dedução das regras de custódia,
+    não uma frase do regulamento. Confirmar com o especialista.
+
+- id: N4.2
+  nivel: N4
+  modulo: null
+  pergunta: "Qual é a alíquota de imposto de renda sobre o lucro com criptomoedas?"
+  comportamento_esperado: declarar_fora_da_base
+  referencia: >-
+    Informa que os documentos oficiais da base não tratam da tributação de criptomoedas e não apresenta uma
+    alíquota como se viesse deles. Pode sugerir consultar a Receita Federal. Não deve usar as alíquotas de
+    outros ativos (imóveis, ações, fundos) que aparecem nos trechos recuperados como se valessem para
+    criptomoedas.
+  fontes_referencia: []
+  conferido_autor: true
+  validado: false
+  nota_cobertura: >-
+    Passam 3 trechos do TOP Planejamento sobre IR de outros ativos (imóveis 15%, renda variável 15%/20%).
+    O risco é o modelo aplicar essas alíquotas às criptomoedas.
+
+- id: N4.3
+  nivel: N4
+  modulo: null
+  pergunta: "Segundo a Instrução CVM 555, quais são as regras de cotas para fundos de investimento?"
+  comportamento_esperado: corrigir_premissa
+  referencia: >-
+    Avisa que a Instrução CVM 555 não é mais a norma vigente: em 2022 a CVM editou a Resolução CVM 175, em
+    vigor desde outubro de 2023, que reúne em normativo único as regras de todos os fundos de investimento
+    (parte geral e anexos por categoria, com divisão em classes e subclasses de cotas). Se usar o Caderno
+    CVM 3 (2016), deve deixar claro que ele é anterior à norma atual.
+  fontes_referencia:
+    - {documento: cvm_livro_top_mercado_valores_mobiliarios, pagina: "p. 101-103"}
+    - {documento: cvm_livro_top_mercado_valores_mobiliarios, pagina: "p. 108"}
+  conferido_autor: true
+  validado: false
+  nota_cobertura: >-
+    Com a busca no corpus inteiro (03/11), os 5 primeiros trechos são todos do TOP Direito, explicando a
+    ICVM 555 como se estivesse vigente; os trechos do TOP Mercado sobre a Res. 175 (p. 101-103) não são
+    recuperados. A informação para corrigir a premissa existe no corpus, mas não chega ao modelo: caso de
+    falha esperado, ligado à dominância do TOP Direito (93% dos chunks do M3). Mantida de propósito.
