@@ -1,0 +1,123 @@
+# Perguntas candidatas da avaliação v2 (PLANO_AVALIACAO.md, Seção 3.2).
+# Rascunho: passa pela checagem de cobertura (scripts/check_coverage.py) antes de virar questions_v2.yaml.
+# Ao trocar uma pergunta que não passou, mantenha o id do nível e registre a troca em "historico".
+#
+# comportamento_esperado:
+#   responder             -> precisa de >= 1 trecho do documento esperado com distância <= 0,5
+#   corrigir_premissa     -> precisa de trechos que permitam corrigir a premissa falsa
+#   declarar_fora_da_base -> NÃO pode haver trecho pertinente
+
+- id: N1.1
+  nivel: N1
+  modulo: null
+  pergunta: "O que é renda fixa e quais são os principais produtos dessa categoria no Brasil?"
+  documentos_esperados: [bcb_caderno_gestao_financas_pessoais, cvm_livro_top_planejamento_financeiro_pessoal]
+  comportamento_esperado: responder
+
+- id: N1.2
+  nivel: N1
+  modulo: null
+  pergunta: "O que é a CVM e qual é o seu papel no mercado de capitais brasileiro?"
+  documentos_esperados: [cvm_caderno_01_o_que_e_a_cvm]
+  comportamento_esperado: responder
+
+- id: N1.3
+  nivel: N1
+  modulo: null
+  pergunta: "O que é o FGC e quais produtos ele cobre?"
+  documentos_esperados: [cmn_resolucao_4222_fgc]
+  comportamento_esperado: responder
+
+- id: N2.1
+  nivel: N2
+  modulo: null
+  pergunta: "Qual é o limite de garantia do FGC por pessoa e por instituição, e existe um teto total para quem tem aplicações em vários bancos?"
+  documentos_esperados: [cmn_resolucao_4222_fgc]
+  comportamento_esperado: responder
+
+- id: N2.2
+  nivel: N2
+  modulo: null
+  pergunta: "Em quanto tempo o dinheiro de uma venda antecipada no Tesouro Direto cai na conta, e o horário da venda muda isso?"
+  documentos_esperados: [tesouro_direto_regulamento]
+  comportamento_esperado: responder
+
+- id: N2.3
+  nivel: N2
+  modulo: null
+  pergunta: "Por quanto tempo antes da divulgação das demonstrações financeiras os administradores de uma companhia aberta ficam proibidos de negociar ações da empresa?"
+  documentos_esperados: [cvm_resolucao_44_2021]
+  comportamento_esperado: responder
+
+- id: N2.4
+  nivel: N2
+  modulo: null
+  pergunta: "Se uma informação relevante vazar antes de a empresa divulgar, o que a companhia é obrigada a fazer e em quanto tempo?"
+  documentos_esperados: [cvm_resolucao_44_2021]
+  comportamento_esperado: responder
+
+- id: N2.5
+  nivel: N2
+  modulo: null
+  pergunta: "Qual percentual mínimo de ações em circulação (free float) uma empresa do Novo Mercado precisa manter?"
+  documentos_esperados: [b3_regulamento_novo_mercado]
+  comportamento_esperado: responder
+
+- id: N3.1
+  nivel: N3
+  modulo: null
+  pergunta: "Tenho R$ 400 mil para aplicar e quero ficar protegido pelo FGC. Como posso distribuir entre CDB, LCI e Tesouro Direto e o que fica fora da garantia?"
+  documentos_esperados: [cmn_resolucao_4222_fgc, tesouro_direto_regulamento]
+  comportamento_esperado: responder
+
+- id: N3.2
+  nivel: N3
+  modulo: null
+  pergunta: "Trabalho numa companhia aberta e soube de uma aquisição antes do anúncio oficial. Posso comprar ações dela? O que a regra diz e o que pode acontecer?"
+  documentos_esperados: [cvm_resolucao_44_2021, cvm_livro_top_direito_mercado_valores_mobiliarios, cvm_livro_top_mercado_valores_mobiliarios]
+  comportamento_esperado: responder
+
+- id: N3.3
+  nivel: N3
+  modulo: null
+  pergunta: "Quero começar com pouco dinheiro na bolsa. Que diferença faz, em proteção ao acionista minoritário, comprar ações de uma empresa do Novo Mercado em vez de uma empresa de outro segmento?"
+  documentos_esperados: [b3_regulamento_novo_mercado, cvm_livro_top_mercado_valores_mobiliarios]
+  comportamento_esperado: responder
+
+- id: N3.4
+  nivel: N3
+  modulo: null
+  pergunta: "Estou em dúvida entre um fundo imobiliário e comprar um imóvel para alugar. O que muda em liquidez, diversificação e custos, segundo o material da CVM?"
+  documentos_esperados: [cvm_caderno_06_fundos_imobiliarios, cvm_livro_top_planejamento_financeiro_pessoal]
+  comportamento_esperado: responder
+
+- id: N3.5
+  nivel: N3
+  modulo: null
+  pergunta: "Quero investir numa empresa e ver se ela é confiável. Que documento obrigatório devo consultar, onde encontro e que informações ele traz?"
+  documentos_esperados: [cvm_resolucao_80_2022, cvm_caderno_01_o_que_e_a_cvm]
+  comportamento_esperado: responder
+
+- id: N4.1
+  nivel: N4
+  modulo: null
+  pergunta: "Como o FGC garante meus títulos do Tesouro Direto se a corretora quebrar?"
+  documentos_esperados: [cmn_resolucao_4222_fgc, tesouro_direto_regulamento]
+  comportamento_esperado: corrigir_premissa
+  nota: "Premissa falsa: o FGC não cobre títulos públicos."
+
+- id: N4.2
+  nivel: N4
+  modulo: null
+  pergunta: "Qual é a alíquota de imposto de renda sobre o lucro com criptomoedas?"
+  documentos_esperados: []
+  comportamento_esperado: declarar_fora_da_base
+  nota: "Fora do corpus: o sistema deve dizer que a base não cobre o tema."
+
+- id: N4.3
+  nivel: N4
+  modulo: null
+  pergunta: "Segundo a Instrução CVM 555, quais são as regras de cotas para fundos de investimento?"
+  documentos_esperados: [cvm_caderno_03_fundos_investimento]
+  comportamento_esperado: corrigir_premissa
+  nota: "Norma revogada pela Res. CVM 175/2022; o Caderno CVM 3 é anterior (teste de atualidade)."
