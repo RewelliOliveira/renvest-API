@@ -1,26 +1,26 @@
 # Checagem de cobertura – avaliação v2
 
-Gerado em 03/11/2026 11:25 · top-5 · k do chat = 3 · limiar = 0.5 · embedding = text-embedding-3-small
+Gerado em 08/11/2026 13:14 · top-5 · k do chat = 5 · limiar = 0.5 · embedding = text-embedding-3-small
 
 `*` = trecho que o chat usaria (top-k dentro do limiar) · `✓` = documento esperado
 
 | ID | Resultado automático |
 | :-- | :-- |
-| N1.1 | PARCIAL: documento esperado só no top-5 (fora do top-3 do chat) |
+| N1.1 | PROVÁVEL: documento esperado no top-3 do chat; confira o texto |
 | N1.2 | PROVÁVEL: documento esperado no top-3 do chat; confira o texto |
-| N1.3 | PARCIAL: documento esperado só no top-5 (fora do top-3 do chat) |
+| N1.3 | PROVÁVEL: documento esperado no top-3 do chat; confira o texto |
 | N2.1 | PROVÁVEL: documento esperado no top-3 do chat; confira o texto |
 | N2.2 | PROVÁVEL: documento esperado no top-3 do chat; confira o texto |
 | N2.3 | PROVÁVEL: documento esperado no top-3 do chat; confira o texto |
-| N2.4 | PARCIAL: documento esperado só no top-5 (fora do top-3 do chat) |
-| N2.5 | PARCIAL: documento esperado só no top-5 (fora do top-3 do chat) |
-| N3.1 | PARCIAL: documento esperado só no top-5 (fora do top-3 do chat) |
+| N2.4 | PROVÁVEL: documento esperado no top-3 do chat; confira o texto |
+| N2.5 | PROVÁVEL: documento esperado no top-3 do chat; confira o texto |
+| N3.1 | PROVÁVEL: documento esperado no top-3 do chat; confira o texto |
 | N3.2 | PROVÁVEL: documento esperado no top-3 do chat; confira o texto |
 | N3.3 | PROVÁVEL: documento esperado no top-3 do chat; confira o texto |
 | N3.4 | PROVÁVEL: documento esperado no top-3 do chat; confira o texto |
 | N3.5 | PROVÁVEL: documento esperado no top-3 do chat; confira o texto |
 | N4.1 | PROVÁVEL: documento esperado no top-3 do chat; confira o texto |
-| N4.2 | ATENÇÃO: 3 trecho(s) passariam para o chat; confira se são pertinentes |
+| N4.2 | ATENÇÃO: 5 trecho(s) passariam para o chat; confira se são pertinentes |
 | N4.3 | FALHOU: documento esperado não aparece com distância <= limiar; trocar ou reformular |
 
 ## N1.1 (N1, sem filtro)
@@ -29,17 +29,17 @@ Gerado em 03/11/2026 11:25 · top-5 · k do chat = 3 · limiar = 0.5 · embeddin
 
 **Esperado:** responder · documentos: bcb_caderno_gestao_financas_pessoais, cvm_livro_top_planejamento_financeiro_pessoal
 
-**Resultado automático:** PARCIAL: documento esperado só no top-5 (fora do top-3 do chat)
+**Resultado automático:** PROVÁVEL: documento esperado no top-3 do chat; confira o texto
 
 **Conferência manual:** [ ] contém a informação  
 
 | # | Documento | Página | Distância | Chat |
 | :-: | :-- | :-- | :-: | :-: |
 | 1 | cvm_livro_top_direito_mercado_valores_mobiliarios | p. 313 | 0.341 | * |
-| 2 | cvm_caderno_03_fundos_investimento | p. 16 | 0.369 | * |
-| 3 | cvm_livro_top_mercado_valores_mobiliarios | p. 269 | 0.375 | * |
-| 4 | cvm_livro_top_planejamento_financeiro_pessoal ✓ | p. 85-86 | 0.377 |  |
-| 5 | cvm_livro_top_mercado_valores_mobiliarios | p. 104 | 0.382 |  |
+| 2 | cvm_caderno_03_fundos_investimento | p. 16 | 0.368 | * |
+| 3 | cvm_livro_top_mercado_valores_mobiliarios | p. 269 | 0.374 | * |
+| 4 | cvm_livro_top_planejamento_financeiro_pessoal ✓ | p. 85-86 | 0.377 | * |
+| 5 | cvm_livro_top_mercado_valores_mobiliarios | p. 104 | 0.382 | * |
 
 > **1.** 9.4. Mercado de renda fixa e mercado de renda variável. Considerando o valor mobiliário ou ativo/produto negociado ou ofertado, podemos classificar o mercado como sendo mercado de renda fixa ou de renda variável. Por renda fixa, entende-se que o rendimento a ser auferido pelo investidor é determinad…
 
@@ -66,8 +66,8 @@ Gerado em 03/11/2026 11:25 · top-5 · k do chat = 3 · limiar = 0.5 · embeddin
 | 1 | cvm_caderno_01_o_que_e_a_cvm ✓ | p. 7 | 0.206 | * |
 | 2 | cvm_livro_top_direito_mercado_valores_mobiliarios | p. 22-23 | 0.224 | * |
 | 3 | cvm_caderno_01_o_que_e_a_cvm ✓ | p. 3-7 | 0.239 | * |
-| 4 | cvm_livro_top_direito_mercado_valores_mobiliarios | p. 55-56 | 0.241 |  |
-| 5 | cvm_caderno_01_o_que_e_a_cvm ✓ | p. 7-8 | 0.252 |  |
+| 4 | cvm_livro_top_direito_mercado_valores_mobiliarios | p. 55-56 | 0.241 | * |
+| 5 | cvm_caderno_01_o_que_e_a_cvm ✓ | p. 7-8 | 0.252 | * |
 
 > **1.** a cvm 1 1.1. QUEM É A CVM é a instituição do governo responsável pela regulação e fiscalização do mercado de capitais no Brasil. Criada em 1976, é uma Autarquia Federal que tem entre suas funções: estabelecer normas, fiscalizar seu cumprimento, punir aqueles que as descumprem e buscar o desenvolvime…
 
@@ -85,17 +85,17 @@ Gerado em 03/11/2026 11:25 · top-5 · k do chat = 3 · limiar = 0.5 · embeddin
 
 **Esperado:** responder · documentos: cmn_resolucao_4222_fgc
 
-**Resultado automático:** PARCIAL: documento esperado só no top-5 (fora do top-3 do chat)
+**Resultado automático:** PROVÁVEL: documento esperado no top-3 do chat; confira o texto
 
 **Conferência manual:** [ ] contém a informação  
 
 | # | Documento | Página | Distância | Chat |
 | :-: | :-- | :-- | :-: | :-: |
-| 1 | cvm_livro_top_planejamento_financeiro_pessoal | p. 103-104 | 0.359 | * |
+| 1 | cvm_livro_top_planejamento_financeiro_pessoal | p. 103-104 | 0.360 | * |
 | 2 | cvm_livro_top_planejamento_financeiro_pessoal | p. 96 | 0.378 | * |
 | 3 | cvm_livro_top_planejamento_financeiro_pessoal | p. 106 | 0.382 | * |
-| 4 | cmn_resolucao_4222_fgc ✓ | p. 12 | 0.393 |  |
-| 5 | cmn_resolucao_4222_fgc ✓ | p. 9 | 0.408 |  |
+| 4 | cmn_resolucao_4222_fgc ✓ | p. 12 | 0.393 | * |
+| 5 | cmn_resolucao_4222_fgc ✓ | p. 9 | 0.408 | * |
 
 > **1.** Fundo Garantidor de Créditos (FGC) O Fundo Garantidor de Créditos (FGC) é uma associação civil sem fins lucrativos e tem por objeto prestar garantia de créditos contra instituições dele participantes, nas hipóteses de: . Decretação da intervenção, liquidação extrajudicial ou falência da associada. .…
 
@@ -122,8 +122,8 @@ Gerado em 03/11/2026 11:25 · top-5 · k do chat = 3 · limiar = 0.5 · embeddin
 | 1 | cvm_livro_top_planejamento_financeiro_pessoal | p. 96 | 0.237 | * |
 | 2 | cvm_livro_top_planejamento_financeiro_pessoal | p. 106 | 0.266 | * |
 | 3 | cmn_resolucao_4222_fgc ✓ | p. 36-37 | 0.273 | * |
-| 4 | cvm_livro_top_planejamento_financeiro_pessoal | p. 103-104 | 0.315 |  |
-| 5 | cvm_livro_top_planejamento_financeiro_pessoal | p. 106 | 0.316 |  |
+| 4 | cvm_livro_top_planejamento_financeiro_pessoal | p. 103-104 | 0.315 | * |
+| 5 | cvm_livro_top_planejamento_financeiro_pessoal | p. 106 | 0.316 | * |
 
 > **1.** Emissor Bancos comerciais, múltiplos, de desenvolvimento, de investimento, sociedades de crédito, financiamento e investimento e caixas econômicas. Garantia do FGC Limitada a R$ 20 milhões por titular, englobando o principal mais os juros do total de créditos de cada pessoa contra a mesma instituiçã…
 
@@ -150,8 +150,8 @@ Gerado em 03/11/2026 11:25 · top-5 · k do chat = 3 · limiar = 0.5 · embeddin
 | 1 | tesouro_direto_regulamento ✓ | p. 38 | 0.309 | * |
 | 2 | tesouro_direto_regulamento ✓ | p. 37-38 | 0.324 | * |
 | 3 | tesouro_direto_regulamento ✓ | p. 17 | 0.364 | * |
-| 4 | tesouro_direto_regulamento ✓ | p. 16-17 | 0.365 |  |
-| 5 | tesouro_direto_regulamento ✓ | p. 13 | 0.378 |  |
+| 4 | tesouro_direto_regulamento ✓ | p. 16-17 | 0.365 | * |
+| 5 | tesouro_direto_regulamento ✓ | p. 13 | 0.378 | * |
 
 > **1.** agendamento entre as 00:00 hora e as 5:00 horas no mesmo dia útil da venda, desde que os preços/taxas dos respectivos Títulos sejam disponibilizados no Tesouro Direto antes das 13:00 horas do mesmo dia útil; no caso de disponibilização dos preços/taxas após às 13:00hs, o repasse dos recursos líquido…
 
@@ -178,8 +178,8 @@ Gerado em 03/11/2026 11:25 · top-5 · k do chat = 3 · limiar = 0.5 · embeddin
 | 1 | cvm_livro_top_direito_mercado_valores_mobiliarios | p. 234 | 0.235 | * |
 | 2 | cvm_livro_top_direito_mercado_valores_mobiliarios | p. 539 | 0.275 | * |
 | 3 | cvm_resolucao_44_2021 ✓ | p. 13 | 0.289 | * |
-| 4 | cvm_livro_top_direito_mercado_valores_mobiliarios | p. 863 | 0.293 |  |
-| 5 | cvm_livro_top_direito_mercado_valores_mobiliarios | p. 534 | 0.296 |  |
+| 4 | cvm_livro_top_direito_mercado_valores_mobiliarios | p. 863 | 0.293 | * |
+| 5 | cvm_livro_top_direito_mercado_valores_mobiliarios | p. 534 | 0.296 | * |
 
 > **1.** § 2o Sem prejuízo do disposto no parágrafo anterior, a vedação do caput se aplica também aos administradores que se afastem da administração da companhia antes da divulgação pública de negócio ou fato iniciado durante seu período de gestão, e se estenderá pelo prazo de seis meses após o seu afastame…
 
@@ -197,7 +197,7 @@ Gerado em 03/11/2026 11:25 · top-5 · k do chat = 3 · limiar = 0.5 · embeddin
 
 **Esperado:** responder · documentos: cvm_resolucao_44_2021
 
-**Resultado automático:** PARCIAL: documento esperado só no top-5 (fora do top-3 do chat)
+**Resultado automático:** PROVÁVEL: documento esperado no top-3 do chat; confira o texto
 
 **Conferência manual:** [ ] contém a informação  
 
@@ -206,8 +206,8 @@ Gerado em 03/11/2026 11:25 · top-5 · k do chat = 3 · limiar = 0.5 · embeddin
 | 1 | cvm_livro_top_direito_mercado_valores_mobiliarios | p. 523 | 0.301 | * |
 | 2 | cvm_livro_top_mercado_valores_mobiliarios | p. 209 | 0.303 | * |
 | 3 | cvm_livro_top_direito_mercado_valores_mobiliarios | p. 523 | 0.305 | * |
-| 4 | cvm_livro_top_mercado_valores_mobiliarios | p. 155-156 | 0.310 |  |
-| 5 | cvm_resolucao_44_2021 ✓ | p. 15 | 0.316 |  |
+| 4 | cvm_livro_top_mercado_valores_mobiliarios | p. 155-156 | 0.310 | * |
+| 5 | cvm_resolucao_44_2021 ✓ | p. 15 | 0.316 | * |
 
 > **1.** Exepcionalmente, nos casos em que os acionistas controladores ou os administradores entenderem que a revelação do ato ou fato relevante porá em risco interesse legítimo da companhia, a divulgação não necessariamente ocorrerá de forma imediata à ocorrência do fato relevante. A adoção desse procedimen…
 
@@ -225,7 +225,7 @@ Gerado em 03/11/2026 11:25 · top-5 · k do chat = 3 · limiar = 0.5 · embeddin
 
 **Esperado:** responder · documentos: b3_regulamento_novo_mercado
 
-**Resultado automático:** PARCIAL: documento esperado só no top-5 (fora do top-3 do chat)
+**Resultado automático:** PROVÁVEL: documento esperado no top-3 do chat; confira o texto
 
 **Conferência manual:** [ ] contém a informação  
 
@@ -234,8 +234,8 @@ Gerado em 03/11/2026 11:25 · top-5 · k do chat = 3 · limiar = 0.5 · embeddin
 | 1 | cvm_livro_top_mercado_valores_mobiliarios | p. 279 | 0.228 | * |
 | 2 | cvm_livro_top_direito_mercado_valores_mobiliarios | p. 723-724 | 0.244 | * |
 | 3 | cvm_livro_top_mercado_valores_mobiliarios | p. 277 | 0.267 | * |
-| 4 | b3_regulamento_novo_mercado ✓ | p. 7 | 0.271 |  |
-| 5 | cvm_livro_top_direito_mercado_valores_mobiliarios | p. 724 | 0.281 |  |
+| 4 | b3_regulamento_novo_mercado ✓ | p. 7 | 0.271 | * |
+| 5 | cvm_livro_top_direito_mercado_valores_mobiliarios | p. 724 | 0.281 | * |
 
 > **1.** 25% a partir do 7o ano de listagem 25% a partir do 7o ano de listagem Percentual mínimo de ações em circulação (free float) Regra geral: 20% Regra alternativa: 15%, (i) caso o ADTV (average daily trading volume) seja igual ou superior a R$ 20 milhões, considerando os negócios realizados nos últimos …
 
@@ -253,17 +253,17 @@ Gerado em 03/11/2026 11:25 · top-5 · k do chat = 3 · limiar = 0.5 · embeddin
 
 **Esperado:** responder · documentos: cmn_resolucao_4222_fgc, tesouro_direto_regulamento
 
-**Resultado automático:** PARCIAL: documento esperado só no top-5 (fora do top-3 do chat)
+**Resultado automático:** PROVÁVEL: documento esperado no top-3 do chat; confira o texto
 
 **Conferência manual:** [ ] contém a informação  
 
 | # | Documento | Página | Distância | Chat |
 | :-: | :-- | :-- | :-: | :-: |
-| 1 | bcb_caderno_gestao_financas_pessoais | p. 64-65 | 0.365 | * |
-| 2 | bcb_caderno_gestao_financas_pessoais | p. 59 | 0.372 | * |
-| 3 | cvm_livro_top_planejamento_financeiro_pessoal | p. 104 | 0.376 | * |
-| 4 | cmn_resolucao_4222_fgc ✓ | p. 36-37 | 0.378 |  |
-| 5 | cvm_livro_top_planejamento_financeiro_pessoal | p. 106 | 0.387 |  |
+| 1 | bcb_caderno_gestao_financas_pessoais | p. 64-65 | 0.364 | * |
+| 2 | bcb_caderno_gestao_financas_pessoais | p. 59 | 0.371 | * |
+| 3 | cvm_livro_top_planejamento_financeiro_pessoal | p. 104 | 0.375 | * |
+| 4 | cmn_resolucao_4222_fgc ✓ | p. 36-37 | 0.377 | * |
+| 5 | cvm_livro_top_planejamento_financeiro_pessoal | p. 106 | 0.386 | * |
 
 > **1.** É importante saber que existem o Fundo Garantidor de Créditos (FGC) e o Fundo Garantidor do Cooperativismo de Crédito (FGCoop), instituições que protegem depositantes e investidores em certas modalidades de investimentos financeiros. A garantia de crédito prestada por essas instituições é especialme…
 
@@ -288,10 +288,10 @@ Gerado em 03/11/2026 11:25 · top-5 · k do chat = 3 · limiar = 0.5 · embeddin
 | # | Documento | Página | Distância | Chat |
 | :-: | :-- | :-- | :-: | :-: |
 | 1 | cvm_livro_top_mercado_valores_mobiliarios ✓ | p. 178 | 0.342 | * |
-| 2 | cvm_livro_top_direito_mercado_valores_mobiliarios ✓ | p. 241 | 0.352 | * |
+| 2 | cvm_livro_top_direito_mercado_valores_mobiliarios ✓ | p. 241 | 0.351 | * |
 | 3 | cvm_livro_top_direito_mercado_valores_mobiliarios ✓ | p. 719-720 | 0.354 | * |
-| 4 | cvm_livro_top_direito_mercado_valores_mobiliarios ✓ | p. 706 | 0.372 |  |
-| 5 | cvm_livro_top_direito_mercado_valores_mobiliarios ✓ | p. 698 | 0.375 |  |
+| 4 | cvm_livro_top_direito_mercado_valores_mobiliarios ✓ | p. 706 | 0.372 | * |
+| 5 | cvm_livro_top_direito_mercado_valores_mobiliarios ✓ | p. 698 | 0.375 | * |
 
 > **1.** 7. Aquisição de uma empresa por outra sem prévia negociação com a administração ou os acionistas, geralmente atra vés de transação em bolsa. 8. É um mecanismo de proteção ao acionista minoritário que obriga o adquirente de controle a fazer oferta pública de aquisição a todos os acionistas, asseguran…
 
@@ -318,8 +318,8 @@ Gerado em 03/11/2026 11:25 · top-5 · k do chat = 3 · limiar = 0.5 · embeddin
 | 1 | cvm_livro_top_mercado_valores_mobiliarios ✓ | p. 275-276 | 0.326 | * |
 | 2 | cvm_livro_top_direito_mercado_valores_mobiliarios | p. 1310 | 0.361 | * |
 | 3 | cvm_livro_top_mercado_valores_mobiliarios ✓ | p. 278 | 0.372 | * |
-| 4 | cvm_livro_top_mercado_valores_mobiliarios ✓ | p. 277-278 | 0.387 |  |
-| 5 | cvm_livro_top_mercado_valores_mobiliarios ✓ | p. 105 | 0.399 |  |
+| 4 | cvm_livro_top_mercado_valores_mobiliarios ✓ | p. 277-278 | 0.387 | * |
+| 5 | cvm_livro_top_mercado_valores_mobiliarios ✓ | p. 105 | 0.399 | * |
 
 > **1.** Este novo ambiente de gestão profissional faz com que o investidor veja os segmentos de listagem diferenciados como um criador de valor na empresa, influenciando positivamente os resultados que espera obter com seu investimento. 8.5.1. Novo Mercado A principal inovação do Novo Mercado, em relação à …
 
@@ -346,8 +346,8 @@ Gerado em 03/11/2026 11:25 · top-5 · k do chat = 3 · limiar = 0.5 · embeddin
 | 1 | cvm_livro_top_planejamento_financeiro_pessoal ✓ | p. 151-152 | 0.324 | * |
 | 2 | cvm_caderno_06_fundos_imobiliarios ✓ | p. 7-8 | 0.345 | * |
 | 3 | cvm_livro_top_planejamento_financeiro_pessoal ✓ | p. 149 | 0.345 | * |
-| 4 | cvm_caderno_06_fundos_imobiliarios ✓ | p. 8-9 | 0.364 |  |
-| 5 | cvm_caderno_06_fundos_imobiliarios ✓ | p. 7 | 0.369 |  |
+| 4 | cvm_caderno_06_fundos_imobiliarios ✓ | p. 8-9 | 0.364 | * |
+| 5 | cvm_caderno_06_fundos_imobiliarios ✓ | p. 7 | 0.369 | * |
 
 > **1.** Uma maneira mais simples de investir em imóveis, correndo riscos semelhantes, é comprar cotas de um fundo imobiliário. Vantagens . Custo reduzido de investimento (é possível investir pequenas e médias quantias) . Baixo custo . Maior diversificação . Isenção do imposto de renda sobre rendimentos pago…
 
@@ -374,8 +374,8 @@ Gerado em 03/11/2026 11:25 · top-5 · k do chat = 3 · limiar = 0.5 · embeddin
 | 1 | cvm_caderno_03_fundos_investimento | p. 30-31 | 0.310 | * |
 | 2 | cvm_caderno_01_o_que_e_a_cvm ✓ | p. 23 | 0.345 | * |
 | 3 | cvm_caderno_01_o_que_e_a_cvm ✓ | p. 22-23 | 0.347 | * |
-| 4 | bcb_caderno_gestao_financas_pessoais | p. 63 | 0.367 |  |
-| 5 | cvm_livro_top_direito_mercado_valores_mobiliarios | p. 764 | 0.372 |  |
+| 4 | bcb_caderno_gestao_financas_pessoais | p. 63 | 0.367 | * |
+| 5 | cvm_livro_top_direito_mercado_valores_mobiliarios | p. 764 | 0.372 | * |
 
 > **1.** Solicite informações e verifique as regras da Receita Federal. 2 antes de investir 2.1. INFORMAÇÕES E DOCUMENTOS A base de uma decisão de investimento consciente é a informação. Por essa razão é exigido que os fundos divulguem informações de forma abrangente, equitativa e simultânea para todos, incl…
 
@@ -404,8 +404,8 @@ Gerado em 03/11/2026 11:25 · top-5 · k do chat = 3 · limiar = 0.5 · embeddin
 | 1 | tesouro_direto_regulamento ✓ | p. 25 | 0.366 | * |
 | 2 | tesouro_direto_regulamento ✓ | p. 4 | 0.373 | * |
 | 3 | cvm_livro_top_planejamento_financeiro_pessoal | p. 96 | 0.379 | * |
-| 4 | tesouro_direto_regulamento ✓ | p. 5-6 | 0.385 |  |
-| 5 | cvm_livro_top_planejamento_financeiro_pessoal | p. 68 | 0.387 |  |
+| 4 | tesouro_direto_regulamento ✓ | p. 5-6 | 0.385 | * |
+| 5 | cvm_livro_top_planejamento_financeiro_pessoal | p. 68 | 0.387 | * |
 
 > **1.** no Tesouro Direto é instruída pelo Agente de Custódia mediante solicitação do Investidor, seu cliente, por meio dos sistemas da B3 e são efetivados no Selic, onde os Títulos se encontram custodiados, de forma escritural. 109. Para fins de publicidade e eficácia perante terceiros, a constituição de Ô…
 
@@ -425,7 +425,7 @@ Gerado em 03/11/2026 11:25 · top-5 · k do chat = 3 · limiar = 0.5 · embeddin
 
 **Nota:** Fora do corpus: o sistema deve dizer que a base não cobre o tema.
 
-**Resultado automático:** ATENÇÃO: 3 trecho(s) passariam para o chat; confira se são pertinentes
+**Resultado automático:** ATENÇÃO: 5 trecho(s) passariam para o chat; confira se são pertinentes
 
 **Conferência manual:** [ ] contém a informação  
 
@@ -434,8 +434,8 @@ Gerado em 03/11/2026 11:25 · top-5 · k do chat = 3 · limiar = 0.5 · embeddin
 | 1 | cvm_livro_top_planejamento_financeiro_pessoal | p. 213-214 | 0.388 | * |
 | 2 | cvm_livro_top_planejamento_financeiro_pessoal | p. 231-232 | 0.404 | * |
 | 3 | cvm_livro_top_planejamento_financeiro_pessoal | p. 221-222 | 0.416 | * |
-| 4 | cvm_livro_top_planejamento_financeiro_pessoal | p. 228 | 0.422 |  |
-| 5 | cvm_livro_top_planejamento_financeiro_pessoal | p. 231 | 0.424 |  |
+| 4 | cvm_livro_top_planejamento_financeiro_pessoal | p. 228 | 0.422 | * |
+| 5 | cvm_livro_top_planejamento_financeiro_pessoal | p. 231 | 0.424 | * |
 
 > **1.** Assim, nas alienações de imóveis por valor superior ao valor de aquisição, a base de cálculo do imposto de renda é o ganho de capital. Sobre o ganho de capital, aplica-se a alíquota de 15%. Ganhos acima de R$ 5 milhões são tributados de acordo com uma tabela progressiva que varia entre 15% e 22,5%. …
 
@@ -464,8 +464,8 @@ Gerado em 03/11/2026 11:25 · top-5 · k do chat = 3 · limiar = 0.5 · embeddin
 | 1 | cvm_livro_top_direito_mercado_valores_mobiliarios | p. 631 | 0.263 | * |
 | 2 | cvm_livro_top_direito_mercado_valores_mobiliarios | p. 616 | 0.278 | * |
 | 3 | cvm_livro_top_direito_mercado_valores_mobiliarios | p. 571 | 0.279 | * |
-| 4 | cvm_livro_top_direito_mercado_valores_mobiliarios | p. 1205-1206 | 0.282 |  |
-| 5 | cvm_livro_top_direito_mercado_valores_mobiliarios | p. 625 | 0.282 |  |
+| 4 | cvm_livro_top_direito_mercado_valores_mobiliarios | p. 1205-1206 | 0.282 | * |
+| 5 | cvm_livro_top_direito_mercado_valores_mobiliarios | p. 625 | 0.282 | * |
 
 > **1.** Por fim, entendemos ser conveniente mencionar os dois diferentes tipos de fundos de investimento previstos na ICVM 555. O primeiro tipo diz respeito aos Fundos de Investimento em si, ou seja, aqueles que podem investir nos ativos financeiros e operações diretamente, conforme suas respectivas classes…
 
