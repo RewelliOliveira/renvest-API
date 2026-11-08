@@ -34,7 +34,7 @@ documents:
     file: modulo_1_fundamentos/cvm_livro_top_planejamento_financeiro_pessoal_2025.pdf
     title: TOP Planejamento Financeiro Pessoal (2ª ed.)
     institution: Comissão de Valores Mobiliários (CVM) / Planejar
-    url: https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/livro-top-planejamento-financeiro-pessoal
+    url: https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/livro-top-planejamento-financeiro-pessoal/@@display-file/file
     module: modulo_1
     doc_type: educacional
     published: 2025
@@ -68,7 +68,7 @@ documents:
     file: modulo_2_bolsa/cvm_livro_top_mercado_valores_mobiliarios_5ed.pdf
     title: TOP Mercado de Valores Mobiliários Brasileiro (5ª ed.)
     institution: Comissão de Valores Mobiliários (CVM)
-    url: https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm
+    url: https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/cvm-livro_top_valores_mobiliarios_br_5ed.pdf/@@display-file/file
     module: modulo_2
     doc_type: educacional
     published: 2024
@@ -90,7 +90,7 @@ documents:
     file: modulo_2_bolsa/cvm_caderno_03_fundos_investimento.pdf
     title: Cadernos CVM nº 3 – Fundos de Investimento (3ª ed.)
     institution: Comissão de Valores Mobiliários (CVM)
-    url: https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/cadernos/cvm-caderno-03-3ed.pdf
+    url: https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/cadernos/cvm-caderno-03-3ed.pdf/@@display-file/file
     module: modulo_2
     doc_type: educacional
     published: 2016
@@ -102,7 +102,7 @@ documents:
     file: modulo_2_bolsa/cvm_caderno_06_fundos_imobiliarios.pdf
     title: Cadernos CVM nº 6 – Fundos de Investimento Imobiliário
     institution: Comissão de Valores Mobiliários (CVM)
-    url: https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/cadernos/cvm-caderno-6.pdf
+    url: https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/cadernos/cvm-caderno-6.pdf/@@display-file/file
     module: modulo_2
     doc_type: educacional
     published: 2010
@@ -115,7 +115,7 @@ documents:
     file: modulo_3_cvm/cvm_caderno_01_cvm_e_mercado_capitais.pdf
     title: Cadernos CVM nº 1 – O que é a CVM?
     institution: Comissão de Valores Mobiliários (CVM)
-    url: https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/cadernos/cvm-caderno-1.pdf
+    url: https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/cadernos/cvm-caderno-1.pdf/@@display-file/file
     module: modulo_3
     doc_type: educacional
     published: 2014
@@ -149,7 +149,7 @@ documents:
     file: modulo_3_cvm/cvm_livro_top_direito_mercado_valores_mobiliarios.pdf
     title: TOP Direito do Mercado de Valores Mobiliários
     institution: Comissão de Valores Mobiliários (CVM)
-    url: https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm
+    url: https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/direito-do-mercado-de-valores-mobiliarios/@@display-file/file
     module: modulo_3
     doc_type: educacional
     published: 2022
