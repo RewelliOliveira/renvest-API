@@ -2,6 +2,9 @@
 # 03/11/2026: referências escritas só com os trechos do corpus e conferidas pelo autor nos PDFs.
 # Antes de congelar: (1) o autor confere cada referência no PDF; (2) o especialista valida (validado: true).
 # Ajustes feitos após a validação vão em "ajustes".
+# 03/11/2026 (revisão prévia): uma validação SIMULADA por IA (não é dado de especialista) apontou ajustes.
+# Só foram aplicados os que o autor confirmou nos PDFs do corpus; cada um está em "revisao_previa".
+# Sugestões sem apoio no corpus foram recusadas (ver PLANO_AVALIACAO.md, Seção 3.3, passo 2b).
 
 - id: N1.1
   nivel: N1
@@ -13,14 +16,15 @@
     de juros, que pode ser fixada no momento da aplicação (prefixada) ou calculada no resgate com base em um
     indexador, como Selic, DI ou IPCA (pós-fixada). Costumam ter menor risco e menor rentabilidade esperada
     que aplicações mais arriscadas, mas o risco existe. Os principais produtos são os títulos públicos (Letra
-    Financeira do Tesouro, Letra do Tesouro Nacional e Nota do Tesouro Nacional) e os títulos privados, como
-    CDB, RDB, Letras de Câmbio, LCI, LCA e debêntures.
+    Financeira do Tesouro, Letra do Tesouro Nacional e Nota do Tesouro Nacional), a poupança e os títulos
+    privados, como CDB, RDB, Letras de Câmbio, LCI, LCA, CRI, CRA e debêntures.
   fontes_referencia:
     - {documento: bcb_caderno_gestao_financas_pessoais, pagina: "p. 65"}
     - {documento: cvm_livro_top_planejamento_financeiro_pessoal, pagina: "p. 85-86"}
     - {documento: cvm_livro_top_planejamento_financeiro_pessoal, pagina: "p. 215-216"}
   conferido_autor: true
   validado: false
+  revisao_previa: "Incluídos poupança, CRI e CRA (TOP Planejamento, p. 216)."
 
 - id: N1.2
   nivel: N1
@@ -29,14 +33,17 @@
   comportamento_esperado: responder
   referencia: >-
     A Comissão de Valores Mobiliários (CVM) é uma autarquia federal criada em 1976 pela Lei nº 6.385/76,
-    responsável pela regulação e fiscalização do mercado de capitais no Brasil. Entre suas funções estão
-    estabelecer normas, fiscalizar seu cumprimento e punir quem as descumpre, promover o desenvolvimento e a
-    eficiência do mercado e proteger os investidores contra fraudes e práticas irregulares.
+    responsável pela regulação e fiscalização do mercado de capitais no Brasil. É uma autarquia em regime
+    especial: tem vínculo com o Ministério da Fazenda, mas não é subordinada a ele, e seus dirigentes têm
+    mandato fixo. Entre suas funções estão estabelecer normas, fiscalizar seu cumprimento e punir quem as
+    descumpre, promover o desenvolvimento e a eficiência do mercado e proteger os investidores contra
+    fraudes e práticas irregulares.
   fontes_referencia:
     - {documento: cvm_caderno_01_o_que_e_a_cvm, pagina: "p. 7-8"}
     - {documento: cvm_livro_top_direito_mercado_valores_mobiliarios, pagina: "p. 22-23"}
   conferido_autor: true
   validado: false
+  revisao_previa: "Incluído o regime especial e o vínculo sem subordinação ao Ministério da Fazenda (Caderno CVM 1, p. 7)."
 
 - id: N1.3
   nivel: N1
@@ -48,13 +55,18 @@
     protege depositantes e investidores quando uma instituição associada sofre intervenção, liquidação
     extrajudicial, falência ou tem a insolvência reconhecida pelo Banco Central. A garantia ordinária cobre,
     entre outros, depósitos à vista, poupança, depósitos a prazo (CDB e RDB), Letras de Câmbio, Letras
-    Hipotecárias, LCI e LCA, até R$ 250 mil por CPF ou CNPJ por instituição.
+    Hipotecárias, LCI, LCA e Letras de Crédito do Desenvolvimento, até R$ 250 mil por CPF ou CNPJ por
+    instituição ou conglomerado, com teto de R$ 1 milhão a cada quatro anos somando todas as instituições.
+    Não são cobertos, por exemplo, cotas de fundos de investimento.
   fontes_referencia:
     - {documento: cmn_resolucao_4222_fgc, pagina: "p. 9"}
     - {documento: cmn_resolucao_4222_fgc, pagina: "p. 31-32"}
     - {documento: cvm_livro_top_planejamento_financeiro_pessoal, pagina: "p. 103-104"}
   conferido_autor: true
   validado: false
+  revisao_previa: >-
+    Incluídos a LCD, o conglomerado, o teto de R$ 1 milhão e um exemplo do que não é coberto (Res. 4.222,
+    art. 2º e §§ 1º-3º, p. 31-32). Recusada a inclusão da LIG: ela não está no rol do art. 2º.
 
 - id: N2.1
   nivel: N2
@@ -65,13 +77,18 @@
     O total de créditos de cada pessoa contra a mesma instituição associada, ou contra todas as instituições
     do mesmo conglomerado financeiro, é garantido até R$ 250 mil. Existe também um teto global: o total
     garantido para cada credor contra o conjunto de todas as instituições associadas é de até R$ 1 milhão a
-    cada período de quatro anos consecutivos.
+    cada período de quatro anos consecutivos. O limite vale para o saldo total dos créditos, corrigido pelos
+    índices do contrato até a data da intervenção ou liquidação, e não só para o valor aplicado.
   fontes_referencia:
     - {documento: cmn_resolucao_4222_fgc, pagina: "p. 32"}
+    - {documento: cmn_resolucao_4222_fgc, pagina: "p. 34"}
     - {documento: cvm_livro_top_planejamento_financeiro_pessoal, pagina: "p. 104"}
     - {documento: cvm_livro_top_planejamento_financeiro_pessoal, pagina: "p. 106"}
   conferido_autor: true
   validado: false
+  revisao_previa: >-
+    Incluído que o limite abrange o saldo corrigido até a decretação, não só o principal (Res. 4.222, art. 2º,
+    §§ 2º e 11, p. 32 e 34).
   nota_cobertura: >-
     O trecho principal (Res. 4.222, p. 32) não aparece no top-5. O top-3 do chat traz um quadro com
     "R$ 20 milhões" (p. 96) e o limite de R$ 40 milhões do DPGE, o que pode confundir o modelo. Bom
@@ -83,15 +100,19 @@
   pergunta: "Em quanto tempo o dinheiro de uma venda antecipada no Tesouro Direto cai na conta, e o horário da venda muda isso?"
   comportamento_esperado: responder
   referencia: >-
-    Sim, o horário muda o prazo. Vendas feitas entre 9h30 e 13h têm o dinheiro repassado no mesmo dia útil,
+    Depende do horário da venda. Vendas feitas entre 9h30 e 13h têm o dinheiro repassado no mesmo dia útil,
     desde que os preços e taxas tenham sido divulgados antes das 13h; vendas entre 13h e 18h, em até um dia
     útil. Vendas agendadas entre 18h01 e 23h59 são pagas no dia útil seguinte (ou no segundo, se os preços
     saírem depois das 13h), e as agendadas entre 0h e 5h, no mesmo dia útil (ou no seguinte, nas mesmas
-    condições).
+    condições). Quem repassa o valor líquido (já descontados os impostos) é o agente de custódia, isto é, o
+    banco ou a corretora em que o investidor tem conta.
   fontes_referencia:
     - {documento: tesouro_direto_regulamento, pagina: "p. 37-38"}
   conferido_autor: true
   validado: false
+  revisao_previa: >-
+    Começa pelo prazo em vez de "Sim"; incluído que o repasse dos recursos líquidos é feito pelo agente de
+    custódia (Regulamento TD, item 156, v-x, p. 37-38).
 
 - id: N2.3
   nivel: N2
@@ -103,11 +124,14 @@
     demonstrações financeiras anuais, a companhia, os acionistas controladores, os diretores e os membros
     dos conselhos de administração e fiscal ficam impedidos de negociar valores mobiliários da companhia,
     mesmo que não conheçam o conteúdo dessas informações. O dia da divulgação não entra na contagem, e a
-    negociação só pode ocorrer nesse dia depois da divulgação.
+    negociação só pode ocorrer nesse dia depois da divulgação. A exceção são negociações feitas dentro de um
+    plano individual de investimento ou desinvestimento formalizado previamente, nas condições da norma.
   fontes_referencia:
     - {documento: cvm_resolucao_44_2021, pagina: "p. 12-13"}
+    - {documento: cvm_resolucao_44_2021, pagina: "p. 14"}
   conferido_autor: true
   validado: false
+  revisao_previa: "Incluída a exceção dos planos de investimento/desinvestimento (Res. CVM 44, art. 16, § 2º, p. 14)."
 
 - id: N2.4
   nivel: N2
@@ -119,11 +143,15 @@
     interesse legítimo dela. Mas, se a informação escapar ao controle ou houver oscilação atípica na
     cotação, no preço ou na quantidade negociada das ações, os controladores ou administradores, diretamente
     ou por meio do Diretor de Relações com Investidores, são obrigados a divulgar o fato relevante
-    imediatamente.
+    imediatamente. A divulgação é feita à CVM e às bolsas em que as ações são negociadas, ao mesmo tempo; se
+    precisar ocorrer durante o pregão, o Diretor de Relações com Investidores pode pedir a suspensão da
+    negociação.
   fontes_referencia:
+    - {documento: cvm_resolucao_44_2021, pagina: "p. 3"}
     - {documento: cvm_resolucao_44_2021, pagina: "p. 5"}
   conferido_autor: true
   validado: false
+  revisao_previa: "Incluídas a divulgação simultânea à CVM e às bolsas e a suspensão da negociação (Res. CVM 44, art. 3º e 5º, p. 3 e 5)."
   nota_cobertura: >-
     O top-3 do chat traz o TOP Direito citando a Instrução CVM 358 (revogada pela Res. CVM 44). A regra é a
     mesma, mas a resposta pode citar norma desatualizada: conferir na análise.
@@ -152,8 +180,10 @@
   referencia: >-
     CDB e LCI são cobertos pelo FGC até R$ 250 mil por CPF por instituição (ou conglomerado), com teto de
     R$ 1 milhão a cada quatro anos somando todas as instituições. Para ficar protegido, o investidor não
-    deve ultrapassar R$ 250 mil por instituição: por exemplo, dividir CDB e LCI entre bancos de
-    conglomerados diferentes. O que passar de R$ 250 mil numa mesma instituição fica sem garantia. O Tesouro
+    deve ultrapassar R$ 250 mil por instituição: por exemplo, R$ 200 mil em CDB num banco e R$ 200 mil em
+    LCI num banco de outro conglomerado. Como o limite vale para o saldo com os rendimentos, e não só para o
+    valor aplicado, convém deixar uma margem abaixo de R$ 250 mil. O que passar disso numa mesma
+    instituição fica sem garantia. O Tesouro
     Direto não está entre os produtos cobertos pelo FGC, mas os títulos públicos federais são emitidos pelo
     Tesouro Nacional e considerados de risco de crédito muito baixo; por isso, a parte aplicada nele não
     depende do FGC.
@@ -162,8 +192,12 @@
     - {documento: bcb_caderno_gestao_financas_pessoais, pagina: "p. 64-65"}
     - {documento: cvm_livro_top_planejamento_financeiro_pessoal, pagina: "p. 68"}
     - {documento: cvm_livro_top_planejamento_financeiro_pessoal, pagina: "p. 104"}
+    - {documento: cmn_resolucao_4222_fgc, pagina: "p. 34"}
   conferido_autor: true
   validado: false
+  revisao_previa: >-
+    Incluídos um exemplo numérico de distribuição e a margem por causa dos rendimentos (Res. 4.222, art. 2º,
+    § 11, p. 34). Recusada a menção à carência da LCI (fora das páginas citadas).
   nota_cobertura: >-
     Nenhum trecho diz explicitamente "o FGC não cobre o Tesouro Direto". A referência deduz isso da lista de
     produtos cobertos. Peça ao especialista para confirmar a redação. É a mesma pergunta da tarefa T2.
@@ -175,7 +209,8 @@
   comportamento_esperado: responder
   referencia: >-
     Não. A Resolução CVM 44 proíbe qualquer pessoa que tenha acesso a informação relevante ainda não
-    divulgada de usá-la para obter vantagem negociando valores mobiliários, e a Lei das S.A. obriga o
+    divulgada de usá-la para obter vantagem, para si ou para outra pessoa, negociando valores mobiliários
+    (por isso, também não pode passar a informação para alguém negociar), e a Lei das S.A. obriga o
     administrador a guardar sigilo sobre essas informações. Uma aquisição ainda não anunciada é uma
     informação capaz de influenciar a cotação. Além das sanções administrativas da CVM, usar a informação
     é crime (uso indevido de informação privilegiada, art. 27-D da Lei 6.385/76), com pena de reclusão de
@@ -186,6 +221,7 @@
     - {documento: cvm_livro_top_direito_mercado_valores_mobiliarios, pagina: "p. 253"}
   conferido_autor: true
   validado: false
+  revisao_previa: "Incluída a vantagem 'para si ou para outrem' do art. 13 da Res. CVM 44 (p. 11): vale também para repassar a informação."
   nota_cobertura: >-
     O top-3 do chat traz um trecho sobre OPA/aquisição hostil (pouco útil), o art. 155 da Lei das S.A. e um
     trecho sobre OPA parcial. O art. 13 da Res. 44 e o art. 27-D não aparecem no top-5.
@@ -201,12 +237,16 @@
     pago ao controlador (tag along de 100%); a empresa mantém ao menos 20% das ações em circulação (ou 15%,
     com alto volume de negociação); o conselho tem pelo menos 2 ou 20% de conselheiros independentes; e, se
     a empresa sair do segmento, precisa fazer oferta pública de aquisição por valor justo. Em outros
-    segmentos as exigências são menores: o Nível 2, por exemplo, permite ações preferenciais.
+    segmentos as exigências são menores: o Nível 2, por exemplo, permite ações preferenciais. Fora dos
+    segmentos especiais vale só a Lei das S.A., que garante aos minoritários com ações ordinárias (com voto)
+    pelo menos 80% do preço pago ao controlador na venda do controle.
   fontes_referencia:
     - {documento: cvm_livro_top_mercado_valores_mobiliarios, pagina: "p. 275-276"}
     - {documento: cvm_livro_top_mercado_valores_mobiliarios, pagina: "p. 277-278"}
+    - {documento: cvm_livro_top_mercado_valores_mobiliarios, pagina: "p. 250-251"}
   conferido_autor: true
   validado: false
+  revisao_previa: "Incluído o tag along legal de 80% para ações com voto (TOP Mercado, p. 250-251)."
 
 - id: N3.4
   nivel: N3
@@ -215,16 +255,23 @@
   comportamento_esperado: responder
   referencia: >-
     O fundo imobiliário permite investir em imóveis com pequenas quantias, diversificar entre vários
-    empreendimentos e diluir os custos de administração entre todos os cotistas. Na liquidez, é possível
+    empreendimentos e diluir os custos de administração entre todos os cotistas. Nos custos, o cotista não
+    cuida de certidões, escritura, ITBI, manutenção e reparos, que ficam com o administrador do fundo; no
+    imóvel direto, tudo isso é do proprietário. A vacância (imóvel sem inquilino) é um risco nos dois casos.
+    Na liquidez, é possível
     vender só parte das cotas no mercado secundário, enquanto no imóvel direto seria preciso vender o bem
     inteiro; em compensação, a venda das cotas depende de haver compradores nesse mercado. Os rendimentos
     distribuídos podem ser isentos de imposto de renda, se o fundo cumprir as condições legais.
   fontes_referencia:
     - {documento: cvm_caderno_06_fundos_imobiliarios, pagina: "p. 7-9"}
+    - {documento: cvm_caderno_06_fundos_imobiliarios, pagina: "p. 11"}
     - {documento: cvm_livro_top_planejamento_financeiro_pessoal, pagina: "p. 149"}
     - {documento: cvm_livro_top_planejamento_financeiro_pessoal, pagina: "p. 151-152"}
   conferido_autor: true
   validado: false
+  revisao_previa: >-
+    Incluídos os custos do imóvel direto (certidões, escritura, ITBI, manutenção) e o risco de vacância
+    (Caderno CVM 6, p. 8 e 11). Recusada a tributação do ganho na venda de cotas (não conferida no corpus).
 
 - id: N3.5
   nivel: N3
@@ -232,15 +279,21 @@
   pergunta: "Quero investir numa empresa e ver se ela é confiável. Que documento obrigatório devo consultar, onde encontro e que informações ele traz?"
   comportamento_esperado: responder
   referencia: >-
-    O principal documento é o Formulário de Referência, obrigatório para as companhias abertas desde 2009.
-    Ele traz as atividades da empresa, fatores de risco, estrutura de capital, dados financeiros, comentários
-    da administração, principais acionistas, composição dos conselhos e remuneração dos administradores. Ele
-    pode ser consultado no site da CVM, junto com demonstrações financeiras e fatos relevantes, e no site de
-    Relações com Investidores da empresa.
+    O principal documento é o Formulário de Referência, instituído em 2009 e hoje regido pela Resolução CVM
+    80/2022, que obriga a companhia aberta a enviá-lo à CVM atualizado todo ano, em até 5 meses após o fim
+    do exercício. Ele traz as atividades da empresa, fatores de risco, estrutura de capital, dados
+    financeiros, comentários da administração, principais acionistas, composição dos conselhos e
+    remuneração dos administradores. Ele pode ser consultado no site da CVM, junto com demonstrações
+    financeiras e fatos relevantes, e no site de Relações com Investidores da empresa. O documento ajuda a
+    avaliar a empresa, mas não garante que ela seja um bom investimento.
   fontes_referencia:
     - {documento: cvm_caderno_01_o_que_e_a_cvm, pagina: "p. 22-23"}
+    - {documento: cvm_resolucao_80_2022, pagina: "p. 9"}
   conferido_autor: true
   validado: false
+  revisao_previa: >-
+    Base normativa atualizada para a Res. CVM 80/2022, com a obrigação de atualização anual (art. 25, p. 9),
+    e incluído o aviso de que o documento não garante a qualidade do investimento.
 
 - id: N4.1
   nivel: N4
