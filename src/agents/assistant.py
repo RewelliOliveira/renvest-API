@@ -1,7 +1,7 @@
 import logging
 import time
 from functools import lru_cache
-from typing import List, Optional, Any
+from typing import List, Literal, Optional, Any
 from pydantic import BaseModel, Field
 from langchain_openai import ChatOpenAI
 from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
@@ -27,7 +27,14 @@ DEFAULT_SUGGESTIONS = [
 DEFAULT_SOURCE_URL = "https://www.bcb.gov.br"
 HISTORY_WINDOW = 6
 
+ResponseType = Literal["base", "sem_base", "ativo_especifico", "saudacao", "fora_de_escopo"]
+
 class RevAssistantOutput(BaseModel):
+    # Vem antes de reply para o modelo classificar a pergunta antes de escrever a resposta
+    response_type: ResponseType = Field(
+        description="Tipo da resposta: base (usa os trechos da base), sem_base (finanças, mas a base não cobre), "
+                    "ativo_especifico (pedido de recomendação de ativo), saudacao ou fora_de_escopo."
+    )
     reply: str = Field(description="Resposta acolhedora, explicativa e motivadora do Rev, indicando a fonte de cada informação.")
     suggestions: List[str] = Field(
         default_factory=list,
@@ -163,6 +170,7 @@ def generate(
         return {
             "reply": parsed.reply,
             "suggestions": sanitize_suggestions(parsed.suggestions),
+            "used_base_sources": parsed.response_type == "base",
             **_token_usage(output["raw"]),
         }
     except Exception:
@@ -176,7 +184,13 @@ def generate(
         logger.exception("Falha ao gerar resposta do LLM")
         reply_content = FALLBACK_REPLY
         usage = _token_usage(None)
-    return {"reply": reply_content, "suggestions": list(DEFAULT_SUGGESTIONS), **usage}
+    # Sem saída estruturada não há como saber se a base foi usada; só a mensagem de erro dispensa as fontes
+    return {
+        "reply": reply_content,
+        "suggestions": list(DEFAULT_SUGGESTIONS),
+        "used_base_sources": reply_content != FALLBACK_REPLY,
+        **usage,
+    }
 
 def chat_rag(
     message: str,
@@ -195,12 +209,14 @@ def chat_rag(
     result = generate(message, instruction, history=history)
     generation_ms = (time.perf_counter() - started) * 1000
 
+    used_base_sources = bool(docs) and result.get("used_base_sources", True)
     logger.info(
-        "chat_rag module=%s docs=%d retrieval_ms=%.0f generation_ms=%.0f tokens_in=%s tokens_out=%s",
-        module, len(docs), retrieval_ms, generation_ms, result["tokens_in"], result["tokens_out"]
+        "chat_rag module=%s docs=%d used_base_sources=%s retrieval_ms=%.0f generation_ms=%.0f tokens_in=%s tokens_out=%s",
+        module, len(docs), used_base_sources, retrieval_ms, generation_ms, result["tokens_in"], result["tokens_out"]
     )
 
-    sources = build_sources(docs)
+    # Recusas e avisos de que a base não cobre o tema não exibem fontes, mesmo que a busca tenha achado trechos
+    sources = build_sources(docs) if used_base_sources else []
     return {
         "reply": result["reply"],
         "source": sources[0] if sources else None,

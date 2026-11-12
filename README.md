@@ -203,7 +203,7 @@ Copie o `.env.example` para `.env` e preencha os valores:
 | `LLM_MODEL` / `LLM_TEMPERATURE` | Não | Modelo de chat (padrão `gpt-4o-mini`) e temperatura (padrão `0.3`) |
 | `RATE_LIMIT_AUTH_PER_MINUTE` / `RATE_LIMIT_CHAT_PER_MINUTE` | Não | Limites por minuto (padrão 10 e 15) |
 | `CHUNK_SIZE` / `CHUNK_OVERLAP` | Não | Tamanho e sobreposição dos chunks em caracteres (padrão 800 e 150) |
-| `RETRIEVAL_K` / `RETRIEVAL_MAX_DISTANCE` | Não | Trechos recuperados por pergunta e distância de cosseno máxima aceita (padrão 3 e 0.5) |
+| `RETRIEVAL_K` / `RETRIEVAL_MAX_DISTANCE` | Não | Trechos recuperados por pergunta e distância de cosseno máxima aceita (padrão 5 e 0.5) |
 
 No SQL Editor do Supabase, execute `scripts/supabase_schema.sql` (tabela de usuários), `scripts/supabase_vector_schema.sql` (extensão pgvector, tabela `document_chunks` e função de busca) e `scripts/supabase_progress_schema.sql` (lições concluídas, tentativas dos testes e dias de estudo da ofensiva).
 

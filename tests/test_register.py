@@ -20,11 +20,11 @@ def created_users(monkeypatch):
 def register(client, **overrides):
     return client.post("/api/auth/register", json={**PAYLOAD, **overrides})
 
-@pytest.mark.parametrize("name", ["Maria Silva", "José", "João Pedro", "Ana-Clara", "D'Ávila Souza", "Yasmin", "Kauã"])
+@pytest.mark.parametrize("name", ["Maria Silva", "José", "João Pedro", "Ana-Clara", "D'Ávila Souza", "Yasmin", "Kauã", "joao123", "Maria 123", "ana.clara", "biel_22"])
 def test_accepts_real_names(name):
     assert validate_name(name) is None
 
-@pytest.mark.parametrize("name", ["aksjhdjagdjs", "asdasd", "qwerty", "asdfgh", "kakaka", "bcdf", "Maria 123", "a"])
+@pytest.mark.parametrize("name", ["aksjhdjagdjs", "asdasd", "qwerty", "asdfgh", "kakaka", "bcdf", "a", "123", "j1", "qwerty99", "maria!"])
 def test_rejects_gibberish_names(name):
     assert validate_name(name) is not None
 

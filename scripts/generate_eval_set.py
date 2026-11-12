@@ -1,14 +1,17 @@
-"""Gera o conjunto de avaliação congelado (RAG × baseline) com as 12 perguntas do Apêndice A do TCC.
+"""Gera o conjunto de avaliação congelado (assistente × B1) com as 16 perguntas de data/eval/questions_v2.yaml.
 
-Para cada pergunta, grava a resposta do RAG (mesmo prompt do chat, sem histórico e sem nome de usuário),
-os k trechos recuperados com fonte e distância, e a resposta baseline (mesmo modelo e temperatura, só a
-persona do Rev, sem contexto recuperado), além das latências e do uso de tokens das duas condições.
+Para cada pergunta, grava a resposta do assistente (mesmo prompt do chat, sem histórico e sem nome de usuário),
+os k trechos recuperados com fonte e distância, e a resposta da condição B1 (mesmo modelo e temperatura, só a
+persona do Rev, sem trechos recuperados e sem as regras de ancoragem), além das latências e do uso de tokens
+das duas condições. Cada item leva também a resposta de referência, usada pelas métricas do RAGAS.
 
-Rode UMA única vez na Fase 1 e não edite nem regenere respostas individuais: elas são o dado da avaliação.
+Rode UMA única vez, a partir da versão marcada com a tag de congelamento, e não edite nem regenere respostas
+individuais: elas são o dado da avaliação. O script recusa rodar com referências ainda não validadas pelos
+especialistas ou com alterações não commitadas, salvo com --allow-unvalidated / --allow-dirty.
 
 Uso (a partir de rag-finance-agent/):
-    python scripts/generate_eval_set.py              # gera data/eval/eval_set_v1.json
-    python scripts/generate_eval_set.py --dry-run    # só C1.1, imprime sem gravar
+    python scripts/generate_eval_set.py              # gera data/eval/eval_set_v2.json
+    python scripts/generate_eval_set.py --dry-run    # só a primeira pergunta, imprime sem gravar
     python scripts/generate_eval_set.py --force      # sobrescreve um conjunto já gerado (registre o motivo)
 """
 import argparse
@@ -20,6 +23,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
+import yaml
+
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from src import config  # noqa: E402
@@ -28,39 +33,30 @@ from src.agents.prompts import REV_PERSONA_PROMPT  # noqa: E402
 from src.tools.bcb_tools import get_selic_rate, mentions_selic  # noqa: E402
 
 EVAL_DIR = config.DATA_DIR / "eval"
-OUTPUT_PATH = EVAL_DIR / "eval_set_v1.json"
+QUESTIONS_PATH = EVAL_DIR / "questions_v2.yaml"
+OUTPUT_PATH = EVAL_DIR / "eval_set_v2.json"
 
+# Condição B1 (Seção 4.7.1 do TCC): sem trechos e sem regras de ancoragem, só a instrução de citar fontes quando possível
 BASELINE_INSTRUCTION = (
-    "Responda para um investidor iniciante e cite as fontes oficiais que sustentam sua resposta. "
-    "É obrigatório indicar no texto a fonte de cada informação, no formato (Fonte: documento – instituição, página)."
+    "Responda para um investidor iniciante e, quando possível, cite as fontes oficiais que sustentam sua resposta."
 )
 
-QUESTIONS: List[Dict[str, str]] = [
-    {"id": "C1.1", "categoria": "1", "modulo": "modulo_1",
-     "pergunta": "O que é renda fixa e quais são os principais produtos dessa categoria disponíveis no mercado brasileiro?"},
-    {"id": "C1.2", "categoria": "1", "modulo": "modulo_1",
-     "pergunta": "O que é a taxa Selic e como ela influencia os rendimentos de investimentos em renda fixa?"},
-    {"id": "C1.3", "categoria": "1", "modulo": "modulo_2",
-     "pergunta": "O que é um ETF e como ele se diferencia de um fundo de investimento convencional?"},
-    {"id": "C1.4", "categoria": "1", "modulo": "modulo_1",
-     "pergunta": "O que é Tesouro Direto e como funciona a compra de títulos públicos por pessoas físicas?"},
-    {"id": "C1.5", "categoria": "1", "modulo": "modulo_2",
-     "pergunta": "O que é um Fundo Imobiliário (FII) e quais são suas principais características?"},
-    {"id": "C1.6", "categoria": "1", "modulo": "modulo_1",
-     "pergunta": "O que significa o FGC (Fundo Garantidor de Créditos) e quais produtos ele cobre?"},
-    {"id": "C1.7", "categoria": "1", "modulo": "modulo_2",
-     "pergunta": "O que é diversificação de portfólio e por que ela é importante para o investidor iniciante?"},
-    {"id": "C2.1", "categoria": "2", "modulo": "modulo_3",
-     "pergunta": "O que é a CVM e qual é o seu papel no mercado de capitais brasileiro?"},
-    {"id": "C2.2", "categoria": "2", "modulo": "modulo_3",
-     "pergunta": "O que é um Formulário de Referência e quais empresas são obrigadas a apresentá-lo?"},
-    {"id": "C2.3", "categoria": "2", "modulo": "modulo_3",
-     "pergunta": "O que significa uma companhia ser classificada como “aberta” segundo a regulamentação da CVM?"},
-    {"id": "C2.4", "categoria": "2", "modulo": "modulo_3",
-     "pergunta": "O que é um Fato Relevante e em quais situações uma empresa listada na B3 deve divulgá-lo?"},
-    {"id": "C2.5", "categoria": "2", "modulo": "modulo_2",
-     "pergunta": "O que é o Novo Mercado da B3 e o que diferencia esse segmento dos demais?"},
-]
+
+def load_questions() -> List[Dict[str, Any]]:
+    questions = yaml.safe_load(QUESTIONS_PATH.read_text(encoding="utf-8"))
+    return [
+        {
+            "id": q["id"],
+            "nivel": q["nivel"],
+            "modulo": q.get("modulo"),
+            "pergunta": q["pergunta"],
+            "comportamento_esperado": q["comportamento_esperado"],
+            "referencia": q.get("referencia"),
+            "fontes_referencia": q.get("fontes_referencia", []),
+            "validado": bool(q.get("validado")),
+        }
+        for q in questions
+    ]
 
 
 def elapsed_ms(started: float) -> float:
@@ -104,6 +100,8 @@ def run_rag(question: Dict[str, str]) -> Dict[str, Any]:
     ]
     return {
         "resposta_rag": result["reply"],
+        # Se o chat exibiria as fontes ao usuário (resposta classificada como baseada nos trechos)
+        "usou_base": bool(docs) and result.get("used_base_sources", True),
         "contextos": [t["texto"] for t in trechos] + ([live_data] if live_data else []),
         "fontes": trechos,
         "distancias": [t["distancia"] for t in trechos],
@@ -134,14 +132,24 @@ def run_baseline(question: Dict[str, str]) -> Dict[str, Any]:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Gera o conjunto de avaliação congelado (RAG × baseline).")
-    parser.add_argument("--dry-run", action="store_true", help="Roda só a C1.1 e imprime o resultado sem gravar")
+    parser.add_argument("--dry-run", action="store_true", help="Roda só a primeira pergunta e imprime o resultado sem gravar")
     parser.add_argument("--force", action="store_true", help="Sobrescreve um conjunto já gerado")
+    parser.add_argument("--allow-unvalidated", action="store_true", help="Roda mesmo com referências não validadas")
+    parser.add_argument("--allow-dirty", action="store_true", help="Roda mesmo com alterações não commitadas")
     args = parser.parse_args()
 
     if not args.dry_run and OUTPUT_PATH.exists() and not args.force:
         sys.exit(f"{OUTPUT_PATH} já existe. O conjunto é congelado; use --force só em caso de bug técnico e registre o motivo.")
 
-    questions = QUESTIONS[:1] if args.dry_run else QUESTIONS
+    all_questions = load_questions()
+    if not args.dry_run:
+        pending = [q["id"] for q in all_questions if not q["validado"]]
+        if pending and not args.allow_unvalidated:
+            sys.exit(f"Referências ainda não validadas pelos especialistas: {', '.join(pending)}.")
+        if git_state()["dirty"] and not args.allow_dirty:
+            sys.exit("Há alterações não commitadas: o conjunto deve sair da versão marcada com a tag de congelamento.")
+
+    questions = all_questions[:1] if args.dry_run else all_questions
     # Aquece os clientes (OpenAI, Supabase) para a 1ª pergunta não carregar o custo de inicialização
     retrieve("aquecimento", module=questions[0]["modulo"])
     items = []

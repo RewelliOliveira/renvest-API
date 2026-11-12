@@ -1,4 +1,6 @@
-"""Heurísticas para recusar nomes digitados ao acaso (ex: "aksjhdjagdjs"). Espelha src/lib/nameValidation.ts do frontend."""
+"""Heurísticas para recusar nomes digitados ao acaso (ex: "aksjhdjagdjs"). Espelha src/lib/nameValidation.ts do frontend.
+
+Apelidos com números, ponto e sublinhado são aceitos (ex: "joao123", "ana.clara"); as heurísticas valem para as letras."""
 import re
 import unicodedata
 from typing import Optional
@@ -26,7 +28,11 @@ def _strip_accents(value: str) -> str:
 
 
 def _has_only_allowed_chars(name: str) -> bool:
-    return all(unicodedata.category(c).startswith("L") or c in " '-" for c in name)
+    return all(unicodedata.category(c).startswith("L") or c.isdigit() or c in " '-._" for c in name)
+
+
+def _letters_only(word: str) -> str:
+    return re.sub(r"[\d._]", "", word)
 
 
 def _looks_like_gibberish(word: str) -> bool:
@@ -55,14 +61,14 @@ def validate_name(raw_name: str) -> Optional[str]:
         return f"O nome deve ter no máximo {MAX_NAME_LENGTH} caracteres."
 
     if not _has_only_allowed_chars(name):
-        return "O nome deve conter apenas letras."
+        return "Use apenas letras, números, espaços, ponto, hífen ou sublinhado."
 
-    words = _strip_accents(name).lower().split(" ")
+    words = [_letters_only(word) for word in _strip_accents(name).lower().split(" ")]
 
     if len(re.sub(r"['-]", "", words[0])) < MIN_NAME_LENGTH:
         return "Digite um nome válido."
 
-    if any(_looks_like_gibberish(word) for word in words):
+    if any(_looks_like_gibberish(word) for word in words if word):
         return "Digite um nome válido."
 
     return None

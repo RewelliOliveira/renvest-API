@@ -2,7 +2,7 @@
 
 Para cada pergunta de data/eval/questions_candidates.yaml, busca os top-5 trechos (sem o limiar de
 distância, para mostrar também o que ficou de fora) e imprime documento, página, distância e o começo do
-texto. Os trechos que o chat realmente usaria (top-3 com distância <= 0,5) aparecem marcados com "*".
+texto. Os trechos que o chat realmente usaria (top-k do chat, RETRIEVAL_K, com distância <= RETRIEVAL_MAX_DISTANCE) aparecem marcados com "*".
 
 A checagem automática só olha documento e distância. Se o trecho CONTÉM a informação é você quem confere,
 lendo o relatório gerado em data/eval/coverage_v2.md.
@@ -61,9 +61,9 @@ def verdict(question: Dict[str, Any], hits: List[Dict[str, Any]]) -> str:
         return f"ATENÇÃO: {len(used)} trecho(s) passariam para o chat; confira se são pertinentes"
 
     if any(h["doc_id"] in expected for h in used):
-        return "PROVÁVEL: documento esperado no top-3 do chat; confira o texto"
+        return f"PROVÁVEL: documento esperado no top-{config.RETRIEVAL_K} do chat; confira o texto"
     if any(h["doc_id"] in expected for h in within):
-        return "PARCIAL: documento esperado só no top-5 (fora do top-3 do chat)"
+        return f"PARCIAL: documento esperado só no top-{TOP_N} (fora do top-{config.RETRIEVAL_K} do chat)"
     return "FALHOU: documento esperado não aparece com distância <= limiar; trocar ou reformular"
 
 

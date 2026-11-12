@@ -1,4 +1,6 @@
 from langchain_core.documents import Document
+from langchain_core.messages import AIMessage
+from langchain_core.runnables import RunnableLambda
 
 from src.agents import assistant
 from src.tools.bcb_tools import mentions_selic
@@ -29,6 +31,7 @@ def test_chat_rag_handles_braces_and_returns_source(monkeypatch):
     class FakeOutput:
         reply = "Resposta"
         suggestions = ["Pergunta?"]
+        response_type = "base"
 
     class FakeRaw:
         usage_metadata = {"input_tokens": 120, "output_tokens": 30}
@@ -84,6 +87,31 @@ def test_chat_rag_without_docs_returns_no_sources(monkeypatch):
     result = assistant.chat_rag("Oi")
     assert result["source"] is None
     assert result["sources"] == []
+
+def test_chat_rag_hides_sources_when_reply_does_not_use_the_base(monkeypatch):
+    docs = [_doc("TOP Planejamento", "p. 231", url="https://cvm.gov.br/top.pdf")]
+    monkeypatch.setattr(assistant, "query_relevant_documents", lambda *a, **k: docs)
+    monkeypatch.setattr(assistant, "generate", lambda *a, **k: {
+        "reply": "A base não cobre criptomoedas.", "suggestions": [], "used_base_sources": False,
+        "tokens_in": None, "tokens_out": None
+    })
+    result = assistant.chat_rag("Como funciona a tributação de criptomoedas?")
+    assert result["source"] is None
+    assert result["sources"] == []
+
+def test_free_text_fallback_keeps_sources_unless_generation_failed(monkeypatch):
+    # RunnableLambda não tem with_structured_output, o que força o caminho de texto livre
+    free_text_llm = RunnableLambda(lambda _prompt_value: AIMessage(content="Resposta livre"))
+    monkeypatch.setattr(assistant, "get_llm", lambda: free_text_llm)
+    result = assistant.generate("Pergunta", "instrução")
+    assert result["reply"] == "Resposta livre"
+    assert result["used_base_sources"] is True
+
+    failing_llm = RunnableLambda(lambda _prompt_value: (_ for _ in ()).throw(RuntimeError("API fora")))
+    monkeypatch.setattr(assistant, "get_llm", lambda: failing_llm)
+    result = assistant.generate("Pergunta", "instrução")
+    assert result["reply"] == assistant.FALLBACK_REPLY
+    assert result["used_base_sources"] is False
 
 def test_mentions_selic():
     assert mentions_selic("Quanto está a SELIC?")

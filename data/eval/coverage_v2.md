@@ -6,20 +6,20 @@ Gerado em 08/11/2026 13:14 · top-5 · k do chat = 5 · limiar = 0.5 · embeddin
 
 | ID | Resultado automático |
 | :-- | :-- |
-| N1.1 | PROVÁVEL: documento esperado no top-3 do chat; confira o texto |
-| N1.2 | PROVÁVEL: documento esperado no top-3 do chat; confira o texto |
-| N1.3 | PROVÁVEL: documento esperado no top-3 do chat; confira o texto |
-| N2.1 | PROVÁVEL: documento esperado no top-3 do chat; confira o texto |
-| N2.2 | PROVÁVEL: documento esperado no top-3 do chat; confira o texto |
-| N2.3 | PROVÁVEL: documento esperado no top-3 do chat; confira o texto |
-| N2.4 | PROVÁVEL: documento esperado no top-3 do chat; confira o texto |
-| N2.5 | PROVÁVEL: documento esperado no top-3 do chat; confira o texto |
-| N3.1 | PROVÁVEL: documento esperado no top-3 do chat; confira o texto |
-| N3.2 | PROVÁVEL: documento esperado no top-3 do chat; confira o texto |
-| N3.3 | PROVÁVEL: documento esperado no top-3 do chat; confira o texto |
-| N3.4 | PROVÁVEL: documento esperado no top-3 do chat; confira o texto |
-| N3.5 | PROVÁVEL: documento esperado no top-3 do chat; confira o texto |
-| N4.1 | PROVÁVEL: documento esperado no top-3 do chat; confira o texto |
+| N1.1 | PROVÁVEL: documento esperado no top-5 do chat; confira o texto |
+| N1.2 | PROVÁVEL: documento esperado no top-5 do chat; confira o texto |
+| N1.3 | PROVÁVEL: documento esperado no top-5 do chat; confira o texto |
+| N2.1 | PROVÁVEL: documento esperado no top-5 do chat; confira o texto |
+| N2.2 | PROVÁVEL: documento esperado no top-5 do chat; confira o texto |
+| N2.3 | PROVÁVEL: documento esperado no top-5 do chat; confira o texto |
+| N2.4 | PROVÁVEL: documento esperado no top-5 do chat; confira o texto |
+| N2.5 | PROVÁVEL: documento esperado no top-5 do chat; confira o texto |
+| N3.1 | PROVÁVEL: documento esperado no top-5 do chat; confira o texto |
+| N3.2 | PROVÁVEL: documento esperado no top-5 do chat; confira o texto |
+| N3.3 | PROVÁVEL: documento esperado no top-5 do chat; confira o texto |
+| N3.4 | PROVÁVEL: documento esperado no top-5 do chat; confira o texto |
+| N3.5 | PROVÁVEL: documento esperado no top-5 do chat; confira o texto |
+| N4.1 | PROVÁVEL: documento esperado no top-5 do chat; confira o texto |
 | N4.2 | ATENÇÃO: 5 trecho(s) passariam para o chat; confira se são pertinentes |
 | N4.3 | FALHOU: documento esperado não aparece com distância <= limiar; trocar ou reformular |
 
@@ -29,7 +29,7 @@ Gerado em 08/11/2026 13:14 · top-5 · k do chat = 5 · limiar = 0.5 · embeddin
 
 **Esperado:** responder · documentos: bcb_caderno_gestao_financas_pessoais, cvm_livro_top_planejamento_financeiro_pessoal
 
-**Resultado automático:** PROVÁVEL: documento esperado no top-3 do chat; confira o texto
+**Resultado automático:** PROVÁVEL: documento esperado no top-5 do chat; confira o texto
 
 **Conferência manual:** [ ] contém a informação  
 
@@ -57,7 +57,7 @@ Gerado em 08/11/2026 13:14 · top-5 · k do chat = 5 · limiar = 0.5 · embeddin
 
 **Esperado:** responder · documentos: cvm_caderno_01_o_que_e_a_cvm
 
-**Resultado automático:** PROVÁVEL: documento esperado no top-3 do chat; confira o texto
+**Resultado automático:** PROVÁVEL: documento esperado no top-5 do chat; confira o texto
 
 **Conferência manual:** [ ] contém a informação  
 
@@ -85,7 +85,7 @@ Gerado em 08/11/2026 13:14 · top-5 · k do chat = 5 · limiar = 0.5 · embeddin
 
 **Esperado:** responder · documentos: cmn_resolucao_4222_fgc
 
-**Resultado automático:** PROVÁVEL: documento esperado no top-3 do chat; confira o texto
+**Resultado automático:** PROVÁVEL: documento esperado no top-5 do chat; confira o texto
 
 **Conferência manual:** [ ] contém a informação  
 
@@ -113,7 +113,7 @@ Gerado em 08/11/2026 13:14 · top-5 · k do chat = 5 · limiar = 0.5 · embeddin
 
 **Esperado:** responder · documentos: cmn_resolucao_4222_fgc
 
-**Resultado automático:** PROVÁVEL: documento esperado no top-3 do chat; confira o texto
+**Resultado automático:** PROVÁVEL: documento esperado no top-5 do chat; confira o texto
 
 **Conferência manual:** [ ] contém a informação  
 
@@ -141,7 +141,7 @@ Gerado em 08/11/2026 13:14 · top-5 · k do chat = 5 · limiar = 0.5 · embeddin
 
 **Esperado:** responder · documentos: tesouro_direto_regulamento
 
-**Resultado automático:** PROVÁVEL: documento esperado no top-3 do chat; confira o texto
+**Resultado automático:** PROVÁVEL: documento esperado no top-5 do chat; confira o texto
 
 **Conferência manual:** [ ] contém a informação  
 
@@ -169,7 +169,7 @@ Gerado em 08/11/2026 13:14 · top-5 · k do chat = 5 · limiar = 0.5 · embeddin
 
 **Esperado:** responder · documentos: cvm_resolucao_44_2021
 
-**Resultado automático:** PROVÁVEL: documento esperado no top-3 do chat; confira o texto
+**Resultado automático:** PROVÁVEL: documento esperado no top-5 do chat; confira o texto
 
 **Conferência manual:** [ ] contém a informação  
 
@@ -197,7 +197,7 @@ Gerado em 08/11/2026 13:14 · top-5 · k do chat = 5 · limiar = 0.5 · embeddin
 
 **Esperado:** responder · documentos: cvm_resolucao_44_2021
 
-**Resultado automático:** PROVÁVEL: documento esperado no top-3 do chat; confira o texto
+**Resultado automático:** PROVÁVEL: documento esperado no top-5 do chat; confira o texto
 
 **Conferência manual:** [ ] contém a informação  
 
@@ -225,7 +225,7 @@ Gerado em 08/11/2026 13:14 · top-5 · k do chat = 5 · limiar = 0.5 · embeddin
 
 **Esperado:** responder · documentos: b3_regulamento_novo_mercado
 
-**Resultado automático:** PROVÁVEL: documento esperado no top-3 do chat; confira o texto
+**Resultado automático:** PROVÁVEL: documento esperado no top-5 do chat; confira o texto
 
 **Conferência manual:** [ ] contém a informação  
 
@@ -253,7 +253,7 @@ Gerado em 08/11/2026 13:14 · top-5 · k do chat = 5 · limiar = 0.5 · embeddin
 
 **Esperado:** responder · documentos: cmn_resolucao_4222_fgc, tesouro_direto_regulamento
 
-**Resultado automático:** PROVÁVEL: documento esperado no top-3 do chat; confira o texto
+**Resultado automático:** PROVÁVEL: documento esperado no top-5 do chat; confira o texto
 
 **Conferência manual:** [ ] contém a informação  
 
@@ -281,7 +281,7 @@ Gerado em 08/11/2026 13:14 · top-5 · k do chat = 5 · limiar = 0.5 · embeddin
 
 **Esperado:** responder · documentos: cvm_resolucao_44_2021, cvm_livro_top_direito_mercado_valores_mobiliarios, cvm_livro_top_mercado_valores_mobiliarios
 
-**Resultado automático:** PROVÁVEL: documento esperado no top-3 do chat; confira o texto
+**Resultado automático:** PROVÁVEL: documento esperado no top-5 do chat; confira o texto
 
 **Conferência manual:** [ ] contém a informação  
 
@@ -309,7 +309,7 @@ Gerado em 08/11/2026 13:14 · top-5 · k do chat = 5 · limiar = 0.5 · embeddin
 
 **Esperado:** responder · documentos: b3_regulamento_novo_mercado, cvm_livro_top_mercado_valores_mobiliarios
 
-**Resultado automático:** PROVÁVEL: documento esperado no top-3 do chat; confira o texto
+**Resultado automático:** PROVÁVEL: documento esperado no top-5 do chat; confira o texto
 
 **Conferência manual:** [ ] contém a informação  
 
@@ -337,7 +337,7 @@ Gerado em 08/11/2026 13:14 · top-5 · k do chat = 5 · limiar = 0.5 · embeddin
 
 **Esperado:** responder · documentos: cvm_caderno_06_fundos_imobiliarios, cvm_livro_top_planejamento_financeiro_pessoal
 
-**Resultado automático:** PROVÁVEL: documento esperado no top-3 do chat; confira o texto
+**Resultado automático:** PROVÁVEL: documento esperado no top-5 do chat; confira o texto
 
 **Conferência manual:** [ ] contém a informação  
 
@@ -365,7 +365,7 @@ Gerado em 08/11/2026 13:14 · top-5 · k do chat = 5 · limiar = 0.5 · embeddin
 
 **Esperado:** responder · documentos: cvm_resolucao_80_2022, cvm_caderno_01_o_que_e_a_cvm
 
-**Resultado automático:** PROVÁVEL: documento esperado no top-3 do chat; confira o texto
+**Resultado automático:** PROVÁVEL: documento esperado no top-5 do chat; confira o texto
 
 **Conferência manual:** [ ] contém a informação  
 
@@ -395,7 +395,7 @@ Gerado em 08/11/2026 13:14 · top-5 · k do chat = 5 · limiar = 0.5 · embeddin
 
 **Nota:** Premissa falsa: o FGC não cobre títulos públicos.
 
-**Resultado automático:** PROVÁVEL: documento esperado no top-3 do chat; confira o texto
+**Resultado automático:** PROVÁVEL: documento esperado no top-5 do chat; confira o texto
 
 **Conferência manual:** [ ] contém a informação  
 
