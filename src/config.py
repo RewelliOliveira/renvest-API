@@ -22,7 +22,7 @@ CHUNK_SIZE = int(os.getenv("CHUNK_SIZE", "800"))
 CHUNK_OVERLAP = int(os.getenv("CHUNK_OVERLAP", "150"))
 
 # Recuperação (distância de cosseno: 0 = idêntico, 1 = sem relação)
-RETRIEVAL_K = int(os.getenv("RETRIEVAL_K", "3"))
+RETRIEVAL_K = int(os.getenv("RETRIEVAL_K", "5"))
 RETRIEVAL_MAX_DISTANCE = float(os.getenv("RETRIEVAL_MAX_DISTANCE", "0.5"))
 
 SUPABASE_URL = os.getenv("SUPABASE_URL", "").strip().rstrip("/")
