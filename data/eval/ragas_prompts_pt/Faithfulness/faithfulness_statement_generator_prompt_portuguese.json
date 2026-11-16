@@ -1,0 +1,22 @@
+{
+  "ragas_version": "0.2.15",
+  "original_hash": 500335485042684303,
+  "language": "portuguese",
+  "instruction": "Given a question and an answer, analyze the complexity of each sentence in the answer. Break down each sentence into one or more fully understandable statements. Ensure that no pronouns are used in any statement. Format the outputs in JSON.",
+  "examples": [
+    {
+      "input": {
+        "question": "Quem foi Albert Einstein e pelo que ele é mais conhecido?",
+        "answer": "Ele foi um físico teórico nascido na Alemanha, amplamente reconhecido como um dos maiores e mais influentes físicos de todos os tempos. Ele é mais conhecido por desenvolver a teoria da relatividade, mas também fez contribuições importantes para o desenvolvimento da teoria da mecânica quântica."
+      },
+      "output": {
+        "statements": [
+          "Albert Einstein foi um físico teórico nascido na Alemanha.",
+          "Albert Einstein é reconhecido como um dos maiores e mais influentes físicos de todos os tempos.",
+          "Albert Einstein é mais conhecido por desenvolver a teoria da relatividade.",
+          "Albert Einstein também fez contribuições importantes para o desenvolvimento da teoria da mecânica quântica."
+        ]
+      }
+    }
+  ]
+}

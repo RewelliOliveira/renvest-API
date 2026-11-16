@@ -13,3 +13,5 @@ data/eval/especialistas_*.xlsx
 # Ambiente separado do RAGAS (requirements-eval.txt)
 venv-eval/
 venv-eval-wsl/
+# Resultados do teste rápido do RAGAS (--limit)
+data/eval/ragas_v2_teste*

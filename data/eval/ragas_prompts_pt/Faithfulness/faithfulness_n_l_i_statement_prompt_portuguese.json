@@ -1,0 +1,60 @@
+{
+  "ragas_version": "0.2.15",
+  "original_hash": 78761395889193055,
+  "language": "portuguese",
+  "instruction": "Your task is to judge the faithfulness of a series of statements based on a given context. For each statement you must return verdict as 1 if the statement can be directly inferred based on the context or 0 if the statement can not be directly inferred based on the context.",
+  "examples": [
+    {
+      "input": {
+        "context": "John é estudante na Universidade XYZ. Ele está cursando um diploma em Ciência da Computação. Ele está matriculado em vários cursos neste semestre, incluindo Estruturas de Dados, Algoritmos e Gerenciamento de Banco de Dados. John é um estudante diligente e passa uma quantidade significativa de tempo estudando e completando tarefas. Ele frequentemente fica até tarde na biblioteca para trabalhar em seus projetos.",
+        "statements": [
+          "John está se especializando em Biologia.",
+          "John está fazendo um curso de Inteligência Artificial.",
+          "John é um estudante dedicado.",
+          "John tem um emprego de meio período."
+        ]
+      },
+      "output": {
+        "statements": [
+          {
+            "statement": "John está se especializando em Biologia.",
+            "reason": "A especialização de John é explicitamente mencionada como Ciência da Computação. Não há informações sugerindo que ele está se especializando em Biologia.",
+            "verdict": 0
+          },
+          {
+            "statement": "John está fazendo um curso de Inteligência Artificial.",
+            "reason": "O contexto menciona os cursos em que John está atualmente matriculado, e Inteligência Artificial não é mencionada. Portanto, não se pode deduzir que John está fazendo um curso de IA.",
+            "verdict": 0
+          },
+          {
+            "statement": "John é um estudante dedicado.",
+            "reason": "O contexto afirma que ele passa uma quantidade significativa de tempo estudando e completando tarefas. Além disso, menciona que ele frequentemente fica até tarde na biblioteca para trabalhar em seus projetos, o que implica dedicação.",
+            "verdict": 1
+          },
+          {
+            "statement": "John tem um emprego de meio período.",
+            "reason": "Não há informações dadas no contexto sobre John ter um emprego de meio período.",
+            "verdict": 0
+          }
+        ]
+      }
+    },
+    {
+      "input": {
+        "context": "A fotossíntese é um processo usado por plantas, algas e certas bactérias para converter energia luminosa em energia química.",
+        "statements": [
+          "Albert Einstein era um gênio."
+        ]
+      },
+      "output": {
+        "statements": [
+          {
+            "statement": "Albert Einstein era um gênio.",
+            "reason": "O contexto e a declaração não estão relacionados",
+            "verdict": 0
+          }
+        ]
+      }
+    }
+  ]
+}

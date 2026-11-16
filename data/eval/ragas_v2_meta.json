@@ -1,0 +1,48 @@
+{
+  "gerado_em": "2026-11-16T14:11:14.276171+00:00",
+  "ragas_version": "0.2.15",
+  "python": "3.12.16",
+  "plataforma": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+  "juiz": "gpt-4o",
+  "juiz_temperatura": 0,
+  "embeddings": "text-embedding-3-small",
+  "execucoes": 2,
+  "excluidas": [
+    "N4.2"
+  ],
+  "perguntas": 15,
+  "limit": null,
+  "conjunto": {
+    "arquivo": "eval_set_v2.json",
+    "gerado_em": "2026-11-16T11:26:48.157368+00:00",
+    "git": {
+      "commit": "6f1b47f075d4040d12c3ead77af83032223d6452",
+      "branch": "main",
+      "dirty": false
+    },
+    "llm_model": "gpt-4o-mini"
+  },
+  "prompts": {
+    "RAG": {
+      "Faithfulness": "português (reaproveitado)",
+      "ResponseRelevancy": "português (reaproveitado)",
+      "LLMContextPrecisionWithReference": "português (reaproveitado)",
+      "LLMContextRecall": "português (reaproveitado)",
+      "FactualCorrectness": "português (reaproveitado)"
+    },
+    "B1": {
+      "ResponseRelevancy": "português (reaproveitado)",
+      "FactualCorrectness": "português (reaproveitado)"
+    }
+  },
+  "falhas_nan": [],
+  "diferenca_media_entre_execucoes": {
+    "RAG/Faithfulness": 0.0937,
+    "RAG/ResponseRelevancy": 0.0115,
+    "RAG/LLMContextPrecisionWithReference": 0.0142,
+    "RAG/LLMContextRecall": 0.0,
+    "RAG/FactualCorrectness": 0.032,
+    "B1/ResponseRelevancy": 0.0152,
+    "B1/FactualCorrectness": 0.0407
+  }
+}

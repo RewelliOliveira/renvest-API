@@ -1,0 +1,39 @@
+{
+  "ragas_version": "0.2.15",
+  "original_hash": 1692315172728572358,
+  "language": "portuguese",
+  "instruction": "Given a context, and an answer, analyze each sentence in the answer and classify if the sentence can be attributed to the given context or not. Use only 'Yes' (1) or 'No' (0) as a binary classification. Output json with reason.",
+  "examples": [
+    {
+      "input": {
+        "question": "O que você pode me dizer sobre Albert Einstein?",
+        "context": "Albert Einstein (14 de março de 1879 - 18 de abril de 1955) foi um físico teórico nascido na Alemanha, amplamente considerado um dos maiores e mais influentes cientistas de todos os tempos. Mais conhecido por desenvolver a teoria da relatividade, ele também fez contribuições importantes para a mecânica quântica, sendo assim uma figura central na reformulação revolucionária da compreensão científica da natureza que a física moderna realizou nas primeiras décadas do século XX. Sua fórmula de equivalência massa-energia E = mc², que surge da teoria da relatividade, foi chamada de 'a equação mais famosa do mundo'. Ele recebeu o Prêmio Nobel de Física de 1921 'por seus serviços à física teórica, e especialmente por sua descoberta da lei do efeito fotoelétrico', um passo crucial no desenvolvimento da teoria quântica. Seu trabalho também é conhecido por sua influência na filosofia da ciência. Em uma pesquisa de 1999 com 130 físicos líderes em todo o mundo pela revista britânica Physics World, Einstein foi classificado como o maior físico de todos os tempos. Suas realizações intelectuais e originalidade tornaram Einstein sinônimo de gênio.",
+        "answer": "Albert Einstein, nascido em 14 de março de 1879, foi um físico teórico nascido na Alemanha, amplamente considerado um dos maiores e mais influentes cientistas de todos os tempos. Ele recebeu o Prêmio Nobel de Física de 1921 por seus serviços à física teórica. Ele publicou 4 artigos em 1905. Einstein mudou-se para a Suíça em 1895."
+      },
+      "output": {
+        "classifications": [
+          {
+            "statement": "Albert Einstein, nascido em 14 de março de 1879, foi um físico teórico nascido na Alemanha, amplamente considerado um dos maiores e mais influentes cientistas de todos os tempos.",
+            "reason": "A data de nascimento de Einstein é mencionada claramente no contexto.",
+            "attributed": 1
+          },
+          {
+            "statement": "Ele recebeu o Prêmio Nobel de Física de 1921 por seus serviços à física teórica.",
+            "reason": "A frase exata está presente no contexto dado.",
+            "attributed": 1
+          },
+          {
+            "statement": "Ele publicou 4 artigos em 1905.",
+            "reason": "Não há menção sobre os artigos que ele escreveu no contexto dado.",
+            "attributed": 0
+          },
+          {
+            "statement": "Einstein mudou-se para a Suíça em 1895.",
+            "reason": "Não há evidências de apoio para isso no contexto dado.",
+            "attributed": 0
+          }
+        ]
+      }
+    }
+  ]
+}
