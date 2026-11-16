@@ -9,3 +9,6 @@ TCC_AJUSTES.md
 
 # Planilhas dos especialistas (enviadas por fora; não versionar)
 data/eval/especialistas_*.xlsx
+
+# Ambiente separado do RAGAS (requirements-eval.txt)
+venv-eval/
