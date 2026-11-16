@@ -2,6 +2,9 @@
 # 03/11/2026: referências escritas só com os trechos do corpus e conferidas pelo autor nos PDFs.
 # Antes de congelar: (1) o autor confere cada referência no PDF; (2) o especialista valida (validado: true).
 # Ajustes feitos após a validação vão em "ajustes".
+# 16/11/2026: referências validadas por 2 especialistas (planilhas em data/respostas_especialistas/).
+# Correção: 31 de 32 avaliações "Sim" (N3.4 corrigida). Completude: 13/16 concordantes, kappa de Cohen = 0,54.
+# Sugestões aplicadas só com apoio no corpus; as recusadas e o motivo estão em "ajustes".
 # 03/11/2026 (revisão prévia): uma validação SIMULADA por IA (não é dado de especialista) apontou ajustes.
 # Só foram aplicados os que o autor confirmou nos PDFs do corpus; cada um está em "revisao_previa".
 # Sugestões sem apoio no corpus foram recusadas (ver PLANO_AVALIACAO.md, Seção 3.3, passo 2b).
@@ -14,16 +17,21 @@
   referencia: >-
     Renda fixa são investimentos que pagam, em períodos definidos, uma remuneração correspondente a uma taxa
     de juros, que pode ser fixada no momento da aplicação (prefixada) ou calculada no resgate com base em um
-    indexador, como Selic, DI ou IPCA (pós-fixada). Costumam ter menor risco e menor rentabilidade esperada
-    que aplicações mais arriscadas, mas o risco existe. Os principais produtos são os títulos públicos (Letra
-    Financeira do Tesouro, Letra do Tesouro Nacional e Nota do Tesouro Nacional), a poupança e os títulos
-    privados, como CDB, RDB, Letras de Câmbio, LCI, LCA, CRI, CRA e debêntures.
+    indexador, como Selic, DI ou IPCA (pós-fixada), ou combinar as duas coisas, como a Nota do Tesouro
+    Nacional série B (Tesouro IPCA+), que paga uma taxa prefixada mais a variação da inflação (IPCA). Costumam
+    ter menor risco e menor rentabilidade esperada que aplicações mais arriscadas, mas o risco existe. Os
+    principais produtos são os títulos públicos (Letra Financeira do Tesouro, Letra do Tesouro Nacional e Nota
+    do Tesouro Nacional), a poupança e os títulos privados, como CDB, RDB, Letras de Câmbio, LCI, LCA, CRI,
+    CRA e debêntures.
   fontes_referencia:
     - {documento: bcb_caderno_gestao_financas_pessoais, pagina: "p. 65"}
     - {documento: cvm_livro_top_planejamento_financeiro_pessoal, pagina: "p. 85-86"}
     - {documento: cvm_livro_top_planejamento_financeiro_pessoal, pagina: "p. 215-216"}
+    - {documento: cvm_livro_top_planejamento_financeiro_pessoal, pagina: "p. 89"}
+    - {documento: tesouro_direto_regulamento, pagina: "p. 7"}
   conferido_autor: true
-  validado: false
+  validado: true
+  ajustes: "16/11 (especialistas 1 e 2): incluída a modalidade híbrida, taxa prefixada + IPCA (NTN-B / Tesouro IPCA+; TOP Planejamento, p. 89; Regulamento TD, p. 7)."
   revisao_previa: "Incluídos poupança, CRI e CRA (TOP Planejamento, p. 216)."
 
 - id: N1.2
@@ -42,7 +50,7 @@
     - {documento: cvm_caderno_01_o_que_e_a_cvm, pagina: "p. 7-8"}
     - {documento: cvm_livro_top_direito_mercado_valores_mobiliarios, pagina: "p. 22-23"}
   conferido_autor: true
-  validado: false
+  validado: true
   revisao_previa: "Incluído o regime especial e o vínculo sem subordinação ao Ministério da Fazenda (Caderno CVM 1, p. 7)."
 
 - id: N1.3
@@ -56,14 +64,19 @@
     extrajudicial, falência ou tem a insolvência reconhecida pelo Banco Central. A garantia ordinária cobre,
     entre outros, depósitos à vista, poupança, depósitos a prazo (CDB e RDB), Letras de Câmbio, Letras
     Hipotecárias, LCI, LCA e Letras de Crédito do Desenvolvimento, até R$ 250 mil por CPF ou CNPJ por
-    instituição ou conglomerado, com teto de R$ 1 milhão a cada quatro anos somando todas as instituições.
-    Não são cobertos, por exemplo, cotas de fundos de investimento.
+    instituição ou conglomerado, com teto de R$ 1 milhão a cada quatro anos somando todas as instituições. Não
+    são cobertos, por exemplo, cotas de fundos de investimento, Letras Financeiras, Letras Imobiliárias e
+    Letras Imobiliárias Garantidas (LIG).
   fontes_referencia:
     - {documento: cmn_resolucao_4222_fgc, pagina: "p. 9"}
     - {documento: cmn_resolucao_4222_fgc, pagina: "p. 31-32"}
     - {documento: cvm_livro_top_planejamento_financeiro_pessoal, pagina: "p. 103-104"}
+    - {documento: cvm_livro_top_planejamento_financeiro_pessoal, pagina: "p. 99"}
+    - {documento: cvm_livro_top_planejamento_financeiro_pessoal, pagina: "p. 103"}
+    - {documento: cvm_livro_top_planejamento_financeiro_pessoal, pagina: "p. 105"}
   conferido_autor: true
-  validado: false
+  validado: true
+  ajustes: "16/11 (especialista 2): ampliados os exemplos não cobertos com Letras Financeiras, LI e LIG (TOP Planejamento, p. 99, 103 e 105). Recusados títulos públicos, CRI, CRA e debêntures como exemplos explícitos: o corpus não os lista entre os não cobertos."
   revisao_previa: >-
     Incluídos a LCD, o conglomerado, o teto de R$ 1 milhão e um exemplo do que não é coberto (Res. 4.222,
     art. 2º e §§ 1º-3º, p. 31-32). Recusada a inclusão da LIG: ela não está no rol do art. 2º.
@@ -85,7 +98,7 @@
     - {documento: cvm_livro_top_planejamento_financeiro_pessoal, pagina: "p. 104"}
     - {documento: cvm_livro_top_planejamento_financeiro_pessoal, pagina: "p. 106"}
   conferido_autor: true
-  validado: false
+  validado: true
   revisao_previa: >-
     Incluído que o limite abrange o saldo corrigido até a decretação, não só o principal (Res. 4.222, art. 2º,
     §§ 2º e 11, p. 32 e 34).
@@ -100,16 +113,17 @@
   pergunta: "Em quanto tempo o dinheiro de uma venda antecipada no Tesouro Direto cai na conta, e o horário da venda muda isso?"
   comportamento_esperado: responder
   referencia: >-
-    Depende do horário da venda. Vendas feitas entre 9h30 e 13h têm o dinheiro repassado no mesmo dia útil,
-    desde que os preços e taxas tenham sido divulgados antes das 13h; vendas entre 13h e 18h, em até um dia
-    útil. Vendas agendadas entre 18h01 e 23h59 são pagas no dia útil seguinte (ou no segundo, se os preços
-    saírem depois das 13h), e as agendadas entre 0h e 5h, no mesmo dia útil (ou no seguinte, nas mesmas
-    condições). Quem repassa o valor líquido (já descontados os impostos) é o agente de custódia, isto é, o
-    banco ou a corretora em que o investidor tem conta.
+    Depende do horário da venda, e os prazos são contados em dias úteis. Vendas feitas entre 9h30 e 13h têm o
+    dinheiro repassado no mesmo dia útil, desde que os preços e taxas tenham sido divulgados antes das 13h;
+    vendas entre 13h e 18h, em até um dia útil. Vendas agendadas entre 18h01 e 23h59 são pagas no dia útil
+    seguinte (ou no segundo, se os preços saírem depois das 13h), e as agendadas entre 0h e 5h, no mesmo dia
+    útil (ou no seguinte, nas mesmas condições). Quem repassa o valor líquido (já descontados os impostos) é o
+    agente de custódia, isto é, o banco ou a corretora em que o investidor tem conta.
   fontes_referencia:
     - {documento: tesouro_direto_regulamento, pagina: "p. 37-38"}
   conferido_autor: true
-  validado: false
+  validado: true
+  ajustes: "16/11 (especialistas 1 e 2): explicitado que os prazos contam em dias úteis. Recusados o processamento em fins de semana com \"preços de abertura\" (não consta no Regulamento TD) e os impostos (IR regressivo, IOF; especialista 1): fora do corpus citado e fora do escopo da pergunta, que é sobre prazo."
   revisao_previa: >-
     Começa pelo prazo em vez de "Sim"; incluído que o repasse dos recursos líquidos é feito pelo agente de
     custódia (Regulamento TD, item 156, v-x, p. 37-38).
@@ -130,7 +144,7 @@
     - {documento: cvm_resolucao_44_2021, pagina: "p. 12-13"}
     - {documento: cvm_resolucao_44_2021, pagina: "p. 14"}
   conferido_autor: true
-  validado: false
+  validado: true
   revisao_previa: "Incluída a exceção dos planos de investimento/desinvestimento (Res. CVM 44, art. 16, § 2º, p. 14)."
 
 - id: N2.4
@@ -150,7 +164,7 @@
     - {documento: cvm_resolucao_44_2021, pagina: "p. 3"}
     - {documento: cvm_resolucao_44_2021, pagina: "p. 5"}
   conferido_autor: true
-  validado: false
+  validado: true
   revisao_previa: "Incluídas a divulgação simultânea à CVM e às bolsas e a suspensão da negociação (Res. CVM 44, art. 3º e 5º, p. 3 e 5)."
   nota_cobertura: >-
     O top-3 do chat traz o TOP Direito citando a Instrução CVM 358 (revogada pela Res. CVM 44). A regra é a
@@ -170,7 +184,7 @@
     - {documento: b3_regulamento_novo_mercado, pagina: "p. 7"}
     - {documento: cvm_livro_top_mercado_valores_mobiliarios, pagina: "p. 279"}
   conferido_autor: true
-  validado: false
+  validado: true
 
 - id: N3.1
   nivel: N3
@@ -178,23 +192,27 @@
   pergunta: "Tenho R$ 400 mil para aplicar e quero ficar protegido pelo FGC. Como posso distribuir entre CDB, LCI e Tesouro Direto e o que fica fora da garantia?"
   comportamento_esperado: responder
   referencia: >-
-    CDB e LCI são cobertos pelo FGC até R$ 250 mil por CPF por instituição (ou conglomerado), com teto de
-    R$ 1 milhão a cada quatro anos somando todas as instituições. Para ficar protegido, o investidor não
-    deve ultrapassar R$ 250 mil por instituição: por exemplo, R$ 200 mil em CDB num banco e R$ 200 mil em
-    LCI num banco de outro conglomerado. Como o limite vale para o saldo com os rendimentos, e não só para o
-    valor aplicado, convém deixar uma margem abaixo de R$ 250 mil. O que passar disso numa mesma
-    instituição fica sem garantia. O Tesouro
-    Direto não está entre os produtos cobertos pelo FGC, mas os títulos públicos federais são emitidos pelo
-    Tesouro Nacional e considerados de risco de crédito muito baixo; por isso, a parte aplicada nele não
-    depende do FGC.
+    CDB e LCI são cobertos pelo FGC até R$ 250 mil por CPF por instituição ou conglomerado financeiro, com
+    teto de R$ 1 milhão a cada quatro anos somando todas as instituições. CDB e LCI do mesmo banco (ou do
+    mesmo conglomerado) somam no mesmo limite de R$ 250 mil. Para ficar protegido, o investidor não deve
+    ultrapassar esse valor por instituição: por exemplo, R$ 150 mil em CDB num banco, R$ 150 mil em LCI num
+    banco de outro conglomerado e R$ 100 mil no Tesouro Direto. Como o limite vale para o saldo com os
+    rendimentos, e não só para o valor aplicado, convém deixar uma margem abaixo de R$ 250 mil; o que passar
+    disso numa mesma instituição fica sem garantia. O Tesouro Direto não está entre os produtos cobertos pelo
+    FGC, mas os títulos públicos federais são emitidos pelo Tesouro Nacional e considerados de risco de
+    crédito muito baixo; por isso, a parte aplicada nele não depende do FGC. Na tributação, a LCI é isenta de
+    imposto de renda para pessoa física, enquanto o CDB segue a tabela regressiva da renda fixa.
   fontes_referencia:
     - {documento: cmn_resolucao_4222_fgc, pagina: "p. 31-32"}
     - {documento: bcb_caderno_gestao_financas_pessoais, pagina: "p. 64-65"}
     - {documento: cvm_livro_top_planejamento_financeiro_pessoal, pagina: "p. 68"}
     - {documento: cvm_livro_top_planejamento_financeiro_pessoal, pagina: "p. 104"}
     - {documento: cmn_resolucao_4222_fgc, pagina: "p. 34"}
+    - {documento: cvm_livro_top_planejamento_financeiro_pessoal, pagina: "p. 95"}
+    - {documento: cvm_livro_top_planejamento_financeiro_pessoal, pagina: "p. 97"}
   conferido_autor: true
-  validado: false
+  validado: true
+  ajustes: "16/11 (especialistas 1 e 2): Tesouro incluído no exemplo de distribuição; explicitado que CDB e LCI do mesmo banco ou conglomerado somam no mesmo limite (Res. 4.222, art. 2º, § 2º, p. 32); incluída a isenção de IR da LCI para pessoa física (TOP Planejamento, p. 97) e a tabela regressiva do CDB (p. 95). Não incluída a tributação do Tesouro: não conferida nos trechos do corpus."
   revisao_previa: >-
     Incluídos um exemplo numérico de distribuição e a margem por causa dos rendimentos (Res. 4.222, art. 2º,
     § 11, p. 34). Recusada a menção à carência da LCI (fora das páginas citadas).
@@ -220,7 +238,7 @@
     - {documento: cvm_livro_top_direito_mercado_valores_mobiliarios, pagina: "p. 241"}
     - {documento: cvm_livro_top_direito_mercado_valores_mobiliarios, pagina: "p. 253"}
   conferido_autor: true
-  validado: false
+  validado: true
   revisao_previa: "Incluída a vantagem 'para si ou para outrem' do art. 13 da Res. CVM 44 (p. 11): vale também para repassar a informação."
   nota_cobertura: >-
     O top-3 do chat traz um trecho sobre OPA/aquisição hostil (pouco útil), o art. 155 da Lei das S.A. e um
@@ -245,7 +263,7 @@
     - {documento: cvm_livro_top_mercado_valores_mobiliarios, pagina: "p. 277-278"}
     - {documento: cvm_livro_top_mercado_valores_mobiliarios, pagina: "p. 250-251"}
   conferido_autor: true
-  validado: false
+  validado: true
   revisao_previa: "Incluído o tag along legal de 80% para ações com voto (TOP Mercado, p. 250-251)."
 
 - id: N3.4
@@ -256,9 +274,9 @@
   referencia: >-
     O fundo imobiliário permite investir em imóveis com pequenas quantias, diversificar entre vários
     empreendimentos e diluir os custos de administração entre todos os cotistas. Nos custos, o cotista não
-    cuida de certidões, escritura, ITBI, manutenção e reparos, que ficam com o administrador do fundo; no
-    imóvel direto, tudo isso é do proprietário. A vacância (imóvel sem inquilino) é um risco nos dois casos.
-    Na liquidez, é possível
+    cuida de certidões, escritura, ITBI, manutenção e reparos, que são providenciados pelo administrador e
+    pagos com recursos do próprio fundo, ou seja, indiretamente pelos cotistas; no imóvel direto, tudo isso é
+    do proprietário. A vacância (imóvel sem inquilino) é um risco nos dois casos. Na liquidez, é possível
     vender só parte das cotas no mercado secundário, enquanto no imóvel direto seria preciso vender o bem
     inteiro; em compensação, a venda das cotas depende de haver compradores nesse mercado. Os rendimentos
     distribuídos podem ser isentos de imposto de renda, se o fundo cumprir as condições legais.
@@ -268,7 +286,8 @@
     - {documento: cvm_livro_top_planejamento_financeiro_pessoal, pagina: "p. 149"}
     - {documento: cvm_livro_top_planejamento_financeiro_pessoal, pagina: "p. 151-152"}
   conferido_autor: true
-  validado: false
+  validado: true
+  ajustes: "16/11 (especialista 1, Correta = Ajustar): CORRIGIDO. Os custos não \"ficam com o administrador\": ele os providencia, mas paga com recursos do fundo, isto é, dos cotistas (Caderno CVM 6, p. 8). Recusada a comparação tributária (20% sobre o ganho das cotas via DARF × carnê-leão): não consta no corpus e a pergunta trata de liquidez, diversificação e custos."
   revisao_previa: >-
     Incluídos os custos do imóvel direto (certidões, escritura, ITBI, manutenção) e o risco de vacância
     (Caderno CVM 6, p. 8 e 11). Recusada a tributação do ganho na venda de cotas (não conferida no corpus).
@@ -280,17 +299,25 @@
   comportamento_esperado: responder
   referencia: >-
     O principal documento é o Formulário de Referência, instituído em 2009 e hoje regido pela Resolução CVM
-    80/2022, que obriga a companhia aberta a enviá-lo à CVM atualizado todo ano, em até 5 meses após o fim
-    do exercício. Ele traz as atividades da empresa, fatores de risco, estrutura de capital, dados
-    financeiros, comentários da administração, principais acionistas, composição dos conselhos e
-    remuneração dos administradores. Ele pode ser consultado no site da CVM, junto com demonstrações
-    financeiras e fatos relevantes, e no site de Relações com Investidores da empresa. O documento ajuda a
-    avaliar a empresa, mas não garante que ela seja um bom investimento.
+    80/2022, que obriga a companhia aberta a enviá-lo à CVM atualizado todo ano, em até 5 meses após o fim do
+    exercício. Ele traz as atividades da empresa, fatores de risco, estrutura de capital, dados financeiros,
+    comentários da administração, principais acionistas, composição dos conselhos e remuneração dos
+    administradores. Ele pode ser consultado no site da CVM, junto com demonstrações financeiras e fatos
+    relevantes, e no site de Relações com Investidores da empresa. Também vale consultar as demonstrações
+    financeiras anuais (DFP) e as informações trimestrais (ITR): as anuais vêm acompanhadas do relatório do
+    auditor independente, e as trimestrais passam por revisão especial de auditor independente registrado na
+    CVM; eventuais ressalvas e ênfases do auditor ajudam a avaliar a confiabilidade das informações. O
+    documento ajuda a avaliar a empresa, mas não garante que ela seja um bom investimento.
   fontes_referencia:
     - {documento: cvm_caderno_01_o_que_e_a_cvm, pagina: "p. 22-23"}
     - {documento: cvm_resolucao_80_2022, pagina: "p. 9"}
+    - {documento: cvm_resolucao_80_2022, pagina: "p. 7"}
+    - {documento: cvm_resolucao_80_2022, pagina: "p. 11"}
+    - {documento: cvm_resolucao_80_2022, pagina: "p. 13"}
+    - {documento: cvm_resolucao_80_2022, pagina: "p. 63"}
   conferido_autor: true
-  validado: false
+  validado: true
+  ajustes: "16/11 (especialista 1): incluídas DFP e ITR, o relatório do auditor independente e a revisão especial por auditor registrado na CVM, e as ressalvas e ênfases (Res. CVM 80/2022, p. 7, 11, 13 e 63). O Formulário de Referência continua como o documento obrigatório pedido."
   revisao_previa: >-
     Base normativa atualizada para a Res. CVM 80/2022, com a obrigação de atualização anual (art. 25, p. 9),
     e incluído o aviso de que o documento não garante a qualidade do investimento.
@@ -313,7 +340,7 @@
     - {documento: tesouro_direto_regulamento, pagina: "p. 5"}
     - {documento: tesouro_direto_regulamento, pagina: "p. 7-8"}
   conferido_autor: true
-  validado: false
+  validado: true
   nota_cobertura: >-
     A consequência "se a corretora quebrar, os títulos continuam seus" é dedução das regras de custódia,
     não uma frase do regulamento. Confirmar com o especialista.
@@ -330,7 +357,7 @@
     criptomoedas.
   fontes_referencia: []
   conferido_autor: true
-  validado: false
+  validado: true
   nota_cobertura: >-
     Passam 3 trechos do TOP Planejamento sobre IR de outros ativos (imóveis 15%, renda variável 15%/20%).
     O risco é o modelo aplicar essas alíquotas às criptomoedas.
@@ -349,7 +376,7 @@
     - {documento: cvm_livro_top_mercado_valores_mobiliarios, pagina: "p. 101-103"}
     - {documento: cvm_livro_top_mercado_valores_mobiliarios, pagina: "p. 108"}
   conferido_autor: true
-  validado: false
+  validado: true
   nota_cobertura: >-
     Com a busca no corpus inteiro (03/11), os 5 primeiros trechos são todos do TOP Direito, explicando a
     ICVM 555 como se estivesse vigente; os trechos do TOP Mercado sobre a Res. 175 (p. 101-103) não são
