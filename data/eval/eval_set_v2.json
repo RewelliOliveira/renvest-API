@@ -1,0 +1,1639 @@
+{
+  "metadados": {
+    "gerado_em": "2026-11-16T11:26:48.157368+00:00",
+    "git": {
+      "commit": "6f1b47f075d4040d12c3ead77af83032223d6452",
+      "branch": "main",
+      "dirty": false
+    },
+    "llm_model": "gpt-4o-mini",
+    "llm_temperature": 0.3,
+    "embedding_model": "text-embedding-3-small",
+    "retrieval_k": 5,
+    "retrieval_max_distance": 0.5,
+    "chunk_size": 800,
+    "chunk_overlap": 150,
+    "baseline_instruction": "Responda para um investidor iniciante e, quando possível, cite as fontes oficiais que sustentam sua resposta."
+  },
+  "itens": [
+    {
+      "id": "N1.1",
+      "nivel": "N1",
+      "modulo": null,
+      "pergunta": "O que é renda fixa e quais são os principais produtos dessa categoria no Brasil?",
+      "comportamento_esperado": "responder",
+      "referencia": "Renda fixa são investimentos que pagam, em períodos definidos, uma remuneração correspondente a uma taxa de juros, que pode ser fixada no momento da aplicação (prefixada) ou calculada no resgate com base em um indexador, como Selic, DI ou IPCA (pós-fixada), ou combinar as duas coisas, como a Nota do Tesouro Nacional série B (Tesouro IPCA+), que paga uma taxa prefixada mais a variação da inflação (IPCA). Costumam ter menor risco e menor rentabilidade esperada que aplicações mais arriscadas, mas o risco existe. Os principais produtos são os títulos públicos (Letra Financeira do Tesouro, Letra do Tesouro Nacional e Nota do Tesouro Nacional), a poupança e os títulos privados, como CDB, RDB, Letras de Câmbio, LCI, LCA, CRI, CRA e debêntures.",
+      "fontes_referencia": [
+        {
+          "documento": "bcb_caderno_gestao_financas_pessoais",
+          "pagina": "p. 65"
+        },
+        {
+          "documento": "cvm_livro_top_planejamento_financeiro_pessoal",
+          "pagina": "p. 85-86"
+        },
+        {
+          "documento": "cvm_livro_top_planejamento_financeiro_pessoal",
+          "pagina": "p. 215-216"
+        },
+        {
+          "documento": "cvm_livro_top_planejamento_financeiro_pessoal",
+          "pagina": "p. 89"
+        },
+        {
+          "documento": "tesouro_direto_regulamento",
+          "pagina": "p. 7"
+        }
+      ],
+      "validado": true,
+      "resposta_rag": "Renda fixa é um tipo de investimento onde o rendimento é determinado ou determinável, o que significa que o investidor sabe, no momento da compra, quanto irá receber no vencimento. Os principais produtos dessa categoria incluem títulos públicos, debêntures não conversíveis em ações e CDBs (Certificados de Depósito Bancário). Esses ativos são geralmente considerados mais seguros em comparação com a renda variável, pois preservam o principal investido. Segundo o Caderno CVM nº 3 (p. 16), os fundos de renda fixa também investem em ativos relacionados a esses produtos, como títulos públicos e privados.",
+      "usou_base": true,
+      "contextos": [
+        "9.4. Mercado de renda fixa e mercado de renda variável.\n\nConsiderando o valor mobiliário ou ativo/produto negociado ou ofertado, podemos classificar o mercado como sendo mercado de renda fixa ou de renda variável. Por renda fixa, entende-se que o rendimento a ser auferido pelo investidor é determinado ou determinável10 e se preserva o principal investido. Nesta categoria temos, por exemplo, os títulos públicos, as debêntures não conversíveis em ações, os commercial papers. Já a renda variável implica a inexistência de retorno determinado, trata-se de risco, ou seja, não há como antever, estipular ou determinar o ganho, nem mesmo se este ocorrerá (e, havendo ganho, não há como limitá-lo)11. Como exemplo de renda",
+        "Fundos de Renda Fixa\n\nOs fundos classificados como “Renda Fixa” apresentam como principal fator de risco de sua carteira a variação da taxa de juros, de índice de preços, ou ambos. Devem ter pelo menos 80% da sua carteira investida em ativos que estejam relacionados a esses fatores de risco.\n\nNa prática, esses ativos financeiros são, em sua maioria, os chamados títulos de renda fixa, como os títulos públicos federais, as debêntures e os títulos de emissão bancária, como CDBs, LCIs, entre outros.\n\nPodem incluir na carteira títulos que apresentam maior risco de crédito, como os títulos privados, e em regra utilizam derivativos para proteção da carteira.",
+        "8.2.3. Renda Fixa\n\nHá muitos títulos e valores mobiliários de renda fixa no mercado financeiro, que permi tem que pessoas, empresas e governos captem empréstimos ou cedam recebíveis, levan tando recursos para o desenvolvimento das suas atividades. Na B3 Alguns são registrados e outros negociados. a B3 mantém sistema de negociação, cotação e leilão , para títulos públicos e privados. Por intermédio do módulo de leilão é possível realizar colocações primárias e secundárias de quaisquer ativos, custodiados ou não na B3. Os leilões podem ser de taxa ou Preço Unitário (PU), com a quantidade de ativos definida em lotes ou por unidade, propiciando agilidade, eficiência na precificação e transparência.\n\nEXEMPLOS DE PRODUTOS ADMITIDOS NA B3\n\nRenda Fixa Renda Variável Derivativos",
+        "De acordo com o tipo de remuneração, os títulos de renda fixa podem ser classifica dos em:\n\n. Prefixados: o investidor sabe, no momento da compra, o montante em reais que receberá no vencimento. São títulos com juros fixos, estabelecidos no mo mento de seu lançamento ao público.\n\n. Pós-fixados: atrelados a determinado parâmetro, como a taxa Selic ou DI, ou a um índice de inflação, como o IPCA, que paga uma taxa prefixada de juros além do índice de correção inflação.\n\nOs títulos de renda fixa apresentam diferentes fluxos de pagamento do principal e juros ao investidor.\n\n2.3.1.1.1. Títulos públicos",
+        "Renda Fixa - Curto Prazo\n\nAs classes Renda Fixa - Curto Prazo devem investir seus recursos exclusivamente em: (i) títulos públicos federais e operações compromissadas neles lastreadas; (ii) títulos privados de baixo risco de crédito com prazo máximo a decorrer de 375 dias e prazo médio da carteira inferior a 60 dias; ou (iii) ETFs que apliquem nos itens (i) e (ii) e que utilizem derivativos somente para proteção da carteira, sendo proibida alavancagem.\n\nEste tipo de classe tem a rentabilidade geralmente associada à taxa SELIC ou ao CDI e são considerados bastante conservadores quanto ao risco, sendo compatíveis com objetivos de investimento de curto prazo pois suas cotas são menos sensíveis às osci lações das taxas de juros.\n\nRenda Fixa – Referenciado"
+      ],
+      "fontes": [
+        {
+          "chunk_id": "cvm_livro_top_direito_mercado_valores_mobiliarios:01453",
+          "texto": "9.4. Mercado de renda fixa e mercado de renda variável.\n\nConsiderando o valor mobiliário ou ativo/produto negociado ou ofertado, podemos classificar o mercado como sendo mercado de renda fixa ou de renda variável. Por renda fixa, entende-se que o rendimento a ser auferido pelo investidor é determinado ou determinável10 e se preserva o principal investido. Nesta categoria temos, por exemplo, os títulos públicos, as debêntures não conversíveis em ações, os commercial papers. Já a renda variável implica a inexistência de retorno determinado, trata-se de risco, ou seja, não há como antever, estipular ou determinar o ganho, nem mesmo se este ocorrerá (e, havendo ganho, não há como limitá-lo)11. Como exemplo de renda",
+          "documento": "TOP Direito do Mercado de Valores Mobiliários",
+          "instituicao": "Comissão de Valores Mobiliários (CVM)",
+          "pagina": "p. 313",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/direito-do-mercado-de-valores-mobiliarios/@@display-file/file",
+          "distancia": 0.340672876197675
+        },
+        {
+          "chunk_id": "cvm_caderno_03_fundos_investimento:00028",
+          "texto": "Fundos de Renda Fixa\n\nOs fundos classificados como “Renda Fixa” apresentam como principal fator de risco de sua carteira a variação da taxa de juros, de índice de preços, ou ambos. Devem ter pelo menos 80% da sua carteira investida em ativos que estejam relacionados a esses fatores de risco.\n\nNa prática, esses ativos financeiros são, em sua maioria, os chamados títulos de renda fixa, como os títulos públicos federais, as debêntures e os títulos de emissão bancária, como CDBs, LCIs, entre outros.\n\nPodem incluir na carteira títulos que apresentam maior risco de crédito, como os títulos privados, e em regra utilizam derivativos para proteção da carteira.",
+          "documento": "Cadernos CVM nº 3 – Fundos de Investimento (3ª ed.)",
+          "instituicao": "Comissão de Valores Mobiliários (CVM)",
+          "pagina": "p. 16",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/cadernos/cvm-caderno-03-3ed.pdf/@@display-file/file",
+          "distancia": 0.368457939738418
+        },
+        {
+          "chunk_id": "cvm_livro_top_mercado_valores_mobiliarios:00892",
+          "texto": "8.2.3. Renda Fixa\n\nHá muitos títulos e valores mobiliários de renda fixa no mercado financeiro, que permi tem que pessoas, empresas e governos captem empréstimos ou cedam recebíveis, levan tando recursos para o desenvolvimento das suas atividades. Na B3 Alguns são registrados e outros negociados. a B3 mantém sistema de negociação, cotação e leilão , para títulos públicos e privados. Por intermédio do módulo de leilão é possível realizar colocações primárias e secundárias de quaisquer ativos, custodiados ou não na B3. Os leilões podem ser de taxa ou Preço Unitário (PU), com a quantidade de ativos definida em lotes ou por unidade, propiciando agilidade, eficiência na precificação e transparência.\n\nEXEMPLOS DE PRODUTOS ADMITIDOS NA B3\n\nRenda Fixa Renda Variável Derivativos",
+          "documento": "TOP Mercado de Valores Mobiliários Brasileiro (5ª ed.)",
+          "instituicao": "Comissão de Valores Mobiliários (CVM)",
+          "pagina": "p. 269",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/cvm-livro_top_valores_mobiliarios_br_5ed.pdf/@@display-file/file",
+          "distancia": 0.374403358613569
+        },
+        {
+          "chunk_id": "cvm_livro_top_planejamento_financeiro_pessoal:00210",
+          "texto": "De acordo com o tipo de remuneração, os títulos de renda fixa podem ser classifica dos em:\n\n. Prefixados: o investidor sabe, no momento da compra, o montante em reais que receberá no vencimento. São títulos com juros fixos, estabelecidos no mo mento de seu lançamento ao público.\n\n. Pós-fixados: atrelados a determinado parâmetro, como a taxa Selic ou DI, ou a um índice de inflação, como o IPCA, que paga uma taxa prefixada de juros além do índice de correção inflação.\n\nOs títulos de renda fixa apresentam diferentes fluxos de pagamento do principal e juros ao investidor.\n\n2.3.1.1.1. Títulos públicos",
+          "documento": "TOP Planejamento Financeiro Pessoal (2ª ed.)",
+          "instituicao": "Comissão de Valores Mobiliários (CVM) / Planejar",
+          "pagina": "p. 85-86",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/livro-top-planejamento-financeiro-pessoal/@@display-file/file",
+          "distancia": 0.377097964491773
+        },
+        {
+          "chunk_id": "cvm_livro_top_mercado_valores_mobiliarios:00319",
+          "texto": "Renda Fixa - Curto Prazo\n\nAs classes Renda Fixa - Curto Prazo devem investir seus recursos exclusivamente em: (i) títulos públicos federais e operações compromissadas neles lastreadas; (ii) títulos privados de baixo risco de crédito com prazo máximo a decorrer de 375 dias e prazo médio da carteira inferior a 60 dias; ou (iii) ETFs que apliquem nos itens (i) e (ii) e que utilizem derivativos somente para proteção da carteira, sendo proibida alavancagem.\n\nEste tipo de classe tem a rentabilidade geralmente associada à taxa SELIC ou ao CDI e são considerados bastante conservadores quanto ao risco, sendo compatíveis com objetivos de investimento de curto prazo pois suas cotas são menos sensíveis às osci lações das taxas de juros.\n\nRenda Fixa – Referenciado",
+          "documento": "TOP Mercado de Valores Mobiliários Brasileiro (5ª ed.)",
+          "instituicao": "Comissão de Valores Mobiliários (CVM)",
+          "pagina": "p. 104",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/cvm-livro_top_valores_mobiliarios_br_5ed.pdf/@@display-file/file",
+          "distancia": 0.382481314788793
+        }
+      ],
+      "distancias": [
+        0.340672876197675,
+        0.368457939738418,
+        0.374403358613569,
+        0.377097964491773,
+        0.382481314788793
+      ],
+      "dado_tempo_real": null,
+      "rag_metricas": {
+        "latencia_busca_ms": 1665.6,
+        "latencia_geracao_ms": 6056.9,
+        "latencia_total_ms": 7722.5,
+        "tokens_in": 2813,
+        "tokens_out": 167
+      },
+      "resposta_baseline": "Renda fixa é uma categoria de investimentos onde o investidor sabe, no momento da aplicação, qual será o rendimento ao final do período. É uma opção mais conservadora, ideal para quem busca segurança e previsibilidade. No Brasil, os principais produtos de renda fixa incluem:\n\n1. **CDB (Certificado de Depósito Bancário)**: Títulos emitidos por bancos que oferecem rentabilidade atrelada ao CDI (Certificado de Depósito Interbancário).\n2. **Tesouro Direto**: Títulos públicos que podem ser comprados diretamente do governo, com opções que pagam juros semestrais ou no vencimento.\n3. **LCI/LCA (Letra de Crédito Imobiliário/Agronegócio)**: Títulos que financiam o setor imobiliário ou do agronegócio, isentos de Imposto de Renda para pessoas físicas.\n4. **Fundos de Renda Fixa**: Fundos que investem em diversos títulos de renda fixa, permitindo diversificação com um investimento inicial menor.\n\nEsses produtos são ótimos para quem está começando a investir e quer segurança!",
+      "baseline_metricas": {
+        "latencia_geracao_ms": 5595.3,
+        "tokens_in": 1333,
+        "tokens_out": 279
+      }
+    },
+    {
+      "id": "N1.2",
+      "nivel": "N1",
+      "modulo": null,
+      "pergunta": "O que é a CVM e qual é o seu papel no mercado de capitais brasileiro?",
+      "comportamento_esperado": "responder",
+      "referencia": "A Comissão de Valores Mobiliários (CVM) é uma autarquia federal criada em 1976 pela Lei nº 6.385/76, responsável pela regulação e fiscalização do mercado de capitais no Brasil. É uma autarquia em regime especial: tem vínculo com o Ministério da Fazenda, mas não é subordinada a ele, e seus dirigentes têm mandato fixo. Entre suas funções estão estabelecer normas, fiscalizar seu cumprimento e punir quem as descumpre, promover o desenvolvimento e a eficiência do mercado e proteger os investidores contra fraudes e práticas irregulares.",
+      "fontes_referencia": [
+        {
+          "documento": "cvm_caderno_01_o_que_e_a_cvm",
+          "pagina": "p. 7-8"
+        },
+        {
+          "documento": "cvm_livro_top_direito_mercado_valores_mobiliarios",
+          "pagina": "p. 22-23"
+        }
+      ],
+      "validado": true,
+      "resposta_rag": "A Comissão de Valores Mobiliários (CVM) é a instituição do governo responsável pela regulação e fiscalização do mercado de capitais no Brasil. Criada em 1976, a CVM tem como funções principais estabelecer normas, fiscalizar seu cumprimento e proteger os investidores contra fraudes e práticas irregulares. Além disso, busca promover o desenvolvimento e a eficiência do mercado (Fonte: Cadernos CVM nº 1, p. 7-8).",
+      "usou_base": true,
+      "contextos": [
+        "a cvm\n\n1\n\n1.1. QUEM É\n\nA CVM é a instituição do governo responsável pela regulação e fiscalização do mercado de capitais no Brasil.\n\nCriada em 1976, é uma Autarquia Federal que tem entre suas funções: estabelecer normas, fiscalizar seu cumprimento, punir aqueles que as descumprem e buscar o desenvolvimento de um mercado íntegro e transparente.\n\nEntidade da Administração Pública Indireta com personalidade jurídica e patrimônio próprios, criada para executar atividades que exijam, para seu melhor funcionamento, gestão descentralizada.",
+        "1.3.5. Entidade supervisora do mercado de capitais: Comissão de Valores Mobiliários\n\nA Comissão de Valores Mobiliários (CVM) foi criada em 1976, pela Lei no 6.385/76. Passou a funcionar efetivamente em 1978, absorvendo as competências da antiga GEMEC.\n\nÉ o órgão regulador do mercado de capitais e, assim como o Banco Central do Brasil, deve atender às diretrizes determinadas pelo CMN.\n\nA CVM é uma autarquia em regime especial, vinculada ao Ministério da Fazenda, com personalidade jurídica e patrimônio próprios, dotada de: • autoridade administrativa independente; • ausência de subordinação hierárquica; • mandato fixo e estabilidade de seus dirigentes; e • autonomia financeira e orçamentária.",
+        "Aproveite este conteúdo, utilize as ferramentas e os sites indicados e entre em contato caso tenha dúvidas ou algum problema ao investir.\n\no que você vai ver\n\na cvm 07\n\n1\n\nquem é, área de atuação, histórico\n\na regulação 13\n\n2\n\nfundamentos, funções da cvm, autorregulação\n\ndivulgação de informações 21\n\n3\n\nimportância, onde obter\n\norientação ao investidor 25\n\n4\n\nferramentas, ações educacionais, formas de contato\n\nmais sobre a cvm 30\n\n5\n\nestrutura, atos normativos, cooperação internacional\n\na cvm\n\n1\n\n1.1. QUEM É\n\nA CVM é a instituição do governo responsável pela regulação e fiscalização do mercado de capitais no Brasil.",
+        "FUNDAÇÃO GETÚLIO VARGAS (FGV).\n\n3. A CVM: COMPETÊNCIA LEGAL, FUNÇÕES, PODERES E ATRIBUIÇÕES\n\nO mercado de capitais brasileiro é regulado pela Comissão de Valores Mobiliários – CVM, autarquia federal instituída pela Lei n° 6.385/76, com sede na cidade do Rio de Janeiro e representação nas cidades de Brasília e São Paulo. Em sua concepção original, a CVM possuía natureza de autarquia federal de acordo com o regime estabelecido no Decreto-Lei n° 200/67, com seus diretores e presidente nomeados pelo Presidente da República, sem necessidade de aprovação pelo Senado Federal, sendo demissíveis ad nutum.",
+        "• Promover o desenvolvimento e a eficiência do mercado;\n\n• Proteger os investidores contra fraudes e práticas irregulares.\n\n1.2. ÁREA DE ATUAÇÃO\n\nA CVM atua, primordialmente, no mercado de valores\n\nmobiliários, também chamado de mercado de capitais.\n\nMas o que é esse mercado?\n\nO mercado de capitais\n\nÉ o segmento do sistema financeiro que viabiliza a trans-\n\nferência de recursos de maneira direta entre os agentes\n\neconômicos. Ou seja, é um mercado em que os poupa-\n\ndores, que possuem recursos disponíveis, emprestam di-\n\nretamente para os tomadores, que precisam de dinheiro\n\npara viabilizar seus negócios.\n\nAs empresas, por exemplo, necessitam de recursos fi-\n\nnanceiros para realizar investimentos produtivos, como\n\nconstrução de novas fábricas, aquisição de outras empre-"
+      ],
+      "fontes": [
+        {
+          "chunk_id": "cvm_caderno_01_o_que_e_a_cvm:00004",
+          "texto": "a cvm\n\n1\n\n1.1. QUEM É\n\nA CVM é a instituição do governo responsável pela regulação e fiscalização do mercado de capitais no Brasil.\n\nCriada em 1976, é uma Autarquia Federal que tem entre suas funções: estabelecer normas, fiscalizar seu cumprimento, punir aqueles que as descumprem e buscar o desenvolvimento de um mercado íntegro e transparente.\n\nEntidade da Administração Pública Indireta com personalidade jurídica e patrimônio próprios, criada para executar atividades que exijam, para seu melhor funcionamento, gestão descentralizada.",
+          "documento": "Cadernos CVM nº 1 – O que é a CVM?",
+          "instituicao": "Comissão de Valores Mobiliários (CVM)",
+          "pagina": "p. 7",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/cadernos/cvm-caderno-1.pdf/@@display-file/file",
+          "distancia": 0.205628443420956
+        },
+        {
+          "chunk_id": "cvm_livro_top_direito_mercado_valores_mobiliarios:00060",
+          "texto": "1.3.5. Entidade supervisora do mercado de capitais: Comissão de Valores Mobiliários\n\nA Comissão de Valores Mobiliários (CVM) foi criada em 1976, pela Lei no 6.385/76. Passou a funcionar efetivamente em 1978, absorvendo as competências da antiga GEMEC.\n\nÉ o órgão regulador do mercado de capitais e, assim como o Banco Central do Brasil, deve atender às diretrizes determinadas pelo CMN.\n\nA CVM é uma autarquia em regime especial, vinculada ao Ministério da Fazenda, com personalidade jurídica e patrimônio próprios, dotada de: • autoridade administrativa independente; • ausência de subordinação hierárquica; • mandato fixo e estabilidade de seus dirigentes; e • autonomia financeira e orçamentária.",
+          "documento": "TOP Direito do Mercado de Valores Mobiliários",
+          "instituicao": "Comissão de Valores Mobiliários (CVM)",
+          "pagina": "p. 22-23",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/direito-do-mercado-de-valores-mobiliarios/@@display-file/file",
+          "distancia": 0.224153249999468
+        },
+        {
+          "chunk_id": "cvm_caderno_01_o_que_e_a_cvm:00003",
+          "texto": "Aproveite este conteúdo, utilize as ferramentas e os sites indicados e entre em contato caso tenha dúvidas ou algum problema ao investir.\n\no que você vai ver\n\na cvm 07\n\n1\n\nquem é, área de atuação, histórico\n\na regulação 13\n\n2\n\nfundamentos, funções da cvm, autorregulação\n\ndivulgação de informações 21\n\n3\n\nimportância, onde obter\n\norientação ao investidor 25\n\n4\n\nferramentas, ações educacionais, formas de contato\n\nmais sobre a cvm 30\n\n5\n\nestrutura, atos normativos, cooperação internacional\n\na cvm\n\n1\n\n1.1. QUEM É\n\nA CVM é a instituição do governo responsável pela regulação e fiscalização do mercado de capitais no Brasil.",
+          "documento": "Cadernos CVM nº 1 – O que é a CVM?",
+          "instituicao": "Comissão de Valores Mobiliários (CVM)",
+          "pagina": "p. 3-7",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/cadernos/cvm-caderno-1.pdf/@@display-file/file",
+          "distancia": 0.238722951151868
+        },
+        {
+          "chunk_id": "cvm_livro_top_direito_mercado_valores_mobiliarios:00230",
+          "texto": "FUNDAÇÃO GETÚLIO VARGAS (FGV).\n\n3. A CVM: COMPETÊNCIA LEGAL, FUNÇÕES, PODERES E ATRIBUIÇÕES\n\nO mercado de capitais brasileiro é regulado pela Comissão de Valores Mobiliários – CVM, autarquia federal instituída pela Lei n° 6.385/76, com sede na cidade do Rio de Janeiro e representação nas cidades de Brasília e São Paulo. Em sua concepção original, a CVM possuía natureza de autarquia federal de acordo com o regime estabelecido no Decreto-Lei n° 200/67, com seus diretores e presidente nomeados pelo Presidente da República, sem necessidade de aprovação pelo Senado Federal, sendo demissíveis ad nutum.",
+          "documento": "TOP Direito do Mercado de Valores Mobiliários",
+          "instituicao": "Comissão de Valores Mobiliários (CVM)",
+          "pagina": "p. 55-56",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/direito-do-mercado-de-valores-mobiliarios/@@display-file/file",
+          "distancia": 0.240570421452411
+        },
+        {
+          "chunk_id": "cvm_caderno_01_o_que_e_a_cvm:00006",
+          "texto": "• Promover o desenvolvimento e a eficiência do mercado;\n\n• Proteger os investidores contra fraudes e práticas irregulares.\n\n1.2. ÁREA DE ATUAÇÃO\n\nA CVM atua, primordialmente, no mercado de valores\n\nmobiliários, também chamado de mercado de capitais.\n\nMas o que é esse mercado?\n\nO mercado de capitais\n\nÉ o segmento do sistema financeiro que viabiliza a trans-\n\nferência de recursos de maneira direta entre os agentes\n\neconômicos. Ou seja, é um mercado em que os poupa-\n\ndores, que possuem recursos disponíveis, emprestam di-\n\nretamente para os tomadores, que precisam de dinheiro\n\npara viabilizar seus negócios.\n\nAs empresas, por exemplo, necessitam de recursos fi-\n\nnanceiros para realizar investimentos produtivos, como\n\nconstrução de novas fábricas, aquisição de outras empre-",
+          "documento": "Cadernos CVM nº 1 – O que é a CVM?",
+          "instituicao": "Comissão de Valores Mobiliários (CVM)",
+          "pagina": "p. 7-8",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/cadernos/cvm-caderno-1.pdf/@@display-file/file",
+          "distancia": 0.252078825008869
+        }
+      ],
+      "distancias": [
+        0.205628443420956,
+        0.224153249999468,
+        0.238722951151868,
+        0.240570421452411,
+        0.252078825008869
+      ],
+      "dado_tempo_real": null,
+      "rag_metricas": {
+        "latencia_busca_ms": 3536.9,
+        "latencia_geracao_ms": 3880.1,
+        "latencia_total_ms": 7417.0,
+        "tokens_in": 2773,
+        "tokens_out": 143
+      },
+      "resposta_baseline": "A CVM, ou Comissão de Valores Mobiliários, é a entidade reguladora do mercado de capitais brasileiro. Seu principal papel é proteger os investidores, garantir a transparência e a eficiência do mercado, além de promover a educação financeira. Ela supervisiona a emissão e a negociação de valores mobiliários, como ações e debêntures, e fiscaliza as companhias abertas, assegurando que cumpram as normas e divulguem informações relevantes ao mercado. Isso ajuda a manter a confiança dos investidores e a integridade do sistema financeiro. Para mais detalhes, você pode consultar o site oficial da CVM.",
+      "baseline_metricas": {
+        "latencia_geracao_ms": 3842.2,
+        "tokens_in": 1336,
+        "tokens_out": 162
+      }
+    },
+    {
+      "id": "N1.3",
+      "nivel": "N1",
+      "modulo": null,
+      "pergunta": "O que é o FGC e quais produtos ele cobre?",
+      "comportamento_esperado": "responder",
+      "referencia": "O Fundo Garantidor de Créditos (FGC) é uma associação civil sem fins lucrativos, de direito privado, que protege depositantes e investidores quando uma instituição associada sofre intervenção, liquidação extrajudicial, falência ou tem a insolvência reconhecida pelo Banco Central. A garantia ordinária cobre, entre outros, depósitos à vista, poupança, depósitos a prazo (CDB e RDB), Letras de Câmbio, Letras Hipotecárias, LCI, LCA e Letras de Crédito do Desenvolvimento, até R$ 250 mil por CPF ou CNPJ por instituição ou conglomerado, com teto de R$ 1 milhão a cada quatro anos somando todas as instituições. Não são cobertos, por exemplo, cotas de fundos de investimento, Letras Financeiras, Letras Imobiliárias e Letras Imobiliárias Garantidas (LIG).",
+      "fontes_referencia": [
+        {
+          "documento": "cmn_resolucao_4222_fgc",
+          "pagina": "p. 9"
+        },
+        {
+          "documento": "cmn_resolucao_4222_fgc",
+          "pagina": "p. 31-32"
+        },
+        {
+          "documento": "cvm_livro_top_planejamento_financeiro_pessoal",
+          "pagina": "p. 103-104"
+        },
+        {
+          "documento": "cvm_livro_top_planejamento_financeiro_pessoal",
+          "pagina": "p. 99"
+        },
+        {
+          "documento": "cvm_livro_top_planejamento_financeiro_pessoal",
+          "pagina": "p. 103"
+        },
+        {
+          "documento": "cvm_livro_top_planejamento_financeiro_pessoal",
+          "pagina": "p. 105"
+        }
+      ],
+      "validado": true,
+      "resposta_rag": "O Fundo Garantidor de Créditos (FGC) é uma associação civil sem fins lucrativos que garante créditos contra instituições financeiras associadas em casos de intervenção, liquidação extrajudicial ou falência. Ele cobre produtos como depósitos em conta corrente, cadernetas de poupança, letras de câmbio, entre outros, até o limite de R$250 mil por CPF ou CNPJ, por instituição. Essa proteção é válida para bancos comerciais, múltiplos, de investimento, entre outros (Fonte: TOP Planejamento Financeiro Pessoal, CVM, p. 103-104).",
+      "usou_base": true,
+      "contextos": [
+        "Fundo Garantidor de Créditos (FGC)\n\nO Fundo Garantidor de Créditos (FGC) é uma associação civil sem fins lucrativos e tem por objeto prestar garantia de créditos contra instituições dele participantes, nas hipóteses de:\n\n. Decretação da intervenção, liquidação extrajudicial ou falência da associada.\n\n. Reconhecimento pelo Banco Central do Brasil, do estado de insolvência da associada.\n\n. Fazem parte das instituições associadas ao FGC.\n\n. Bancos múltiplos.\n\n. Bancos comerciais.\n\n. Bancos de investimento.\n\n. Bancos de desenvolvimento.\n\n. Caixa Econômica Federal.\n\n. As sociedades de crédito, financiamento e investimento.\n\n. Sociedades de crédito imobiliário.\n\n. Companhias hipotecárias.\n\n. Associações de poupança e empréstimo.\n\nGarantia ordinária até R$250 mil",
+        "Emissor Bancos comerciais, múltiplos, de desenvolvimento, de investimento, sociedades de crédito, financiamento e investimento e caixas econômicas.\n\nGarantia do FGC\n\nLimitada a R$ 20 milhões por titular, englobando o principal mais os juros do total de créditos de cada pessoa contra a mesma instituição associada ao FGC, ou contra todas as instituições associadas do mesmo conglomerado financeiro.\n\nCondições Prazos: mínimo de 6 meses e máximo de 36 meses. Vedado o resgate, total ou parcial, antes de decorridos 6 meses.\n\nMercado secundário",
+        "Para saber mais sobre Limite de Cobertura Ordinária do FGC acesse < e <-nova- garantia>.\n\n​\n\nFundo Garantidor do Cooperativismo de Crédito (FGCoop)\n\nO FGCoop foi fundado em 2013 pelo BACEN objetivando dar estabilidade do Siste ma Nacional de Crédito Cooperativo (SNCC). O fundo visa igualar as condições de competitividade das cooperativas com os bancos comerciais.\n\nEm caso de decretação de regime de intervenção ou de regime de liquidação extraju dicial de uma cooperativa de crédito, o FGCoop permite que os depositantes e inves tidores contem com a garantia de até R$ 250.000,00 sobre os instrumentos financei ros objeto de tal garantia contra a mesma instituição associada.\n\nhttps://www.fgcoop.coop.br/garantias",
+        "Parágrafo único. Havendo indícios da existência de adoção de procedimentos com o objetivo de obtenção de ressarcimento além do limite individual estabelecido ou de operações que revelem indícios de fraude ou de tentativa, por qualquer meio, de exceder os valores máximos de cobertura, o pagamento das garantias será suspenso, podendo, após a análise devida em procedimento interno do FGC, ser recusado, cabendo aos interessados demonstrar a lisura dos procedimentos.\n\nArt. 8o O FGC tem foro na cidade de São Paulo (SP), e sede no referido Município, na Avenida Brigadeiro Faria Lima, no 201, 12o andar, CEP 05426-100.\n\nArt. 9o O prazo de duração do FGC é indeterminado.\n\nCAPÍTULO II\n\nDAS RECEITAS E DO PATRIMÔMIO\n\nArt. 10. Constituem receitas do FGC:",
+        "ANEXO I À RESOLUÇÃO No 4.222, DE 23 DE MAIO DE 2013\n\n(Anexo I com redação dada pela Resolução no 4.688, de 25/9/2018.)\n\nESTATUTO DO FGC\n\nCAPÍTULO I\n\nDA DENOMINAÇÃO, DO OBJETO, DA FINALIDADE, DA SEDE E DO PRAZO\n\nArt. 1o O Fundo Garantidor de Créditos (FGC) é uma associação civil sem fins lucrativos, com personalidade jurídica de direito privado, regida pelo presente estatuto e pelas disposições legais e regulamentares aplicáveis.\n\nParágrafo único. O FGC não exerce qualquer função pública, inclusive por delegação.\n\nArt. 2o O FGC tem por finalidades:\n\nI - proteger depositantes e investidores no âmbito do sistema financeiro, até os limites estabelecidos pela regulamentação;\n\nII -contribuir para a manutenção da estabilidade do Sistema Financeiro Nacional; e"
+      ],
+      "fontes": [
+        {
+          "chunk_id": "cvm_livro_top_planejamento_financeiro_pessoal:00254",
+          "texto": "Fundo Garantidor de Créditos (FGC)\n\nO Fundo Garantidor de Créditos (FGC) é uma associação civil sem fins lucrativos e tem por objeto prestar garantia de créditos contra instituições dele participantes, nas hipóteses de:\n\n. Decretação da intervenção, liquidação extrajudicial ou falência da associada.\n\n. Reconhecimento pelo Banco Central do Brasil, do estado de insolvência da associada.\n\n. Fazem parte das instituições associadas ao FGC.\n\n. Bancos múltiplos.\n\n. Bancos comerciais.\n\n. Bancos de investimento.\n\n. Bancos de desenvolvimento.\n\n. Caixa Econômica Federal.\n\n. As sociedades de crédito, financiamento e investimento.\n\n. Sociedades de crédito imobiliário.\n\n. Companhias hipotecárias.\n\n. Associações de poupança e empréstimo.\n\nGarantia ordinária até R$250 mil",
+          "documento": "TOP Planejamento Financeiro Pessoal (2ª ed.)",
+          "instituicao": "Comissão de Valores Mobiliários (CVM) / Planejar",
+          "pagina": "p. 103-104",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/livro-top-planejamento-financeiro-pessoal/@@display-file/file",
+          "distancia": 0.359545395169553
+        },
+        {
+          "chunk_id": "cvm_livro_top_planejamento_financeiro_pessoal:00235",
+          "texto": "Emissor Bancos comerciais, múltiplos, de desenvolvimento, de investimento, sociedades de crédito, financiamento e investimento e caixas econômicas.\n\nGarantia do FGC\n\nLimitada a R$ 20 milhões por titular, englobando o principal mais os juros do total de créditos de cada pessoa contra a mesma instituição associada ao FGC, ou contra todas as instituições associadas do mesmo conglomerado financeiro.\n\nCondições Prazos: mínimo de 6 meses e máximo de 36 meses. Vedado o resgate, total ou parcial, antes de decorridos 6 meses.\n\nMercado secundário",
+          "documento": "TOP Planejamento Financeiro Pessoal (2ª ed.)",
+          "instituicao": "Comissão de Valores Mobiliários (CVM) / Planejar",
+          "pagina": "p. 96",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/livro-top-planejamento-financeiro-pessoal/@@display-file/file",
+          "distancia": 0.378460453297021
+        },
+        {
+          "chunk_id": "cvm_livro_top_planejamento_financeiro_pessoal:00261",
+          "texto": "Para saber mais sobre Limite de Cobertura Ordinária do FGC acesse < e <-nova- garantia>.\n\n​\n\nFundo Garantidor do Cooperativismo de Crédito (FGCoop)\n\nO FGCoop foi fundado em 2013 pelo BACEN objetivando dar estabilidade do Siste ma Nacional de Crédito Cooperativo (SNCC). O fundo visa igualar as condições de competitividade das cooperativas com os bancos comerciais.\n\nEm caso de decretação de regime de intervenção ou de regime de liquidação extraju dicial de uma cooperativa de crédito, o FGCoop permite que os depositantes e inves tidores contem com a garantia de até R$ 250.000,00 sobre os instrumentos financei ros objeto de tal garantia contra a mesma instituição associada.\n\nhttps://www.fgcoop.coop.br/garantias",
+          "documento": "TOP Planejamento Financeiro Pessoal (2ª ed.)",
+          "instituicao": "Comissão de Valores Mobiliários (CVM) / Planejar",
+          "pagina": "p. 106",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/livro-top-planejamento-financeiro-pessoal/@@display-file/file",
+          "distancia": 0.381659018376618
+        },
+        {
+          "chunk_id": "cmn_resolucao_4222_fgc:00043",
+          "texto": "Parágrafo único. Havendo indícios da existência de adoção de procedimentos com o objetivo de obtenção de ressarcimento além do limite individual estabelecido ou de operações que revelem indícios de fraude ou de tentativa, por qualquer meio, de exceder os valores máximos de cobertura, o pagamento das garantias será suspenso, podendo, após a análise devida em procedimento interno do FGC, ser recusado, cabendo aos interessados demonstrar a lisura dos procedimentos.\n\nArt. 8o O FGC tem foro na cidade de São Paulo (SP), e sede no referido Município, na Avenida Brigadeiro Faria Lima, no 201, 12o andar, CEP 05426-100.\n\nArt. 9o O prazo de duração do FGC é indeterminado.\n\nCAPÍTULO II\n\nDAS RECEITAS E DO PATRIMÔMIO\n\nArt. 10. Constituem receitas do FGC:",
+          "documento": "Resolução CMN nº 4.222/2013 – Estatuto e Regulamento do FGC (texto consolidado)",
+          "instituicao": "Conselho Monetário Nacional (CMN) / Banco Central do Brasil",
+          "pagina": "p. 12",
+          "url": "https://normativos.bcb.gov.br/Lists/Normativos/Attachments/48942/Res_4222_v18_L.pdf",
+          "distancia": 0.393259857495312
+        },
+        {
+          "chunk_id": "cmn_resolucao_4222_fgc:00030",
+          "texto": "ANEXO I À RESOLUÇÃO No 4.222, DE 23 DE MAIO DE 2013\n\n(Anexo I com redação dada pela Resolução no 4.688, de 25/9/2018.)\n\nESTATUTO DO FGC\n\nCAPÍTULO I\n\nDA DENOMINAÇÃO, DO OBJETO, DA FINALIDADE, DA SEDE E DO PRAZO\n\nArt. 1o O Fundo Garantidor de Créditos (FGC) é uma associação civil sem fins lucrativos, com personalidade jurídica de direito privado, regida pelo presente estatuto e pelas disposições legais e regulamentares aplicáveis.\n\nParágrafo único. O FGC não exerce qualquer função pública, inclusive por delegação.\n\nArt. 2o O FGC tem por finalidades:\n\nI - proteger depositantes e investidores no âmbito do sistema financeiro, até os limites estabelecidos pela regulamentação;\n\nII -contribuir para a manutenção da estabilidade do Sistema Financeiro Nacional; e",
+          "documento": "Resolução CMN nº 4.222/2013 – Estatuto e Regulamento do FGC (texto consolidado)",
+          "instituicao": "Conselho Monetário Nacional (CMN) / Banco Central do Brasil",
+          "pagina": "p. 9",
+          "url": "https://normativos.bcb.gov.br/Lists/Normativos/Attachments/48942/Res_4222_v18_L.pdf",
+          "distancia": 0.408156924414302
+        }
+      ],
+      "distancias": [
+        0.359545395169553,
+        0.378460453297021,
+        0.381659018376618,
+        0.393259857495312,
+        0.408156924414302
+      ],
+      "dado_tempo_real": null,
+      "rag_metricas": {
+        "latencia_busca_ms": 2012.0,
+        "latencia_geracao_ms": 4330.7,
+        "latencia_total_ms": 6342.7,
+        "tokens_in": 2896,
+        "tokens_out": 166
+      },
+      "resposta_baseline": "O FGC, ou Fundo Garantidor de Créditos, é uma entidade que protege os depositantes em caso de falência de instituições financeiras. Ele garante a devolução de até R$ 250 mil por CPF ou CNPJ, por instituição, em produtos como: contas correntes, cadernetas de poupança, depósitos a prazo (CDBs), letras de câmbio e letras de crédito (LCIs e LCAs). Essa proteção é fundamental para aumentar a segurança dos investidores e depositantes no sistema financeiro brasileiro.",
+      "baseline_metricas": {
+        "latencia_geracao_ms": 4022.0,
+        "tokens_in": 1329,
+        "tokens_out": 154
+      }
+    },
+    {
+      "id": "N2.1",
+      "nivel": "N2",
+      "modulo": null,
+      "pergunta": "Qual é o limite de garantia do FGC por pessoa e por instituição, e existe um teto total para quem tem aplicações em vários bancos?",
+      "comportamento_esperado": "responder",
+      "referencia": "O total de créditos de cada pessoa contra a mesma instituição associada, ou contra todas as instituições do mesmo conglomerado financeiro, é garantido até R$ 250 mil. Existe também um teto global: o total garantido para cada credor contra o conjunto de todas as instituições associadas é de até R$ 1 milhão a cada período de quatro anos consecutivos. O limite vale para o saldo total dos créditos, corrigido pelos índices do contrato até a data da intervenção ou liquidação, e não só para o valor aplicado.",
+      "fontes_referencia": [
+        {
+          "documento": "cmn_resolucao_4222_fgc",
+          "pagina": "p. 32"
+        },
+        {
+          "documento": "cmn_resolucao_4222_fgc",
+          "pagina": "p. 34"
+        },
+        {
+          "documento": "cvm_livro_top_planejamento_financeiro_pessoal",
+          "pagina": "p. 104"
+        },
+        {
+          "documento": "cvm_livro_top_planejamento_financeiro_pessoal",
+          "pagina": "p. 106"
+        }
+      ],
+      "validado": true,
+      "resposta_rag": "O limite de garantia do Fundo Garantidor de Créditos (FGC) é de até R$ 250 mil por pessoa (CPF ou CNPJ) para cada instituição associada ao FGC. Além disso, há um teto de R$ 1 milhão a cada período de quatro anos para garantias pagas para cada CPF ou CNPJ, conforme estabelecido pelo Conselho Monetário Nacional (CMN) (Fonte: TOP Planejamento Financeiro Pessoal, p. 106). Portanto, se você tiver aplicações em vários bancos, o limite total de garantia pode ser maior, dependendo do número de instituições em que você investe.",
+      "usou_base": true,
+      "contextos": [
+        "Emissor Bancos comerciais, múltiplos, de desenvolvimento, de investimento, sociedades de crédito, financiamento e investimento e caixas econômicas.\n\nGarantia do FGC\n\nLimitada a R$ 20 milhões por titular, englobando o principal mais os juros do total de créditos de cada pessoa contra a mesma instituição associada ao FGC, ou contra todas as instituições associadas do mesmo conglomerado financeiro.\n\nCondições Prazos: mínimo de 6 meses e máximo de 36 meses. Vedado o resgate, total ou parcial, antes de decorridos 6 meses.\n\nMercado secundário",
+        "Limitação da garantia até R$ 1 milhão\n\nO Conselho Monetário Nacional (CMN) aprovou, em 21 de dezembro de 2017, a al teração promovida no Regulamento do Fundo Garantidor de Créditos (FGC), que estabelece teto de R$ 1 milhão, a cada período de quatro anos, para garantias pagas para cada CPF ou CNPJ.\n\nGarantia especial do FGC\n\nO FGC também presta garantia especial aos depositantes e investidores que detêm o Depósito a Prazo com Garantia Especial (DPGE), de até R$ 40.000.000,00. As aplica ções em “Depósito a Prazo com Garantia Especial do FGC” somente podem ser celebradas com um único titular, a ser identificado pelo respectivo número do CPF/CNPJ.\n\nPara saber mais sobre Limite de Cobertura Ordinária do FGC acesse < e <-nova- garantia>.\n\n​",
+        "I - até o valor máximo de R$400.000.000,00 (quatrocentos milhões de reais) nas operações cujo titular do crédito seja instituição associada ao FGC; e (Incluído pela Resolução no 4.805, de 23/4/2020.)\n\nII - até o valor máximo de R$40.000.000,00 (quarenta milhões de reais) para os demais titulares. (Incluído pela Resolução no 4.805, de 23/4/2020.)\n\n§ 1o Para efeito da determinação do valor garantido dos créditos de cada depositante, serão observados os seguintes critérios: (Transformado em § 1o pela Resolução CMN no 5.279, de 22/1/2026.)",
+        "Fundo Garantidor de Créditos (FGC)\n\nO Fundo Garantidor de Créditos (FGC) é uma associação civil sem fins lucrativos e tem por objeto prestar garantia de créditos contra instituições dele participantes, nas hipóteses de:\n\n. Decretação da intervenção, liquidação extrajudicial ou falência da associada.\n\n. Reconhecimento pelo Banco Central do Brasil, do estado de insolvência da associada.\n\n. Fazem parte das instituições associadas ao FGC.\n\n. Bancos múltiplos.\n\n. Bancos comerciais.\n\n. Bancos de investimento.\n\n. Bancos de desenvolvimento.\n\n. Caixa Econômica Federal.\n\n. As sociedades de crédito, financiamento e investimento.\n\n. Sociedades de crédito imobiliário.\n\n. Companhias hipotecárias.\n\n. Associações de poupança e empréstimo.\n\nGarantia ordinária até R$250 mil",
+        "Para saber mais sobre Limite de Cobertura Ordinária do FGC acesse < e <-nova- garantia>.\n\n​\n\nFundo Garantidor do Cooperativismo de Crédito (FGCoop)\n\nO FGCoop foi fundado em 2013 pelo BACEN objetivando dar estabilidade do Siste ma Nacional de Crédito Cooperativo (SNCC). O fundo visa igualar as condições de competitividade das cooperativas com os bancos comerciais.\n\nEm caso de decretação de regime de intervenção ou de regime de liquidação extraju dicial de uma cooperativa de crédito, o FGCoop permite que os depositantes e inves tidores contem com a garantia de até R$ 250.000,00 sobre os instrumentos financei ros objeto de tal garantia contra a mesma instituição associada.\n\nhttps://www.fgcoop.coop.br/garantias"
+      ],
+      "fontes": [
+        {
+          "chunk_id": "cvm_livro_top_planejamento_financeiro_pessoal:00235",
+          "texto": "Emissor Bancos comerciais, múltiplos, de desenvolvimento, de investimento, sociedades de crédito, financiamento e investimento e caixas econômicas.\n\nGarantia do FGC\n\nLimitada a R$ 20 milhões por titular, englobando o principal mais os juros do total de créditos de cada pessoa contra a mesma instituição associada ao FGC, ou contra todas as instituições associadas do mesmo conglomerado financeiro.\n\nCondições Prazos: mínimo de 6 meses e máximo de 36 meses. Vedado o resgate, total ou parcial, antes de decorridos 6 meses.\n\nMercado secundário",
+          "documento": "TOP Planejamento Financeiro Pessoal (2ª ed.)",
+          "instituicao": "Comissão de Valores Mobiliários (CVM) / Planejar",
+          "pagina": "p. 96",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/livro-top-planejamento-financeiro-pessoal/@@display-file/file",
+          "distancia": 0.236576116458407
+        },
+        {
+          "chunk_id": "cvm_livro_top_planejamento_financeiro_pessoal:00260",
+          "texto": "Limitação da garantia até R$ 1 milhão\n\nO Conselho Monetário Nacional (CMN) aprovou, em 21 de dezembro de 2017, a al teração promovida no Regulamento do Fundo Garantidor de Créditos (FGC), que estabelece teto de R$ 1 milhão, a cada período de quatro anos, para garantias pagas para cada CPF ou CNPJ.\n\nGarantia especial do FGC\n\nO FGC também presta garantia especial aos depositantes e investidores que detêm o Depósito a Prazo com Garantia Especial (DPGE), de até R$ 40.000.000,00. As aplica ções em “Depósito a Prazo com Garantia Especial do FGC” somente podem ser celebradas com um único titular, a ser identificado pelo respectivo número do CPF/CNPJ.\n\nPara saber mais sobre Limite de Cobertura Ordinária do FGC acesse < e <-nova- garantia>.\n\n​",
+          "documento": "TOP Planejamento Financeiro Pessoal (2ª ed.)",
+          "instituicao": "Comissão de Valores Mobiliários (CVM) / Planejar",
+          "pagina": "p. 106",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/livro-top-planejamento-financeiro-pessoal/@@display-file/file",
+          "distancia": 0.266496510649781
+        },
+        {
+          "chunk_id": "cmn_resolucao_4222_fgc:00137",
+          "texto": "I - até o valor máximo de R$400.000.000,00 (quatrocentos milhões de reais) nas operações cujo titular do crédito seja instituição associada ao FGC; e (Incluído pela Resolução no 4.805, de 23/4/2020.)\n\nII - até o valor máximo de R$40.000.000,00 (quarenta milhões de reais) para os demais titulares. (Incluído pela Resolução no 4.805, de 23/4/2020.)\n\n§ 1o Para efeito da determinação do valor garantido dos créditos de cada depositante, serão observados os seguintes critérios: (Transformado em § 1o pela Resolução CMN no 5.279, de 22/1/2026.)",
+          "documento": "Resolução CMN nº 4.222/2013 – Estatuto e Regulamento do FGC (texto consolidado)",
+          "instituicao": "Conselho Monetário Nacional (CMN) / Banco Central do Brasil",
+          "pagina": "p. 36-37",
+          "url": "https://normativos.bcb.gov.br/Lists/Normativos/Attachments/48942/Res_4222_v18_L.pdf",
+          "distancia": 0.273054520844251
+        },
+        {
+          "chunk_id": "cvm_livro_top_planejamento_financeiro_pessoal:00254",
+          "texto": "Fundo Garantidor de Créditos (FGC)\n\nO Fundo Garantidor de Créditos (FGC) é uma associação civil sem fins lucrativos e tem por objeto prestar garantia de créditos contra instituições dele participantes, nas hipóteses de:\n\n. Decretação da intervenção, liquidação extrajudicial ou falência da associada.\n\n. Reconhecimento pelo Banco Central do Brasil, do estado de insolvência da associada.\n\n. Fazem parte das instituições associadas ao FGC.\n\n. Bancos múltiplos.\n\n. Bancos comerciais.\n\n. Bancos de investimento.\n\n. Bancos de desenvolvimento.\n\n. Caixa Econômica Federal.\n\n. As sociedades de crédito, financiamento e investimento.\n\n. Sociedades de crédito imobiliário.\n\n. Companhias hipotecárias.\n\n. Associações de poupança e empréstimo.\n\nGarantia ordinária até R$250 mil",
+          "documento": "TOP Planejamento Financeiro Pessoal (2ª ed.)",
+          "instituicao": "Comissão de Valores Mobiliários (CVM) / Planejar",
+          "pagina": "p. 103-104",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/livro-top-planejamento-financeiro-pessoal/@@display-file/file",
+          "distancia": 0.315139112899808
+        },
+        {
+          "chunk_id": "cvm_livro_top_planejamento_financeiro_pessoal:00261",
+          "texto": "Para saber mais sobre Limite de Cobertura Ordinária do FGC acesse < e <-nova- garantia>.\n\n​\n\nFundo Garantidor do Cooperativismo de Crédito (FGCoop)\n\nO FGCoop foi fundado em 2013 pelo BACEN objetivando dar estabilidade do Siste ma Nacional de Crédito Cooperativo (SNCC). O fundo visa igualar as condições de competitividade das cooperativas com os bancos comerciais.\n\nEm caso de decretação de regime de intervenção ou de regime de liquidação extraju dicial de uma cooperativa de crédito, o FGCoop permite que os depositantes e inves tidores contem com a garantia de até R$ 250.000,00 sobre os instrumentos financei ros objeto de tal garantia contra a mesma instituição associada.\n\nhttps://www.fgcoop.coop.br/garantias",
+          "documento": "TOP Planejamento Financeiro Pessoal (2ª ed.)",
+          "instituicao": "Comissão de Valores Mobiliários (CVM) / Planejar",
+          "pagina": "p. 106",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/livro-top-planejamento-financeiro-pessoal/@@display-file/file",
+          "distancia": 0.316258860105152
+        }
+      ],
+      "distancias": [
+        0.236576116458407,
+        0.266496510649781,
+        0.273054520844251,
+        0.315139112899808,
+        0.316258860105152
+      ],
+      "dado_tempo_real": null,
+      "rag_metricas": {
+        "latencia_busca_ms": 1452.5,
+        "latencia_geracao_ms": 4046.8,
+        "latencia_total_ms": 5499.3,
+        "tokens_in": 2862,
+        "tokens_out": 172
+      },
+      "resposta_baseline": "O Fundo Garantidor de Créditos (FGC) garante até R$ 250 mil por CPF ou CNPJ por instituição financeira. Isso significa que, se você tiver aplicações em diferentes bancos, pode ter até R$ 250 mil garantidos em cada um deles. Porém, se você tiver mais de R$ 250 mil em uma única instituição, o valor acima desse limite não estará coberto. Portanto, não há um teto total para quem tem aplicações em vários bancos, mas é importante ficar atento ao limite por instituição! Para mais detalhes, você pode consultar o site do FGC.",
+      "baseline_metricas": {
+        "latencia_geracao_ms": 3482.5,
+        "tokens_in": 1345,
+        "tokens_out": 161
+      }
+    },
+    {
+      "id": "N2.2",
+      "nivel": "N2",
+      "modulo": null,
+      "pergunta": "Em quanto tempo o dinheiro de uma venda antecipada no Tesouro Direto cai na conta, e o horário da venda muda isso?",
+      "comportamento_esperado": "responder",
+      "referencia": "Depende do horário da venda, e os prazos são contados em dias úteis. Vendas feitas entre 9h30 e 13h têm o dinheiro repassado no mesmo dia útil, desde que os preços e taxas tenham sido divulgados antes das 13h; vendas entre 13h e 18h, em até um dia útil. Vendas agendadas entre 18h01 e 23h59 são pagas no dia útil seguinte (ou no segundo, se os preços saírem depois das 13h), e as agendadas entre 0h e 5h, no mesmo dia útil (ou no seguinte, nas mesmas condições). Quem repassa o valor líquido (já descontados os impostos) é o agente de custódia, isto é, o banco ou a corretora em que o investidor tem conta.",
+      "fontes_referencia": [
+        {
+          "documento": "tesouro_direto_regulamento",
+          "pagina": "p. 37-38"
+        }
+      ],
+      "validado": true,
+      "resposta_rag": "Os recursos líquidos referentes à venda de Títulos no Tesouro Direto são repassados de acordo com o horário da venda. Se a venda for agendada entre 18:01 e 23:59, o repasse ocorre no dia útil posterior, desde que os preços/taxas sejam disponibilizados antes das 13:00 do dia da venda. Se a disponibilização ocorrer após às 13:00, o repasse será no segundo dia útil posterior à venda. Para vendas agendadas entre 00:00 e 5:00, o repasse acontece no mesmo dia, desde que os preços/taxas sejam disponibilizados antes das 13:00 (Fonte: Regulamento do Tesouro Direto, p. 37-38).",
+      "usou_base": true,
+      "contextos": [
+        "agendamento entre as 00:00 hora e as 5:00 horas no mesmo dia útil da venda, desde que\n\nos preços/taxas dos respectivos Títulos sejam disponibilizados no Tesouro Direto antes\n\ndas 13:00 horas do mesmo dia útil; no caso de disponibilização dos preços/taxas após\n\nàs 13:00hs, o repasse dos recursos líquidos aos Investidores ocorrerá no primeiro dia\n\nútil posterior à venda;\n\nxi. repassar os recursos líquidos referentes ao vencimento dos títulos e do pagamento dos\n\njuros semestrais (cupons) na respectiva data do evento, se dia útil, quando não, no\n\nprimeiro dia útil subsequente;\n\nxii. informar aos Investidores o prazo de repasse dos recursos líquidos relativos às vendas\n\nde Títulos e aos Eventos de Custódia;",
+        "respectivos Títulos sejam disponibilizados no Tesouro Direto antes das 13:00 horas do\n\nmesmo dia útil;\n\nix. repassar os recursos líquidos aos Investidores que venderam seus Títulos por meio de\n\nagendamento entre as 18:01 horas e as 23:59 horas, no máximo no dia útil posterior à\n\nvenda, desde que os preços/taxas dos respectivos Títulos sejam disponibilizados no\n\nTesouro Direto antes das 13:00 horas do referido dia útil; no caso de disponibilização\n\ndos preços/taxas após às 13hs, o repasse dos recursos líquidos aos Investidores ocorrerá no\n\nsegundo dia útil posterior à venda;\n\nx. repassar os recursos líquidos aos Investidores que venderam seus Títulos por meio de\n\nagendamento entre as 00:00 hora e as 5:00 horas no mesmo dia útil da venda, desde que",
+        "Tesouro Direto.\n\n54. Os preços e as quantidades de Títulos disponíveis para venda no Tesouro Direto são\n\natualizados diariamente pela STN, segundo critérios por ela definidos e divulgados no site do\n\nTesouro Direto. A STN, a qualquer momento e a seu critério, poderá alterar os preços e as\n\nquantidades dos Títulos disponíveis para venda e o Fator de Divisibilidade dos Títulos.\n\n55. As vendas de Títulos são efetuadas somente na área exclusiva do Tesouro Direto ou no site\n\ndo Agente de Custódia no caso deste possuir integração com o sistema da B3. As vendas podem\n\nser realizadas de duas maneiras distintas:\n\ni. diretamente pelo Investidor no Tesouro Direto; ou\n\nii. por meio de um Agente de Custódia, mediante autorização formal do Investidor.\n\n2.3.6. Venda direta de Títulos pelo Investidor",
+        "Fator de Divisibilidade será previamente definido pela STN e disponibilizado no\n\nTesouro Direto; e\n\nvi. para os títulos Tesouro RendA+ Aposentadoria Extra (NTN-B1) e Tesouro Educa+\n\n(NTN-B1), é necessário que tenha transcorrido o período de carência de venda de 60\n\n(sessenta) dias, contados a partir da data da liquidação da compra do título.\n\n53. Caso um dos critérios não seja atendido, o Investidor ou o Agente de Custódia, quando for\n\no caso, receberá a informação sobre o motivo da não aceitação da solicitação de venda.\n\nInformações sobre os critérios de aceitação de vendas estarão disponíveis para consulta no\n\nTesouro Direto.\n\n54. Os preços e as quantidades de Títulos disponíveis para venda no Tesouro Direto são",
+        "por CPF estabelecido pela STN somado, na data de sua ocorrência, aos resgates, juros e\n\namortizações de Títulos do Investidor no Tesouro Direto. O Limite máximo mensal de compra\n\ndo Investidor é válido do primeiro ao último dia do mês.\n\n34. Caso um dos critérios ou requisitos estabelecidos no parágrafo 30 não seja atendido, o\n\nInvestidor ou o Agente de Custódia, quando for o caso, receberá a informação sobre o motivo\n\nda não aceitação da solicitação de compra.\n\n35. Os preços e as quantidades de Títulos disponíveis para compra no Tesouro Direto são\n\natualizados diariamente pela STN, segundo critérios por ela definidos e divulgados no site do\n\nTesouro Direto. A STN, a qualquer momento e a seu critério, poderá alterar os preços e as"
+      ],
+      "fontes": [
+        {
+          "chunk_id": "tesouro_direto_regulamento:00123",
+          "texto": "agendamento entre as 00:00 hora e as 5:00 horas no mesmo dia útil da venda, desde que\n\nos preços/taxas dos respectivos Títulos sejam disponibilizados no Tesouro Direto antes\n\ndas 13:00 horas do mesmo dia útil; no caso de disponibilização dos preços/taxas após\n\nàs 13:00hs, o repasse dos recursos líquidos aos Investidores ocorrerá no primeiro dia\n\nútil posterior à venda;\n\nxi. repassar os recursos líquidos referentes ao vencimento dos títulos e do pagamento dos\n\njuros semestrais (cupons) na respectiva data do evento, se dia útil, quando não, no\n\nprimeiro dia útil subsequente;\n\nxii. informar aos Investidores o prazo de repasse dos recursos líquidos relativos às vendas\n\nde Títulos e aos Eventos de Custódia;",
+          "documento": "Regulamento do Tesouro Direto (versão de 11/10/2024)",
+          "instituicao": "Secretaria do Tesouro Nacional (STN) / B3",
+          "pagina": "p. 38",
+          "url": "https://www.tesourodireto.com.br/documents/d/guest/regulamento_do_tesouro_direto___11-10-2024-2",
+          "distancia": 0.308764973569942
+        },
+        {
+          "chunk_id": "tesouro_direto_regulamento:00122",
+          "texto": "respectivos Títulos sejam disponibilizados no Tesouro Direto antes das 13:00 horas do\n\nmesmo dia útil;\n\nix. repassar os recursos líquidos aos Investidores que venderam seus Títulos por meio de\n\nagendamento entre as 18:01 horas e as 23:59 horas, no máximo no dia útil posterior à\n\nvenda, desde que os preços/taxas dos respectivos Títulos sejam disponibilizados no\n\nTesouro Direto antes das 13:00 horas do referido dia útil; no caso de disponibilização\n\ndos preços/taxas após às 13hs, o repasse dos recursos líquidos aos Investidores ocorrerá no\n\nsegundo dia útil posterior à venda;\n\nx. repassar os recursos líquidos aos Investidores que venderam seus Títulos por meio de\n\nagendamento entre as 00:00 hora e as 5:00 horas no mesmo dia útil da venda, desde que",
+          "documento": "Regulamento do Tesouro Direto (versão de 11/10/2024)",
+          "instituicao": "Secretaria do Tesouro Nacional (STN) / B3",
+          "pagina": "p. 37-38",
+          "url": "https://www.tesourodireto.com.br/documents/d/guest/regulamento_do_tesouro_direto___11-10-2024-2",
+          "distancia": 0.324724239557754
+        },
+        {
+          "chunk_id": "tesouro_direto_regulamento:00055",
+          "texto": "Tesouro Direto.\n\n54. Os preços e as quantidades de Títulos disponíveis para venda no Tesouro Direto são\n\natualizados diariamente pela STN, segundo critérios por ela definidos e divulgados no site do\n\nTesouro Direto. A STN, a qualquer momento e a seu critério, poderá alterar os preços e as\n\nquantidades dos Títulos disponíveis para venda e o Fator de Divisibilidade dos Títulos.\n\n55. As vendas de Títulos são efetuadas somente na área exclusiva do Tesouro Direto ou no site\n\ndo Agente de Custódia no caso deste possuir integração com o sistema da B3. As vendas podem\n\nser realizadas de duas maneiras distintas:\n\ni. diretamente pelo Investidor no Tesouro Direto; ou\n\nii. por meio de um Agente de Custódia, mediante autorização formal do Investidor.\n\n2.3.6. Venda direta de Títulos pelo Investidor",
+          "documento": "Regulamento do Tesouro Direto (versão de 11/10/2024)",
+          "instituicao": "Secretaria do Tesouro Nacional (STN) / B3",
+          "pagina": "p. 17",
+          "url": "https://www.tesourodireto.com.br/documents/d/guest/regulamento_do_tesouro_direto___11-10-2024-2",
+          "distancia": 0.364131124044611
+        },
+        {
+          "chunk_id": "tesouro_direto_regulamento:00054",
+          "texto": "Fator de Divisibilidade será previamente definido pela STN e disponibilizado no\n\nTesouro Direto; e\n\nvi. para os títulos Tesouro RendA+ Aposentadoria Extra (NTN-B1) e Tesouro Educa+\n\n(NTN-B1), é necessário que tenha transcorrido o período de carência de venda de 60\n\n(sessenta) dias, contados a partir da data da liquidação da compra do título.\n\n53. Caso um dos critérios não seja atendido, o Investidor ou o Agente de Custódia, quando for\n\no caso, receberá a informação sobre o motivo da não aceitação da solicitação de venda.\n\nInformações sobre os critérios de aceitação de vendas estarão disponíveis para consulta no\n\nTesouro Direto.\n\n54. Os preços e as quantidades de Títulos disponíveis para venda no Tesouro Direto são",
+          "documento": "Regulamento do Tesouro Direto (versão de 11/10/2024)",
+          "instituicao": "Secretaria do Tesouro Nacional (STN) / B3",
+          "pagina": "p. 16-17",
+          "url": "https://www.tesourodireto.com.br/documents/d/guest/regulamento_do_tesouro_direto___11-10-2024-2",
+          "distancia": 0.365419222462145
+        },
+        {
+          "chunk_id": "tesouro_direto_regulamento:00042",
+          "texto": "por CPF estabelecido pela STN somado, na data de sua ocorrência, aos resgates, juros e\n\namortizações de Títulos do Investidor no Tesouro Direto. O Limite máximo mensal de compra\n\ndo Investidor é válido do primeiro ao último dia do mês.\n\n34. Caso um dos critérios ou requisitos estabelecidos no parágrafo 30 não seja atendido, o\n\nInvestidor ou o Agente de Custódia, quando for o caso, receberá a informação sobre o motivo\n\nda não aceitação da solicitação de compra.\n\n35. Os preços e as quantidades de Títulos disponíveis para compra no Tesouro Direto são\n\natualizados diariamente pela STN, segundo critérios por ela definidos e divulgados no site do\n\nTesouro Direto. A STN, a qualquer momento e a seu critério, poderá alterar os preços e as",
+          "documento": "Regulamento do Tesouro Direto (versão de 11/10/2024)",
+          "instituicao": "Secretaria do Tesouro Nacional (STN) / B3",
+          "pagina": "p. 13",
+          "url": "https://www.tesourodireto.com.br/documents/d/guest/regulamento_do_tesouro_direto___11-10-2024-2",
+          "distancia": 0.377563009553369
+        }
+      ],
+      "distancias": [
+        0.308764973569942,
+        0.324724239557754,
+        0.364131124044611,
+        0.365419222462145,
+        0.377563009553369
+      ],
+      "dado_tempo_real": null,
+      "rag_metricas": {
+        "latencia_busca_ms": 1407.1,
+        "latencia_geracao_ms": 3892.0,
+        "latencia_total_ms": 5299.1,
+        "tokens_in": 2961,
+        "tokens_out": 196
+      },
+      "resposta_baseline": "Quando você realiza uma venda antecipada de um título do Tesouro Direto, o dinheiro é creditado na sua conta em até um dia útil após a venda. O horário da venda pode influenciar isso: se a venda for feita até as 13h, o valor é creditado no mesmo dia útil. Se for após esse horário, o crédito ocorre no próximo dia útil. É sempre bom ficar atento aos horários e dias úteis para planejar suas transações! Para mais detalhes, você pode conferir o site oficial do Tesouro Direto.",
+      "baseline_metricas": {
+        "latencia_geracao_ms": 3288.2,
+        "tokens_in": 1344,
+        "tokens_out": 152
+      }
+    },
+    {
+      "id": "N2.3",
+      "nivel": "N2",
+      "modulo": null,
+      "pergunta": "Por quanto tempo antes da divulgação das demonstrações financeiras os administradores de uma companhia aberta ficam proibidos de negociar ações da empresa?",
+      "comportamento_esperado": "responder",
+      "referencia": "Por 15 dias. Nos 15 dias que antecedem a divulgação das informações contábeis trimestrais e das demonstrações financeiras anuais, a companhia, os acionistas controladores, os diretores e os membros dos conselhos de administração e fiscal ficam impedidos de negociar valores mobiliários da companhia, mesmo que não conheçam o conteúdo dessas informações. O dia da divulgação não entra na contagem, e a negociação só pode ocorrer nesse dia depois da divulgação. A exceção são negociações feitas dentro de um plano individual de investimento ou desinvestimento formalizado previamente, nas condições da norma.",
+      "fontes_referencia": [
+        {
+          "documento": "cvm_resolucao_44_2021",
+          "pagina": "p. 12-13"
+        },
+        {
+          "documento": "cvm_resolucao_44_2021",
+          "pagina": "p. 14"
+        }
+      ],
+      "validado": true,
+      "resposta_rag": "Os administradores de uma companhia aberta ficam proibidos de negociar ações da empresa no período que antecede a publicação de demonstrações financeiras, conforme a Resolução CVM nº 44/2021 (p. 13). Essa proibição independe da avaliação quanto à existência de informação relevante pendente de divulgação.",
+      "usou_base": true,
+      "contextos": [
+        "§ 2o Sem prejuízo do disposto no parágrafo anterior, a vedação do caput se aplica também aos administradores que se afastem da administração da companhia antes da divulgação pública de negócio ou fato iniciado durante seu período de gestão, e se estenderá pelo prazo de seis meses após o seu afastamento.\n\nA regulação brasileira adota, portanto, o padrão internacionalmente conhecido como disclose or refrain from trading. Ou seja, o administrador de companhia aberta deve divulgar o fato relevante de que tenha conhecimento ou se abster de negociar com os valores mobiliários potencialmente afetados pela informação privilegiada.",
+        "A vedação à negociação por acionistas, administradores e pela própria companhia enquanto estiver em curso programa de recompra de ações da companhia (§ 3o, II), no período que antecede a publicação de demonstrações financeiras (§ 4o) e no período relevante para definir condições de negócios divulgados em fatos relevantes (§ 5o),",
+        "trimestrais e das demonstrações financeiras anuais da companhia.\n\n§ 1o A proibição de que trata o caput independe da avaliação quanto à existência de informação\n\nrelevante pendente de divulgação ou da intenção em relação à negociação.\n\n§ 2o A contagem do prazo referido no caput deve ser feita excluindo-se o dia da divulgação, porém\n\nos negócios com valores mobiliários só podem ser realizados nesse dia após a referida divulgação.\n\n§ 3o A proibição de que trata o caput não se aplica a:\n\nI – negociações envolvendo valores mobiliários de renda fixa, quando realizadas mediante\n\noperações com compromissos conjugados de recompra pelo vendedor e de revenda pelo comprador,\n\npara liquidação em data preestabelecida, anterior ou igual à do vencimento dos títulos objeto da",
+        ". 22 Art. 13. Antes da divulgação ao mercado de ato ou fato relevante ocorrido nos negócios da companhia, é vedada a negociação com valores mobiliários de sua emissão, ou a eles referenciados, pela própria companhia aberta, pelos acionistas controladores, diretos ou indiretos, diretores, membros do conselho de administração, do conselho fiscal e de quaisquer órgãos com funções técnicas ou consultivas, criados por disposição estatutária, ou por quem quer que, em virtude de seu cargo, função ou posição na companhia aberta, sua controladora, suas controladas ou coligadas, tenha conhecimento da informação relativa ao ato ou fato relevante.",
+        ". 13. Antes da divulgação ao mercado de ato ou fato relevante ocorrido nos negócios da companhia, é vedada a negociação com valores mobiliários de sua emissão, ou a eles referenciados, pela própria companhia aberta, pelos acionistas controladores, diretos ou indiretos, diretores, membros do conselho de administração, do conselho fiscal e de quaisquer órgãos com funções técnicas ou consultivas, criados por disposição estatutária, ou por quem quer que, em virtude de seu cargo, função ou posição na companhia aberta, sua controladora, suas controladas ou coligadas, tenha conhecimento da informação relativa ao ato ou fato relevante"
+      ],
+      "fontes": [
+        {
+          "chunk_id": "cvm_livro_top_direito_mercado_valores_mobiliarios:01083",
+          "texto": "§ 2o Sem prejuízo do disposto no parágrafo anterior, a vedação do caput se aplica também aos administradores que se afastem da administração da companhia antes da divulgação pública de negócio ou fato iniciado durante seu período de gestão, e se estenderá pelo prazo de seis meses após o seu afastamento.\n\nA regulação brasileira adota, portanto, o padrão internacionalmente conhecido como disclose or refrain from trading. Ou seja, o administrador de companhia aberta deve divulgar o fato relevante de que tenha conhecimento ou se abster de negociar com os valores mobiliários potencialmente afetados pela informação privilegiada.",
+          "documento": "TOP Direito do Mercado de Valores Mobiliários",
+          "instituicao": "Comissão de Valores Mobiliários (CVM)",
+          "pagina": "p. 234",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/direito-do-mercado-de-valores-mobiliarios/@@display-file/file",
+          "distancia": 0.235079086106708
+        },
+        {
+          "chunk_id": "cvm_livro_top_direito_mercado_valores_mobiliarios:02583",
+          "texto": "A vedação à negociação por acionistas, administradores e pela própria companhia enquanto estiver em curso programa de recompra de ações da companhia (§ 3o, II), no período que antecede a publicação de demonstrações financeiras (§ 4o) e no período relevante para definir condições de negócios divulgados em fatos relevantes (§ 5o),",
+          "documento": "TOP Direito do Mercado de Valores Mobiliários",
+          "instituicao": "Comissão de Valores Mobiliários (CVM)",
+          "pagina": "p. 539",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/direito-do-mercado-de-valores-mobiliarios/@@display-file/file",
+          "distancia": 0.275461417550512
+        },
+        {
+          "chunk_id": "cvm_resolucao_44_2021:00043",
+          "texto": "trimestrais e das demonstrações financeiras anuais da companhia.\n\n§ 1o A proibição de que trata o caput independe da avaliação quanto à existência de informação\n\nrelevante pendente de divulgação ou da intenção em relação à negociação.\n\n§ 2o A contagem do prazo referido no caput deve ser feita excluindo-se o dia da divulgação, porém\n\nos negócios com valores mobiliários só podem ser realizados nesse dia após a referida divulgação.\n\n§ 3o A proibição de que trata o caput não se aplica a:\n\nI – negociações envolvendo valores mobiliários de renda fixa, quando realizadas mediante\n\noperações com compromissos conjugados de recompra pelo vendedor e de revenda pelo comprador,\n\npara liquidação em data preestabelecida, anterior ou igual à do vencimento dos títulos objeto da",
+          "documento": "Resolução CVM nº 44/2021 – Divulgação de Fato Relevante e negociação de valores mobiliários",
+          "instituicao": "Comissão de Valores Mobiliários (CVM)",
+          "pagina": "p. 13",
+          "url": "https://conteudo.cvm.gov.br/export/sites/cvm/legislacao/resolucoes/anexos/001/resol044.pdf",
+          "distancia": 0.288789287650165
+        },
+        {
+          "chunk_id": "cvm_livro_top_direito_mercado_valores_mobiliarios:04264",
+          "texto": ". 22 Art. 13. Antes da divulgação ao mercado de ato ou fato relevante ocorrido nos negócios da companhia, é vedada a negociação com valores mobiliários de sua emissão, ou a eles referenciados, pela própria companhia aberta, pelos acionistas controladores, diretos ou indiretos, diretores, membros do conselho de administração, do conselho fiscal e de quaisquer órgãos com funções técnicas ou consultivas, criados por disposição estatutária, ou por quem quer que, em virtude de seu cargo, função ou posição na companhia aberta, sua controladora, suas controladas ou coligadas, tenha conhecimento da informação relativa ao ato ou fato relevante.",
+          "documento": "TOP Direito do Mercado de Valores Mobiliários",
+          "instituicao": "Comissão de Valores Mobiliários (CVM)",
+          "pagina": "p. 863",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/direito-do-mercado-de-valores-mobiliarios/@@display-file/file",
+          "distancia": 0.293534357237525
+        },
+        {
+          "chunk_id": "cvm_livro_top_direito_mercado_valores_mobiliarios:02555",
+          "texto": ". 13. Antes da divulgação ao mercado de ato ou fato relevante ocorrido nos negócios da companhia, é vedada a negociação com valores mobiliários de sua emissão, ou a eles referenciados, pela própria companhia aberta, pelos acionistas controladores, diretos ou indiretos, diretores, membros do conselho de administração, do conselho fiscal e de quaisquer órgãos com funções técnicas ou consultivas, criados por disposição estatutária, ou por quem quer que, em virtude de seu cargo, função ou posição na companhia aberta, sua controladora, suas controladas ou coligadas, tenha conhecimento da informação relativa ao ato ou fato relevante",
+          "documento": "TOP Direito do Mercado de Valores Mobiliários",
+          "instituicao": "Comissão de Valores Mobiliários (CVM)",
+          "pagina": "p. 534",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/direito-do-mercado-de-valores-mobiliarios/@@display-file/file",
+          "distancia": 0.296101874526
+        }
+      ],
+      "distancias": [
+        0.235079086106708,
+        0.275461417550512,
+        0.288789287650165,
+        0.293534357237525,
+        0.296101874526
+      ],
+      "dado_tempo_real": null,
+      "rag_metricas": {
+        "latencia_busca_ms": 1402.5,
+        "latencia_geracao_ms": 2396.2,
+        "latencia_total_ms": 3798.7,
+        "tokens_in": 2615,
+        "tokens_out": 101
+      },
+      "resposta_baseline": "Oi! Sou o Rev, seu mascote de finanças! Sobre a negociação de ações por administradores de companhias abertas, geralmente, eles ficam proibidos de negociar ações durante um período conhecido como \"blackout period\", que ocorre antes da divulgação das demonstrações financeiras. Esse período pode variar, mas costuma ser de 15 a 30 dias antes da divulgação. Isso é para evitar qualquer tipo de insider trading, ou seja, negociação com informações privilegiadas. Se precisar de mais detalhes sobre como funcionam as companhias abertas ou outros conceitos financeiros, estou aqui para ajudar!",
+      "baseline_metricas": {
+        "latencia_geracao_ms": 3370.1,
+        "tokens_in": 1343,
+        "tokens_out": 157
+      }
+    },
+    {
+      "id": "N2.4",
+      "nivel": "N2",
+      "modulo": null,
+      "pergunta": "Se uma informação relevante vazar antes de a empresa divulgar, o que a companhia é obrigada a fazer e em quanto tempo?",
+      "comportamento_esperado": "responder",
+      "referencia": "A companhia pode, excepcionalmente, adiar a divulgação de um fato relevante quando isso proteger um interesse legítimo dela. Mas, se a informação escapar ao controle ou houver oscilação atípica na cotação, no preço ou na quantidade negociada das ações, os controladores ou administradores, diretamente ou por meio do Diretor de Relações com Investidores, são obrigados a divulgar o fato relevante imediatamente. A divulgação é feita à CVM e às bolsas em que as ações são negociadas, ao mesmo tempo; se precisar ocorrer durante o pregão, o Diretor de Relações com Investidores pode pedir a suspensão da negociação.",
+      "fontes_referencia": [
+        {
+          "documento": "cvm_resolucao_44_2021",
+          "pagina": "p. 3"
+        },
+        {
+          "documento": "cvm_resolucao_44_2021",
+          "pagina": "p. 5"
+        }
+      ],
+      "validado": true,
+      "resposta_rag": "Caso uma informação relevante escape ao controle ou ocorra oscilação atípica na cotação, a companhia tem a obrigação de divulgar imediatamente o ato ou fato relevante. Essa obrigação surge conforme o § único do art. 6o c/c § 3o do art. 7o da Instrução CVM nº 358, que estabelece que a divulgação deve ser feita de forma rápida para proteger os interesses do mercado e dos acionistas. (Fonte: TOP Direito do Mercado de Valores Mobiliários – CVM, p. 523)",
+      "usou_base": true,
+      "contextos": [
+        "Exepcionalmente, nos casos em que os acionistas controladores ou os administradores entenderem que a revelação do ato ou fato relevante porá em risco interesse legítimo da companhia, a divulgação não necessariamente ocorrerá de forma imediata à ocorrência do fato relevante. A adoção desse procedimento pode ocorrer por decisão da companhia ou poderá ser enviado requerimento de exceção à imediata divulgação ao Presidente da CVM, em envelope lacrado no qual deverá constar a palavra “Confidencial” (art. 6o c/c art. 7o, § 1o, ambos da Instrução CVM no 358).",
+        "Esses fatos também devem ser incluídos como vetores de risco no planejamento de administração de crises. Mas, sobretudo, não podem nem devem, nos termos da regulamentação, ser omitidos no caso de se mostrarem relevantes.\n\nPara contornar esses momentos e minimizar a perda de valor para a companhia, é indispensável contar com uma política de transparência e com um trabalho previamente estruturado. Será preciso divulgar imediatamente a informação vazada, tornando-a acessível ao público em geral ou, em caso de crise, informar ao mercado como ela está sendo enfrentada pela alta direção da companhia, quais os exatos motivos que a geraram e quais as expectativas de equacionamento dentro de um determinado período de tempo.",
+        "No entanto, caso a informação escape ao controle45 ou caso ocorra oscilação atípica na cotação, preço ou quantidade negociada dos valores mobiliários de emissão da companhia ou a eles referenciados, surge a obrigação de se divulgar imediatamente o ato ou fato relevante, conforme o § único do art. 6o c/c § 3o do art. 7o, ambos da Instrução CVM no 358.",
+        "Além de comunicar à CVM e à Bolsa, a empresa deve disseminar a informação por meio do seu site de relações com investidores e dos jornais de grande circulação normalmente utilizados\n\n155 Companhias\n\npela companhia para publicações. Neste último caso, é possível publicar o fato resumidamen te, desde que haja indicação de que a informação completa encontra-se no site da empresa.\n\nNo campo da autorregulação, a Associação Brasileira de Companhias Abertas (ABRASCA) publicou o “Manual de Controle e Divulgação de Informações Relevantes” e o “Código ABRASCA de Autorregulação e Boas Práticas das Companhias Abertas”, que, dentre outros temas, versam sobre práticas a serem adotadas no tratamento de informações privilegiadas, objetivando prevenir o seu vazamento.",
+        "que utiliza para disseminar informações sobre atos e fatos relevantes nos termos do art. 3o, § 4o, e os\n\nprocedimentos relativos à manutenção de sigilo acerca de informações relevantes não divulgadas.\n\n§ 1o A companhia deve comunicar formalmente os termos da deliberação aos acionistas\n\ncontroladores e às pessoas que ocupem ou venham a ocupar as funções referidas no art. 13, delas\n\nobtendo a respectiva adesão formal, em instrumento que deve ser arquivado na sede da companhia\n\nenquanto a pessoa com ela mantiver vínculo, e por cinco anos, no mínimo, após o seu desligamento.\n\n§ 2o A companhia deve manter em sua sede, à disposição da CVM, a relação de pessoas\n\nmencionadas no caput deste artigo e respectivas qualificações, indicando cargo ou função, endereço e"
+      ],
+      "fontes": [
+        {
+          "chunk_id": "cvm_livro_top_direito_mercado_valores_mobiliarios:02496",
+          "texto": "Exepcionalmente, nos casos em que os acionistas controladores ou os administradores entenderem que a revelação do ato ou fato relevante porá em risco interesse legítimo da companhia, a divulgação não necessariamente ocorrerá de forma imediata à ocorrência do fato relevante. A adoção desse procedimento pode ocorrer por decisão da companhia ou poderá ser enviado requerimento de exceção à imediata divulgação ao Presidente da CVM, em envelope lacrado no qual deverá constar a palavra “Confidencial” (art. 6o c/c art. 7o, § 1o, ambos da Instrução CVM no 358).",
+          "documento": "TOP Direito do Mercado de Valores Mobiliários",
+          "instituicao": "Comissão de Valores Mobiliários (CVM)",
+          "pagina": "p. 523",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/direito-do-mercado-de-valores-mobiliarios/@@display-file/file",
+          "distancia": 0.300520442343172
+        },
+        {
+          "chunk_id": "cvm_livro_top_mercado_valores_mobiliarios:00686",
+          "texto": "Esses fatos também devem ser incluídos como vetores de risco no planejamento de administração de crises. Mas, sobretudo, não podem nem devem, nos termos da regulamentação, ser omitidos no caso de se mostrarem relevantes.\n\nPara contornar esses momentos e minimizar a perda de valor para a companhia, é indispensável contar com uma política de transparência e com um trabalho previamente estruturado. Será preciso divulgar imediatamente a informação vazada, tornando-a acessível ao público em geral ou, em caso de crise, informar ao mercado como ela está sendo enfrentada pela alta direção da companhia, quais os exatos motivos que a geraram e quais as expectativas de equacionamento dentro de um determinado período de tempo.",
+          "documento": "TOP Mercado de Valores Mobiliários Brasileiro (5ª ed.)",
+          "instituicao": "Comissão de Valores Mobiliários (CVM)",
+          "pagina": "p. 209",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/cvm-livro_top_valores_mobiliarios_br_5ed.pdf/@@display-file/file",
+          "distancia": 0.302896825601252
+        },
+        {
+          "chunk_id": "cvm_livro_top_direito_mercado_valores_mobiliarios:02497",
+          "texto": "No entanto, caso a informação escape ao controle45 ou caso ocorra oscilação atípica na cotação, preço ou quantidade negociada dos valores mobiliários de emissão da companhia ou a eles referenciados, surge a obrigação de se divulgar imediatamente o ato ou fato relevante, conforme o § único do art. 6o c/c § 3o do art. 7o, ambos da Instrução CVM no 358.",
+          "documento": "TOP Direito do Mercado de Valores Mobiliários",
+          "instituicao": "Comissão de Valores Mobiliários (CVM)",
+          "pagina": "p. 523",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/direito-do-mercado-de-valores-mobiliarios/@@display-file/file",
+          "distancia": 0.305255865390575
+        },
+        {
+          "chunk_id": "cvm_livro_top_mercado_valores_mobiliarios:00494",
+          "texto": "Além de comunicar à CVM e à Bolsa, a empresa deve disseminar a informação por meio do seu site de relações com investidores e dos jornais de grande circulação normalmente utilizados\n\n155 Companhias\n\npela companhia para publicações. Neste último caso, é possível publicar o fato resumidamen te, desde que haja indicação de que a informação completa encontra-se no site da empresa.\n\nNo campo da autorregulação, a Associação Brasileira de Companhias Abertas (ABRASCA) publicou o “Manual de Controle e Divulgação de Informações Relevantes” e o “Código ABRASCA de Autorregulação e Boas Práticas das Companhias Abertas”, que, dentre outros temas, versam sobre práticas a serem adotadas no tratamento de informações privilegiadas, objetivando prevenir o seu vazamento.",
+          "documento": "TOP Mercado de Valores Mobiliários Brasileiro (5ª ed.)",
+          "instituicao": "Comissão de Valores Mobiliários (CVM)",
+          "pagina": "p. 155-156",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/cvm-livro_top_valores_mobiliarios_br_5ed.pdf/@@display-file/file",
+          "distancia": 0.310383564091812
+        },
+        {
+          "chunk_id": "cvm_resolucao_44_2021:00051",
+          "texto": "que utiliza para disseminar informações sobre atos e fatos relevantes nos termos do art. 3o, § 4o, e os\n\nprocedimentos relativos à manutenção de sigilo acerca de informações relevantes não divulgadas.\n\n§ 1o A companhia deve comunicar formalmente os termos da deliberação aos acionistas\n\ncontroladores e às pessoas que ocupem ou venham a ocupar as funções referidas no art. 13, delas\n\nobtendo a respectiva adesão formal, em instrumento que deve ser arquivado na sede da companhia\n\nenquanto a pessoa com ela mantiver vínculo, e por cinco anos, no mínimo, após o seu desligamento.\n\n§ 2o A companhia deve manter em sua sede, à disposição da CVM, a relação de pessoas\n\nmencionadas no caput deste artigo e respectivas qualificações, indicando cargo ou função, endereço e",
+          "documento": "Resolução CVM nº 44/2021 – Divulgação de Fato Relevante e negociação de valores mobiliários",
+          "instituicao": "Comissão de Valores Mobiliários (CVM)",
+          "pagina": "p. 15",
+          "url": "https://conteudo.cvm.gov.br/export/sites/cvm/legislacao/resolucoes/anexos/001/resol044.pdf",
+          "distancia": 0.315658064556384
+        }
+      ],
+      "distancias": [
+        0.300520442343172,
+        0.302896825601252,
+        0.305255865390575,
+        0.310383564091812,
+        0.315658064556384
+      ],
+      "dado_tempo_real": null,
+      "rag_metricas": {
+        "latencia_busca_ms": 1941.8,
+        "latencia_geracao_ms": 3586.1,
+        "latencia_total_ms": 5527.9,
+        "tokens_in": 2703,
+        "tokens_out": 152
+      },
+      "resposta_baseline": "Quando uma informação relevante vaza antes da divulgação oficial, a empresa é obrigada a comunicar o fato à Comissão de Valores Mobiliários (CVM) e ao mercado em geral. De acordo com a Instrução CVM 358, essa comunicação deve ser feita imediatamente após a constatação do fato, ou seja, assim que a empresa perceber que a informação se tornou pública. Isso garante transparência e equidade no mercado, permitindo que todos os investidores tenham acesso às mesmas informações ao mesmo tempo.",
+      "baseline_metricas": {
+        "latencia_geracao_ms": 5906.7,
+        "tokens_in": 1342,
+        "tokens_out": 138
+      }
+    },
+    {
+      "id": "N2.5",
+      "nivel": "N2",
+      "modulo": null,
+      "pergunta": "Qual percentual mínimo de ações em circulação (free float) uma empresa do Novo Mercado precisa manter?",
+      "comportamento_esperado": "responder",
+      "referencia": "A regra geral é manter pelo menos 20% do capital social em ações em circulação. O mínimo cai para 15% se o volume financeiro médio diário de negociação das ações for igual ou superior a R$ 20 milhões nos últimos 12 meses. Empresas que entram no Novo Mercado junto com uma oferta pública podem manter 15% nos primeiros 18 meses, se cumprirem as condições do regulamento.",
+      "fontes_referencia": [
+        {
+          "documento": "b3_regulamento_novo_mercado",
+          "pagina": "p. 7"
+        },
+        {
+          "documento": "cvm_livro_top_mercado_valores_mobiliarios",
+          "pagina": "p. 279"
+        }
+      ],
+      "validado": true,
+      "resposta_rag": "Uma empresa do Novo Mercado precisa manter, permanentemente, ao menos 25% do seu capital social em circulação (free float). Caso a empresa tenha um volume médio de negociação diária (ADTV) igual ou superior a R$ 20 milhões, esse percentual pode ser reduzido para 15% durante os primeiros 18 meses após a listagem, conforme o Regulamento do Novo Mercado (B3, p. 7).",
+      "usou_base": true,
+      "contextos": [
+        "25% a partir do 7o ano de listagem\n\n25% a partir do 7o ano de listagem\n\nPercentual mínimo de ações em circulação (free float)\n\nRegra geral: 20% Regra alternativa: 15%, (i) caso o ADTV (average daily trading volume) seja igual ou superior a R$ 20 milhões, considerando os negócios realizados nos últimos 12 meses; ou (ii) na hipótese de ingresso no Novo Mercado, concomitantemente ao IPO quando a oferta (a) for superior a R$ 2 bilhões; ou (b) enquadrar-se entre R$ 1 bilhão e R$ 2 bilhões, desde que respeitadas as contrapartidas previstas no Regulamento. Em relação ao item ‘ii’, a companhia poderá manter o free float em 15% do capital social por 18 meses, sendo que, ao final deste período, o ADTV deve atingir o patamar de R$ 20 milhões, o qual deve ser consistente por 6 meses consecutivos",
+        "723 Ofertas Públicas de Aquisição de Ações (OPAs)\n\nPercentual Mínimo de Ações em Circulação\n\nOs regulamentos de listagem do Novo Mercado e dos Níveis 1 e 2 de governança corporativa, dispõem que, permanentemente, a companhia listada deverá manter em circulação (free float), ao menos, 25% do capital social da companhia42, enquanto, as companhias listadas no Bovespa Mais e Bovespa Mais Nível 2 deverão atingir o free float de 25% de seu capital social dentro do prazo de sete anos.",
+        ". Para isso, divulgam informações adicionais às exigidas em lei, como por exemplo, um calendário anual de eventos corporativos.\n\n. O free float mínimo de 20%, podendo ser de 15% caso o volume médio de negociação diária (adtv) seja de R$ 20.000.000 ou mais,ou seja, a empresa se com promete a manter no mínimo 20% das ações em circulação no mercado ou ter negociação diária mínima de R$ 20.000.000.\n\nNível 2:\n\nNeste segmento, as exigências são maiores do que no Nível 1. Além daquelas citadas anteriormente, devem ser observadas:",
+        "correspondente a, no mínimo:\n\n20% (vinte por cento) do capital social; ou\n\n15% (quinze por cento) do capital social, desde que o volume\n\nfinanceiro médio diário de negociação das ações da companhia se\n\nmantenha igual ou superior a R$20.000.000,00 (vinte milhões de\n\nreais), considerados os negócios realizados nos últimos 12 (doze)\n\nmeses, observado o disposto no Art. 86.\n\n§1o Na hipótese de ingresso no Novo Mercado concomitante à\n\nrealização de oferta pública de distribuição de ações, a companhia pode manter,\n\nnos primeiros 18 (dezoito) meses, ações em circulação em percentual\n\ncorrespondente a, no mínimo, 15% (quinze por cento) do capital social, apenas\n\ncaso:\n\no volume financeiro das ações em circulação da respectiva oferta seja",
+        "42 Com a reforma no regulamento de listagem do Novo Mercado em 2017, foi criada a possibilidade de companhias listadas em tal segmento manterem um nível inferior de ações em circulação – desde que suas ações sejam objeto de elevado volume de negociação. Assim, companhias com um volume financeiro médio diário de negociação de suas ações igual ou superior a R$ 25 milhões, considerados os negócios realizados nos últimos doze meses, podem manter em circulação um percentual equivalente a 15% de seu capital social."
+      ],
+      "fontes": [
+        {
+          "chunk_id": "cvm_livro_top_mercado_valores_mobiliarios:00924",
+          "texto": "25% a partir do 7o ano de listagem\n\n25% a partir do 7o ano de listagem\n\nPercentual mínimo de ações em circulação (free float)\n\nRegra geral: 20% Regra alternativa: 15%, (i) caso o ADTV (average daily trading volume) seja igual ou superior a R$ 20 milhões, considerando os negócios realizados nos últimos 12 meses; ou (ii) na hipótese de ingresso no Novo Mercado, concomitantemente ao IPO quando a oferta (a) for superior a R$ 2 bilhões; ou (b) enquadrar-se entre R$ 1 bilhão e R$ 2 bilhões, desde que respeitadas as contrapartidas previstas no Regulamento. Em relação ao item ‘ii’, a companhia poderá manter o free float em 15% do capital social por 18 meses, sendo que, ao final deste período, o ADTV deve atingir o patamar de R$ 20 milhões, o qual deve ser consistente por 6 meses consecutivos",
+          "documento": "TOP Mercado de Valores Mobiliários Brasileiro (5ª ed.)",
+          "instituicao": "Comissão de Valores Mobiliários (CVM)",
+          "pagina": "p. 279",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/cvm-livro_top_valores_mobiliarios_br_5ed.pdf/@@display-file/file",
+          "distancia": 0.227609151982111
+        },
+        {
+          "chunk_id": "cvm_livro_top_direito_mercado_valores_mobiliarios:03526",
+          "texto": "723 Ofertas Públicas de Aquisição de Ações (OPAs)\n\nPercentual Mínimo de Ações em Circulação\n\nOs regulamentos de listagem do Novo Mercado e dos Níveis 1 e 2 de governança corporativa, dispõem que, permanentemente, a companhia listada deverá manter em circulação (free float), ao menos, 25% do capital social da companhia42, enquanto, as companhias listadas no Bovespa Mais e Bovespa Mais Nível 2 deverão atingir o free float de 25% de seu capital social dentro do prazo de sete anos.",
+          "documento": "TOP Direito do Mercado de Valores Mobiliários",
+          "instituicao": "Comissão de Valores Mobiliários (CVM)",
+          "pagina": "p. 723-724",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/direito-do-mercado-de-valores-mobiliarios/@@display-file/file",
+          "distancia": 0.243721811133643
+        },
+        {
+          "chunk_id": "cvm_livro_top_mercado_valores_mobiliarios:00916",
+          "texto": ". Para isso, divulgam informações adicionais às exigidas em lei, como por exemplo, um calendário anual de eventos corporativos.\n\n. O free float mínimo de 20%, podendo ser de 15% caso o volume médio de negociação diária (adtv) seja de R$ 20.000.000 ou mais,ou seja, a empresa se com promete a manter no mínimo 20% das ações em circulação no mercado ou ter negociação diária mínima de R$ 20.000.000.\n\nNível 2:\n\nNeste segmento, as exigências são maiores do que no Nível 1. Além daquelas citadas anteriormente, devem ser observadas:",
+          "documento": "TOP Mercado de Valores Mobiliários Brasileiro (5ª ed.)",
+          "instituicao": "Comissão de Valores Mobiliários (CVM)",
+          "pagina": "p. 277",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/cvm-livro_top_valores_mobiliarios_br_5ed.pdf/@@display-file/file",
+          "distancia": 0.266640531551381
+        },
+        {
+          "chunk_id": "b3_regulamento_novo_mercado:00011",
+          "texto": "correspondente a, no mínimo:\n\n20% (vinte por cento) do capital social; ou\n\n15% (quinze por cento) do capital social, desde que o volume\n\nfinanceiro médio diário de negociação das ações da companhia se\n\nmantenha igual ou superior a R$20.000.000,00 (vinte milhões de\n\nreais), considerados os negócios realizados nos últimos 12 (doze)\n\nmeses, observado o disposto no Art. 86.\n\n§1o Na hipótese de ingresso no Novo Mercado concomitante à\n\nrealização de oferta pública de distribuição de ações, a companhia pode manter,\n\nnos primeiros 18 (dezoito) meses, ações em circulação em percentual\n\ncorrespondente a, no mínimo, 15% (quinze por cento) do capital social, apenas\n\ncaso:\n\no volume financeiro das ações em circulação da respectiva oferta seja",
+          "documento": "Regulamento do Novo Mercado (versão 2023)",
+          "instituicao": "B3 – Brasil, Bolsa, Balcão",
+          "pagina": "p. 7",
+          "url": "https://www.b3.com.br/data/files/ED/C4/C1/2D/F99068101BBF1068AC094EA8/Regulamento%20do%20Novo%20Mercado%20_Versao%202023_.pdf",
+          "distancia": 0.27097778834495
+        },
+        {
+          "chunk_id": "cvm_livro_top_direito_mercado_valores_mobiliarios:03530",
+          "texto": "42 Com a reforma no regulamento de listagem do Novo Mercado em 2017, foi criada a possibilidade de companhias listadas em tal segmento manterem um nível inferior de ações em circulação – desde que suas ações sejam objeto de elevado volume de negociação. Assim, companhias com um volume financeiro médio diário de negociação de suas ações igual ou superior a R$ 25 milhões, considerados os negócios realizados nos últimos doze meses, podem manter em circulação um percentual equivalente a 15% de seu capital social.",
+          "documento": "TOP Direito do Mercado de Valores Mobiliários",
+          "instituicao": "Comissão de Valores Mobiliários (CVM)",
+          "pagina": "p. 724",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/direito-do-mercado-de-valores-mobiliarios/@@display-file/file",
+          "distancia": 0.281453006772296
+        }
+      ],
+      "distancias": [
+        0.227609151982111,
+        0.243721811133643,
+        0.266640531551381,
+        0.27097778834495,
+        0.281453006772296
+      ],
+      "dado_tempo_real": null,
+      "rag_metricas": {
+        "latencia_busca_ms": 1548.8,
+        "latencia_geracao_ms": 2587.1,
+        "latencia_total_ms": 4135.9,
+        "tokens_in": 2737,
+        "tokens_out": 123
+      },
+      "resposta_baseline": "Opa! Por aqui meu superpoder é cuidar do seu bolso! Como sou o Rev, o mascote de finanças do Renvest, meu foco é 100% te ajudar a organizar seu dinheiro, quitar dívidas e começar a investir. Que tal conversarmos sobre como montar sua reserva de emergência ou planejar seus gastos mensais?",
+      "baseline_metricas": {
+        "latencia_geracao_ms": 3167.8,
+        "tokens_in": 1336,
+        "tokens_out": 109
+      }
+    },
+    {
+      "id": "N3.1",
+      "nivel": "N3",
+      "modulo": null,
+      "pergunta": "Tenho R$ 400 mil para aplicar e quero ficar protegido pelo FGC. Como posso distribuir entre CDB, LCI e Tesouro Direto e o que fica fora da garantia?",
+      "comportamento_esperado": "responder",
+      "referencia": "CDB e LCI são cobertos pelo FGC até R$ 250 mil por CPF por instituição ou conglomerado financeiro, com teto de R$ 1 milhão a cada quatro anos somando todas as instituições. CDB e LCI do mesmo banco (ou do mesmo conglomerado) somam no mesmo limite de R$ 250 mil. Para ficar protegido, o investidor não deve ultrapassar esse valor por instituição: por exemplo, R$ 150 mil em CDB num banco, R$ 150 mil em LCI num banco de outro conglomerado e R$ 100 mil no Tesouro Direto. Como o limite vale para o saldo com os rendimentos, e não só para o valor aplicado, convém deixar uma margem abaixo de R$ 250 mil; o que passar disso numa mesma instituição fica sem garantia. O Tesouro Direto não está entre os produtos cobertos pelo FGC, mas os títulos públicos federais são emitidos pelo Tesouro Nacional e considerados de risco de crédito muito baixo; por isso, a parte aplicada nele não depende do FGC. Na tributação, a LCI é isenta de imposto de renda para pessoa física, enquanto o CDB segue a tabela regressiva da renda fixa.",
+      "fontes_referencia": [
+        {
+          "documento": "cmn_resolucao_4222_fgc",
+          "pagina": "p. 31-32"
+        },
+        {
+          "documento": "bcb_caderno_gestao_financas_pessoais",
+          "pagina": "p. 64-65"
+        },
+        {
+          "documento": "cvm_livro_top_planejamento_financeiro_pessoal",
+          "pagina": "p. 68"
+        },
+        {
+          "documento": "cvm_livro_top_planejamento_financeiro_pessoal",
+          "pagina": "p. 104"
+        },
+        {
+          "documento": "cmn_resolucao_4222_fgc",
+          "pagina": "p. 34"
+        },
+        {
+          "documento": "cvm_livro_top_planejamento_financeiro_pessoal",
+          "pagina": "p. 95"
+        },
+        {
+          "documento": "cvm_livro_top_planejamento_financeiro_pessoal",
+          "pagina": "p. 97"
+        }
+      ],
+      "validado": true,
+      "resposta_rag": "Para ficar protegido pelo Fundo Garantidor de Créditos (FGC), você pode distribuir seu investimento entre CDBs e LCIs, que são cobertos até R$ 250 mil por CPF por instituição. Assim, se você aplicar em diferentes instituições, pode aumentar a proteção. Por exemplo, se você dividir R$ 400 mil em 2 instituições, cada uma receberia R$ 200 mil, garantindo a proteção total. \n\nO Tesouro Direto, por outro lado, não é protegido pelo FGC, mas é considerado um investimento seguro, pois é garantido pelo governo. Portanto, qualquer valor aplicado no Tesouro Direto não contará para a garantia do FGC. Lembre-se de que a proteção do FGC é válida até o limite de R$ 250 mil por CPF por instituição, conforme o Caderno de Educação Financeira do Banco Central (p. 64-65).",
+      "usou_base": true,
+      "contextos": [
+        "É importante saber que existem o Fundo Garantidor de Créditos (FGC) e o Fundo Garantidor do Cooperativismo de Crédito (FGCoop), instituições que protegem depositantes e investidores em certas modalidades de investimentos financeiros. A garantia de crédito prestada por essas instituições é especialmente útil no caso de situações de intervenção ou liquidação extrajudicial da instituição onde estão os depósitos ou investimentos. São protegidos produtos como contas-correntes ou de poupança, CDBs, RDBs, RDCs, LCIs e LCAs, entre outros. Em junho/2025, a proteção é válida até o limite de R$250 mil por CPF por instituição.\n\nOs investimentos podem ser de renda fixa e/ou de renda variável.",
+        ". Assim, se a instituição financeira onde você tem sua conta de poupança vier a falir, uma parte substantiva do seu patrimônio está protegida pelo FGC ou pelo FGCoop (que também protegem outros investimentos financeiros, tais como CDB, RDB, RDC, LCI, LCA).",
+        ". Sociedades de crédito imobiliário.\n\n. Companhias hipotecárias.\n\n. Associações de poupança e empréstimo.\n\nGarantia ordinária até R$250 mil\n\nAtivos financeiros que contam com a garantia ordinária, até R$ 250.000,00 por CPF ou CNPJ, proporcionada pelo FGC:\n\n. Depósitos à vista ou sacáveis mediante aviso prévio.\n\n. Depósitos de poupança.\n\n. Letra de câmbio (LC).\n\n. Letra hipotecária (LH).\n\n. Letra de crédito imobiliário (LCI).\n\n. Letra de crédito do agronegócio (LCA).\n\n. Depósitos a prazo, com ou sem emissão de certificado RDB (Recibo de De pósito Bancário) e CDB (Certificado de Depósito Bancário);",
+        "I - até o valor máximo de R$400.000.000,00 (quatrocentos milhões de reais) nas operações cujo titular do crédito seja instituição associada ao FGC; e (Incluído pela Resolução no 4.805, de 23/4/2020.)\n\nII - até o valor máximo de R$40.000.000,00 (quarenta milhões de reais) para os demais titulares. (Incluído pela Resolução no 4.805, de 23/4/2020.)\n\n§ 1o Para efeito da determinação do valor garantido dos créditos de cada depositante, serão observados os seguintes critérios: (Transformado em § 1o pela Resolução CMN no 5.279, de 22/1/2026.)",
+        "Limitação da garantia até R$ 1 milhão\n\nO Conselho Monetário Nacional (CMN) aprovou, em 21 de dezembro de 2017, a al teração promovida no Regulamento do Fundo Garantidor de Créditos (FGC), que estabelece teto de R$ 1 milhão, a cada período de quatro anos, para garantias pagas para cada CPF ou CNPJ.\n\nGarantia especial do FGC\n\nO FGC também presta garantia especial aos depositantes e investidores que detêm o Depósito a Prazo com Garantia Especial (DPGE), de até R$ 40.000.000,00. As aplica ções em “Depósito a Prazo com Garantia Especial do FGC” somente podem ser celebradas com um único titular, a ser identificado pelo respectivo número do CPF/CNPJ.\n\nPara saber mais sobre Limite de Cobertura Ordinária do FGC acesse < e <-nova- garantia>.\n\n​"
+      ],
+      "fontes": [
+        {
+          "chunk_id": "bcb_caderno_gestao_financas_pessoais:00177",
+          "texto": "É importante saber que existem o Fundo Garantidor de Créditos (FGC) e o Fundo Garantidor do Cooperativismo de Crédito (FGCoop), instituições que protegem depositantes e investidores em certas modalidades de investimentos financeiros. A garantia de crédito prestada por essas instituições é especialmente útil no caso de situações de intervenção ou liquidação extrajudicial da instituição onde estão os depósitos ou investimentos. São protegidos produtos como contas-correntes ou de poupança, CDBs, RDBs, RDCs, LCIs e LCAs, entre outros. Em junho/2025, a proteção é válida até o limite de R$250 mil por CPF por instituição.\n\nOs investimentos podem ser de renda fixa e/ou de renda variável.",
+          "documento": "Caderno de Educação Financeira – Gestão de Finanças Pessoais",
+          "instituicao": "Banco Central do Brasil (BCB)",
+          "pagina": "p. 64-65",
+          "url": "https://www.bcb.gov.br/content/cidadaniafinanceira/documentos_cidadania/Cuidando_do_seu_dinheiro_Gestao_de_Financas_Pessoais/caderno_cidadania_financeira.pdf",
+          "distancia": 0.363795237642819
+        },
+        {
+          "chunk_id": "bcb_caderno_gestao_financas_pessoais:00161",
+          "texto": ". Assim, se a instituição financeira onde você tem sua conta de poupança vier a falir, uma parte substantiva do seu patrimônio está protegida pelo FGC ou pelo FGCoop (que também protegem outros investimentos financeiros, tais como CDB, RDB, RDC, LCI, LCA).",
+          "documento": "Caderno de Educação Financeira – Gestão de Finanças Pessoais",
+          "instituicao": "Banco Central do Brasil (BCB)",
+          "pagina": "p. 59",
+          "url": "https://www.bcb.gov.br/content/cidadaniafinanceira/documentos_cidadania/Cuidando_do_seu_dinheiro_Gestao_de_Financas_Pessoais/caderno_cidadania_financeira.pdf",
+          "distancia": 0.3713471426472
+        },
+        {
+          "chunk_id": "cvm_livro_top_planejamento_financeiro_pessoal:00255",
+          "texto": ". Sociedades de crédito imobiliário.\n\n. Companhias hipotecárias.\n\n. Associações de poupança e empréstimo.\n\nGarantia ordinária até R$250 mil\n\nAtivos financeiros que contam com a garantia ordinária, até R$ 250.000,00 por CPF ou CNPJ, proporcionada pelo FGC:\n\n. Depósitos à vista ou sacáveis mediante aviso prévio.\n\n. Depósitos de poupança.\n\n. Letra de câmbio (LC).\n\n. Letra hipotecária (LH).\n\n. Letra de crédito imobiliário (LCI).\n\n. Letra de crédito do agronegócio (LCA).\n\n. Depósitos a prazo, com ou sem emissão de certificado RDB (Recibo de De pósito Bancário) e CDB (Certificado de Depósito Bancário);",
+          "documento": "TOP Planejamento Financeiro Pessoal (2ª ed.)",
+          "instituicao": "Comissão de Valores Mobiliários (CVM) / Planejar",
+          "pagina": "p. 104",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/livro-top-planejamento-financeiro-pessoal/@@display-file/file",
+          "distancia": 0.374444297884046
+        },
+        {
+          "chunk_id": "cmn_resolucao_4222_fgc:00137",
+          "texto": "I - até o valor máximo de R$400.000.000,00 (quatrocentos milhões de reais) nas operações cujo titular do crédito seja instituição associada ao FGC; e (Incluído pela Resolução no 4.805, de 23/4/2020.)\n\nII - até o valor máximo de R$40.000.000,00 (quarenta milhões de reais) para os demais titulares. (Incluído pela Resolução no 4.805, de 23/4/2020.)\n\n§ 1o Para efeito da determinação do valor garantido dos créditos de cada depositante, serão observados os seguintes critérios: (Transformado em § 1o pela Resolução CMN no 5.279, de 22/1/2026.)",
+          "documento": "Resolução CMN nº 4.222/2013 – Estatuto e Regulamento do FGC (texto consolidado)",
+          "instituicao": "Conselho Monetário Nacional (CMN) / Banco Central do Brasil",
+          "pagina": "p. 36-37",
+          "url": "https://normativos.bcb.gov.br/Lists/Normativos/Attachments/48942/Res_4222_v18_L.pdf",
+          "distancia": 0.377040915720435
+        },
+        {
+          "chunk_id": "cvm_livro_top_planejamento_financeiro_pessoal:00260",
+          "texto": "Limitação da garantia até R$ 1 milhão\n\nO Conselho Monetário Nacional (CMN) aprovou, em 21 de dezembro de 2017, a al teração promovida no Regulamento do Fundo Garantidor de Créditos (FGC), que estabelece teto de R$ 1 milhão, a cada período de quatro anos, para garantias pagas para cada CPF ou CNPJ.\n\nGarantia especial do FGC\n\nO FGC também presta garantia especial aos depositantes e investidores que detêm o Depósito a Prazo com Garantia Especial (DPGE), de até R$ 40.000.000,00. As aplica ções em “Depósito a Prazo com Garantia Especial do FGC” somente podem ser celebradas com um único titular, a ser identificado pelo respectivo número do CPF/CNPJ.\n\nPara saber mais sobre Limite de Cobertura Ordinária do FGC acesse < e <-nova- garantia>.\n\n​",
+          "documento": "TOP Planejamento Financeiro Pessoal (2ª ed.)",
+          "instituicao": "Comissão de Valores Mobiliários (CVM) / Planejar",
+          "pagina": "p. 106",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/livro-top-planejamento-financeiro-pessoal/@@display-file/file",
+          "distancia": 0.385665605826248
+        }
+      ],
+      "distancias": [
+        0.363795237642819,
+        0.3713471426472,
+        0.374444297884046,
+        0.377040915720435,
+        0.385665605826248
+      ],
+      "dado_tempo_real": null,
+      "rag_metricas": {
+        "latencia_busca_ms": 2534.2,
+        "latencia_geracao_ms": 4843.3,
+        "latencia_total_ms": 7377.5,
+        "tokens_in": 2772,
+        "tokens_out": 225
+      },
+      "resposta_baseline": "Ótima decisão em querer proteger seu investimento! O FGC (Fundo Garantidor de Créditos) garante até R$ 250 mil por CPF em cada instituição financeira para produtos como CDB e LCI. Para distribuir seus R$ 400 mil, você pode considerar a seguinte estratégia:\n\n1. **CDB**: Escolha um CDB de uma instituição que ofereça boa rentabilidade e que esteja coberta pelo FGC. Você pode aplicar R$ 250 mil aqui para garantir a totalidade da proteção do FGC.\n\n2. **LCI**: A LCI também é coberta pelo FGC. Você pode aplicar mais R$ 250 mil em outra instituição, garantindo mais R$ 250 mil de proteção. Assim, você pode investir R$ 150 mil em LCI.\n\n3. **Tesouro Direto**: Os títulos do Tesouro Direto não são cobertos pelo FGC, mas são considerados seguros, pois são garantidos pelo governo. Você pode investir o restante, R$ 50 mil, aqui.\n\nDessa forma, você terá R$ 250 mil em CDB, R$ 150 mil em LCI e R$ 50 mil em Tesouro Direto. Lembre-se de verificar as taxas e prazos de cada produto antes de investir!",
+      "baseline_metricas": {
+        "latencia_geracao_ms": 6755.3,
+        "tokens_in": 1355,
+        "tokens_out": 316
+      }
+    },
+    {
+      "id": "N3.2",
+      "nivel": "N3",
+      "modulo": null,
+      "pergunta": "Trabalho numa companhia aberta e soube de uma aquisição antes do anúncio oficial. Posso comprar ações dela? O que a regra diz e o que pode acontecer?",
+      "comportamento_esperado": "responder",
+      "referencia": "Não. A Resolução CVM 44 proíbe qualquer pessoa que tenha acesso a informação relevante ainda não divulgada de usá-la para obter vantagem, para si ou para outra pessoa, negociando valores mobiliários (por isso, também não pode passar a informação para alguém negociar), e a Lei das S.A. obriga o administrador a guardar sigilo sobre essas informações. Uma aquisição ainda não anunciada é uma informação capaz de influenciar a cotação. Além das sanções administrativas da CVM, usar a informação é crime (uso indevido de informação privilegiada, art. 27-D da Lei 6.385/76), com pena de reclusão de 1 a 5 anos e multa de até três vezes a vantagem obtida.",
+      "fontes_referencia": [
+        {
+          "documento": "cvm_resolucao_44_2021",
+          "pagina": "p. 11"
+        },
+        {
+          "documento": "cvm_livro_top_direito_mercado_valores_mobiliarios",
+          "pagina": "p. 241"
+        },
+        {
+          "documento": "cvm_livro_top_direito_mercado_valores_mobiliarios",
+          "pagina": "p. 253"
+        }
+      ],
+      "validado": true,
+      "resposta_rag": "Segundo o que está previsto no artigo 155 da Lei nº 6.404, é vedado ao administrador de companhia aberta utilizar informações não divulgadas para obter vantagem na compra ou venda de valores mobiliários. Isso significa que, ao saber de uma aquisição antes do anúncio oficial, você não deve comprar ações da sua companhia, pois isso pode ser considerado uso de informação privilegiada. Além disso, se essa informação escapar ao controle dos envolvidos ou causar oscilações atípicas nas cotações, a companhia deve divulgar imediatamente a existência das negociações (Fonte: TOP Direito do Mercado de Valores Mobiliários – CVM, p. 241 e p. 698).",
+      "usou_base": true,
+      "contextos": [
+        "7. Aquisição de uma empresa por outra sem prévia negociação com a administração ou os acionistas, geralmente atra vés de transação em bolsa. 8. É um mecanismo de proteção ao acionista minoritário que obriga o adquirente de controle a fazer oferta pública de aquisição a todos os acionistas, assegurando-lhes o direito de participar da transação.",
+        "3.4 Esse é o critério adotado pelas instruções da CVM e consagrado pelo art. 155 da Lei no 6.404, de 15 de dezembro de 1976:\n\nArt. 155 (...)\n\n§ 1o Cumpre, ademais, ao administrador de companhia aberta, guardar sigilo sobre qualquer informação que ainda não tenha sido divulgada para conhecimento do mercado, obtida em razão do cargo e capaz de influir de modo ponderável na cotação de valores mobiliários, sendo-lhe vedado valer-se da informação para obter, para si ou para outrem, vantagem mediante compra ou venda de valores mobiliários.\n\n3.5 Pois bem: a mim parece óbvio que o recebimento de uma oferta de compra de controle, ainda que não firme; e a existência de tratativas, ainda que intermitentes, são sim fatos capazes de influenciar a cotação das ações da companhia.",
+        "Exatamente por não ter um acionista controlador, na companhia com capital pulverizado, a aquisição de controle mediante a oferta pública de compra de ações pode, muitas vezes, ser considerada uma aquisição hostil, tendo em vista que, possivelmente, o controle desse tipo de companhia é gerencial, ou seja, detido pela\n\n719 Ofertas Públicas de Aquisição de Ações (OPAs)\n\nadministração e poderá passar a ser detido pelo ofertante, independentemente de anuência da administração. 40\n\nOPA Parcial",
+        ". 16 Nos termos do §4o do artigo 109 do RICADE. 17 Conforme definição prevista nos artigos 2°, II, da Instrução CVM 361, e 4o, \"§6o, da Lei das S.A.: §6o O acionista controlador ou a sociedade controladora que adquirir ações da companhia aberta sob seu controle que elevem sua participação, direta ou indireta, em determinada espécie e classe de ações à porcentagem que, segundo normas gerais expedidas pela Comissão de Valores Mobiliários, impeça a liquidez de mercado das ações remanescentes, será obrigado a fazer oferta pública, por preço determinado nos termos do § 4o, para aquisição da totalidade das ações remanescentes no mercado.\" 18 Igualmente nos termos do §3o do artigo 109 do RICADE. 19 Conforme definição prevista no artigo 2°, IV, da Instrução CVM no 361",
+        "No entanto, fica o Diretor de Relações com Investidores da companhia objeto obrigado a divulgar imediatamente a existência de negociações acerca da potencial oferta, caso a informação escape ao controle dos envolvidos ou se verifique oscilação atípica na cotação, preço ou quantidade negociada dos valores mobiliários de emissão da companhia, ou a eles referenciados."
+      ],
+      "fontes": [
+        {
+          "chunk_id": "cvm_livro_top_mercado_valores_mobiliarios:00577",
+          "texto": "7. Aquisição de uma empresa por outra sem prévia negociação com a administração ou os acionistas, geralmente atra vés de transação em bolsa. 8. É um mecanismo de proteção ao acionista minoritário que obriga o adquirente de controle a fazer oferta pública de aquisição a todos os acionistas, assegurando-lhes o direito de participar da transação.",
+          "documento": "TOP Mercado de Valores Mobiliários Brasileiro (5ª ed.)",
+          "instituicao": "Comissão de Valores Mobiliários (CVM)",
+          "pagina": "p. 178",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/cvm-livro_top_valores_mobiliarios_br_5ed.pdf/@@display-file/file",
+          "distancia": 0.341892766457084
+        },
+        {
+          "chunk_id": "cvm_livro_top_direito_mercado_valores_mobiliarios:01118",
+          "texto": "3.4 Esse é o critério adotado pelas instruções da CVM e consagrado pelo art. 155 da Lei no 6.404, de 15 de dezembro de 1976:\n\nArt. 155 (...)\n\n§ 1o Cumpre, ademais, ao administrador de companhia aberta, guardar sigilo sobre qualquer informação que ainda não tenha sido divulgada para conhecimento do mercado, obtida em razão do cargo e capaz de influir de modo ponderável na cotação de valores mobiliários, sendo-lhe vedado valer-se da informação para obter, para si ou para outrem, vantagem mediante compra ou venda de valores mobiliários.\n\n3.5 Pois bem: a mim parece óbvio que o recebimento de uma oferta de compra de controle, ainda que não firme; e a existência de tratativas, ainda que intermitentes, são sim fatos capazes de influenciar a cotação das ações da companhia.",
+          "documento": "TOP Direito do Mercado de Valores Mobiliários",
+          "instituicao": "Comissão de Valores Mobiliários (CVM)",
+          "pagina": "p. 241",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/direito-do-mercado-de-valores-mobiliarios/@@display-file/file",
+          "distancia": 0.351416592848314
+        },
+        {
+          "chunk_id": "cvm_livro_top_direito_mercado_valores_mobiliarios:03505",
+          "texto": "Exatamente por não ter um acionista controlador, na companhia com capital pulverizado, a aquisição de controle mediante a oferta pública de compra de ações pode, muitas vezes, ser considerada uma aquisição hostil, tendo em vista que, possivelmente, o controle desse tipo de companhia é gerencial, ou seja, detido pela\n\n719 Ofertas Públicas de Aquisição de Ações (OPAs)\n\nadministração e poderá passar a ser detido pelo ofertante, independentemente de anuência da administração. 40\n\nOPA Parcial",
+          "documento": "TOP Direito do Mercado de Valores Mobiliários",
+          "instituicao": "Comissão de Valores Mobiliários (CVM)",
+          "pagina": "p. 719-720",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/direito-do-mercado-de-valores-mobiliarios/@@display-file/file",
+          "distancia": 0.354059120080644
+        },
+        {
+          "chunk_id": "cvm_livro_top_direito_mercado_valores_mobiliarios:03443",
+          "texto": ". 16 Nos termos do §4o do artigo 109 do RICADE. 17 Conforme definição prevista nos artigos 2°, II, da Instrução CVM 361, e 4o, \"§6o, da Lei das S.A.: §6o O acionista controlador ou a sociedade controladora que adquirir ações da companhia aberta sob seu controle que elevem sua participação, direta ou indireta, em determinada espécie e classe de ações à porcentagem que, segundo normas gerais expedidas pela Comissão de Valores Mobiliários, impeça a liquidez de mercado das ações remanescentes, será obrigado a fazer oferta pública, por preço determinado nos termos do § 4o, para aquisição da totalidade das ações remanescentes no mercado.\" 18 Igualmente nos termos do §3o do artigo 109 do RICADE. 19 Conforme definição prevista no artigo 2°, IV, da Instrução CVM no 361",
+          "documento": "TOP Direito do Mercado de Valores Mobiliários",
+          "instituicao": "Comissão de Valores Mobiliários (CVM)",
+          "pagina": "p. 706",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/direito-do-mercado-de-valores-mobiliarios/@@display-file/file",
+          "distancia": 0.372195628664797
+        },
+        {
+          "chunk_id": "cvm_livro_top_direito_mercado_valores_mobiliarios:03398",
+          "texto": "No entanto, fica o Diretor de Relações com Investidores da companhia objeto obrigado a divulgar imediatamente a existência de negociações acerca da potencial oferta, caso a informação escape ao controle dos envolvidos ou se verifique oscilação atípica na cotação, preço ou quantidade negociada dos valores mobiliários de emissão da companhia, ou a eles referenciados.",
+          "documento": "TOP Direito do Mercado de Valores Mobiliários",
+          "instituicao": "Comissão de Valores Mobiliários (CVM)",
+          "pagina": "p. 698",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/direito-do-mercado-de-valores-mobiliarios/@@display-file/file",
+          "distancia": 0.374505260126726
+        }
+      ],
+      "distancias": [
+        0.341892766457084,
+        0.351416592848314,
+        0.354059120080644,
+        0.372195628664797,
+        0.374505260126726
+      ],
+      "dado_tempo_real": null,
+      "rag_metricas": {
+        "latencia_busca_ms": 2349.3,
+        "latencia_geracao_ms": 3897.0,
+        "latencia_total_ms": 6246.3,
+        "tokens_in": 2624,
+        "tokens_out": 176
+      },
+      "resposta_baseline": "Comprar ações de uma companhia aberta com informações privilegiadas, como uma aquisição antes do anúncio oficial, é considerado insider trading e é ilegal. A CVM (Comissão de Valores Mobiliários) proíbe essa prática, pois dá uma vantagem injusta a quem possui informações não divulgadas ao público. Se você for pego, pode enfrentar penalidades severas, incluindo multas e até prisão. É importante sempre agir de forma ética e dentro da legalidade no mercado financeiro.",
+      "baseline_metricas": {
+        "latencia_geracao_ms": 3070.8,
+        "tokens_in": 1350,
+        "tokens_out": 132
+      }
+    },
+    {
+      "id": "N3.3",
+      "nivel": "N3",
+      "modulo": null,
+      "pergunta": "Quero começar com pouco dinheiro na bolsa. Que diferença faz, em proteção ao acionista minoritário, comprar ações de uma empresa do Novo Mercado em vez de uma empresa de outro segmento?",
+      "comportamento_esperado": "responder",
+      "referencia": "O Novo Mercado é o segmento com mais exigências de governança. Nele, o capital só pode ter ações ordinárias, com direito a voto; na venda do controle, todos os acionistas podem vender pelo mesmo preço pago ao controlador (tag along de 100%); a empresa mantém ao menos 20% das ações em circulação (ou 15%, com alto volume de negociação); o conselho tem pelo menos 2 ou 20% de conselheiros independentes; e, se a empresa sair do segmento, precisa fazer oferta pública de aquisição por valor justo. Em outros segmentos as exigências são menores: o Nível 2, por exemplo, permite ações preferenciais. Fora dos segmentos especiais vale só a Lei das S.A., que garante aos minoritários com ações ordinárias (com voto) pelo menos 80% do preço pago ao controlador na venda do controle.",
+      "fontes_referencia": [
+        {
+          "documento": "cvm_livro_top_mercado_valores_mobiliarios",
+          "pagina": "p. 275-276"
+        },
+        {
+          "documento": "cvm_livro_top_mercado_valores_mobiliarios",
+          "pagina": "p. 277-278"
+        },
+        {
+          "documento": "cvm_livro_top_mercado_valores_mobiliarios",
+          "pagina": "p. 250-251"
+        }
+      ],
+      "validado": true,
+      "resposta_rag": "Comprar ações de uma empresa do Novo Mercado oferece algumas proteções adicionais para acionistas minoritários. No Novo Mercado, o capital deve ser composto exclusivamente por ações ordinárias com direito a voto, e em caso de alienação do controle, todos os acionistas têm direito a vender suas ações pelo mesmo preço (tag along de 100%) que o controlador, garantindo tratamento igualitário (Fonte: TOP Mercado de Valores Mobiliários Brasileiro, CVM, p. 275-276). Isso significa que, ao investir em empresas desse segmento, você tem mais segurança em relação ao valor de suas ações em situações de venda de controle, ao contrário de empresas em outros segmentos que podem não oferecer essas garantias (Fonte: TOP Direito do Mercado de Valores Mobiliários, CVM, p. 1310).",
+      "usou_base": true,
+      "contextos": [
+        "Este novo ambiente de gestão profissional faz com que o investidor veja os segmentos de listagem diferenciados como um criador de valor na empresa, influenciando positivamente os resultados que espera obter com seu investimento.\n\n8.5.1. Novo Mercado\n\nA principal inovação do Novo Mercado, em relação à legislação, é a proibição de emissão de ações preferenciais.\n\nConheça algumas regras do Novo Mercado relacionadas à estrutura de governança e direitos dos acionistas:\n\n275 Bolsa de Valores e Mercados de Balcão\n\n. O capital deve ser composto exclusivamente por ações ordinárias com di reito a voto;\n\n. No caso de alienação do controle, todos os acionistas têm direito a vender suas ações pelo mesmo preço (tag along de 100%) atribuído às ações detidas pelo controlador;",
+        "14. Um dos princípios fundamentais adotados pelo Novo Mercado é o tratamento igualitário dos acionistas de Companhias que tenham aderi da a tal segmento no contexto de ofertas públicas de aquisição em razão de alienação de controle. O objetivo é que, diante de tal situação, todos os acionistas não controladores tenham a oportunidade de alienar as suas ações pelo mesmo preço e nas mesmas condições571, evitando dis torções no preço em virtude de assimetria de informações e circunstân cias que sejam propícias à coerção de tais acionistas no âmbito de uma oferta pública.",
+        "O Bovespa Mais possibilita a realização de captações menores se comparadas ao Novo Mercado, mas suficientes para financiar o seu projeto de crescimento. As empresas listadas no Bovespa Mais tendem a atrair investidores que visualizem um potencial de desenvolvimento mais acentuado no negócio. As ofertas de ações podem ser des tinadas a poucos investidores e eles geralmente possuem perspectivas de retorno de médio e longo prazo.",
+        "Nível 2:\n\nNeste segmento, as exigências são maiores do que no Nível 1. Além daquelas citadas anteriormente, devem ser observadas:\n\n. O segmento de listagem Nível 2 é similar ao Novo Mercado, porém com algumas exceções. As empresas listadas têm o direito de manter ações preferen ciais (PN). No caso de venda de controle da empresa, é assegurado aos detentores de ações ordinárias e preferenciais o mesmo tratamento concedido ao acionista controlador, prevendo, portanto, o direito de tag along de 100% do preço pago\n\n277 Bolsa de Valores e Mercados de Balcão\n\npelas ações ordinárias do acionista controlador.",
+        "Como seu principal fator de risco é a variação nos preços das ações que compõem sua carteira, são mais indicados para objetivos de investimento de longo prazo e que su portem uma maior exposição a riscos em troca de uma expectativa de rentabilidade mais elevada.\n\nAções - Mercado de Acesso\n\nCaso o anexo da classe preveja que pelo menos 67% do seu patrimônio sejam investi dos em companhias listadas em segmento de negociação voltado ao mercado de aces so, como o segmento Bovespa Mais da B3, que possui práticas diferenciadas de gover nança corporativa, a classe deverá adotar este sufixo."
+      ],
+      "fontes": [
+        {
+          "chunk_id": "cvm_livro_top_mercado_valores_mobiliarios:00912",
+          "texto": "Este novo ambiente de gestão profissional faz com que o investidor veja os segmentos de listagem diferenciados como um criador de valor na empresa, influenciando positivamente os resultados que espera obter com seu investimento.\n\n8.5.1. Novo Mercado\n\nA principal inovação do Novo Mercado, em relação à legislação, é a proibição de emissão de ações preferenciais.\n\nConheça algumas regras do Novo Mercado relacionadas à estrutura de governança e direitos dos acionistas:\n\n275 Bolsa de Valores e Mercados de Balcão\n\n. O capital deve ser composto exclusivamente por ações ordinárias com di reito a voto;\n\n. No caso de alienação do controle, todos os acionistas têm direito a vender suas ações pelo mesmo preço (tag along de 100%) atribuído às ações detidas pelo controlador;",
+          "documento": "TOP Mercado de Valores Mobiliários Brasileiro (5ª ed.)",
+          "instituicao": "Comissão de Valores Mobiliários (CVM)",
+          "pagina": "p. 275-276",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/cvm-livro_top_valores_mobiliarios_br_5ed.pdf/@@display-file/file",
+          "distancia": 0.326394435818887
+        },
+        {
+          "chunk_id": "cvm_livro_top_direito_mercado_valores_mobiliarios:06561",
+          "texto": "14. Um dos princípios fundamentais adotados pelo Novo Mercado é o tratamento igualitário dos acionistas de Companhias que tenham aderi da a tal segmento no contexto de ofertas públicas de aquisição em razão de alienação de controle. O objetivo é que, diante de tal situação, todos os acionistas não controladores tenham a oportunidade de alienar as suas ações pelo mesmo preço e nas mesmas condições571, evitando dis torções no preço em virtude de assimetria de informações e circunstân cias que sejam propícias à coerção de tais acionistas no âmbito de uma oferta pública.",
+          "documento": "TOP Direito do Mercado de Valores Mobiliários",
+          "instituicao": "Comissão de Valores Mobiliários (CVM)",
+          "pagina": "p. 1310",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/direito-do-mercado-de-valores-mobiliarios/@@display-file/file",
+          "distancia": 0.360690286700064
+        },
+        {
+          "chunk_id": "cvm_livro_top_mercado_valores_mobiliarios:00920",
+          "texto": "O Bovespa Mais possibilita a realização de captações menores se comparadas ao Novo Mercado, mas suficientes para financiar o seu projeto de crescimento. As empresas listadas no Bovespa Mais tendem a atrair investidores que visualizem um potencial de desenvolvimento mais acentuado no negócio. As ofertas de ações podem ser des tinadas a poucos investidores e eles geralmente possuem perspectivas de retorno de médio e longo prazo.",
+          "documento": "TOP Mercado de Valores Mobiliários Brasileiro (5ª ed.)",
+          "instituicao": "Comissão de Valores Mobiliários (CVM)",
+          "pagina": "p. 278",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/cvm-livro_top_valores_mobiliarios_br_5ed.pdf/@@display-file/file",
+          "distancia": 0.370718433489349
+        },
+        {
+          "chunk_id": "cvm_livro_top_mercado_valores_mobiliarios:00917",
+          "texto": "Nível 2:\n\nNeste segmento, as exigências são maiores do que no Nível 1. Além daquelas citadas anteriormente, devem ser observadas:\n\n. O segmento de listagem Nível 2 é similar ao Novo Mercado, porém com algumas exceções. As empresas listadas têm o direito de manter ações preferen ciais (PN). No caso de venda de controle da empresa, é assegurado aos detentores de ações ordinárias e preferenciais o mesmo tratamento concedido ao acionista controlador, prevendo, portanto, o direito de tag along de 100% do preço pago\n\n277 Bolsa de Valores e Mercados de Balcão\n\npelas ações ordinárias do acionista controlador.",
+          "documento": "TOP Mercado de Valores Mobiliários Brasileiro (5ª ed.)",
+          "instituicao": "Comissão de Valores Mobiliários (CVM)",
+          "pagina": "p. 277-278",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/cvm-livro_top_valores_mobiliarios_br_5ed.pdf/@@display-file/file",
+          "distancia": 0.386670927352012
+        },
+        {
+          "chunk_id": "cvm_livro_top_mercado_valores_mobiliarios:00324",
+          "texto": "Como seu principal fator de risco é a variação nos preços das ações que compõem sua carteira, são mais indicados para objetivos de investimento de longo prazo e que su portem uma maior exposição a riscos em troca de uma expectativa de rentabilidade mais elevada.\n\nAções - Mercado de Acesso\n\nCaso o anexo da classe preveja que pelo menos 67% do seu patrimônio sejam investi dos em companhias listadas em segmento de negociação voltado ao mercado de aces so, como o segmento Bovespa Mais da B3, que possui práticas diferenciadas de gover nança corporativa, a classe deverá adotar este sufixo.",
+          "documento": "TOP Mercado de Valores Mobiliários Brasileiro (5ª ed.)",
+          "instituicao": "Comissão de Valores Mobiliários (CVM)",
+          "pagina": "p. 105",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/cvm-livro_top_valores_mobiliarios_br_5ed.pdf/@@display-file/file",
+          "distancia": 0.399197699987694
+        }
+      ],
+      "distancias": [
+        0.326394435818887,
+        0.360690286700064,
+        0.370718433489349,
+        0.386670927352012,
+        0.399197699987694
+      ],
+      "dado_tempo_real": null,
+      "rag_metricas": {
+        "latencia_busca_ms": 2145.7,
+        "latencia_geracao_ms": 4306.9,
+        "latencia_total_ms": 6452.6,
+        "tokens_in": 2644,
+        "tokens_out": 201
+      },
+      "resposta_baseline": "Comprar ações de empresas listadas no Novo Mercado é uma ótima escolha para quem está começando! O Novo Mercado é um segmento da B3 que exige padrões mais altos de governança corporativa, o que significa que os acionistas minoritários têm mais proteção. Isso inclui regras como a proibição de ações com direito a voto restrito e a obrigação de divulgar informações de forma mais transparente. Em comparação, empresas de outros segmentos podem não ter essas mesmas exigências, o que pode aumentar os riscos para investidores que não têm controle sobre a empresa. Portanto, escolher o Novo Mercado pode trazer mais segurança para o seu investimento!",
+      "baseline_metricas": {
+        "latencia_geracao_ms": 3948.9,
+        "tokens_in": 1355,
+        "tokens_out": 166
+      }
+    },
+    {
+      "id": "N3.4",
+      "nivel": "N3",
+      "modulo": null,
+      "pergunta": "Estou em dúvida entre um fundo imobiliário e comprar um imóvel para alugar. O que muda em liquidez, diversificação e custos, segundo o material da CVM?",
+      "comportamento_esperado": "responder",
+      "referencia": "O fundo imobiliário permite investir em imóveis com pequenas quantias, diversificar entre vários empreendimentos e diluir os custos de administração entre todos os cotistas. Nos custos, o cotista não cuida de certidões, escritura, ITBI, manutenção e reparos, que são providenciados pelo administrador e pagos com recursos do próprio fundo, ou seja, indiretamente pelos cotistas; no imóvel direto, tudo isso é do proprietário. A vacância (imóvel sem inquilino) é um risco nos dois casos. Na liquidez, é possível vender só parte das cotas no mercado secundário, enquanto no imóvel direto seria preciso vender o bem inteiro; em compensação, a venda das cotas depende de haver compradores nesse mercado. Os rendimentos distribuídos podem ser isentos de imposto de renda, se o fundo cumprir as condições legais.",
+      "fontes_referencia": [
+        {
+          "documento": "cvm_caderno_06_fundos_imobiliarios",
+          "pagina": "p. 7-9"
+        },
+        {
+          "documento": "cvm_caderno_06_fundos_imobiliarios",
+          "pagina": "p. 11"
+        },
+        {
+          "documento": "cvm_livro_top_planejamento_financeiro_pessoal",
+          "pagina": "p. 149"
+        },
+        {
+          "documento": "cvm_livro_top_planejamento_financeiro_pessoal",
+          "pagina": "p. 151-152"
+        }
+      ],
+      "validado": true,
+      "resposta_rag": "Investir em fundos imobiliários oferece algumas vantagens em relação à compra direta de imóveis. Em termos de liquidez, ao investir em um fundo, você pode vender suas cotas no mercado secundário, o que facilita o acesso ao seu dinheiro, enquanto a venda de um imóvel pode ser mais demorada e complexa. Quanto à diversificação, os fundos permitem que você tenha acesso a uma carteira composta por diversos empreendimentos imobiliários, aumentando as opções de investimento, enquanto a compra de um único imóvel limita essa diversificação. Em relação aos custos, os fundos imobiliários têm custos de administração diluídos entre todos os cotistas, o que pode resultar em um custo total menor em comparação com a manutenção de um imóvel individual. Essas informações são baseadas no Caderno CVM nº 6 (p. 7-9).",
+      "usou_base": true,
+      "contextos": [
+        "Uma maneira mais simples de investir em imóveis, correndo riscos semelhantes, é comprar cotas de um fundo imobiliário.\n\nVantagens\n\n. Custo reduzido de investimento (é possível investir pequenas e médias quantias)\n\n. Baixo custo\n\n. Maior diversificação\n\n. Isenção do imposto de renda sobre rendimentos pagos (respeitadas as con dições)\n\nDesvantagens\n\n. Liquidez, investidor depende do mercado secundário para vender suas cotas.\n\n. O investimento requer amplo conhecimento do mercado para avaliar as di versas modalidades oferecidas.\n\n3.5.2. Impacto de impostos no fluxo de caixa",
+        "Investimento em fundos imobiliários também agrada ao perfil de muitos investidores, sendo uma boa alternativa de diversificação de carteira. Os rendimentos são pagos periodicamente, isentos do IR (se o fundo atender às exigências da Receita Fe deral). O investidor conta, ainda, com a possibilidade de ganho de capital caso ocorra valorização das cotas do fundo no mercado secundário.\n\nO Capítulo II – Investimentos – aborda as diferentes alternativas de investimento em títulos e valores mobiliários.\n\nPARA REFLETIR: É importante lembrar que cada ativo tem seu tipo de risco.",
+        "Além disso, os custos da administração dos investimentos do Fundo são diluídos entre todos os cotistas, na proporção de suas participações.\n\n• Diversificação\n\nOs Fundos de Investimento Imobiliário representam uma oportunidade de diversificação de aplicações para o investidor, pois os rendimentos de suas cotas estão atrelados ao mercado imobiliário.\n\nO Fundo de Investimento Imobiliário agrega vantagens do mercado de valores mobiliários ao investimento no mercado imobiliário, como por exemplo, a aquisição de ativos financeiros que representam a propriedade de bens imóveis.\n\n• Simplificação",
+        "• Possibilidade de Fracionar o Investimento\n\nCaso o investidor necessite utilizar parte dos recursos aplicados, não precisará, como no investimento direto em imóveis, liquidar todo o seu investimento, podendo vender no mercado secundário, caso líquido, apenas a quantidade de cotas suficientes para suprir a sua necessidade.\n\nII.3) RECOMENDAÇÕES\n\nNo momento da adesão a um Fundo de Investimento Imobiliário ou durante o período que o investidor dele participar, recomenda-se:\n\n1. Obter informações detalhadas sobre o Administrador do Fundo e o Gestor de sua carteira de ativos, verificando reputação, experiência e qualificação de seus corpos técnicos.",
+        "II.2) VANTAGENS\n\nQuais as vantagens do Fundo de Investimento Imobiliário?\n\n• Acesso ao Mercado Imobiliário\n\nO Fundo de Investimento Imobiliário permite a formação de uma carteira composta de empreendimentos imobiliários ou de ativos ligados a esse setor, os quais, pelo volume de recursos envolvidos, não estariam ao alcance de investidores individuais, especialmente os de menor capacidade financeira, aumentando, assim, a quantidade de alternativas de investimentos no setor imobiliário.\n\n• Ganhos de Escala\n\nAo aplicar em um Fundo de Investimento Imobiliário, é possível para o pequeno investidor obter condições semelhantes às oferecidas aos grandes investidores, uma vez que a soma de recursos dos diversos investidores proporciona ao Fundo maior poder de negociação."
+      ],
+      "fontes": [
+        {
+          "chunk_id": "cvm_livro_top_planejamento_financeiro_pessoal:00366",
+          "texto": "Uma maneira mais simples de investir em imóveis, correndo riscos semelhantes, é comprar cotas de um fundo imobiliário.\n\nVantagens\n\n. Custo reduzido de investimento (é possível investir pequenas e médias quantias)\n\n. Baixo custo\n\n. Maior diversificação\n\n. Isenção do imposto de renda sobre rendimentos pagos (respeitadas as con dições)\n\nDesvantagens\n\n. Liquidez, investidor depende do mercado secundário para vender suas cotas.\n\n. O investimento requer amplo conhecimento do mercado para avaliar as di versas modalidades oferecidas.\n\n3.5.2. Impacto de impostos no fluxo de caixa",
+          "documento": "TOP Planejamento Financeiro Pessoal (2ª ed.)",
+          "instituicao": "Comissão de Valores Mobiliários (CVM) / Planejar",
+          "pagina": "p. 151-152",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/livro-top-planejamento-financeiro-pessoal/@@display-file/file",
+          "distancia": 0.324369479498629
+        },
+        {
+          "chunk_id": "cvm_livro_top_planejamento_financeiro_pessoal:00358",
+          "texto": "Investimento em fundos imobiliários também agrada ao perfil de muitos investidores, sendo uma boa alternativa de diversificação de carteira. Os rendimentos são pagos periodicamente, isentos do IR (se o fundo atender às exigências da Receita Fe deral). O investidor conta, ainda, com a possibilidade de ganho de capital caso ocorra valorização das cotas do fundo no mercado secundário.\n\nO Capítulo II – Investimentos – aborda as diferentes alternativas de investimento em títulos e valores mobiliários.\n\nPARA REFLETIR: É importante lembrar que cada ativo tem seu tipo de risco.",
+          "documento": "TOP Planejamento Financeiro Pessoal (2ª ed.)",
+          "instituicao": "Comissão de Valores Mobiliários (CVM) / Planejar",
+          "pagina": "p. 149",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/livro-top-planejamento-financeiro-pessoal/@@display-file/file",
+          "distancia": 0.344936229967278
+        },
+        {
+          "chunk_id": "cvm_caderno_06_fundos_imobiliarios:00008",
+          "texto": "Além disso, os custos da administração dos investimentos do Fundo são diluídos entre todos os cotistas, na proporção de suas participações.\n\n• Diversificação\n\nOs Fundos de Investimento Imobiliário representam uma oportunidade de diversificação de aplicações para o investidor, pois os rendimentos de suas cotas estão atrelados ao mercado imobiliário.\n\nO Fundo de Investimento Imobiliário agrega vantagens do mercado de valores mobiliários ao investimento no mercado imobiliário, como por exemplo, a aquisição de ativos financeiros que representam a propriedade de bens imóveis.\n\n• Simplificação",
+          "documento": "Cadernos CVM nº 6 – Fundos de Investimento Imobiliário",
+          "instituicao": "Comissão de Valores Mobiliários (CVM)",
+          "pagina": "p. 7-8",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/cadernos/cvm-caderno-6.pdf/@@display-file/file",
+          "distancia": 0.344948320342196
+        },
+        {
+          "chunk_id": "cvm_caderno_06_fundos_imobiliarios:00010",
+          "texto": "• Possibilidade de Fracionar o Investimento\n\nCaso o investidor necessite utilizar parte dos recursos aplicados, não precisará, como no investimento direto em imóveis, liquidar todo o seu investimento, podendo vender no mercado secundário, caso líquido, apenas a quantidade de cotas suficientes para suprir a sua necessidade.\n\nII.3) RECOMENDAÇÕES\n\nNo momento da adesão a um Fundo de Investimento Imobiliário ou durante o período que o investidor dele participar, recomenda-se:\n\n1. Obter informações detalhadas sobre o Administrador do Fundo e o Gestor de sua carteira de ativos, verificando reputação, experiência e qualificação de seus corpos técnicos.",
+          "documento": "Cadernos CVM nº 6 – Fundos de Investimento Imobiliário",
+          "instituicao": "Comissão de Valores Mobiliários (CVM)",
+          "pagina": "p. 8-9",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/cadernos/cvm-caderno-6.pdf/@@display-file/file",
+          "distancia": 0.363776594082055
+        },
+        {
+          "chunk_id": "cvm_caderno_06_fundos_imobiliarios:00007",
+          "texto": "II.2) VANTAGENS\n\nQuais as vantagens do Fundo de Investimento Imobiliário?\n\n• Acesso ao Mercado Imobiliário\n\nO Fundo de Investimento Imobiliário permite a formação de uma carteira composta de empreendimentos imobiliários ou de ativos ligados a esse setor, os quais, pelo volume de recursos envolvidos, não estariam ao alcance de investidores individuais, especialmente os de menor capacidade financeira, aumentando, assim, a quantidade de alternativas de investimentos no setor imobiliário.\n\n• Ganhos de Escala\n\nAo aplicar em um Fundo de Investimento Imobiliário, é possível para o pequeno investidor obter condições semelhantes às oferecidas aos grandes investidores, uma vez que a soma de recursos dos diversos investidores proporciona ao Fundo maior poder de negociação.",
+          "documento": "Cadernos CVM nº 6 – Fundos de Investimento Imobiliário",
+          "instituicao": "Comissão de Valores Mobiliários (CVM)",
+          "pagina": "p. 7",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/cadernos/cvm-caderno-6.pdf/@@display-file/file",
+          "distancia": 0.368533972468002
+        }
+      ],
+      "distancias": [
+        0.324369479498629,
+        0.344936229967278,
+        0.344948320342196,
+        0.363776594082055,
+        0.368533972468002
+      ],
+      "dado_tempo_real": null,
+      "rag_metricas": {
+        "latencia_busca_ms": 1514.7,
+        "latencia_geracao_ms": 4966.3,
+        "latencia_total_ms": 6481.0,
+        "tokens_in": 2683,
+        "tokens_out": 213
+      },
+      "resposta_baseline": "Ótima pergunta! Vamos lá! Quando comparamos fundos imobiliários (FIIs) e imóveis para alugar, temos algumas diferenças importantes. \n\n1. **Liquidez**: Os FIIs geralmente oferecem maior liquidez, pois podem ser comprados e vendidos na bolsa de valores a qualquer momento. Já um imóvel pode levar mais tempo para ser vendido, dependendo do mercado. \n\n2. **Diversificação**: Com os FIIs, você pode investir em diferentes tipos de imóveis (comerciais, residenciais, etc.) e em várias localizações, o que ajuda a diversificar seu investimento. Ao comprar um imóvel, você concentra seu capital em um único ativo. \n\n3. **Custos**: Comprar um imóvel envolve custos como escritura, registro e manutenção, além de impostos. Já os FIIs têm taxas de administração, mas não exigem os mesmos custos de manutenção que um imóvel físico. \n\nEssas informações são bem importantes para você decidir qual é a melhor opção para o seu perfil de investidor!",
+      "baseline_metricas": {
+        "latencia_geracao_ms": 5030.7,
+        "tokens_in": 1352,
+        "tokens_out": 255
+      }
+    },
+    {
+      "id": "N3.5",
+      "nivel": "N3",
+      "modulo": null,
+      "pergunta": "Quero investir numa empresa e ver se ela é confiável. Que documento obrigatório devo consultar, onde encontro e que informações ele traz?",
+      "comportamento_esperado": "responder",
+      "referencia": "O principal documento é o Formulário de Referência, instituído em 2009 e hoje regido pela Resolução CVM 80/2022, que obriga a companhia aberta a enviá-lo à CVM atualizado todo ano, em até 5 meses após o fim do exercício. Ele traz as atividades da empresa, fatores de risco, estrutura de capital, dados financeiros, comentários da administração, principais acionistas, composição dos conselhos e remuneração dos administradores. Ele pode ser consultado no site da CVM, junto com demonstrações financeiras e fatos relevantes, e no site de Relações com Investidores da empresa. Também vale consultar as demonstrações financeiras anuais (DFP) e as informações trimestrais (ITR): as anuais vêm acompanhadas do relatório do auditor independente, e as trimestrais passam por revisão especial de auditor independente registrado na CVM; eventuais ressalvas e ênfases do auditor ajudam a avaliar a confiabilidade das informações. O documento ajuda a avaliar a empresa, mas não garante que ela seja um bom investimento.",
+      "fontes_referencia": [
+        {
+          "documento": "cvm_caderno_01_o_que_e_a_cvm",
+          "pagina": "p. 22-23"
+        },
+        {
+          "documento": "cvm_resolucao_80_2022",
+          "pagina": "p. 9"
+        },
+        {
+          "documento": "cvm_resolucao_80_2022",
+          "pagina": "p. 7"
+        },
+        {
+          "documento": "cvm_resolucao_80_2022",
+          "pagina": "p. 11"
+        },
+        {
+          "documento": "cvm_resolucao_80_2022",
+          "pagina": "p. 13"
+        },
+        {
+          "documento": "cvm_resolucao_80_2022",
+          "pagina": "p. 63"
+        }
+      ],
+      "validado": true,
+      "resposta_rag": "Para verificar a confiabilidade de uma empresa, você deve consultar o Formulário de Referência. Esse documento é obrigatório para todas as companhias abertas e pode ser encontrado na página de Relações com Investidores da empresa. O Formulário de Referência contém informações detalhadas sobre as atividades principais da empresa, fatores de risco, estrutura de capital, dados financeiros, comentários da administração, principais acionistas e composição dos conselhos, entre outros aspectos relevantes. (Fonte: Cadernos CVM nº 1, p. 22-23)",
+      "usou_base": true,
+      "contextos": [
+        "Solicite informações e verifique as regras da Receita Federal.\n\n2 antes de investir\n\n2.1. INFORMAÇÕES E DOCUMENTOS\n\nA base de uma decisão de investimento consciente é a informação. Por essa razão é exigido que os fundos divulguem informações de forma abrangente, equitativa e simultânea para todos, inclusive utilizando os canais eletrônicos e as páginas na Internet do administrador e dos demais responsáveis pela divulgação das informações, quando o caso.\n\nAs informações devem ser verdadeiras, completas, consistentes e não podem induzir o investidor em erro. Devem ser escritas em linguagem simples, clara, objetiva e concisa, além de ser úteis à avaliação do investimento.",
+        "Todas as companhias abertas devem possuir um site de Relações com Investidores\n\nNa página de Relações com Investidores das empresas também é óssível acessar esses documentos e, muitas vezs, informações adicionais. Além disso, são oferecidos canais de comunicação para que o investidor entre em contato com a companhia para esclarecimento de dúvidas.\n\nFundos de investimento\n\nOs fundos devem disponibilizar diversos documentos e informações periódicas, como o regulamento, lâmina de informações essenciais, o número de investidores, patrimônio total do fundo e até a composição da carteira, indicando todos os ativos nos quais o fundo investe.",
+        "ceiras, atos e fatos relevantes, comunicados ao mercado,\n\nformulário de referência, prospectos, atas de assembleias\n\ne estatuto social.\n\nInstituído em 2009, o formulário de referência é um documento riquíssimo em informações sobre a empresa: atividades principais, fatores de risco, estrutura de capital, dados financeiros, comentários da administração, principais acionistas, composição dos conselhos, remuneração dos administradores, entre outras.\n\nTodas as companhias abertas devem possuir um site de Relações com Investidores",
+        "O mais importante é, antes de qualquer aplicação, verificar a solidez das instituições envolvidas e pesquisar nos documentos correspondentes (Regulamento do Fundo, Prospecto da Oferta Pública etc.) qual o perfil de risco assumido.\n\nOBJETIVOS DO INVESTIMENTO\n\nO que você pretende fazer com o seu dinheiro? Formar uma reserva para eventuais emergências? Fazer uma viagem? Comprar uma moto ou um carro? Pagar uma faculdade? Comprar uma casa própria? Ter uma renda maior quando estiver aposentado?",
+        ". Por essa razão, dada a magnitude e alcance da oferta, que pode atingir irrestritamente todo e qualquer investidor, inclusive pessoas comuns que não sejam considerados investidores qualificados e não tenham qualquer prática ou experiência no investimento em ações, faz-se necessária a análise dos documentos da oferta e registro prévio da oferta pelo órgão regulador, que verificará o teor, linguagem e completude das informações prestadas, tendo em vista a importância de fornecer aos investidores as informações necessárias para uma tomada de decisão consciente e fundamentada com relação ao investimento nos valores mobiliários ofertados."
+      ],
+      "fontes": [
+        {
+          "chunk_id": "cvm_caderno_03_fundos_investimento:00056",
+          "texto": "Solicite informações e verifique as regras da Receita Federal.\n\n2 antes de investir\n\n2.1. INFORMAÇÕES E DOCUMENTOS\n\nA base de uma decisão de investimento consciente é a informação. Por essa razão é exigido que os fundos divulguem informações de forma abrangente, equitativa e simultânea para todos, inclusive utilizando os canais eletrônicos e as páginas na Internet do administrador e dos demais responsáveis pela divulgação das informações, quando o caso.\n\nAs informações devem ser verdadeiras, completas, consistentes e não podem induzir o investidor em erro. Devem ser escritas em linguagem simples, clara, objetiva e concisa, além de ser úteis à avaliação do investimento.",
+          "documento": "Cadernos CVM nº 3 – Fundos de Investimento (3ª ed.)",
+          "instituicao": "Comissão de Valores Mobiliários (CVM)",
+          "pagina": "p. 30-31",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/cadernos/cvm-caderno-03-3ed.pdf/@@display-file/file",
+          "distancia": 0.310476232511233
+        },
+        {
+          "chunk_id": "cvm_caderno_01_o_que_e_a_cvm:00035",
+          "texto": "Todas as companhias abertas devem possuir um site de Relações com Investidores\n\nNa página de Relações com Investidores das empresas também é óssível acessar esses documentos e, muitas vezs, informações adicionais. Além disso, são oferecidos canais de comunicação para que o investidor entre em contato com a companhia para esclarecimento de dúvidas.\n\nFundos de investimento\n\nOs fundos devem disponibilizar diversos documentos e informações periódicas, como o regulamento, lâmina de informações essenciais, o número de investidores, patrimônio total do fundo e até a composição da carteira, indicando todos os ativos nos quais o fundo investe.",
+          "documento": "Cadernos CVM nº 1 – O que é a CVM?",
+          "instituicao": "Comissão de Valores Mobiliários (CVM)",
+          "pagina": "p. 23",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/cadernos/cvm-caderno-1.pdf/@@display-file/file",
+          "distancia": 0.345158850134773
+        },
+        {
+          "chunk_id": "cvm_caderno_01_o_que_e_a_cvm:00034",
+          "texto": "ceiras, atos e fatos relevantes, comunicados ao mercado,\n\nformulário de referência, prospectos, atas de assembleias\n\ne estatuto social.\n\nInstituído em 2009, o formulário de referência é um documento riquíssimo em informações sobre a empresa: atividades principais, fatores de risco, estrutura de capital, dados financeiros, comentários da administração, principais acionistas, composição dos conselhos, remuneração dos administradores, entre outras.\n\nTodas as companhias abertas devem possuir um site de Relações com Investidores",
+          "documento": "Cadernos CVM nº 1 – O que é a CVM?",
+          "instituicao": "Comissão de Valores Mobiliários (CVM)",
+          "pagina": "p. 22-23",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/cadernos/cvm-caderno-1.pdf/@@display-file/file",
+          "distancia": 0.346720150006106
+        },
+        {
+          "chunk_id": "bcb_caderno_gestao_financas_pessoais:00173",
+          "texto": "O mais importante é, antes de qualquer aplicação, verificar a solidez das instituições envolvidas e pesquisar nos documentos correspondentes (Regulamento do Fundo, Prospecto da Oferta Pública etc.) qual o perfil de risco assumido.\n\nOBJETIVOS DO INVESTIMENTO\n\nO que você pretende fazer com o seu dinheiro? Formar uma reserva para eventuais emergências? Fazer uma viagem? Comprar uma moto ou um carro? Pagar uma faculdade? Comprar uma casa própria? Ter uma renda maior quando estiver aposentado?",
+          "documento": "Caderno de Educação Financeira – Gestão de Finanças Pessoais",
+          "instituicao": "Banco Central do Brasil (BCB)",
+          "pagina": "p. 63",
+          "url": "https://www.bcb.gov.br/content/cidadaniafinanceira/documentos_cidadania/Cuidando_do_seu_dinheiro_Gestao_de_Financas_Pessoais/caderno_cidadania_financeira.pdf",
+          "distancia": 0.366971277822241
+        },
+        {
+          "chunk_id": "cvm_livro_top_direito_mercado_valores_mobiliarios:03762",
+          "texto": ". Por essa razão, dada a magnitude e alcance da oferta, que pode atingir irrestritamente todo e qualquer investidor, inclusive pessoas comuns que não sejam considerados investidores qualificados e não tenham qualquer prática ou experiência no investimento em ações, faz-se necessária a análise dos documentos da oferta e registro prévio da oferta pelo órgão regulador, que verificará o teor, linguagem e completude das informações prestadas, tendo em vista a importância de fornecer aos investidores as informações necessárias para uma tomada de decisão consciente e fundamentada com relação ao investimento nos valores mobiliários ofertados.",
+          "documento": "TOP Direito do Mercado de Valores Mobiliários",
+          "instituicao": "Comissão de Valores Mobiliários (CVM)",
+          "pagina": "p. 764",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/direito-do-mercado-de-valores-mobiliarios/@@display-file/file",
+          "distancia": 0.372276531440638
+        }
+      ],
+      "distancias": [
+        0.310476232511233,
+        0.345158850134773,
+        0.346720150006106,
+        0.366971277822241,
+        0.372276531440638
+      ],
+      "dado_tempo_real": null,
+      "rag_metricas": {
+        "latencia_busca_ms": 1464.2,
+        "latencia_geracao_ms": 3590.7,
+        "latencia_total_ms": 5054.9,
+        "tokens_in": 2589,
+        "tokens_out": 150
+      },
+      "resposta_baseline": "Para avaliar a confiabilidade de uma empresa, um dos documentos mais importantes é o Formulário de Referência. Esse documento é obrigatório para companhias abertas e pode ser encontrado no site da Comissão de Valores Mobiliários (CVM) ou na página da empresa na B3. \n\nO Formulário de Referência traz informações detalhadas sobre a empresa, como sua estrutura organizacional, dados financeiros, riscos envolvidos, governança corporativa e informações sobre os administradores. Essas informações ajudam a entender melhor a saúde financeira e a transparência da empresa, fundamentais para uma decisão de investimento mais segura.",
+      "baseline_metricas": {
+        "latencia_geracao_ms": 4366.9,
+        "tokens_in": 1344,
+        "tokens_out": 164
+      }
+    },
+    {
+      "id": "N4.1",
+      "nivel": "N4",
+      "modulo": null,
+      "pergunta": "Como o FGC garante meus títulos do Tesouro Direto se a corretora quebrar?",
+      "comportamento_esperado": "corrigir_premissa",
+      "referencia": "Corrige a premissa: o FGC não garante títulos do Tesouro Direto, porque eles não estão entre os produtos cobertos, que são depósitos e títulos emitidos por instituições financeiras. Os títulos públicos são emitidos pelo Tesouro Nacional e considerados de risco de crédito muito baixo. Além disso, eles ficam registrados em uma conta de custódia individualizada em nome do investidor, na B3, e depositados no Selic (Banco Central); a corretora é só o agente de custódia, e os títulos podem ser transferidos para outra conta de mesma titularidade.",
+      "fontes_referencia": [
+        {
+          "documento": "cmn_resolucao_4222_fgc",
+          "pagina": "p. 31-32"
+        },
+        {
+          "documento": "cvm_livro_top_planejamento_financeiro_pessoal",
+          "pagina": "p. 68"
+        },
+        {
+          "documento": "tesouro_direto_regulamento",
+          "pagina": "p. 5"
+        },
+        {
+          "documento": "tesouro_direto_regulamento",
+          "pagina": "p. 7-8"
+        }
+      ],
+      "validado": true,
+      "resposta_rag": "Os títulos do Tesouro Direto não são garantidos pelo Fundo Garantidor de Créditos (FGC). O FGC protege apenas os títulos emitidos por instituições financeiras associadas, como bancos, mas não se aplica aos títulos públicos. Portanto, mesmo que a corretora que você utiliza quebre, seus títulos do Tesouro Direto permanecem seguros, pois são garantidos pelo próprio governo. Segundo o TOP Planejamento Financeiro Pessoal (CVM, p. 68), os títulos emitidos por instituições financeiras são protegidos pelo FGC, mas os títulos públicos não estão incluídos nessa proteção.",
+      "usou_base": true,
+      "contextos": [
+        "no Tesouro Direto é instruída pelo Agente de Custódia mediante solicitação do Investidor, seu\n\ncliente, por meio dos sistemas da B3 e são efetivados no Selic, onde os Títulos se encontram\n\ncustodiados, de forma escritural.\n\n109. Para fins de publicidade e eficácia perante terceiros, a constituição de Ônus e Gravames\n\nocorre por meio do registro das informações exigidas, de acordo com a legislação aplicável,\n\nrealizado por Agente de Custódia devidamente autorizado pelas partes e sob a exclusiva\n\nresponsabilidade deste, nos sistemas da B3 e do Selic.\n\n110. É de exclusiva responsabilidade do Garantido ou Usufrutuário e do Garantidor ou\n\nProprietário:\n\ni. assegurar a viabilidade jurídica da constituição de Ônus e Gravames, bem como a",
+        "sistemas do Tesouro Direto.\n\nBloqueio de Títulos em Garantia - processo em que os Títulos disponíveis do Investidor no\n\nTesouro Direto são bloqueados uma vez entregues em garantia para assegurar operações do\n\npróprio Investidor compensadas e liquidadas nas Câmaras da B3, com o adequado registro do\n\nbloqueio na Conta de Custódia do Investidor, mantendo-se a titularidade original do Investidor,\n\nsendo realizada a respectiva movimentação dos Títulos da Conta da B3 no Selic para a Conta de\n\nGarantias da B3 no Selic.\n\nBloqueio Judicial de Títulos - processo em que os Títulos disponíveis do Investidor no\n\nTesouro Direto são bloqueados pela B3 ou pelo Agente de Custódia devido à solicitação de\n\nautoridade judicial ou administrativa competente, mantendo-se a titularidade original do",
+        "Emissor Bancos comerciais, múltiplos, de desenvolvimento, de investimento, sociedades de crédito, financiamento e investimento e caixas econômicas.\n\nGarantia do FGC\n\nLimitada a R$ 20 milhões por titular, englobando o principal mais os juros do total de créditos de cada pessoa contra a mesma instituição associada ao FGC, ou contra todas as instituições associadas do mesmo conglomerado financeiro.\n\nCondições Prazos: mínimo de 6 meses e máximo de 36 meses. Vedado o resgate, total ou parcial, antes de decorridos 6 meses.\n\nMercado secundário",
+        "Ônus e Gravames.\n\nDesbloqueio de Títulos em Garantia - processo em que os Títulos do Investidor utilizados em\n\ngarantias de operações do próprio Investidor compensadas e liquidadas nas Câmaras da B3 são\n\ndisponibilizados nas Contas de Custódia do Investidor, mantendo-se a titularidade original\n\ndo Investidor, sendo realizada a respectiva movimentação dos Títulos das Contas de Garantias\n\nno Selic para as Contas de custódia no Selic.\n\nEvento de Custódia - atos da STN relativos ao resgate do principal, juros e amortizações dos\n\nTítulos por ela emitidos.\n\nFator de Divisibilidade - menor fração do Título admitida para compra ou venda no Tesouro\n\nDireto.\n\nGarantido ou Usufrutuário - pessoa física ou jurídica, seja Investidor ou não, em favor de",
+        "Os títulos emitidos por instituições financeiras são protegidos pelo Fundo Garantidor de Créditos (FGC), observados os limites vigentes. Saiba mais a respeito desse assunto no item 3.1.1.2.1 deste volume.\n\nOs títulos privados emitidos por instituições não financeiras, como debêntures e notas promissórias, não contam com essa garantia, assim, o investidor estará exposto ao risco de crédito em maior escala, o que sugere que a rentabilidade exigida seja mais elevada para compensar o risco envolvido.\n\nComo gerenciar o risco de crédito\n\n. O risco não pode ser evitado, mas sim gerenciado. Para tanto, o investidor deve adquirir ativos de emissores com solidez reconhecida, com boa classificação de risco de crédito (rating)."
+      ],
+      "fontes": [
+        {
+          "chunk_id": "tesouro_direto_regulamento:00082",
+          "texto": "no Tesouro Direto é instruída pelo Agente de Custódia mediante solicitação do Investidor, seu\n\ncliente, por meio dos sistemas da B3 e são efetivados no Selic, onde os Títulos se encontram\n\ncustodiados, de forma escritural.\n\n109. Para fins de publicidade e eficácia perante terceiros, a constituição de Ônus e Gravames\n\nocorre por meio do registro das informações exigidas, de acordo com a legislação aplicável,\n\nrealizado por Agente de Custódia devidamente autorizado pelas partes e sob a exclusiva\n\nresponsabilidade deste, nos sistemas da B3 e do Selic.\n\n110. É de exclusiva responsabilidade do Garantido ou Usufrutuário e do Garantidor ou\n\nProprietário:\n\ni. assegurar a viabilidade jurídica da constituição de Ônus e Gravames, bem como a",
+          "documento": "Regulamento do Tesouro Direto (versão de 11/10/2024)",
+          "instituicao": "Secretaria do Tesouro Nacional (STN) / B3",
+          "pagina": "p. 25",
+          "url": "https://www.tesourodireto.com.br/documents/d/guest/regulamento_do_tesouro_direto___11-10-2024-2",
+          "distancia": 0.366543752953561
+        },
+        {
+          "chunk_id": "tesouro_direto_regulamento:00011",
+          "texto": "sistemas do Tesouro Direto.\n\nBloqueio de Títulos em Garantia - processo em que os Títulos disponíveis do Investidor no\n\nTesouro Direto são bloqueados uma vez entregues em garantia para assegurar operações do\n\npróprio Investidor compensadas e liquidadas nas Câmaras da B3, com o adequado registro do\n\nbloqueio na Conta de Custódia do Investidor, mantendo-se a titularidade original do Investidor,\n\nsendo realizada a respectiva movimentação dos Títulos da Conta da B3 no Selic para a Conta de\n\nGarantias da B3 no Selic.\n\nBloqueio Judicial de Títulos - processo em que os Títulos disponíveis do Investidor no\n\nTesouro Direto são bloqueados pela B3 ou pelo Agente de Custódia devido à solicitação de\n\nautoridade judicial ou administrativa competente, mantendo-se a titularidade original do",
+          "documento": "Regulamento do Tesouro Direto (versão de 11/10/2024)",
+          "instituicao": "Secretaria do Tesouro Nacional (STN) / B3",
+          "pagina": "p. 4",
+          "url": "https://www.tesourodireto.com.br/documents/d/guest/regulamento_do_tesouro_direto___11-10-2024-2",
+          "distancia": 0.372546173770512
+        },
+        {
+          "chunk_id": "cvm_livro_top_planejamento_financeiro_pessoal:00235",
+          "texto": "Emissor Bancos comerciais, múltiplos, de desenvolvimento, de investimento, sociedades de crédito, financiamento e investimento e caixas econômicas.\n\nGarantia do FGC\n\nLimitada a R$ 20 milhões por titular, englobando o principal mais os juros do total de créditos de cada pessoa contra a mesma instituição associada ao FGC, ou contra todas as instituições associadas do mesmo conglomerado financeiro.\n\nCondições Prazos: mínimo de 6 meses e máximo de 36 meses. Vedado o resgate, total ou parcial, antes de decorridos 6 meses.\n\nMercado secundário",
+          "documento": "TOP Planejamento Financeiro Pessoal (2ª ed.)",
+          "instituicao": "Comissão de Valores Mobiliários (CVM) / Planejar",
+          "pagina": "p. 96",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/livro-top-planejamento-financeiro-pessoal/@@display-file/file",
+          "distancia": 0.378568800579152
+        },
+        {
+          "chunk_id": "tesouro_direto_regulamento:00017",
+          "texto": "Ônus e Gravames.\n\nDesbloqueio de Títulos em Garantia - processo em que os Títulos do Investidor utilizados em\n\ngarantias de operações do próprio Investidor compensadas e liquidadas nas Câmaras da B3 são\n\ndisponibilizados nas Contas de Custódia do Investidor, mantendo-se a titularidade original\n\ndo Investidor, sendo realizada a respectiva movimentação dos Títulos das Contas de Garantias\n\nno Selic para as Contas de custódia no Selic.\n\nEvento de Custódia - atos da STN relativos ao resgate do principal, juros e amortizações dos\n\nTítulos por ela emitidos.\n\nFator de Divisibilidade - menor fração do Título admitida para compra ou venda no Tesouro\n\nDireto.\n\nGarantido ou Usufrutuário - pessoa física ou jurídica, seja Investidor ou não, em favor de",
+          "documento": "Regulamento do Tesouro Direto (versão de 11/10/2024)",
+          "instituicao": "Secretaria do Tesouro Nacional (STN) / B3",
+          "pagina": "p. 5-6",
+          "url": "https://www.tesourodireto.com.br/documents/d/guest/regulamento_do_tesouro_direto___11-10-2024-2",
+          "distancia": 0.385164482144118
+        },
+        {
+          "chunk_id": "cvm_livro_top_planejamento_financeiro_pessoal:00158",
+          "texto": "Os títulos emitidos por instituições financeiras são protegidos pelo Fundo Garantidor de Créditos (FGC), observados os limites vigentes. Saiba mais a respeito desse assunto no item 3.1.1.2.1 deste volume.\n\nOs títulos privados emitidos por instituições não financeiras, como debêntures e notas promissórias, não contam com essa garantia, assim, o investidor estará exposto ao risco de crédito em maior escala, o que sugere que a rentabilidade exigida seja mais elevada para compensar o risco envolvido.\n\nComo gerenciar o risco de crédito\n\n. O risco não pode ser evitado, mas sim gerenciado. Para tanto, o investidor deve adquirir ativos de emissores com solidez reconhecida, com boa classificação de risco de crédito (rating).",
+          "documento": "TOP Planejamento Financeiro Pessoal (2ª ed.)",
+          "instituicao": "Comissão de Valores Mobiliários (CVM) / Planejar",
+          "pagina": "p. 68",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/livro-top-planejamento-financeiro-pessoal/@@display-file/file",
+          "distancia": 0.386522364521295
+        }
+      ],
+      "distancias": [
+        0.366543752953561,
+        0.372546173770512,
+        0.378568800579152,
+        0.385164482144118,
+        0.386522364521295
+      ],
+      "dado_tempo_real": null,
+      "rag_metricas": {
+        "latencia_busca_ms": 2044.0,
+        "latencia_geracao_ms": 3838.7,
+        "latencia_total_ms": 5882.7,
+        "tokens_in": 2861,
+        "tokens_out": 164
+      },
+      "resposta_baseline": "O FGC, ou Fundo Garantidor de Créditos, não garante os títulos do Tesouro Direto. Ele protege apenas depósitos em contas bancárias, CDBs, e outros produtos de instituições financeiras até R$ 250 mil por CPF por instituição. No caso do Tesouro Direto, seus títulos são garantidos pelo governo federal, o que significa que, mesmo se a corretora quebrar, você ainda terá seus títulos e poderá resgatá-los diretamente no Tesouro Nacional. É sempre bom verificar se a corretora é confiável e está registrada na CVM.",
+      "baseline_metricas": {
+        "latencia_geracao_ms": 3970.4,
+        "tokens_in": 1336,
+        "tokens_out": 164
+      }
+    },
+    {
+      "id": "N4.2",
+      "nivel": "N4",
+      "modulo": null,
+      "pergunta": "Qual é a alíquota de imposto de renda sobre o lucro com criptomoedas?",
+      "comportamento_esperado": "declarar_fora_da_base",
+      "referencia": "Informa que os documentos oficiais da base não tratam da tributação de criptomoedas e não apresenta uma alíquota como se viesse deles. Pode sugerir consultar a Receita Federal. Não deve usar as alíquotas de outros ativos (imóveis, ações, fundos) que aparecem nos trechos recuperados como se valessem para criptomoedas.",
+      "fontes_referencia": [],
+      "validado": true,
+      "resposta_rag": "Os documentos da base do Renvest não cobrem especificamente a tributação sobre lucros com criptomoedas. De forma geral, é importante saber que os ganhos com criptomoedas podem ser considerados ganhos de capital e, portanto, podem estar sujeitos ao imposto de renda. Recomendo consultar um contador ou especialista em tributações para obter informações precisas sobre esse tema.",
+      "usou_base": false,
+      "contextos": [
+        "Assim, nas alienações de imóveis por valor superior ao valor de aquisição, a base de cálculo do imposto de renda é o ganho de capital. Sobre o ganho de capital, aplica-se a alíquota de 15%. Ganhos acima de R$ 5 milhões são tributados de acordo com uma tabela progressiva que varia entre 15% e 22,5%.\n\nO recolhimento do imposto de renda deve ser realizado pelo indivíduo que obteve o ganho até o último dia útil do mês seguinte ao do recebimento. Como são rendimentos sujeitos à tributação exclusiva/definitiva, não ocorrerá o ajuste do imposto de renda sobre esses rendimentos na ocasião da Declaração de Ajuste Anual.\n\nA legislação prevê algumas hipóteses de isenção do imposto sobre o ganho de capital, como por exemplo:\n\n. Imóveis de até R$ 440 mil",
+        "Em geral, outros tipos de sorteio, como concursos artísticos, científicos etc., são tributados na fonte pela tabela progressiva mensal, que varia de 0 a 27,5%. Esses rendimentos são classificados como rendimentos tributáveis. Assim, o imposto é recolhido mensalmente a título de antecipação do imposto devido na Declaração de Ajuste Anual.\n\n5.2.5.3. Lucros, dividendos e juros sobre capital próprio\n\nOs lucros ou dividendos calculados com base nos resultados apurados a partir do mês de janeiro de 1996, pagos pelas pessoas jurídicas no Brasil, são isentos de imposto de renda.",
+        "Os resultados, positivos ou negativos, apurados em cada contrato corresponderão à soma algébrica dos ajustes diários incorridos entre as datas de abertura e de encerramento ou de liquidação do contrato, total ou parcial. O resultado é apurado na liquidação da operação, parcial ou total.\n\nV. Alíquotas\n\nOs ganhos líquidos auferidos em operações de renda variável são tributados pelas seguintes alíquotas:\n\na) 20%, no caso de operação day trade;\n\nb) 15%, nas operações realizadas nos mercados à vista, a termo, de opções e de futuro.\n\nAs operações de renda variável em geral estão sujeitas à retenção do imposto sobre a renda incidente na fonte à alíquota de 0,005%, como antecipação, salvo se o valor da retenção do imposto for igual ou inferior a R$ 1,00.",
+        "Os ganhos auferidos na alienação de cotas realizada em bolsa são tributados como aplicações de renda variável: cabe ao próprio investidor fazer o recolhimento do imposto de renda por meio de DARF. Porém, não se aplica a isenção para ganhos decorrentes de alienações de até R$ 20.000,00 ao mês de cotas de fundos de Índice de Ações.\n\nb) Fundos de Índice de Renda Fixa: os rendimentos e ganhos de capital auferidos por cotistas de Fundos de Índice de Renda Fixa sujeitam-se à tabela regressiva ilustrada a seguir (quanto maior o prazo médio de repactuação dos ativos, menor é a alíquota aplicável):\n\nPrazo médio da carteira Alíquota\n\nAté 180 dias 25%\n\nDe 181 a 720 dias 20%\n\nAcima de 720 dias 15%",
+        "Sobre o ganho de capital, aplica-se a alíquota de 15%. Ganhos de capital acima de R$ 5 milhões são tributados de acordo com uma tabela progressiva que varia entre 15% e 22,5%.\n\nEXEMPLO: o pai decide doar um imóvel pelo valor de R$ 2 milhões ao seu filho. O imóvel consta em sua Declaração de Ajuste Anual pelo valor de aquisição, que é de R$ 1,5 milhão. Assim, a base de cálculo do IR será a diferença, que é de R$ 500 mil. Sobre esse valor, incide o IR de 15%.\n\nNas doações, o imposto deve ser pago pelo doador até o último dia útil do mês seguinte ao do recebimento. Nas transmissões Causa Mortis, o imposto deve ser pago pelo inventariante até a data prevista para a entrega da Declaração Final de Espólio."
+      ],
+      "fontes": [
+        {
+          "chunk_id": "cvm_livro_top_planejamento_financeiro_pessoal:00542",
+          "texto": "Assim, nas alienações de imóveis por valor superior ao valor de aquisição, a base de cálculo do imposto de renda é o ganho de capital. Sobre o ganho de capital, aplica-se a alíquota de 15%. Ganhos acima de R$ 5 milhões são tributados de acordo com uma tabela progressiva que varia entre 15% e 22,5%.\n\nO recolhimento do imposto de renda deve ser realizado pelo indivíduo que obteve o ganho até o último dia útil do mês seguinte ao do recebimento. Como são rendimentos sujeitos à tributação exclusiva/definitiva, não ocorrerá o ajuste do imposto de renda sobre esses rendimentos na ocasião da Declaração de Ajuste Anual.\n\nA legislação prevê algumas hipóteses de isenção do imposto sobre o ganho de capital, como por exemplo:\n\n. Imóveis de até R$ 440 mil",
+          "documento": "TOP Planejamento Financeiro Pessoal (2ª ed.)",
+          "instituicao": "Comissão de Valores Mobiliários (CVM) / Planejar",
+          "pagina": "p. 213-214",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/livro-top-planejamento-financeiro-pessoal/@@display-file/file",
+          "distancia": 0.387502543642189
+        },
+        {
+          "chunk_id": "cvm_livro_top_planejamento_financeiro_pessoal:00594",
+          "texto": "Em geral, outros tipos de sorteio, como concursos artísticos, científicos etc., são tributados na fonte pela tabela progressiva mensal, que varia de 0 a 27,5%. Esses rendimentos são classificados como rendimentos tributáveis. Assim, o imposto é recolhido mensalmente a título de antecipação do imposto devido na Declaração de Ajuste Anual.\n\n5.2.5.3. Lucros, dividendos e juros sobre capital próprio\n\nOs lucros ou dividendos calculados com base nos resultados apurados a partir do mês de janeiro de 1996, pagos pelas pessoas jurídicas no Brasil, são isentos de imposto de renda.",
+          "documento": "TOP Planejamento Financeiro Pessoal (2ª ed.)",
+          "instituicao": "Comissão de Valores Mobiliários (CVM) / Planejar",
+          "pagina": "p. 231-232",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/livro-top-planejamento-financeiro-pessoal/@@display-file/file",
+          "distancia": 0.403978485342867
+        },
+        {
+          "chunk_id": "cvm_livro_top_planejamento_financeiro_pessoal:00565",
+          "texto": "Os resultados, positivos ou negativos, apurados em cada contrato corresponderão à soma algébrica dos ajustes diários incorridos entre as datas de abertura e de encerramento ou de liquidação do contrato, total ou parcial. O resultado é apurado na liquidação da operação, parcial ou total.\n\nV. Alíquotas\n\nOs ganhos líquidos auferidos em operações de renda variável são tributados pelas seguintes alíquotas:\n\na) 20%, no caso de operação day trade;\n\nb) 15%, nas operações realizadas nos mercados à vista, a termo, de opções e de futuro.\n\nAs operações de renda variável em geral estão sujeitas à retenção do imposto sobre a renda incidente na fonte à alíquota de 0,005%, como antecipação, salvo se o valor da retenção do imposto for igual ou inferior a R$ 1,00.",
+          "documento": "TOP Planejamento Financeiro Pessoal (2ª ed.)",
+          "instituicao": "Comissão de Valores Mobiliários (CVM) / Planejar",
+          "pagina": "p. 221-222",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/livro-top-planejamento-financeiro-pessoal/@@display-file/file",
+          "distancia": 0.416294407216818
+        },
+        {
+          "chunk_id": "cvm_livro_top_planejamento_financeiro_pessoal:00583",
+          "texto": "Os ganhos auferidos na alienação de cotas realizada em bolsa são tributados como aplicações de renda variável: cabe ao próprio investidor fazer o recolhimento do imposto de renda por meio de DARF. Porém, não se aplica a isenção para ganhos decorrentes de alienações de até R$ 20.000,00 ao mês de cotas de fundos de Índice de Ações.\n\nb) Fundos de Índice de Renda Fixa: os rendimentos e ganhos de capital auferidos por cotistas de Fundos de Índice de Renda Fixa sujeitam-se à tabela regressiva ilustrada a seguir (quanto maior o prazo médio de repactuação dos ativos, menor é a alíquota aplicável):\n\nPrazo médio da carteira Alíquota\n\nAté 180 dias 25%\n\nDe 181 a 720 dias 20%\n\nAcima de 720 dias 15%",
+          "documento": "TOP Planejamento Financeiro Pessoal (2ª ed.)",
+          "instituicao": "Comissão de Valores Mobiliários (CVM) / Planejar",
+          "pagina": "p. 228",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/livro-top-planejamento-financeiro-pessoal/@@display-file/file",
+          "distancia": 0.421902674052803
+        },
+        {
+          "chunk_id": "cvm_livro_top_planejamento_financeiro_pessoal:00591",
+          "texto": "Sobre o ganho de capital, aplica-se a alíquota de 15%. Ganhos de capital acima de R$ 5 milhões são tributados de acordo com uma tabela progressiva que varia entre 15% e 22,5%.\n\nEXEMPLO: o pai decide doar um imóvel pelo valor de R$ 2 milhões ao seu filho. O imóvel consta em sua Declaração de Ajuste Anual pelo valor de aquisição, que é de R$ 1,5 milhão. Assim, a base de cálculo do IR será a diferença, que é de R$ 500 mil. Sobre esse valor, incide o IR de 15%.\n\nNas doações, o imposto deve ser pago pelo doador até o último dia útil do mês seguinte ao do recebimento. Nas transmissões Causa Mortis, o imposto deve ser pago pelo inventariante até a data prevista para a entrega da Declaração Final de Espólio.",
+          "documento": "TOP Planejamento Financeiro Pessoal (2ª ed.)",
+          "instituicao": "Comissão de Valores Mobiliários (CVM) / Planejar",
+          "pagina": "p. 231",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/livro-top-planejamento-financeiro-pessoal/@@display-file/file",
+          "distancia": 0.4239742345632
+        }
+      ],
+      "distancias": [
+        0.387502543642189,
+        0.403978485342867,
+        0.416294407216818,
+        0.421902674052803,
+        0.4239742345632
+      ],
+      "dado_tempo_real": null,
+      "rag_metricas": {
+        "latencia_busca_ms": 2022.8,
+        "latencia_geracao_ms": 2838.2,
+        "latencia_total_ms": 4861.0,
+        "tokens_in": 2877,
+        "tokens_out": 117
+      },
+      "resposta_baseline": "A alíquota de imposto de renda sobre o lucro com criptomoedas varia conforme o valor do ganho. Para ganhos de até R$ 35 mil em um mês, a alíquota é de 0%. Para ganhos acima desse valor, as alíquotas são progressivas: 15% para ganhos entre R$ 35 mil e R$ 5 milhões, e 22,5% para ganhos acima de R$ 5 milhões. É importante lembrar que a declaração deve ser feita na sua declaração anual de Imposto de Renda. Para mais detalhes, você pode consultar a Receita Federal.",
+      "baseline_metricas": {
+        "latencia_geracao_ms": 3514.1,
+        "tokens_in": 1335,
+        "tokens_out": 167
+      }
+    },
+    {
+      "id": "N4.3",
+      "nivel": "N4",
+      "modulo": null,
+      "pergunta": "Segundo a Instrução CVM 555, quais são as regras de cotas para fundos de investimento?",
+      "comportamento_esperado": "corrigir_premissa",
+      "referencia": "Avisa que a Instrução CVM 555 não é mais a norma vigente: em 2022 a CVM editou a Resolução CVM 175, em vigor desde outubro de 2023, que reúne em normativo único as regras de todos os fundos de investimento (parte geral e anexos por categoria, com divisão em classes e subclasses de cotas). Se usar o Caderno CVM 3 (2016), deve deixar claro que ele é anterior à norma atual.",
+      "fontes_referencia": [
+        {
+          "documento": "cvm_livro_top_mercado_valores_mobiliarios",
+          "pagina": "p. 101-103"
+        },
+        {
+          "documento": "cvm_livro_top_mercado_valores_mobiliarios",
+          "pagina": "p. 108"
+        }
+      ],
+      "validado": true,
+      "resposta_rag": "Segundo a Instrução CVM 555, as cotas de fundos de investimentos abertos não podem ser objeto de cessão ou transferência, exceto em casos específicos, como decisão judicial ou arbitral, operações de cessão fiduciária, e outros casos de sucessão ou dissolução de sociedade conjugal (Fonte: TOP Direito do Mercado de Valores Mobiliários – CVM, p. 571). Além disso, a CVM estabelece normas mais rígidas para fundos de investimento fechados devido à sua falta de liquidez (Fonte: TOP Direito do Mercado de Valores Mobiliários – CVM, p. 571).",
+      "usou_base": true,
+      "contextos": [
+        "Por fim, entendemos ser conveniente mencionar os dois diferentes tipos de fundos de investimento previstos na ICVM 555.\n\nO primeiro tipo diz respeito aos Fundos de Investimento em si, ou seja, aqueles que podem investir nos ativos financeiros e operações diretamente, conforme suas respectivas classes e regras de diversificação.\n\nA Instrução também prevê, em seu artigo 119, o segundo tipo de fundo. São os chamados Fundos de Investimento em Cotas de Fundos de Investimento. Esses “(...) devem manter, no mínimo, 95% (noventa e cinco por cento) de seu patrimônio investido em cotas de fundos de investimento de uma mesma classe (...)”.",
+        "O comando da ICVM 555 quanto à sua aplicabilidade geral a todos os fundos de investimento registrados junto à CVM deve ser interpretado com cautela. A Instrução regula, precipuamente, fundos de investimento cujas carteiras de investimento diferem de forma relevante dos demais fundos regulados por outras instruções e normativos daquela autarquia.\n\nComo exemplo dos principais fundos regulados por outras instruções, temos os Fundos de Investimento Imobiliário (FII), Fundos de Investimento em Direitos Creditórios (FIDC) e os Fundos de Investimento em Participações (FIP.) Referidos fundos de investimento são geralmente definidos pela indústria de fundos no Brasil como “fundos estruturados”, diferenciando-se dos fundos regulados exclusivamente pela ICVM 555.",
+        "As cotas de fundos de investimentos abertos, por poderem ser resgatadas a qualquer momento, não podem ser objeto de cessão ou transferência, exceto nos casos de (i) decisão judicial ou arbitral; (ii) operações de cessão fiduciária; (iii) execução de garantia; (iv) sucessão universal; (v) dissolução de sociedade conjugal ou união estável por via judicial ou escritura pública que disponha sobre a partilha de bens; e (vi) transferência de administração ou portabilidade de planos de previdência6.\n\nÉ importante notar que, em decorrência da falta de liquidez dos fundos de investimento fechados, a CVM optou por estabelecer um cenário regulatório mais complexo aos referidos fundos, estabelecendo normas mais rígidas para investimento e distribuição de cotas de fundos de investimento fechados.",
+        "46. Apesar disto, nada impede que a CVM estabeleça regras especiais de concessão au\n\ntomática de registro de funcionamento e de distribuição de cotas de fundos de investi mento, ou mesmo para sua dispensa, inclusive condicionando a concessão de tais favores ao número máximo de destinatários e ao valor da oferta (como já o faz o art. 22, § 1o, da Instrução 209, com a redação da Instrução 363/02) ou à qualificação dos investidores.",
+        "A qualificação dos investidores nas categorias acima descritas é relevante não só para a ICVM 555, mas para todo o mercado de capitais. Isso porque, a aquisição dos demais fundos (por exemplo, fundos estruturados) e outros ativos também pode estar restrita apenas a um determinado público-alvo, com o mesmo objetivo de restringir determinados produtos àqueles que tenham, na opinião da CVM, efetiva capacidade de avaliar e incorrer nos riscos inerentes a tais produtos.\n\n18.5.6. Cotas. Aplicações e Resgate de Cotas. Responsabilidade por patrimônio líquido negativo dos fundos."
+      ],
+      "fontes": [
+        {
+          "chunk_id": "cvm_livro_top_direito_mercado_valores_mobiliarios:03055",
+          "texto": "Por fim, entendemos ser conveniente mencionar os dois diferentes tipos de fundos de investimento previstos na ICVM 555.\n\nO primeiro tipo diz respeito aos Fundos de Investimento em si, ou seja, aqueles que podem investir nos ativos financeiros e operações diretamente, conforme suas respectivas classes e regras de diversificação.\n\nA Instrução também prevê, em seu artigo 119, o segundo tipo de fundo. São os chamados Fundos de Investimento em Cotas de Fundos de Investimento. Esses “(...) devem manter, no mínimo, 95% (noventa e cinco por cento) de seu patrimônio investido em cotas de fundos de investimento de uma mesma classe (...)”.",
+          "documento": "TOP Direito do Mercado de Valores Mobiliários",
+          "instituicao": "Comissão de Valores Mobiliários (CVM)",
+          "pagina": "p. 631",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/direito-do-mercado-de-valores-mobiliarios/@@display-file/file",
+          "distancia": 0.263396051119221
+        },
+        {
+          "chunk_id": "cvm_livro_top_direito_mercado_valores_mobiliarios:02980",
+          "texto": "O comando da ICVM 555 quanto à sua aplicabilidade geral a todos os fundos de investimento registrados junto à CVM deve ser interpretado com cautela. A Instrução regula, precipuamente, fundos de investimento cujas carteiras de investimento diferem de forma relevante dos demais fundos regulados por outras instruções e normativos daquela autarquia.\n\nComo exemplo dos principais fundos regulados por outras instruções, temos os Fundos de Investimento Imobiliário (FII), Fundos de Investimento em Direitos Creditórios (FIDC) e os Fundos de Investimento em Participações (FIP.) Referidos fundos de investimento são geralmente definidos pela indústria de fundos no Brasil como “fundos estruturados”, diferenciando-se dos fundos regulados exclusivamente pela ICVM 555.",
+          "documento": "TOP Direito do Mercado de Valores Mobiliários",
+          "instituicao": "Comissão de Valores Mobiliários (CVM)",
+          "pagina": "p. 616",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/direito-do-mercado-de-valores-mobiliarios/@@display-file/file",
+          "distancia": 0.278141791715214
+        },
+        {
+          "chunk_id": "cvm_livro_top_direito_mercado_valores_mobiliarios:02745",
+          "texto": "As cotas de fundos de investimentos abertos, por poderem ser resgatadas a qualquer momento, não podem ser objeto de cessão ou transferência, exceto nos casos de (i) decisão judicial ou arbitral; (ii) operações de cessão fiduciária; (iii) execução de garantia; (iv) sucessão universal; (v) dissolução de sociedade conjugal ou união estável por via judicial ou escritura pública que disponha sobre a partilha de bens; e (vi) transferência de administração ou portabilidade de planos de previdência6.\n\nÉ importante notar que, em decorrência da falta de liquidez dos fundos de investimento fechados, a CVM optou por estabelecer um cenário regulatório mais complexo aos referidos fundos, estabelecendo normas mais rígidas para investimento e distribuição de cotas de fundos de investimento fechados.",
+          "documento": "TOP Direito do Mercado de Valores Mobiliários",
+          "instituicao": "Comissão de Valores Mobiliários (CVM)",
+          "pagina": "p. 571",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/direito-do-mercado-de-valores-mobiliarios/@@display-file/file",
+          "distancia": 0.278612715775947
+        },
+        {
+          "chunk_id": "cvm_livro_top_direito_mercado_valores_mobiliarios:06021",
+          "texto": "46. Apesar disto, nada impede que a CVM estabeleça regras especiais de concessão au\n\ntomática de registro de funcionamento e de distribuição de cotas de fundos de investi mento, ou mesmo para sua dispensa, inclusive condicionando a concessão de tais favores ao número máximo de destinatários e ao valor da oferta (como já o faz o art. 22, § 1o, da Instrução 209, com a redação da Instrução 363/02) ou à qualificação dos investidores.",
+          "documento": "TOP Direito do Mercado de Valores Mobiliários",
+          "instituicao": "Comissão de Valores Mobiliários (CVM)",
+          "pagina": "p. 1205-1206",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/direito-do-mercado-de-valores-mobiliarios/@@display-file/file",
+          "distancia": 0.281434091212081
+        },
+        {
+          "chunk_id": "cvm_livro_top_direito_mercado_valores_mobiliarios:03025",
+          "texto": "A qualificação dos investidores nas categorias acima descritas é relevante não só para a ICVM 555, mas para todo o mercado de capitais. Isso porque, a aquisição dos demais fundos (por exemplo, fundos estruturados) e outros ativos também pode estar restrita apenas a um determinado público-alvo, com o mesmo objetivo de restringir determinados produtos àqueles que tenham, na opinião da CVM, efetiva capacidade de avaliar e incorrer nos riscos inerentes a tais produtos.\n\n18.5.6. Cotas. Aplicações e Resgate de Cotas. Responsabilidade por patrimônio líquido negativo dos fundos.",
+          "documento": "TOP Direito do Mercado de Valores Mobiliários",
+          "instituicao": "Comissão de Valores Mobiliários (CVM)",
+          "pagina": "p. 625",
+          "url": "https://www.gov.br/investidor/pt-br/educacional/publicacoes-educacionais/livros-cvm/direito-do-mercado-de-valores-mobiliarios/@@display-file/file",
+          "distancia": 0.282426025042243
+        }
+      ],
+      "distancias": [
+        0.263396051119221,
+        0.278141791715214,
+        0.278612715775947,
+        0.281434091212081,
+        0.282426025042243
+      ],
+      "dado_tempo_real": null,
+      "rag_metricas": {
+        "latencia_busca_ms": 2506.7,
+        "latencia_geracao_ms": 3493.8,
+        "latencia_total_ms": 6000.5,
+        "tokens_in": 2674,
+        "tokens_out": 173
+      },
+      "resposta_baseline": "Oi! Aqui é o Rev, seu tutor de finanças! A Instrução CVM 555 regula diversos aspectos dos fundos de investimento, mas não tenho os detalhes exatos sobre as regras de cotas. Porém, posso te ajudar a entender como funcionam os fundos de investimento em geral, como a importância da diversificação e como escolher um fundo que se encaixe no seu perfil. Vamos lá?",
+      "baseline_metricas": {
+        "latencia_geracao_ms": 2909.2,
+        "tokens_in": 1339,
+        "tokens_out": 120
+      }
+    }
+  ]
+}

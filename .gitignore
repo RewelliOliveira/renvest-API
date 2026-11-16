@@ -6,3 +6,6 @@ data/vector_db/
 .pytest_cache/
 data/reports/
 TCC_AJUSTES.md
+
+# Planilhas dos especialistas (enviadas por fora; não versionar)
+data/eval/especialistas_*.xlsx
