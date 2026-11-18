@@ -15,3 +15,12 @@ venv-eval/
 venv-eval-wsl/
 # Resultados do teste rápido do RAGAS (--limit)
 data/eval/ragas_v2_teste*
+
+# Respostas brutas dos especialistas e do Forms (dados de participantes; não versionar)
+data/respostas_especialistas/
+
+# Saídas geradas pelo notebook de análise (recriadas ao rodar data/eval/analise.ipynb)
+data/eval/analise/
+
+# Checkpoints do Jupyter
+.ipynb_checkpoints/
